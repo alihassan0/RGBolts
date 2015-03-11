@@ -1,4 +1,5 @@
 package ;
+import blocks.*;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxPoint;
@@ -28,7 +29,9 @@ class GameGrid extends FlxSprite
 	
 	public var inputBlock:InputBlock ;
 	public var outputBlock:OutputBlock ;
-	public function new() 
+	private var testFunction:String->String->Bool;
+	private var inputString:String;
+	public function new(inputString:String, testFunction:String->String->Bool) 
 	{
 		grid = new Array<Array<FlxSprite>>();
 		blocksGrid = new Array<Array<Block>>();
@@ -36,15 +39,16 @@ class GameGrid extends FlxSprite
 		makeGraphic(gridWidth * tileSize, gridHeight * tileSize,0x00ff00ff);
 		resetGrid();
 		GlovalVars.gameGrid = this;
+		this.testFunction = testFunction;
+		this.inputString = inputString;
 		addIOBlocks();
 	}
 	
 	public function addIOBlocks() 
 	{
-		var inputString:String = "rgrgb";
 		inputBlock = new InputBlock(0, 2,inputString);
 		blocksGrid[0][2] = inputBlock;
-		outputBlock = new OutputBlock(gridWidth - 1, 2,inputString);
+		outputBlock = new OutputBlock(gridWidth - 1, 2,inputString,testFunction);
 		blocksGrid[gridWidth - 1][2] = outputBlock;
 	}
 	public function resetGrid() 

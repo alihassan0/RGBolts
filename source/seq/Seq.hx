@@ -1,4 +1,5 @@
-package ;
+package seq ;
+import blocks.*;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
@@ -25,7 +26,7 @@ class Seq extends FlxSprite
 		GlovalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
 		seqRepresenter = new SeqRepresenter(this);
-		setString(initialString );
+		setString(initialString);
 		MouseEventManager.add(this, null, null, onOver, onOut);
 		FlxG.watch.add(this,"x");
 	}

@@ -1,6 +1,7 @@
-package ;
+package blocks ;
 import flixel.FlxSprite;
 import flixel.util.FlxPoint;
+import seq.Seq;
 
 /**
  * ...

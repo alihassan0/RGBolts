@@ -1,5 +1,6 @@
-package;
+package level;
 
+import blocks.*;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -7,6 +8,8 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.util.FlxMath;
+import haxe.Constraints.Function;
+import seq.Seq;
 
 /**
  * A FlxState which can be used for the game's menu.
@@ -17,13 +20,21 @@ class Level extends FlxState
 	private var runBtn:FlxButton;
 	private var resetBtn:FlxButton;
 	private var status_txt:FlxText;
+	private var levelInfo:LevelInfo;
+	
+	
+	public function new(levelInfo:LevelInfo) 
+	{
+		super();
+		this.levelInfo = levelInfo;
+	}
 	override public function create():Void
 	{
 		super.create();
 		FlxG.watch.addMouse();
 		
 		bgColor = FlxColor.WHEAT;
-		new GameGrid();
+		new GameGrid(levelInfo.inputString,levelInfo.testFunction);
 		GlovalVars.Seqs = new Array<Seq>();
 		GlovalVars.level = this;
 		FlxG.watch.add(GlovalVars.Seqs, "length");
@@ -76,7 +87,8 @@ class Level extends FlxState
 		discription.drawRoundRect(20, 0, 600, 50, 15, 15, 0xFFA97D5D);
 		add(discription);
 		
-		var text:FlxText = new FlxText(40 , 430, 450, " sort red fist then green then black", 20);
+		//var text:FlxText = new FlxText(40 , 430, 450, " sort red first then green then black", 20);
+		var text:FlxText = new FlxText(40 , 430, 450, levelInfo.description, 20);
 		text.color = 0xAA5C755E;
 		add(text);
 	}

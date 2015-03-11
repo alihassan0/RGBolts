@@ -1,4 +1,5 @@
-package ;
+package blocks ;
+import seq.Seq;
 
 /**
  * ...

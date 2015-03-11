@@ -1,4 +1,4 @@
-package ;
+package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;

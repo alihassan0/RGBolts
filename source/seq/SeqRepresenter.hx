@@ -1,4 +1,4 @@
-package ;
+package seq ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 

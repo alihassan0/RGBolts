@@ -1,8 +1,9 @@
-package ;
+package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
 import flixel.util.FlxPoint;
+import seq.Seq;
 
 /**
  * ...
@@ -63,7 +64,6 @@ class Block extends FlxSprite
 	}
 	public function direct(s:Seq,direction:Int)
 	{
-		
 		switch((angle % 360) / 90)
 		{
 			case 0:
@@ -98,7 +98,6 @@ class Block extends FlxSprite
 					case GlovalVars.LEFT: s.set_direction(new FlxPoint(0,1));
 					case GlovalVars.RIGHT: s.set_direction(new FlxPoint(0,-1));
 				}
-			
 		}
 	}
 }

@@ -1,8 +1,9 @@
-package ;
+package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxTypedGroupIterator;
 import flixel.util.FlxPoint;
+import seq.Seq;
 
 /**
  * ...
@@ -11,7 +12,9 @@ import flixel.util.FlxPoint;
 class OutputBlock extends Block
 {
 	private var inputString:String;
-	public function new(posX:Int,posY:Int,inputString:String) 
+	private var testFunction:String->String->Bool;
+	
+	public function new(posX:Int,posY:Int,inputString:String,testFunction:String->String->Bool) 
 	{
 		var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(new FlxPoint(posX, posY));
 		super(spritePos.x, spritePos.y);
@@ -19,7 +22,7 @@ class OutputBlock extends Block
 		loadGraphic("assets/images/output.png");
 		followMouse = false;
 		this.inputString = inputString;
-		
+		this.testFunction = testFunction;
 	}
 	override public function affectSeq(s:Seq) 
 	{
@@ -36,7 +39,7 @@ class OutputBlock extends Block
 		
 	}
 	
-	function checkOutputString(inputString:String, outputString:String):Bool
+	/*function checkOutputString(inputString:String, outputString:String):Bool
 	{
 		var redChars:String= "";
 		var greenChars:String= "";
@@ -51,6 +54,10 @@ class OutputBlock extends Block
 			}
 		}
 		return redChars + greenChars + blackChars == outputString;
+	}*/
+	function checkOutputString(inputString:String, outputString:String):Bool
+	{
+		return testFunction(inputString,outputString);
 	}
 	override public function checkPosInGrid() 
 	{
