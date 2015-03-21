@@ -4,15 +4,16 @@ package;
 import haxe.Timer;
 import haxe.Unserializer;
 import lime.app.Preloader;
+import lime.audio.AudioSource;
 import lime.audio.openal.AL;
 import lime.audio.AudioBuffer;
-import lime.graphics.Font;
 import lime.graphics.Image;
+import lime.text.Font;
 import lime.utils.ByteArray;
 import lime.utils.UInt8Array;
 import lime.Assets;
 
-#if (sys || nodejs)
+#if sys
 import sys.FileSystem;
 #end
 
@@ -159,6 +160,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set (id, AssetType.MUSIC);
 		
 		
+		var assetsPrefix = ApplicationMain.config.assetsPrefix;
+		if (assetsPrefix != null) {
+			for (k in path.keys()) {
+				path.set(k, assetsPrefix + path[k]);
+			}
+		}
+		
 		#else
 		
 		#if openfl
@@ -186,7 +194,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if (windows || mac || linux)
 		
-		/*var useManifest = false;
+		var useManifest = false;
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
@@ -241,8 +249,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/sounds/flixel.mp3", __ASSET__assets_sounds_flixel_mp3);
 		type.set ("assets/sounds/flixel.mp3", AssetType.MUSIC);
-		*/
-		var useManifest = true;
+		
 		
 		if (useManifest) {
 			
@@ -302,11 +309,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 			
 			#if flash
 			
-			if ((assetType == BINARY || assetType == TEXT) && requestedType == BINARY) {
+			if (requestedType == BINARY && (assetType == BINARY || assetType == TEXT || assetType == IMAGE)) {
 				
 				return true;
 				
-			} else if (path.exists (id)) {
+			} else if (requestedType == null || path.exists (id)) {
 				
 				return true;
 				
@@ -344,9 +351,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#else
 		
-		return AudioBuffer.fromFile (path.get (id));
-		//if (className.exists(id)) return cast (Type.createInstance (className.get (id), []), Sound);
-		//else return new Sound (new URLRequest (path.get (id)), null, type.get (id) == MUSIC);
+		if (className.exists(id)) return AudioBuffer.fromBytes (cast (Type.createInstance (className.get (id), []), ByteArray));
+		else return AudioBuffer.fromFile (path.get (id));
 		
 		#end
 		
@@ -356,6 +362,23 @@ class DefaultAssetLibrary extends AssetLibrary {
 	public override function getBytes (id:String):ByteArray {
 		
 		#if flash
+		
+		switch (type.get (id)) {
+			
+			case TEXT, BINARY:
+				
+				return cast (Type.createInstance (className.get (id), []), ByteArray);
+			
+			case IMAGE:
+				
+				var bitmapData = cast (Type.createInstance (className.get (id), []), BitmapData);
+				return bitmapData.getPixels (bitmapData.rect);
+			
+			default:
+				
+				return null;
+			
+		}
 		
 		return cast (Type.createInstance (className.get (id), []), ByteArray);
 		
@@ -391,43 +414,42 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#else
 		
-		//return null;
-		//if (className.exists(id)) return cast (Type.createInstance (className.get (id), []), ByteArray);
-		//else 
-		return ByteArray.readFile (path.get (id));
+		if (className.exists(id)) return cast (Type.createInstance (className.get (id), []), ByteArray);
+		else return ByteArray.readFile (path.get (id));
 		
 		#end
 		
 	}
 	
 	
-	public override function getFont (id:String):Dynamic /*Font*/ {
+	public override function getFont (id:String):Font {
 		
-		// TODO: Complete Lime Font API
+		#if flash
 		
-		#if openfl
-		#if (flash || js)
+		var src = Type.createInstance (className.get (id), []);
+		var font = new Font (src.fontName);
+		font.src = src;
 		
-		return cast (Type.createInstance (className.get (id), []), openfl.text.Font);
+		return font;
+		
+		#elseif html5
+		
+		return cast (Type.createInstance (className.get (id), []), Font);
 		
 		#else
 		
 		if (className.exists (id)) {
 			
 			var fontClass = className.get (id);
-			openfl.text.Font.registerFont (fontClass);
-			return cast (Type.createInstance (fontClass, []), openfl.text.Font);
+			return cast (Type.createInstance (fontClass, []), Font);
 			
 		} else {
 			
-			return new openfl.text.Font (path.get (id));
+			return Font.fromFile (path.get (id));
 			
 		}
 		
 		#end
-		#end
-		
-		return null;
 		
 	}
 	
@@ -444,7 +466,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#else
 		
-		return Image.fromFile (path.get (id));
+		if (className.exists (id)) {
+			
+			var fontClass = className.get (id);
+			return cast (Type.createInstance (fontClass, []), Image);
+			
+		} else {
+			
+			return Image.fromFile (path.get (id));
+			
+		}
 		
 		#end
 		
@@ -552,11 +583,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
-		if (requestedType != AssetType.MUSIC && requestedType != AssetType.SOUND) {
+		//if (requestedType != AssetType.MUSIC && requestedType != AssetType.SOUND) {
 			
 			return className.exists (id);
 			
-		}
+		//}
 		
 		#end
 		
@@ -587,26 +618,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 	
 	public override function loadAudioBuffer (id:String, handler:AudioBuffer -> Void):Void {
 		
-		#if (flash || js)
-		
-		//if (path.exists (id)) {
+		#if (flash)
+		if (path.exists (id)) {
 			
-		//	var loader = new Loader ();
-		//	loader.contentLoaderInfo.addEventListener (Event.COMPLETE, function (event) {
+			var soundLoader = new Sound ();
+			soundLoader.addEventListener (Event.COMPLETE, function (event) {
 				
-		//		handler (cast (event.currentTarget.content, Bitmap).bitmapData);
+				var audioBuffer:AudioBuffer = new AudioBuffer();
+				audioBuffer.src = event.currentTarget;
+				handler (audioBuffer);
 				
-		//	});
-		//	loader.load (new URLRequest (path.get (id)));
+			});
+			soundLoader.load (new URLRequest (path.get (id)));
 			
-		//} else {
-			
+		} else {
 			handler (getAudioBuffer (id));
 			
-		//}
-		
+		}
 		#else
-		
 		handler (getAudioBuffer (id));
 		
 		#end
@@ -739,7 +768,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 	
 	/*public override function loadMusic (id:String, handler:Dynamic -> Void):Void {
 		
-		#if (flash || js)
+		#if (flash || html5)
 		
 		//if (path.exists (id)) {
 			
@@ -837,7 +866,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 #elseif html5
 
-#if openfl
 
 
 
@@ -857,37 +885,38 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-#end
 
 #else
 
-#if openfl
 
-#end
 
 #if (windows || mac || linux)
 
-//
-//@:file("assets/data/data-goes-here.txt") class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
-//@:bitmap("assets/images/color.png") class __ASSET__assets_images_color_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/directional.png") class __ASSET__assets_images_directional_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/duplicator.png") class __ASSET__assets_images_duplicator_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/grouper.png") class __ASSET__assets_images_grouper_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/ifblack.png") class __ASSET__assets_images_ifblack_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/ifgreen.png") class __ASSET__assets_images_ifgreen_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/ifred.png") class __ASSET__assets_images_ifred_png extends openfl.display.BitmapData {}
-//@:file("assets/images/images-go-here.txt") class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
-//@:bitmap("assets/images/input.png") class __ASSET__assets_images_input_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/iterator.png") class __ASSET__assets_images_iterator_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/output.png") class __ASSET__assets_images_output_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/seq.png") class __ASSET__assets_images_seq_png extends openfl.display.BitmapData {}
-//@:bitmap("assets/images/waiter.png") class __ASSET__assets_images_waiter_png extends openfl.display.BitmapData {}
-//@:file("assets/music/music-goes-here.txt") class __ASSET__assets_music_music_goes_here_txt extends lime.utils.ByteArray {}
-//@:file("assets/sounds/sounds-go-here.txt") class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.ByteArray {}
-//@:sound("C:/HaxeToolkit/haxe/lib/flixel/3,3,6/assets/sounds/beep.mp3") class __ASSET__assets_sounds_beep_mp3 extends openfl.media.Sound {}
-//@:sound("C:/HaxeToolkit/haxe/lib/flixel/3,3,6/assets/sounds/flixel.mp3") class __ASSET__assets_sounds_flixel_mp3 extends openfl.media.Sound {}
-//
-//
+
+@:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
+@:image("assets/images/color.png") #if display private #end class __ASSET__assets_images_color_png extends lime.graphics.Image {}
+@:image("assets/images/directional.png") #if display private #end class __ASSET__assets_images_directional_png extends lime.graphics.Image {}
+@:image("assets/images/duplicator.png") #if display private #end class __ASSET__assets_images_duplicator_png extends lime.graphics.Image {}
+@:image("assets/images/grouper.png") #if display private #end class __ASSET__assets_images_grouper_png extends lime.graphics.Image {}
+@:image("assets/images/ifblack.png") #if display private #end class __ASSET__assets_images_ifblack_png extends lime.graphics.Image {}
+@:image("assets/images/ifgreen.png") #if display private #end class __ASSET__assets_images_ifgreen_png extends lime.graphics.Image {}
+@:image("assets/images/ifred.png") #if display private #end class __ASSET__assets_images_ifred_png extends lime.graphics.Image {}
+@:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
+@:image("assets/images/input.png") #if display private #end class __ASSET__assets_images_input_png extends lime.graphics.Image {}
+@:image("assets/images/iterator.png") #if display private #end class __ASSET__assets_images_iterator_png extends lime.graphics.Image {}
+@:image("assets/images/output.png") #if display private #end class __ASSET__assets_images_output_png extends lime.graphics.Image {}
+@:image("assets/images/seq.png") #if display private #end class __ASSET__assets_images_seq_png extends lime.graphics.Image {}
+@:image("assets/images/waiter.png") #if display private #end class __ASSET__assets_images_waiter_png extends lime.graphics.Image {}
+@:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.ByteArray {}
+@:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.ByteArray {}
+@:file("C:/Random/haxe/lib/flixel/3,3,6/assets/sounds/beep.mp3") #if display private #end class __ASSET__assets_sounds_beep_mp3 extends lime.utils.ByteArray {}
+@:file("C:/Random/haxe/lib/flixel/3,3,6/assets/sounds/flixel.mp3") #if display private #end class __ASSET__assets_sounds_flixel_mp3 extends lime.utils.ByteArray {}
+
+
+
+#end
+
+#if openfl
 
 #end
 

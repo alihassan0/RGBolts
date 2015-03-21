@@ -9,6 +9,7 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.util.FlxMath;
 import haxe.Constraints.Function;
+import flixel.util.FlxTimer;
 import seq.Seq;
 
 /**
@@ -17,16 +18,23 @@ import seq.Seq;
 using flixel.util.FlxSpriteUtil;
 class Level extends FlxState
 {
+	private var backToMenuBtn:FlxButton;
 	private var runBtn:FlxButton;
 	private var resetBtn:FlxButton;
 	private var status_txt:FlxText;
 	private var levelInfo:LevelInfo;
-	
-	
+	private var speedUp:FlxButton;
+	private var speedDown:FlxButton;
+	private var speed:Int;
+	private var timer:FlxTimer;
+	private var speedText:FlxText;
+	private var isRunned:Bool;
 	public function new(levelInfo:LevelInfo) 
 	{
 		super();
 		this.levelInfo = levelInfo;
+		this.timer = new FlxTimer();
+		this.isRunned = false;
 	}
 	override public function create():Void
 	{
@@ -39,6 +47,11 @@ class Level extends FlxState
 		GlovalVars.level = this;
 		FlxG.watch.add(GlovalVars.Seqs, "length");
 		
+		
+		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);
+		backToMenuBtn.scale.set(0.6, 0.6);
+		add(backToMenuBtn);
+		
 		runBtn = new FlxButton(470, 10, "run", runGame);
 		runBtn.scale.set(0.6, 0.6);
 		add(runBtn);
@@ -46,6 +59,19 @@ class Level extends FlxState
 		resetBtn = new FlxButton(520, 10, "reset", resetGame);
 		resetBtn.scale.set(0.6, 0.6);
 		add(resetBtn);
+		
+		speedText = new FlxText(410 , 40, 100, "Speed: " + speed, 10);
+		speedText.color = 0xAA5C755E;
+		add(speedText);
+		
+		speedUp = new FlxButton(420, 50, "Up", speedUpF);
+		speedUp.scale.set(0.4,0.6);
+		add(speedUp);
+		
+		speedDown = new FlxButton(420, 63, "Down", speedDownF);
+		speedDown.scale.set(0.4,0.6);
+		add(speedDown);
+		
 		
 		addDiscription();
 		
@@ -62,6 +88,29 @@ class Level extends FlxState
 				dBlockSource = new BlockSource(550, 50 + 45 * (i-5), i); add(dBlockSource);
 			}
 		}
+	}
+	function intermedita(timer:FlxTimer)
+	{
+		if (isRunned)
+		runGame();
+	}
+	function speedUpF() {
+
+		if (speed < 3)
+		speed++;
+	    speedText.text = "Speed: " + speed;
+		addSpeed();
+	}
+	function speedDownF()
+	{
+		if (speed > 1)
+		speed--;
+        speedText.text = "Speed: " + speed;
+		addSpeed();
+	}
+	function switchBack()
+	{
+		FlxG.switchState(new LevelSelector());
 	}
 	function addStatus() 
 	{
@@ -92,9 +141,24 @@ class Level extends FlxState
 		text.color = 0xAA5C755E;
 		add(text);
 	}
-	
+	function addSpeed()
+	{
+		if (speed == 0)
+		   timer.cancel();
+		if (speed == 1)
+		   timer.start(1, intermedita , 0);
+		if (speed == 2)
+		   timer.start(0.5, intermedita,0);
+		if (speed == 3)
+		   timer.start(0.25, intermedita,0);
+
+	}
 	function resetGame() 
 	{
+		isRunned =  false;
+		speed = 0;
+		speedText.text =  "Speed: " + speed;
+		addSpeed();
 		status_change(2);
 		while (GlovalVars.Seqs.length != 0)
 		{
@@ -102,8 +166,11 @@ class Level extends FlxState
 		}
 		GlovalVars.gameGrid.resetBlocks();
 	}
-	public function runGame() 
+	
+	
+	public function runGame():Void 
 	{
+	isRunned = true;	
 		if (GlovalVars.Seqs.length == 0)//temp starter
 		{
 			GlovalVars.gameGrid.inputBlock.started = true;

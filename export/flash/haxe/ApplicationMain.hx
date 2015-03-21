@@ -1,5 +1,7 @@
-import lime.Assets;
 #if !macro
+
+
+@:access(lime.Assets)
 
 
 class ApplicationMain {
@@ -8,13 +10,18 @@ class ApplicationMain {
 	public static var config:lime.app.Config;
 	public static var preloader:openfl.display.Preloader;
 	
-	private static var app:lime.app.Application;
-	
 	
 	public static function create ():Void {
 		
-		app = new openfl.display.Application ();
+		var app = new lime.app.Application ();
 		app.create (config);
+		openfl.Lib.application = app;
+		
+		#if !flash
+		var stage = new openfl.display.Stage (app.window.width, app.window.height, config.background);
+		stage.addChild (openfl.Lib.current);
+		app.addModule (stage);
+		#end
 		
 		var display = new flixel.system.FlxPreloader ();
 		
@@ -22,90 +29,104 @@ class ApplicationMain {
 		preloader.onComplete = init;
 		preloader.create (config);
 		
-		#if js
+		#if (js && html5)
 		var urls = [];
 		var types = [];
 		
 		
 		urls.push ("assets/data/data-goes-here.txt");
-		types.push (AssetType.TEXT);
+		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		urls.push ("assets/images/color.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/directional.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/duplicator.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/grouper.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/ifblack.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/ifgreen.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/ifred.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/images-go-here.txt");
-		types.push (AssetType.TEXT);
+		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		urls.push ("assets/images/input.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/iterator.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/output.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/seq.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/waiter.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/music/music-goes-here.txt");
-		types.push (AssetType.TEXT);
+		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		urls.push ("assets/sounds/sounds-go-here.txt");
-		types.push (AssetType.TEXT);
+		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		urls.push ("assets/sounds/beep.mp3");
-		types.push (AssetType.MUSIC);
+		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
 		urls.push ("assets/sounds/flixel.mp3");
-		types.push (AssetType.MUSIC);
+		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
+		
+		if (config.assetsPrefix != null) {
+			
+			for (i in 0...urls.length) {
+				
+				if (types[i] != lime.Assets.AssetType.FONT) {
+					
+					urls[i] = config.assetsPrefix + urls[i];
+					
+				}
+				
+			}
+			
+		}
 		
 		preloader.load (urls, types);
 		#end
 		
 		var result = app.exec ();
 		
-		#if sys
+		#if (sys && !emscripten)
 		Sys.exit (result);
 		#end
 		
@@ -148,22 +169,26 @@ class ApplicationMain {
 			antialiasing: Std.int (0),
 			background: Std.int (0),
 			borderless: false,
+			company: "HaxeFlixel",
 			depthBuffer: false,
+			file: "sequenceCSGame",
 			fps: Std.int (60),
 			fullscreen: false,
 			height: Std.int (480),
 			orientation: "portrait",
+			packageName: "com.example.myapp",
 			resizable: true,
-			stencilBuffer: false,
+			stencilBuffer: true,
 			title: "sequenceCSGame",
+			version: "0.0.1",
 			vsync: true,
 			width: Std.int (640),
 			
 		}
 		
-		#if js
-		#if munit
-		flash.Lib.embed (null, 640, 480, "000000");
+		#if (js && html5)
+		#if (munit || utest)
+		openfl.Lib.embed (null, 640, 480, "000000");
 		#end
 		#else
 		create ();
@@ -174,12 +199,10 @@ class ApplicationMain {
 	
 	public static function start ():Void {
 		
-		openfl.Lib.current.stage.align = openfl.display.StageAlign.TOP_LEFT;
-		openfl.Lib.current.stage.scaleMode = openfl.display.StageScaleMode.NO_SCALE;
-		
 		var hasMain = false;
+		var entryPoint = Type.resolveClass ("Main");
 		
-		for (methodName in Type.getClassFields (Main)) {
+		for (methodName in Type.getClassFields (entryPoint)) {
 			
 			if (methodName == "main") {
 				
@@ -190,19 +213,21 @@ class ApplicationMain {
 			
 		}
 		
+		lime.Assets.initialize ();
+		
 		if (hasMain) {
 			
-			Reflect.callMethod (Main, Reflect.field (Main, "main"), []);
+			Reflect.callMethod (entryPoint, Reflect.field (entryPoint, "main"), []);
 			
 		} else {
 			
 			var instance:DocumentClass = Type.createInstance (DocumentClass, []);
 			
-			if (Std.is (instance, openfl.display.DisplayObject)) {
+			/*if (Std.is (instance, openfl.display.DisplayObject)) {
 				
 				openfl.Lib.current.addChild (cast instance);
 				
-			}
+			}*/
 			
 		}
 		
@@ -226,8 +251,7 @@ class ApplicationMain {
 }
 
 
-#if flash @:build(DocumentClass.buildFlash())
-#else @:build(DocumentClass.build()) #end
+@:build(DocumentClass.build())
 @:keep class DocumentClass extends Main {}
 
 
@@ -254,7 +278,7 @@ class DocumentClass {
 				
 				var method = macro {
 					
-					this.stage = flash.Lib.current.stage;
+					openfl.Lib.current.addChild (this);
 					super ();
 					dispatchEvent (new openfl.events.Event (openfl.events.Event.ADDED_TO_STAGE, false, false));
 					
@@ -262,34 +286,6 @@ class DocumentClass {
 				
 				fields.push ({ name: "new", access: [ APublic ], kind: FFun({ args: [], expr: method, params: [], ret: macro :Void }), pos: Context.currentPos () });
 				
-				return fields;
-				
-			}
-			
-			searchTypes = searchTypes.superClass.t.get ();
-			
-		}
-		
-		return null;
-		
-	}
-	
-	
-	macro public static function buildFlash ():Array<Field> {
-		
-		var classType = Context.getLocalClass ().get ();
-		var searchTypes = classType;
-		
-		while (searchTypes.superClass != null) {
-			
-			if (searchTypes.pack.length == 2 && searchTypes.pack[1] == "display" && searchTypes.name == "DisplayObject") {
-				
-				var fields = Context.getBuildFields ();
-				var method = macro {
-					return flash.Lib.current.stage;
-				}
-				
-				fields.push ({ name: "get_stage", access: [ APrivate ], meta: [ { name: ":getter", params: [ macro stage ], pos: Context.currentPos() } ], kind: FFun({ args: [], expr: method, params: [], ret: macro :flash.display.Stage }), pos: Context.currentPos() });
 				return fields;
 				
 			}
