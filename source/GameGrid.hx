@@ -71,14 +71,35 @@ class GameGrid extends FlxSprite
             }
         }
 	}
-	public function addInBestFit(p:FlxPoint,block:Block):FlxPoint 
+	public function addInBestFit(block:Block):FlxPoint 
 	{
-		var res:FlxPoint = new FlxPoint(0, 0);
-		res.x = offsetPos + ((Math.floor((p.x - gridX) / tileSize)) * tileSize) + gridX;
-		res.y = offsetPos + ((Math.floor((p.y - gridY) / tileSize)) * tileSize) + gridY;
-		removeFromGrid(block);
-		blocksGrid[(Math.floor((p.x - gridX) / tileSize))][(Math.floor((p.y - gridY) / tileSize))] = block;
-		return res;
+		var blockPos:FlxPoint = new FlxPoint(block.x + block.width/2 , block.y + block.height/2);//the block center point
+		
+		var res:FlxPoint = new FlxPoint(0, 0); 
+		res.x = offsetPos + ((Math.floor((blockPos.x - gridX) / tileSize)) * tileSize) + gridX;
+		res.y = offsetPos + ((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY;
+		
+		var posPoint = new FlxPoint();
+		posPoint.x = Math.floor((blockPos.x - gridX) / tileSize);
+		posPoint.y = Math.floor((blockPos.y - gridY) / tileSize);
+	
+		if(!inBounds(posPoint) || blocksGrid[Std.int(posPoint.x)][Std.int(posPoint.y)] != null)
+		{
+			return null;
+		}
+		else
+		{
+			removeFromGrid(block); // remove any occurunces of the same block in the grid if it there
+			blocksGrid[Std.int(posPoint.x)][Std.int(posPoint.y)] = block;
+			return res;
+		}
+	}
+	public function inBounds(p:FlxPoint):Bool
+	{
+		if(p.x < 0 || p.x >= gridWidth || p.y < 0 || p.y > gridHeight)
+			return false;
+		else
+			return true;
 	}
 	public function getCoordinatesOfPosition(p:FlxPoint):FlxPoint 
 	{

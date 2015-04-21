@@ -4,7 +4,6 @@ import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
 import flixel.util.FlxPoint;
 import seq.Seq;
-
 /**
  * ...
  * @author ...
@@ -16,9 +15,10 @@ class Block extends FlxSprite
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
-		MouseEventManager.add(this, onDown, null, null, null);
+		MouseEventManager.add(this, onDown, onUp, null, null);
 		FlxG.state.add(this);
 		followMouse = true;
+	
 	}
 	override public function update():Void 
 	{
@@ -27,7 +27,7 @@ class Block extends FlxSprite
 		{
 			x = FlxG.mouse.x -width / 2;
 			y = FlxG.mouse.y -width / 2;
-			if (!FlxG.mouse.pressed)
+			if(!FlxG.mouse.pressed)
 			{
 				followMouse = false;
 				checkPosInGrid();
@@ -35,16 +35,16 @@ class Block extends FlxSprite
 		}
 	}
 	
-	public function checkPosInGrid() 
+	public function checkPosInGrid() //adds the block to the grid if possible
 	{
-		if (!this.overlaps(GlovalVars.gameGrid))
+		var bestfit:FlxPoint = GlovalVars.gameGrid.addInBestFit(this);
+		if(bestfit == null)
 		{
 			GlovalVars.gameGrid.removeFromGrid(this);
 			kill();
 		}
 		else
 		{
-			var bestfit:FlxPoint = GlovalVars.gameGrid.addInBestFit(new FlxPoint(x + width / 2, y + height / 2),this);
 			this.reset(bestfit.x, bestfit.y);
 			this.position = GlovalVars.gameGrid.getposOfBlock(this);
 		}
@@ -57,6 +57,10 @@ class Block extends FlxSprite
 	{
 		followMouse = true;
 		angle += 90;
+	}
+	public function onUp(Sprite:FlxSprite)
+	{
+		
 	}
 	public function affectSeq(s:Seq)
 	{

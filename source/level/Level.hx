@@ -71,8 +71,7 @@ class Level extends FlxState
 		speedDown = new FlxButton(420, 63, "Down", speedDownF);
 		speedDown.scale.set(0.4,0.6);
 		add(speedDown);
-		
-		
+				
 		addDiscription();
 		
 		addStatus();
@@ -189,9 +188,9 @@ class Level extends FlxState
 	override public function update():Void
 	{
 		super.update();
-		if (FlxG.keys.pressed.K)
+		/*if (FlxG.keys.pressed.K)
 		{
 			FlxG.watch.add(GlovalVars.Seqs, "length");
-		}
+		}*/
 	}
 }

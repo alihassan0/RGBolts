@@ -25,15 +25,16 @@ class InputBlock extends Block
 	}
 	override public function checkPosInGrid() 
 	{
-		if (!this.overlaps(GlovalVars.gameGrid))
+		var bestfit:FlxPoint = GlovalVars.gameGrid.addInBestFit(this);
+		if(bestfit == null)
 		{
 			var p :FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(position);
 			reset(p.x, p.y);
 		}
 		else
 		{
-			var bestfit:FlxPoint = GlovalVars.gameGrid.addInBestFit(new FlxPoint(x + width / 2, y + height / 2),this);
-			this.reset(bestfit.x, bestfit.y); 
+			this.reset(bestfit.x, bestfit.y);
+			this.position = GlovalVars.gameGrid.getposOfBlock(this);
 		}
 	}
 	override public function update():Void 

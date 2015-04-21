@@ -1,6 +1,6 @@
 package seq ;
 import flixel.FlxG;
-import flixel.FlxSprite;
+import flixel.*;
 
 /**
  * ...
@@ -11,13 +11,16 @@ class SeqRepresenter extends FlxSprite
 	public var seqString:String ;
 	public var seqColorArray:Array<SeqColor>;
 	public var seqParent:Seq;
-	public function new(seq:Seq) 
+	
+	public function new() 
 	{
-		super(x, y);
+
+		super(5,5);
+		//trace("working");
+		super(x,y);
 		seqColorArray = new Array();
 		makeGraphic(1 + seqColorArray.length * 10, 10);
 		FlxG.state.add(this);
-		this.seqParent = seq;
 		show(false);
 	}	
 	override public function kill():Void 

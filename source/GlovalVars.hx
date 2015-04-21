@@ -24,14 +24,13 @@ class GlovalVars
 	{
 		levels = new Array<LevelInfo>();
 		
-		//level 1
-		levels.push(new LevelInfo(1,  "rgrgb" ,"sort red first then green then black", sortRedThenGreen));
+		//just a mere intrdouction to the level lauout and the directional block
+		levels.push(new LevelInfo(levels.length +1,  "r" ,"direct the seq to the output block", checkSame));	
+
+		levels.push(new LevelInfo(levels.length +1,  "rgrgb" ,"sort red first then green then black", sortRedThenGreen));
 		
-		
-		//level 2
-		levels.push(new LevelInfo(1,  "rrgrggrb" ,"dublicate string", duplicateString));
+		levels.push(new LevelInfo(levels.length +1,  "rrgrggrb" ,"dublicate string", duplicateString));
 	}
-	
 	static function sortRedThenGreen(inputString:String, outputString:String):Bool
 	{
 		var redChars:String= "";
@@ -53,5 +52,10 @@ class GlovalVars
 		var s :String = inputString.substring(0, inputString.length - 1);
 		return (s + s + "b") == outputString ;  
 	}
+	static function checkSame (inputString:String, outputString:String):Bool
+	{
+		return inputString == outputString;
+	}
+
 	
 }

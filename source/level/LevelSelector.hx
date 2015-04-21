@@ -16,8 +16,7 @@ class LevelSelector extends FlxState
 		for (i in 0...GlovalVars.levels.length)
 		{
 			new LevelIcon(50 + i*40, 50, i+1);
-		}
-		
+		}	
 	}
 	
 }

@@ -15,7 +15,7 @@ class Seq extends FlxSprite
 	public var direction:FlxPoint ;
 	public var seqString:String = "";
 	public var seqRepresenter:SeqRepresenter;
-	private var turnsToWait:Int;
+	private var turnsToWait:Int = 0;
 	public function new(posX:Int,posY:Int, initialString:String) 
 	{
 		position = new FlxPoint(posX, posY);
@@ -25,7 +25,9 @@ class Seq extends FlxSprite
 		FlxG.state.add(this);
 		GlovalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
-		seqRepresenter = new SeqRepresenter(this);
+		trace(this);
+		seqRepresenter = new SeqRepresenter();
+		seqRepresenter.seqParent = this;
 		setString(initialString);
 		MouseEventManager.add(this, null, null, onOver, onOut);
 		FlxG.watch.add(this,"x");
