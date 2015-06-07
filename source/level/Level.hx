@@ -10,6 +10,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxMath;
 import haxe.Constraints.Function;
 import flixel.util.FlxTimer;
+import flixel.util.FlxPoint;
 import seq.Seq;
 
 /**
@@ -50,10 +51,12 @@ class Level extends FlxState
 		
 		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);
 		backToMenuBtn.scale.set(0.6, 0.6);
+		backToMenuBtn.updateHitbox();
 		add(backToMenuBtn);
 		
 		runBtn = new FlxButton(470, 10, "run", runGame);
 		runBtn.scale.set(0.6, 0.6);
+		runBtn.updateHitbox();
 		add(runBtn);
 		
 		resetBtn = new FlxButton(520, 10, "reset", resetGame);
@@ -76,7 +79,7 @@ class Level extends FlxState
 		
 		addStatus();
 		var dBlockSource:BlockSource;
-		for (i in 0...8)
+        for (i in 0 ... 8)
         {
 			if (i < 5)
 			{
