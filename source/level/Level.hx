@@ -20,12 +20,16 @@ using flixel.util.FlxSpriteUtil;
 class Level extends FlxState
 {
 	private var backToMenuBtn:FlxButton;
+	
+	private var status_txt:FlxText;
 	private var runBtn:FlxButton;
 	private var resetBtn:FlxButton;
-	private var status_txt:FlxText;
-	private var levelInfo:LevelInfo;
 	private var speedUp:FlxButton;
 	private var speedDown:FlxButton;
+	private var nextLevel:FlxButton;
+	
+	private var levelInfo:LevelInfo;
+
 	private var speed:Int;
 	private var timer:FlxTimer;
 	private var speedText:FlxText;
@@ -48,33 +52,8 @@ class Level extends FlxState
 		GlovalVars.level = this;
 		FlxG.watch.add(GlovalVars.Seqs, "length");
 		
-		
-		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);
-		backToMenuBtn.scale.set(0.6, 0.6);
-		backToMenuBtn.updateHitbox();
-		add(backToMenuBtn);
-		
-		runBtn = new FlxButton(470, 10, "run", runGame);
-		runBtn.scale.set(0.6, 0.6);
-		runBtn.updateHitbox();
-		add(runBtn);
-		
-		resetBtn = new FlxButton(520, 10, "reset", resetGame);
-		resetBtn.scale.set(0.6, 0.6);
-		add(resetBtn);
-		
-		speedText = new FlxText(410 , 40, 100, "Speed: " + speed, 10);
-		speedText.color = 0xAA5C755E;
-		add(speedText);
-		
-		speedUp = new FlxButton(420, 50, "Up", speedUpF);
-		speedUp.scale.set(0.4,0.6);
-		add(speedUp);
-		
-		speedDown = new FlxButton(420, 63, "Down", speedDownF);
-		speedDown.scale.set(0.4,0.6);
-		add(speedDown);
-				
+		addUI();
+
 		addDiscription();
 		
 		addStatus();
@@ -90,6 +69,43 @@ class Level extends FlxState
 				dBlockSource = new BlockSource(550, 50 + 45 * (i-5), i); add(dBlockSource);
 			}
 		}
+	}
+	function addUI()
+	{
+		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);
+		backToMenuBtn.scale.set(0.6, 0.6);
+		backToMenuBtn.updateHitbox();
+		add(backToMenuBtn);
+		
+		runBtn = new FlxButton(470, 10, "run", runGame);
+		runBtn.scale.set(0.6, 0.6);
+		runBtn.updateHitbox();
+		add(runBtn);
+		
+		resetBtn = new FlxButton(520, 10, "reset", resetGame);
+		resetBtn.scale.set(0.6, 0.6);
+		resetBtn.updateHitbox();
+		add(resetBtn);
+		
+		speedText = new FlxText(410 , 40, 100, "Speed: " + speed, 10);
+		speedText.color = 0xAA5C755E;
+		add(speedText);
+		
+		speedUp = new FlxButton(420, 50, "Up", speedUpF);
+		speedUp.scale.set(0.4,0.6);
+		speedUp.updateHitbox();
+		add(speedUp);
+		
+		speedDown = new FlxButton(420, 63, "Down", speedDownF);
+		speedDown.scale.set(0.4,0.6);
+		speedDown.updateHitbox();
+		add(speedDown);
+
+		nextLevel = new FlxButton(450, 300, "next level", nextLevelF);
+		nextLevel.scale.set(8,8);
+		nextLevel.updateHitbox();
+		nextLevel.visible = false;
+		add(nextLevel);
 	}
 	function intermedita(timer:FlxTimer)
 	{
@@ -110,6 +126,10 @@ class Level extends FlxState
         speedText.text = "Speed: " + speed;
 		addSpeed();
 	}
+	function nextLevelF()
+	{
+		FlxG.switchState(new Level(GlovalVars.levels[levelInfo.id]));
+	}
 	function switchBack()
 	{
 		FlxG.switchState(new LevelSelector());
@@ -123,7 +143,7 @@ class Level extends FlxState
 	{
 		switch(type)
 		{
-			case 0: status_txt.text = "great job";//success
+			case 0: status_txt.text = "great job";nextLevel.visible = true;//success
 			case 1: status_txt.text = "try again";//fail
 			case 2: status_txt.text = "         ";//wait
 			case 3: status_txt.text = " testing ";//testing
