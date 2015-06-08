@@ -12,6 +12,7 @@ class Block extends FlxSprite
 {
 	public var followMouse:Bool = false;
 	public var position:FlxPoint = new FlxPoint(0, 0);
+	public var mouseOffset:FlxPoint = new FlxPoint(0, 0);
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
@@ -25,8 +26,8 @@ class Block extends FlxSprite
 		super.update();
 		if (followMouse)
 		{
-			x = FlxG.mouse.x -width / 2;
-			y = FlxG.mouse.y -width / 2;
+			x = FlxG.mouse.x - mouseOffset.x;
+			y = FlxG.mouse.y - mouseOffset.y;
 			if(!FlxG.mouse.pressed)
 			{
 				followMouse = false;
@@ -56,6 +57,8 @@ class Block extends FlxSprite
 	public function onDown(Sprite:FlxSprite)
 	{
 		followMouse = true;
+		mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
+		trace(mouseOffset);
 		angle += 90;
 	}
 	public function onUp(Sprite:FlxSprite)
