@@ -16,6 +16,8 @@ class AssetData {
 		
 		if (!initialized) {
 			
+			path.set ("assets/images/sig.png", "assets/images/sig.png");
+			type.set ("assets/images/sig.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/grouper.png", "assets/images/grouper.png");
 			type.set ("assets/images/grouper.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");

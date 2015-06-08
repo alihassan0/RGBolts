@@ -1,19 +1,20 @@
-package seq.Signal;
+package seq;
 
 import flixel.FlxSprite;
+import flixel.FlxG;
+import flixel.util.FlxPoint;
+import blocks.Block;
 
-class Signal extends flixel.FlxSprite{
+class Signal extends Seq{
 	
-	private var position(get, null):FlxPoint;
-	public var direction:FlxPoint ;
-	
-	public function new ()
+	public function new (posX:Int, posY:Int)
 	{
-		position = new FlxPoint(posX, posY);
-		var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(position);
-		super(spritePos.x, spritePos.y);
-		loadGraphic("assets/images/signal.png");
-		FlxG.state.add(this);
-		//GlovalVars.Signals.push(this);
+		super(posX, posY,"#");
+		loadGraphic("assets/images/sig.png");
+		seqRepresenter.kill();
+	}
+	override public function affectBlock(b:Block)
+	{
+		b.toggleEnabled();
 	}
 }

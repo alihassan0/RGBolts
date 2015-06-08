@@ -74,6 +74,7 @@ class Seq extends FlxSprite
 		var currBLock:Block = GlovalVars.gameGrid.getBlockOfPos(position);
 		if (currBLock != null)
 		{
+			if(currBLock.enabled)
 			currBLock.affectSeq(this);
 			affectBlock(currBLock);
 		}

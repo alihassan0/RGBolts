@@ -13,6 +13,7 @@ class Block extends FlxSprite
 	public var followMouse:Bool = false;
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
+	public var enabled:Bool = true;
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
@@ -37,7 +38,6 @@ class Block extends FlxSprite
 			}
 		}
 	}
-	
 	public function checkPosInGrid() //adds the block to the grid if possible
 	{
 		var bestfit:FlxPoint = GlovalVars.gameGrid.addInBestFit(this);
@@ -50,6 +50,19 @@ class Block extends FlxSprite
 		{
 			this.reset(bestfit.x, bestfit.y);
 			this.position = GlovalVars.gameGrid.getposOfBlock(this);
+		}
+	}
+	public function toggleEnabled()
+	{
+		enabled = !enabled;
+
+		if(!enabled)
+		{
+			alpha = .6;
+		}
+		else
+		{
+			alpha = 1;
 		}
 	}
 	public function reset_state()

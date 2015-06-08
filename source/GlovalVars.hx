@@ -1,5 +1,5 @@
 package ;
-import seq.Seq;
+import seq.*;
 import level.*;
 
 /**
@@ -11,6 +11,7 @@ class GlovalVars
 	public static var gameGrid:GameGrid;
 	public static var level:Level;
 	public static var Seqs:Array<Seq>;
+	public static var Signals:Array<Signal>;
 	public static var levels:Array<LevelInfo>;
 	public static var turn:Int = 0;
 	

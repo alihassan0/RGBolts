@@ -19,6 +19,7 @@ class BlockSource extends FlxSprite
 	}
 	private function loadSprite()
 	{
+
 		switch(blockType)
 		{
 			case 0: loadGraphic("assets/images/directional.png");
@@ -29,7 +30,7 @@ class BlockSource extends FlxSprite
 			case 5: loadGraphic("assets/images/ifred.png");
 			case 6: loadGraphic("assets/images/ifgreen.png");
 			case 7: loadGraphic("assets/images/ifblack.png");
-			
+			case 8: loadGraphic("assets/images/signal.png");
 		}
 	}
 	private function onDown(Sprite:FlxSprite)
@@ -44,6 +45,7 @@ class BlockSource extends FlxSprite
 			case 5: new FilterBlock(0, 0, "r");
 			case 6: new FilterBlock(0, 0, "g");
 			case 7: new FilterBlock(0, 0, "b");
+			case 8: new SignalBlock(0,0);
 		}
 	}
 	

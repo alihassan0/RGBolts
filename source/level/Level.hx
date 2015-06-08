@@ -58,7 +58,7 @@ class Level extends FlxState
 		
 		addStatus();
 		var dBlockSource:BlockSource;
-        for (i in 0 ... 8)
+        for (i in 0 ... 9)
         {
 			if (i < 5)
 			{
