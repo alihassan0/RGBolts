@@ -15,7 +15,6 @@ class Seq extends FlxSprite
 	public var direction:FlxPoint ;
 	public var seqString:String = "";
 	public var seqRepresenter:SeqRepresenter;
-	private var turnsToWait:Int = 0;
 	public function new(posX:Int,posY:Int, initialString:String) 
 	{
 		position = new FlxPoint(posX, posY);
@@ -30,7 +29,6 @@ class Seq extends FlxSprite
 		seqRepresenter.seqParent = this;
 		setString(initialString);
 		MouseEventManager.add(this, null, null, onOver, onOut);
-		FlxG.watch.add(this,"x");
 	}
 	
 	public function getString():String
@@ -62,21 +60,17 @@ class Seq extends FlxSprite
 
 	public function move()
 	{
-		if (turnsToWait == 0)
+		position.addPoint(direction);
+		if (!(position.x < GlovalVars.gameGrid.get_gridWidth() && position.x >= 0 && position.y < GlovalVars.gameGrid.get_gridHeight() && position.y >= 0))
 		{
-			position.addPoint(direction);
-			if (!(position.x < GlovalVars.gameGrid.get_gridWidth() && position.x >= 0 && position.y < GlovalVars.gameGrid.get_gridHeight() && position.y >= 0))
-				position.subtractPoint(direction);
-			else
-			{
-				var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(position);
-				reset(spritePos.x, spritePos.y);
-				
-			}
+			position.subtractPoint(direction);
+			kill();
 		}
 		else
-		turnsToWait --;
-		
+		{
+			var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(position);
+			reset(spritePos.x, spritePos.y);
+		}
 		var currBLock:Block = GlovalVars.gameGrid.getBlockOfPos(position);
 		if (currBLock != null)
 		{
@@ -95,14 +89,11 @@ class Seq extends FlxSprite
 	}
 	public function wait(turns:Int = 1) 
 	{
-		if (turnsToWait < 0)
-		turnsToWait = 0;
-		else
-		turnsToWait = turns;
+
 	}
 	public function unwait(turns:Int = 1) 
 	{
-		turnsToWait = -1;
+		
 	}
 	public function showSeq():Void
 	{

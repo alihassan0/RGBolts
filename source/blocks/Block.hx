@@ -72,7 +72,8 @@ class Block extends FlxSprite
 	}
 	public function direct(s:Seq,direction:Int)
 	{
-		switch((angle % 360) / 90)
+		var dir:Int = Math.floor((angle % 360) / 90);
+		switch(dir)
 		{
 			case 0:
 				switch(direction)

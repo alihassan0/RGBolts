@@ -15,12 +15,12 @@ class IteratorBlock extends Block
 	}
 	override public function affectSeq(s:Seq) 
 	{
-		s.wait();
 		var curruntString:String = s.seqString;
 		if (s.getString().length > 0 )
 		{
-			direct(new Seq(Math.floor(position.x), Math.floor(position.y), curruntString.charAt(0)),GlovalVars.UP);
+			direct(new Seq(Math.floor(position.x), Math.floor(position.y), curruntString.charAt(0)),GlovalVars.RIGHT);
 			s.setString(curruntString.substring(1, curruntString.length));
+			direct(s,GlovalVars.UP);
 		}
 		else
 		{
