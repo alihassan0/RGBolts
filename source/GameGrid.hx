@@ -83,7 +83,8 @@ class GameGrid extends FlxSprite
 		posPoint.x = Math.floor((blockPos.x - gridX) / tileSize);
 		posPoint.y = Math.floor((blockPos.y - gridY) / tileSize);
 	
-		if(!inBounds(posPoint) || blocksGrid[Std.int(posPoint.x)][Std.int(posPoint.y)] != null)
+		if(!inBounds(posPoint) || (blocksGrid[Std.int(posPoint.x)][Std.int(posPoint.y)] != null
+			&& blocksGrid[Std.int(posPoint.x)][Std.int(posPoint.y)] != block))
 		{
 			return null;
 		}
@@ -91,6 +92,7 @@ class GameGrid extends FlxSprite
 		{
 			removeFromGrid(block); // remove any occurunces of the same block in the grid if it there
 			blocksGrid[Std.int(posPoint.x)][Std.int(posPoint.y)] = block;
+			block.position = getposOfBlock(block);
 			return res;
 		}
 	}

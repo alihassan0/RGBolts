@@ -23,9 +23,21 @@ class GlovalVars
 	public static function loadLevels()
 	{
 		levels = new Array<LevelInfo>();
-		
+
+		//********************************set 1 ***************************************************
+		//--------------------------------level 1 ---------------------------------------------------
 		//just a mere intrdouction to the level lauout and the directional block
-		levels.push(new LevelInfo(levels.length +1,  "r" ,"direct the seq to the output block", checkSame));	
+		//we can change the initial position of inputs and outputs block to make sure in this level 
+		//the player knows how to use direction good enough
+		levels.push(new LevelInfo(levels.length +1,  "r" ,"direct the seq to the output block", checkSame));
+
+		//--------------------------------level 2 ---------------------------------------------------
+		//
+
+
+		//---------------------introducing more than one element in the sequence---------------------
+		//before sorting we should do some fitering to introduce the remove first block and the 
+		//iteration ideas .
 
 		levels.push(new LevelInfo(levels.length +1,  "rgrgb" ,"sort red first then green then black", sortRedThenGreen));
 		

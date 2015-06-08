@@ -102,7 +102,7 @@ class Level extends FlxState
 		add(speedDown);
 
 		nextLevel = new FlxButton(450, 300, "next level", nextLevelF);
-		nextLevel.scale.set(8,8);
+		nextLevel.scale.set(2,2);
 		nextLevel.updateHitbox();
 		nextLevel.visible = false;
 		add(nextLevel);
