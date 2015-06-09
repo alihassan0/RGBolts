@@ -30,11 +30,17 @@ class GlovalVars
 		//just a mere intrdouction to the level lauout and the directional block
 		//we can change the initial position of inputs and outputs block to make sure in this level 
 		//the player knows how to use direction good enough
-		levels.push(new LevelInfo(levels.length +1,  "r" ,"direct the seq to the output block", checkSame));
+		levels.push(new LevelInfo(levels.length +1,  "r" ,
+			"direct the seq to the output block", checkSame));
 
 		//--------------------------------level 2 ---------------------------------------------------
-		//
+		levels.push(new LevelInfo(levels.length +1,  "rgrgb" ,
+			"output the last element before black", getElementBeforeLast));
 
+		levels.push(new LevelInfo(levels.length +1,  "rgrgb" ,
+			"output the yellow color", getTheYellowElement));
+		
+		
 
 		//---------------------introducing more than one element in the sequence---------------------
 		//before sorting we should do some fitering to introduce the remove first block and the 
@@ -69,6 +75,15 @@ class GlovalVars
 	{
 		return inputString == outputString;
 	}
+	static function getElementBeforeLast(inputString:String, outputString:String):Bool
+	{
+		return outputString = inputString.charAt(inputString.length-2);
+	}
+	static function getTheYellowElement(inputString:String, outputString:String):Bool
+	{
+		return outputString = "y";
+	}
+	
 
 	
 }
