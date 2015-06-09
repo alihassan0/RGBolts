@@ -87,9 +87,11 @@ class Level extends FlxState
 		resetBtn.updateHitbox();
 		add(resetBtn);
 		
+		speed = 0;
 		speedText = new FlxText(410 , 40, 100, "Speed: " + speed, 10);
 		speedText.color = 0xAA5C755E;
 		add(speedText);
+		addSpeed();
 		
 		speedUp = new FlxButton(420, 50, "Up", speedUpF);
 		speedUp.scale.set(0.4,0.6);

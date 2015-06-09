@@ -19,8 +19,13 @@ class IteratorBlock extends Block
 		if (s.getString().length > 0 )
 		{
 			direct(new Seq(Math.floor(position.x), Math.floor(position.y), curruntString.charAt(0)),GlovalVars.RIGHT);
-			s.setString(curruntString.substring(1, curruntString.length));
-			direct(s,GlovalVars.UP);
+			if(s.getString().length > 1)
+			{
+				s.setString(curruntString.substring(1, curruntString.length));
+				direct(s,GlovalVars.UP);
+			}
+			else
+			s.kill();
 		}
 		else
 		{

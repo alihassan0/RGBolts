@@ -67,7 +67,8 @@ class Block extends FlxSprite
 	}
 	public function reset_state()
 	{
-		
+		if(!enabled)
+		toggleEnabled();
 	}
 	public function onDown(Sprite:FlxSprite)
 	{

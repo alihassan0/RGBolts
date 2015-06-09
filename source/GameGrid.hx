@@ -146,7 +146,6 @@ class GameGrid extends FlxSprite
 	{
 		return gridHeight;
 	}
-	
 	public function resetBlocks() 
 	{
 		for (x in 0...gridWidth)
@@ -154,7 +153,9 @@ class GameGrid extends FlxSprite
             for (y in 0...gridHeight)
             {
 				if( blocksGrid[x][y] != null)
-                blocksGrid[x][y].reset_state();
+                {
+                	blocksGrid[x][y].reset_state();
+                }
             }
         }
 	}
