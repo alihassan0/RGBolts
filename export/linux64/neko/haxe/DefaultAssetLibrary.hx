@@ -58,6 +58,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/color.png", AssetType.IMAGE);
 		path.set ("assets/images/output.png", "assets/images/output.png");
 		type.set ("assets/images/output.png", AssetType.IMAGE);
+		path.set ("assets/images/question.png", "assets/images/question.png");
+		type.set ("assets/images/question.png", AssetType.IMAGE);
 		path.set ("assets/images/ifgreen.png", "assets/images/ifgreen.png");
 		type.set ("assets/images/ifgreen.png", AssetType.IMAGE);
 		path.set ("assets/images/duplicator.png", "assets/images/duplicator.png");
@@ -107,6 +109,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/output.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/question.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/ifgreen.png";
@@ -178,9 +183,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -840,7 +847,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 #elseif html5
+
 
 
 

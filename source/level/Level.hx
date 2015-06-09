@@ -24,9 +24,12 @@ class Level extends FlxState
 	private var status_txt:FlxText;
 	private var runBtn:FlxButton;
 	private var resetBtn:FlxButton;
+	private var helpBtn:FlxButton;
 	private var speedUp:FlxButton;
 	private var speedDown:FlxButton;
 	private var nextLevel:FlxButton;
+	private var helpPanel:FlxSprite;
+	private var helpPanelText:FlxText;
 	
 	private var levelInfo:LevelInfo;
 
@@ -53,6 +56,7 @@ class Level extends FlxState
 		FlxG.watch.add(GlovalVars.Seqs, "length");
 		
 		addUI();
+		addHelpPanel();
 
 		addDiscription();
 		
@@ -70,7 +74,7 @@ class Level extends FlxState
 			}
 		}
 	}
-	function addUI()
+	private function addUI()
 	{
 		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);
 		backToMenuBtn.scale.set(0.6, 0.6);
@@ -86,6 +90,10 @@ class Level extends FlxState
 		resetBtn.scale.set(0.6, 0.6);
 		resetBtn.updateHitbox();
 		add(resetBtn);
+
+		helpBtn = new FlxButton(580, 10, "", toggleHelpPanel);
+		helpBtn.loadGraphic("assets/images/question.png");
+		add(helpBtn);
 		
 		speed = 0;
 		speedText = new FlxText(410 , 40, 100, "Speed: " + speed, 10);
@@ -108,6 +116,24 @@ class Level extends FlxState
 		nextLevel.updateHitbox();
 		nextLevel.visible = false;
 		add(nextLevel);
+	}
+	function addHelpPanel()
+	{
+		var width:Int = 350;
+		var height:Int = 250;
+		var center:FlxPoint = new FlxPoint(320,240);
+		helpPanel = new FlxSprite(center.x-width/2,center.y - height/2).makeGraphic(width,height,0xff000000);
+		helpPanel.visible = false;
+		add(helpPanel);
+		var offset:FlxPoint = new FlxPoint(10,10);
+ 		
+		helpPanelText = new FlxText(helpPanel.x + offset.x , helpPanel.y + offset.y ,width-offset.x*2," ")
+						.setFormat(null, 12 , 0x9C9F84,"center");
+		helpPanelText.text= "this is a tutorial .. do you like it ? \n\n\n\n"+
+							"the game is controld with the mouse \n\n\n\n"+
+							"hint: STOP looking for hints and keep trying";
+		helpPanelText.visible  =false;
+		add(helpPanelText);
 	}
 	function intermedita(timer:FlxTimer)
 	{
@@ -190,7 +216,11 @@ class Level extends FlxState
 		}
 		GlovalVars.gameGrid.resetBlocks();
 	}
-	
+	function toggleHelpPanel()
+	{
+		helpPanel.visible = !helpPanel.visible;
+		helpPanelText.visible = !helpPanelText.visible;
+	}
 	
 	public function runGame():Void 
 	{

@@ -77,11 +77,11 @@ class GlovalVars
 	}
 	static function getElementBeforeLast(inputString:String, outputString:String):Bool
 	{
-		return outputString = inputString.charAt(inputString.length-2);
+		return outputString == inputString.charAt(inputString.length-2);
 	}
 	static function getTheYellowElement(inputString:String, outputString:String):Bool
 	{
-		return outputString = "y";
+		return outputString == "y";
 	}
 	
 

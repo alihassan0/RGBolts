@@ -28,6 +28,8 @@ class AssetData {
 			type.set ("assets/images/color.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/output.png", "assets/images/output.png");
 			type.set ("assets/images/output.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/question.png", "assets/images/question.png");
+			type.set ("assets/images/question.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/ifgreen.png", "assets/images/ifgreen.png");
 			type.set ("assets/images/ifgreen.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/duplicator.png", "assets/images/duplicator.png");
