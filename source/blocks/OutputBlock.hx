@@ -12,9 +12,9 @@ import seq.Seq;
 class OutputBlock extends Block
 {
 	private var inputString:String;
-	private var testFunction:String->String->Bool;
+	private var testFunction:String->String;
 	
-	public function new(posX:Int,posY:Int,inputString:String,testFunction:String->String->Bool) 
+	public function new(posX:Int,posY:Int,inputString:String,testFunction:String->String) 
 	{
 		var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(new FlxPoint(posX, posY));
 		super(spritePos.x, spritePos.y);
@@ -57,7 +57,7 @@ class OutputBlock extends Block
 	}*/
 	function checkOutputString(inputString:String, outputString:String):Bool
 	{
-		return testFunction(inputString,outputString);
+		return testFunction(inputString) == outputString;
 	}
 	override public function checkPosInGrid() 
 	{

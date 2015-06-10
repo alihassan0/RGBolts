@@ -187,8 +187,9 @@ class Level extends FlxState
 		add(discription);
 
 		var InputCase:InputTest;
-		for (i in 0 ... 5) {
-			InputCase = new InputTest(discription.x + i*120 + 10 + 20, discription.y + 10);
+		for (i in 0 ... levelInfo.publicInputTests.length) {
+			InputCase = new InputTest(discription.x + i*120 + 10 + 20, discription.y + 10,
+						levelInfo.publicInputTests[i],levelInfo.testFunction(levelInfo.publicInputTests[i]));
 		}
 		
 		/*var text:FlxText = new FlxText(40 , 430, 450, levelInfo.description, 20);

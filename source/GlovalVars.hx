@@ -50,7 +50,7 @@ class GlovalVars
 		
 		levels.push(new LevelInfo(levels.length +1,  "rrgrggrb" ,"dublicate string", duplicateString));
 	}
-	static function sortRedThenGreen(inputString:String, outputString:String):Bool
+	static function sortRedThenGreen(inputString:String):String
 	{
 		var redChars:String= "";
 		var greenChars:String= "";
@@ -64,24 +64,24 @@ class GlovalVars
 				case "b": blackChars += inputString.charAt(i);
 			}
 		}
-		return redChars + greenChars + blackChars == outputString;
+		return redChars + greenChars + blackChars;
 	}
-	static function duplicateString (inputString:String, outputString:String):Bool
+	static function duplicateString (inputString:String):String
 	{
 		var s :String = inputString.substring(0, inputString.length - 1);
-		return (s + s + "b") == outputString ;  
+		return (s + s + "b");  
 	}
-	static function checkSame (inputString:String, outputString:String):Bool
+	static function checkSame (inputString:String):String
 	{
-		return inputString == outputString;
+		return inputString;
 	}
-	static function getElementBeforeLast(inputString:String, outputString:String):Bool
+	static function getElementBeforeLast(inputString:String):String
 	{
-		return outputString == inputString.charAt(inputString.length-2);
+		return inputString.charAt(inputString.length-2);
 	}
-	static function getTheYellowElement(inputString:String, outputString:String):Bool
+	static function getTheYellowElement(inputString:String):String
 	{
-		return outputString == "y";
+		return "y";
 	}
 	
 

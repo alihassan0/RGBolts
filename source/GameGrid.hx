@@ -29,9 +29,9 @@ class GameGrid extends FlxSprite
 	
 	public var inputBlock:InputBlock ;
 	public var outputBlock:OutputBlock ;
-	private var testFunction:String->String->Bool;
+	private var testFunction:String->String;
 	private var inputString:String;
-	public function new(inputString:String, testFunction:String->String->Bool) 
+	public function new(inputString:String, testFunction:String->String) 
 	{
 		grid = new Array<Array<FlxSprite>>();
 		blocksGrid = new Array<Array<Block>>();

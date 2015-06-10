@@ -19,7 +19,7 @@ class InputTest extends FlxSprite
 	private var id:Int;
 	private var text:FlxText;
 	private var selected:Bool;
-	public function new(X:Float=0, Y:Float=0) 
+	public function new(X:Float=0, Y:Float=0 , inputString:String , outputString:String) 
 	{
 		super(X, Y);
 		makeGraphic(100,80,0x00000000,true);
@@ -27,7 +27,7 @@ class InputTest extends FlxSprite
 		FlxG.state.add(this);
 		text = new FlxText(x , y ,width, "")
 							.setFormat(null, 10 , 0x9C9F84,"center");
-		text.text = "i : 'rrr' \n\n o : 'rrr' \n\n s : 'untested' \n\n";
+		text.text = "i : "+inputString+" \n\n o : "+outputString+" \n\n s : 'untested' \n\n";
 		FlxG.state.add(text);
 		
 		MouseEventManager.add(this, onDown, null, null, null,true);
