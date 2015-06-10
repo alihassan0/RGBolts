@@ -15,9 +15,9 @@ class GameGrid extends FlxSprite
 	private var grid:Array<Array<FlxSprite>>;
 	private var blocksGrid:Array<Array<Block>>;
 	
-	private var gridWidth(get, null):Int = 10;
+	private var gridWidth(get, null):Int = 8;
 	
-	private var gridHeight(get, null):Int = 10;
+	private var gridHeight(get, null):Int = 8;
 	
 	private var gridX:Int = 10;
 	private var gridY:Int = 10;
@@ -25,7 +25,7 @@ class GameGrid extends FlxSprite
 	private var tileSize:Int = 40;
 	private var tileActuallSize:Int = 36;
 	
-	private var offsetPos:Int = 2;
+	private var offsetPos:Int = 20;
 	
 	public var inputBlock:InputBlock ;
 	public var outputBlock:OutputBlock ;

@@ -54,12 +54,7 @@ class Level extends FlxState
 		GlovalVars.Seqs = new Array<Seq>();
 		GlovalVars.level = this;
 		FlxG.watch.add(GlovalVars.Seqs, "length");
-		
-		addUI();
-		addHelpPanel();
 
-		addDiscription();
-		
 		addStatus();
 		var dBlockSource:BlockSource;
         for (i in 0 ... 9)
@@ -73,21 +68,25 @@ class Level extends FlxState
 				dBlockSource = new BlockSource(550, 50 + 45 * (i-5), i); add(dBlockSource);
 			}
 		}
+
+		addUI();
+		addDiscription();
+		addHelpPanel();
 	}
 	private function addUI()
 	{
 		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);
-		backToMenuBtn.scale.set(0.6, 0.6);
+		backToMenuBtn.scale.set(0.6, 1);
 		backToMenuBtn.updateHitbox();
 		add(backToMenuBtn);
 		
 		runBtn = new FlxButton(470, 10, "run", runGame);
-		runBtn.scale.set(0.6, 0.6);
+		runBtn.scale.set(0.6, 1);
 		runBtn.updateHitbox();
 		add(runBtn);
 		
 		resetBtn = new FlxButton(520, 10, "reset", resetGame);
-		resetBtn.scale.set(0.6, 0.6);
+		resetBtn.scale.set(0.6, 1);
 		resetBtn.updateHitbox();
 		add(resetBtn);
 
@@ -121,16 +120,19 @@ class Level extends FlxState
 	{
 		var width:Int = 350;
 		var height:Int = 250;
-		var center:FlxPoint = new FlxPoint(320,240);
-		helpPanel = new FlxSprite(center.x-width/2,center.y - height/2).makeGraphic(width,height,0xff000000);
+		
+		var center:FlxPoint = new FlxPoint(280,240);
+		helpPanel = new FlxSprite(center.x-width/2,center.y - height/2).makeGraphic(width,height,0x00000000);
+		helpPanel.drawRoundRect(0, 0, helpPanel.width, helpPanel.height, 15, 15, 0xFF000000);
 		helpPanel.visible = false;
 		add(helpPanel);
 		var offset:FlxPoint = new FlxPoint(10,10);
  		
 		helpPanelText = new FlxText(helpPanel.x + offset.x , helpPanel.y + offset.y ,width-offset.x*2," ")
 						.setFormat(null, 12 , 0x9C9F84,"center");
-		helpPanelText.text= "this is a tutorial .. do you like it ? \n\n\n\n"+
-							"the game is controld with the mouse \n\n\n\n"+
+		helpPanelText.text= "this is a tutorial .. [[you don't say]] \n\n\n\n"+
+							" game is controld with the mouse \n\n\n\n"+
+							"description : "+ levelInfo.description+"\n\n\n\n"+
 							"hint: STOP looking for hints and keep trying";
 		helpPanelText.visible  =false;
 		add(helpPanelText);
@@ -180,16 +182,18 @@ class Level extends FlxState
 	
 	function addDiscription() 
 	{
-		var discription:FlxSprite = new FlxSprite(0,420).makeGraphic(640,50,0x00000000);
-		var lineStyle = { color: FlxColor.RED, thickness: 1 };
-		var fillStyle = { color: FlxColor.RED, alpha: 0.5 };
-		discription.drawRoundRect(20, 0, 600, 50, 15, 15, 0xFFA97D5D);
+		var discription:FlxSprite = new FlxSprite(0,360).makeGraphic(640,100,0x00000000);
+		discription.drawRoundRect(20, 0, 600, 100, 15, 15, 0xFFA97D5D);
 		add(discription);
+
+		var InputCase:InputTest;
+		for (i in 0 ... 5) {
+			InputCase = new InputTest(discription.x + i*120 + 10 + 20, discription.y + 10);
+		}
 		
-		//var text:FlxText = new FlxText(40 , 430, 450, " sort red first then green then black", 20);
-		var text:FlxText = new FlxText(40 , 430, 450, levelInfo.description, 20);
+		/*var text:FlxText = new FlxText(40 , 430, 450, levelInfo.description, 20);
 		text.color = 0xAA5C755E;
-		add(text);
+		add(text);*/
 	}
 	function addSpeed()
 	{
