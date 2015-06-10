@@ -11,18 +11,17 @@ import seq.Seq;
  */
 class OutputBlock extends Block
 {
-	private var inputString:String;
+	public var inputString:String;
 	private var testFunction:String->String;
 	
-	public function new(posX:Int,posY:Int,inputString:String,testFunction:String->String) 
+	public function new(posX:Int,posY:Int) 
 	{
 		var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(new FlxPoint(posX, posY));
 		super(spritePos.x, spritePos.y);
 		position = new FlxPoint(posX, posY);
 		loadGraphic("assets/images/output.png");
 		followMouse = false;
-		this.inputString = inputString;
-		this.testFunction = testFunction;
+		this.testFunction = GlovalVars.level.levelInfo.testFunction;
 	}
 	override public function affectSeq(s:Seq) 
 	{

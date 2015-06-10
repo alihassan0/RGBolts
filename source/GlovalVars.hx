@@ -10,6 +10,7 @@ class GlovalVars
 {
 	public static var gameGrid:GameGrid;
 	public static var level:Level;
+	public static var levelInfo:LevelInfo;
 	public static var Seqs:Array<Seq>;
 	public static var Signals:Array<Signal>;
 	public static var levels:Array<LevelInfo>;
@@ -20,7 +21,6 @@ class GlovalVars
 	public static var LEFT:Int = 2;
 	public static var RIGHT:Int = 3;
 	
-	
 	public static function loadLevels()
 	{
 		levels = new Array<LevelInfo>();
@@ -30,14 +30,14 @@ class GlovalVars
 		//just a mere intrdouction to the level lauout and the directional block
 		//we can change the initial position of inputs and outputs block to make sure in this level 
 		//the player knows how to use direction good enough
-		levels.push(new LevelInfo(levels.length +1,  "r" ,
+		levels.push(new LevelInfo(levels.length +1,
 			"direct the seq to the output block", checkSame));
 
 		//--------------------------------level 2 ---------------------------------------------------
-		levels.push(new LevelInfo(levels.length +1,  "rgrgb" ,
+		levels.push(new LevelInfo(levels.length +1,
 			"output the last element before black", getElementBeforeLast));
 
-		levels.push(new LevelInfo(levels.length +1,  "rgrgb" ,
+		levels.push(new LevelInfo(levels.length +1,
 			"output the yellow color", getTheYellowElement));
 		
 		
@@ -46,9 +46,11 @@ class GlovalVars
 		//before sorting we should do some fitering to introduce the remove first block and the 
 		//iteration ideas .
 
-		levels.push(new LevelInfo(levels.length +1,  "rgrgb" ,"sort red first then green then black", sortRedThenGreen));
+		levels.push(new LevelInfo(levels.length +1, 
+			"sort red first then green then black", sortRedThenGreen));
 		
-		levels.push(new LevelInfo(levels.length +1,  "rrgrggrb" ,"dublicate string", duplicateString));
+		levels.push(new LevelInfo(levels.length +1,
+			"dublicate string", duplicateString));
 	}
 	static function sortRedThenGreen(inputString:String):String
 	{

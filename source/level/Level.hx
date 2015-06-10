@@ -31,28 +31,31 @@ class Level extends FlxState
 	private var helpPanel:FlxSprite;
 	private var helpPanelText:FlxText;
 	
-	private var levelInfo:LevelInfo;
+	public var levelInfo:LevelInfo;
 
 	private var speed:Int;
 	private var timer:FlxTimer;
 	private var speedText:FlxText;
-	private var isRunned:Bool;
-	public function new(levelInfo:LevelInfo) 
-	{
-		super();
-		this.levelInfo = levelInfo;
-		this.timer = new FlxTimer();
-		this.isRunned = false;
-	}
+	private var isRunning:Bool;
+	
+	private var inputTests:Array<InputTest>;
+	public var selectedInputTest:InputTest;
 	override public function create():Void
 	{
-		super.create();
+		levelInfo = GlovalVars.levelInfo;
+		trace(this.levelInfo);
+		this.timer = new FlxTimer();
+		this.isRunning = false;
+		GlovalVars.level = this;
+		
+
+		addInputTests();
+
 		FlxG.watch.addMouse();
 		
 		bgColor = FlxColor.WHEAT;
-		new GameGrid(levelInfo.inputString,levelInfo.testFunction);
+		new GameGrid();
 		GlovalVars.Seqs = new Array<Seq>();
-		GlovalVars.level = this;
 		FlxG.watch.add(GlovalVars.Seqs, "length");
 
 		addStatus();
@@ -70,9 +73,9 @@ class Level extends FlxState
 		}
 
 		addUI();
-		addDiscription();
 		addHelpPanel();
 	}
+
 	private function addUI()
 	{
 		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);
@@ -139,8 +142,15 @@ class Level extends FlxState
 	}
 	function intermedita(timer:FlxTimer)
 	{
-		if (isRunned)
+		if (isRunning)
 		runGame();
+	}
+	public function getInputString()
+	{
+		if(selectedInputTest == null)
+			selectedInputTest = inputTests[0];
+			
+		return selectedInputTest.inputString;
 	}
 	function speedUpF() {
 
@@ -158,7 +168,8 @@ class Level extends FlxState
 	}
 	function nextLevelF()
 	{
-		FlxG.switchState(new Level(GlovalVars.levels[levelInfo.id]));
+		GlovalVars.levelInfo = GlovalVars.levels[levelInfo.id];
+		FlxG.switchState(new Level());
 	}
 	function switchBack()
 	{
@@ -179,17 +190,27 @@ class Level extends FlxState
 			case 3: status_txt.text = " testing ";//testing
 		}
 	}
-	
-	function addDiscription() 
+	public function resetTestCases():Void
+	{
+
+		for (i in 0 ... inputTests.length) {
+			inputTests[i].selected = false;
+			inputTests[i].showSelection();
+		}
+	} 
+	function addInputTests() 
 	{
 		var discription:FlxSprite = new FlxSprite(0,360).makeGraphic(640,100,0x00000000);
 		discription.drawRoundRect(20, 0, 600, 100, 15, 15, 0xFFA97D5D);
 		add(discription);
 
-		var InputCase:InputTest;
+		inputTests = new Array<InputTest>();
+		var inputTest:InputTest;
 		for (i in 0 ... levelInfo.publicInputTests.length) {
-			InputCase = new InputTest(discription.x + i*120 + 10 + 20, discription.y + 10,
+			inputTest = new InputTest(discription.x + i*120 + 10 + 20, discription.y + 10,
 						levelInfo.publicInputTests[i],levelInfo.testFunction(levelInfo.publicInputTests[i]));
+
+			inputTests.push(inputTest);
 		}
 		
 		/*var text:FlxText = new FlxText(40 , 430, 450, levelInfo.description, 20);
@@ -210,7 +231,7 @@ class Level extends FlxState
 	}
 	function resetGame() 
 	{
-		isRunned =  false;
+		isRunning =  false;
 		speed = 0;
 		speedText.text =  "Speed: " + speed;
 		addSpeed();
@@ -229,7 +250,10 @@ class Level extends FlxState
 	
 	public function runGame():Void 
 	{
-	isRunned = true;	
+		isRunning = true;	
+		GlovalVars.gameGrid.inputBlock.inputString = getInputString();
+		GlovalVars.gameGrid.outputBlock.inputString = getInputString();
+
 		if (GlovalVars.Seqs.length == 0)//temp starter
 		{
 			GlovalVars.gameGrid.inputBlock.started = true;

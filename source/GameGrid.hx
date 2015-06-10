@@ -31,7 +31,7 @@ class GameGrid extends FlxSprite
 	public var outputBlock:OutputBlock ;
 	private var testFunction:String->String;
 	private var inputString:String;
-	public function new(inputString:String, testFunction:String->String) 
+	public function new() 
 	{
 		grid = new Array<Array<FlxSprite>>();
 		blocksGrid = new Array<Array<Block>>();
@@ -39,16 +39,16 @@ class GameGrid extends FlxSprite
 		makeGraphic(gridWidth * tileSize, gridHeight * tileSize,0x00ff00ff);
 		resetGrid();
 		GlovalVars.gameGrid = this;
-		this.testFunction = testFunction;
-		this.inputString = inputString;
+		this.testFunction = GlovalVars.level.levelInfo.testFunction;
+		this.inputString = GlovalVars.level.getInputString();//TODO
 		addIOBlocks();
 	}
 	
 	public function addIOBlocks() 
 	{
-		inputBlock = new InputBlock(0, 2,inputString);
+		inputBlock = new InputBlock(0, 2);
 		blocksGrid[0][2] = inputBlock;
-		outputBlock = new OutputBlock(gridWidth - 1, 2,inputString,testFunction);
+		outputBlock = new OutputBlock(gridWidth - 1, 2);
 		blocksGrid[gridWidth - 1][2] = outputBlock;
 	}
 	public function resetGrid() 
@@ -138,6 +138,7 @@ class GameGrid extends FlxSprite
         }
 	}
 	
+
 	public function get_gridWidth():Int 
 	{
 		return gridWidth;
