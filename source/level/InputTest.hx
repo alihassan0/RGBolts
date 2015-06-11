@@ -16,16 +16,18 @@ using flixel.util.FlxSpriteUtil;
 class InputTest extends FlxSprite
 {
 	private var levelNumbertxt:FlxText;
-	private var id:Int;
+	public var id:Int;
+	public var state:Int = 0;
 	private var text:FlxText;
 	public var selected:Bool;
 	public var inputString:String;
 
-	public function new(X:Float=0, Y:Float=0 , inputString:String , outputString:String) 
+	public function new(X:Float=0, Y:Float=0 ,id :Int, inputString:String , outputString:String) 
 	{
 		super(X, Y);
 		makeGraphic(100,80,0x00000000,true);
 		this.inputString = inputString;
+		this.id = id;
 		drawRoundRect(0, 0, 100, 80, 15, 15, FlxColor.WHEAT);
 		FlxG.state.add(this);
 		text = new FlxText(x , y ,width, "")
@@ -37,9 +39,22 @@ class InputTest extends FlxSprite
 	}
 	public function onDown(Sprite:FlxSprite) 
 	{
-		selected = true;
-		showSelection();
+		if(!GlovalVars.level.isRunning)
+		{
+			selected = true;
+			showSelection();
+		}
 	}
+	public function setState(state:Int)
+	{
+		//TODO chage the state text to the new State
+		this.state = state;
+		switch (state) {
+			case 0: color = FlxColor.WHEAT;//untested
+			case 1: color = FlxColor.GREEN;//test passed
+			case 2: color = FlxColor.RED;//test failed
+		}
+	} 
 	public function showSelection() 
 	{
 		var lineStyle;

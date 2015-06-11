@@ -36,7 +36,8 @@ class Level extends FlxState
 	private var speed:Int;
 	private var timer:FlxTimer;
 	private var speedText:FlxText;
-	private var isRunning:Bool;
+	public var isRunning:Bool;
+	public var isPaused:Bool;
 	
 	private var inputTests:Array<InputTest>;
 	public var selectedInputTest:InputTest;
@@ -142,13 +143,17 @@ class Level extends FlxState
 	}
 	function intermedita(timer:FlxTimer)
 	{
-		if (isRunning)
+		if (isRunning && !isPaused)
 		runGame();
 	}
 	public function getInputString()
 	{
 		if(selectedInputTest == null)
+		{
 			selectedInputTest = inputTests[0];
+			selectedInputTest.selected  = true;
+			selectedInputTest.showSelection();
+		}
 			
 		return selectedInputTest.inputString;
 	}
@@ -184,20 +189,46 @@ class Level extends FlxState
 	{
 		switch(type)
 		{
-			case 0: status_txt.text = "great job";nextLevel.visible = true;//success
-			case 1: status_txt.text = "try again";//fail
+			case 0: status_txt.text = "great job";showTestResult(true);//success
+			case 1: status_txt.text = "try again";showTestResult(false);//fail
 			case 2: status_txt.text = "         ";//wait
 			case 3: status_txt.text = " testing ";//testing
 		}
 	}
-	public function resetTestCases():Void
+	function getNextInputTest():InputTest
 	{
-
-		for (i in 0 ... inputTests.length) {
-			inputTests[i].selected = false;
-			inputTests[i].showSelection();
+		var newId:Int = (selectedInputTest.id+1)%inputTests.length;
+		if(inputTests[newId].state == 1)//finished
+		{
+			newId = -1;
+			for (i in 0 ... inputTests.length) {
+				if(inputTests[i].state == 0)
+					break;
+			}
+			if(newId == -1)
+				return null;
 		}
-	} 
+		return inputTests[newId];
+	}
+	function showTestResult(successful:Bool) 
+	{
+		if(successful)
+		{
+			selectedInputTest.setState(1);
+			if(getNextInputTest() == null)
+			{
+				nextLevel.visible = true;
+				togglePauseGame();
+			}	
+			else
+			{
+				selectedInputTest = getNextInputTest();
+				resetSeqs();
+			}
+		}
+		else
+			selectedInputTest.setState(2);
+	}
 	function addInputTests() 
 	{
 		var discription:FlxSprite = new FlxSprite(0,360).makeGraphic(640,100,0x00000000);
@@ -207,7 +238,7 @@ class Level extends FlxState
 		inputTests = new Array<InputTest>();
 		var inputTest:InputTest;
 		for (i in 0 ... levelInfo.publicInputTests.length) {
-			inputTest = new InputTest(discription.x + i*120 + 10 + 20, discription.y + 10,
+			inputTest = new InputTest(discription.x + i*120 + 10 + 20, discription.y + 10,i,
 						levelInfo.publicInputTests[i],levelInfo.testFunction(levelInfo.publicInputTests[i]));
 
 			inputTests.push(inputTest);
@@ -232,9 +263,12 @@ class Level extends FlxState
 	function resetGame() 
 	{
 		isRunning =  false;
-		speed = 0;
-		speedText.text =  "Speed: " + speed;
-		addSpeed();
+		resetSeqs();
+		resetTestCases();
+		
+	}
+	public function resetSeqs():Void
+	{
 		status_change(2);
 		while (GlovalVars.Seqs.length != 0)
 		{
@@ -242,15 +276,27 @@ class Level extends FlxState
 		}
 		GlovalVars.gameGrid.resetBlocks();
 	}
+	public function resetTestCases():Void
+	{
+		for (i in 0 ... inputTests.length) {
+			inputTests[i].selected = false;
+			inputTests[i].showSelection();
+			inputTests[i].setState(0);
+		}
+	} 
 	function toggleHelpPanel()
 	{
 		helpPanel.visible = !helpPanel.visible;
 		helpPanelText.visible = !helpPanelText.visible;
 	}
 	
+	public function togglePauseGame():Void 
+	{
+		isPaused = !isPaused;
+	}
 	public function runGame():Void 
 	{
-		isRunning = true;	
+		isRunning = true;
 		GlovalVars.gameGrid.inputBlock.inputString = getInputString();
 		GlovalVars.gameGrid.outputBlock.inputString = getInputString();
 
