@@ -15,6 +15,7 @@ class Seq extends FlxSprite
 	public var direction:FlxPoint ;
 	public var seqString:String = "";
 	public var seqRepresenter:SeqRepresenter;
+	public var canMove:Bool = true;
 	public function new(posX:Int,posY:Int, initialString:String) 
 	{
 		position = new FlxPoint(posX, posY);
@@ -72,6 +73,7 @@ class Seq extends FlxSprite
 			var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(position);
 			reset(spritePos.x, spritePos.y);
 		}
+		canMove = true;
 		var currBLock:Block = GlovalVars.gameGrid.getBlockOfPos(position);
 		if (currBLock != null)
 		{
@@ -89,13 +91,13 @@ class Seq extends FlxSprite
 		FlxG.watch.remove(this);
 		seqRepresenter.kill();
 	}
-	public function wait(turns:Int = 1) 
+	public function wait() 
 	{
-
+		canMove = false;
 	}
-	public function unwait(turns:Int = 1) 
+	public function unwait() 
 	{
-		
+		canMove = true;
 	}
 	public function showSeq():Void
 	{

@@ -64,6 +64,9 @@ class GlovalVars
 		//#5 introduce the black block and that it is not read nor green or blue
 
 		//#6 introduce the grouper to filter all but a certain element
+
+		//#7 return all seqs after a certain element
+
 		//--------------------------------level 4 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output the last element before black", getElementBeforeLast,
@@ -82,6 +85,7 @@ class GlovalVars
 		//add discription to the levels .. allow to add more private tests
 		// add a title for each level containg it's name 
 		//in gamegrid make the seq tween between states
+		//fix the sprite of image source
 
 
 

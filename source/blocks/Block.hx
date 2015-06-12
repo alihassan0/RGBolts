@@ -52,7 +52,7 @@ class Block extends FlxSprite
 			this.position = GlovalVars.gameGrid.getposOfBlock(this);
 		}
 	}
-	public function toggleEnabled()
+	public function toggleEnabled(?s:Seq)
 	{
 		enabled = !enabled;
 

@@ -313,7 +313,7 @@ class Level extends FlxState
 		GlovalVars.Seqs = Lambda.array(Lambda.filter(GlovalVars.Seqs, function(v) { return (v.alive == true); } ));
 		for (i in 0...GlovalVars.Seqs.length)
         {
-        	if(GlovalVars.Seqs[i] != null)
+        	if(GlovalVars.Seqs[i] != null && GlovalVars.Seqs[i].canMove)
 			GlovalVars.Seqs[i].move();
 			//FlxG.log.add(GlovalVars.Seqs.length);
         }

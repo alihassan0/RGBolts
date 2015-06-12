@@ -15,6 +15,6 @@ class Signal extends Seq{
 	}
 	override public function affectBlock(b:Block)
 	{
-		b.toggleEnabled();
+		b.toggleEnabled(this);
 	}
 }

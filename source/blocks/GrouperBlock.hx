@@ -29,17 +29,8 @@ class GrouperBlock extends Block
 			{
 				curruntSeq.setString(curruntSeq.getString() + s.getString());
 				s.kill();
-				if (s.getString().charAt(0) != 'b')
-				{
-					curruntSeq.wait();
-					s.wait();
-					FlxG.log.add("i am the end sec 'b' at " + GlovalVars.turn + "with location " +  s.get_position);
-				}
-				else
-				{
-					curruntSeq.set_direction(s.get_direction());
-					curruntSeq.unwait();
-				}
+				curruntSeq.wait();
+				s.wait();
 			}
 			else
 			{
@@ -47,6 +38,13 @@ class GrouperBlock extends Block
 				FlxG.log.add("i am the currnet sec at " + GlovalVars.turn);
 			}
 		}
+	}
+	override public function toggleEnabled(?s:Seq)
+	{
+		super.toggleEnabled();
+		curruntSeq.canMove = true;
+		if(s!=null)
+		curruntSeq.set_direction(s.get_direction());
 	}
 	override public function reset_state() 
 	{
