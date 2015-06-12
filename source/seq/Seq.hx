@@ -42,6 +42,7 @@ class Seq extends FlxSprite
 		{
 			case 'r': color = 0xFFFF0000;
 			case 'g': color = 0xFF00FF00;
+			case 'b': color = 0xFF0000FF;
 			default : color = 0xFF000000;
 		}
 		seqRepresenter.set_seqString(newString);

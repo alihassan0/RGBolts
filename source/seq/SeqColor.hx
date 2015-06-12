@@ -11,6 +11,5 @@ class SeqColor extends FlxSprite
 	{
 		super(X, Y, "assets/images/color.png");
 		color = C;
-		//replaceColor(0xFF000000,C);
 	}	
 }

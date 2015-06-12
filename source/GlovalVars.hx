@@ -35,13 +35,24 @@ class GlovalVars
 
 		//--------------------------------level 2 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"output the third element only", getTheSecondElement,
+			"output the third element only", getTheThirdElement,
 			["ggg","rrr","grg","rgr","rrgrr"]));
+
+		//--------------------------------level 3 :  ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"output the red element in the sequence", getTheRedElement,
+			["r","ggr","grg","gggr","gggggr"]));
 
 		//--------------------------------level 4 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"output the last element before black", getElementBeforeLast,
-			["r","ggr","grg","gggb","gggggb"]));
+			"filter the red elements", getTheBlueElement,
+			["b","ggb","gbg","gggb","gggggb"]));
+
+		//--------------------------------level 4 :  ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"output the last element before black", getTheBlueElement,
+			["b","ggb","gbg","gggb","gggggb"]));
+
 
 		//#3 output the black block;
 		levels.push(new LevelInfo(levels.length +1,
@@ -69,6 +80,9 @@ class GlovalVars
 
 		//change background in play mode .. allow to choose a certain subset of blockSources
 		//add discription to the levels .. allow to add more private tests
+		// add a title for each level containg it's name 
+		//in gamegrid make the seq tween between states
+
 
 
 
@@ -76,14 +90,14 @@ class GlovalVars
 		//iteration ideas .
 		//insert the blue elemnt;
 
-		levels.push(new LevelInfo(levels.length +1,
+		/*levels.push(new LevelInfo(levels.length +1,
 			"output the yellow color", getTheYellowElement));
 		
 		levels.push(new LevelInfo(levels.length +1, 
 			"sort red first then green then black", sortRedThenGreen));
 		
 		levels.push(new LevelInfo(levels.length +1,
-			"dublicate string", duplicateString));
+			"dublicate string", duplicateString));*/
 	}
 	static function sortRedThenGreen(inputString:String):String
 	{
@@ -118,13 +132,21 @@ class GlovalVars
 	{
 		return "y";
 	}
-	static function getTheSecondElement(inputString:String):String
+	static function getTheThirdElement(inputString:String):String
 	{
 		return inputString.charAt(2);
 	}
 	static function getTheBlackElement(inputString:String):String
 	{
+		return "k";
+	}
+	static function getTheBlueElement(inputString:String):String
+	{
 		return "b";
+	}
+	static function getTheRedElement(inputString:String):String
+	{
+		return "r";
 	}
 	
 
