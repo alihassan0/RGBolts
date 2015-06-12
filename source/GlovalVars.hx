@@ -1,6 +1,7 @@
 package ;
 import seq.*;
 import level.*;
+import flixel.util.FlxPoint;
 
 /**
  * ...
@@ -31,7 +32,9 @@ class GlovalVars
 		//we can change the initial position of inputs and outputs block to make sure in this level 
 		//the player knows how to use direction good enough
 		levels.push(new LevelInfo(levels.length +1,
-			"direct the seq to the output block", checkSame));
+			"direct the seq to the output block", checkSame,
+			["ggg","rrr","grg","rgr","rrgrr"],
+			new FlxPoint(0,3),new FlxPoint(7,6)));
 
 		//--------------------------------level 2 ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,

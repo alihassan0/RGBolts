@@ -12,21 +12,25 @@ class LevelInfo
 	public var id:Int;
 	public var description:String;
 	public var testFunction:String->String;
-	public var inputPosition:FlxPoint;
-	public var outputPosition:FlxPoint;
+	public var inputPos:FlxPoint;
+	public var outputPos:FlxPoint;
 	public var publicInputTests:Array<String>;
 	public var privateInputTests:Array<String>;
 	
-	public function new(id:Int , description:String , testFunction:String->String) 
+	public function new(id:Int , description:String , testFunction:String->String ,
+						 ?publicInputTests:Array<String> , ?inputPos:FlxPoint,?outputPos:FlxPoint)
 	{
 		this.id = id;
 		this.description = description;
 		this.testFunction = testFunction;
-		this.publicInputTests = new Array<String>();
+		this.publicInputTests = publicInputTests;
+		this.inputPos = inputPos;
+		this.outputPos = outputPos;
+		/*this.publicInputTests = new Array<String>();
 		publicInputTests.push("g");
 		publicInputTests.push("rg");
 		publicInputTests.push("gr");
 		publicInputTests.push("rgr");
-		publicInputTests.push("grg");
+		publicInputTests.push("grg");*/
 	}
 }

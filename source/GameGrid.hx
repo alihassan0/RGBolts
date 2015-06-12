@@ -46,10 +46,20 @@ class GameGrid extends FlxSprite
 	
 	public function addIOBlocks() 
 	{
-		inputBlock = new InputBlock(0, 2);
-		blocksGrid[0][2] = inputBlock;
-		outputBlock = new OutputBlock(gridWidth - 1, 2);
-		blocksGrid[gridWidth - 1][2] = outputBlock;
+		var pos :FlxPoint = GlovalVars.level.levelInfo.inputPos;
+		if(pos == null)
+			inputBlock = new InputBlock(0, 2);
+		else
+			inputBlock = new InputBlock(Std.int(pos.x), Std.int(pos.y));
+
+		var pos :FlxPoint = GlovalVars.level.levelInfo.outputPos;
+		if(pos == null)
+			outputBlock = new OutputBlock(gridWidth - 1, 2);
+		else
+			outputBlock = new OutputBlock(Std.int(pos.x), Std.int(pos.y));
+			
+		inputBlock.checkPosInGrid();
+		outputBlock.checkPosInGrid();
 	}
 	public function resetGrid() 
 	{
