@@ -27,31 +27,58 @@ class GlovalVars
 		levels = new Array<LevelInfo>();
 
 		//********************************set 1 ***************************************************
-		//--------------------------------level 1 ---------------------------------------------------
-		//just a mere intrdouction to the level lauout and the directional block
-		//we can change the initial position of inputs and outputs block to make sure in this level 
-		//the player knows how to use direction good enough
+		//-------------------------------level 1: -------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"direct the seq to the output block", checkSame,
 			["ggg","rrr","grg","rgr","rrgrr"],
 			new FlxPoint(0,3),new FlxPoint(7,6)));
 
-		//get the second element;
+		//--------------------------------level 2 :  ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"output the third element only", getTheSecondElement,
+			["ggg","rrr","grg","rgr","rrgrr"]));
 
-		//--------------------------------level 2 ---------------------------------------------------
+		//--------------------------------level 4 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output the last element before black", getElementBeforeLast,
-			["gggb","rrrb","grgb","rgrb","rrgrrb"]));
+			["r","ggr","grg","gggb","gggggb"]));
+
+		//#3 output the black block;
+		levels.push(new LevelInfo(levels.length +1,
+			"output the black element only", getTheBlackElement,
+			["ggbg","rbrr","grgb","rbgr","rrbgrr"]));
+
+		//#4 introduce blue seq and ask the player to filter them using filtering red and greeen
+
+		//#5 introduce the black block and that it is not read nor green or blue
+
+		//#6 introduce the grouper to filter all but a certain element
+		//--------------------------------level 4 :  ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"output the last element before black", getElementBeforeLast,
+			["r","ggr","grg","gggb","gggggb"]));
+
+
+
+
+
+		
+
+		
+
+
+		//change background in play mode .. allow to choose a certain subset of blockSources
+		//add discription to the levels .. allow to add more private tests
+
+
+
+		//before sorting we should do some fitering to introduce the remove first block and the 
+		//iteration ideas .
+		//insert the blue elemnt;
 
 		levels.push(new LevelInfo(levels.length +1,
 			"output the yellow color", getTheYellowElement));
 		
-		
-
-		//---------------------introducing more than one element in the sequence---------------------
-		//before sorting we should do some fitering to introduce the remove first block and the 
-		//iteration ideas .
-
 		levels.push(new LevelInfo(levels.length +1, 
 			"sort red first then green then black", sortRedThenGreen));
 		
@@ -90,6 +117,14 @@ class GlovalVars
 	static function getTheYellowElement(inputString:String):String
 	{
 		return "y";
+	}
+	static function getTheSecondElement(inputString:String):String
+	{
+		return inputString.charAt(2);
+	}
+	static function getTheBlackElement(inputString:String):String
+	{
+		return "b";
 	}
 	
 
