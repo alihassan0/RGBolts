@@ -72,9 +72,12 @@ class Block extends FlxSprite
 	}
 	public function onDown(Sprite:FlxSprite)
 	{
-		followMouse = true;
-		mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
-		angle += 90;
+		if(!GlovalVars.level.isRunning)
+		{
+			followMouse = true;
+			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
+			angle += 90;
+		}
 	}
 	public function onUp(Sprite:FlxSprite)
 	{

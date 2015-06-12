@@ -74,6 +74,9 @@ class OutputBlock extends Block
 	}
 	override public function onDown(Sprite:FlxSprite) 
 	{
-		followMouse = true;
+		if(!GlovalVars.level.isRunning)
+		{
+			followMouse = true;
+		}
 	}
 }

@@ -36,9 +36,12 @@ class GlovalVars
 			["ggg","rrr","grg","rgr","rrgrr"],
 			new FlxPoint(0,3),new FlxPoint(7,6)));
 
+		//get the second element;
+
 		//--------------------------------level 2 ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"output the last element before black", getElementBeforeLast));
+			"output the last element before black", getElementBeforeLast,
+			["gggb","rrrb","grgb","rgrb","rrgrrb"]));
 
 		levels.push(new LevelInfo(levels.length +1,
 			"output the yellow color", getTheYellowElement));

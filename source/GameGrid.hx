@@ -19,13 +19,11 @@ class GameGrid extends FlxSprite
 	
 	private var gridHeight(get, null):Int = 8;
 	
-	private var gridX:Int = 10;
-	private var gridY:Int = 10;
+	private var gridX:Int = 30;
+	private var gridY:Int = 30;
 	
 	private var tileSize:Int = 40;
 	private var tileActuallSize:Int = 36;
-	
-	private var offsetPos:Int = 20;
 	
 	public var inputBlock:InputBlock ;
 	public var outputBlock:OutputBlock ;
@@ -68,7 +66,7 @@ class GameGrid extends FlxSprite
             grid[x] = new Array<FlxSprite>();
             for (y in 0...gridHeight)
             {
-                grid[x][y] = new FlxSprite( gridX +offsetPos + tileSize * x, gridY + offsetPos + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
+                grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
 				FlxG.state.add(grid[x][y]);
             }
         }
@@ -86,8 +84,8 @@ class GameGrid extends FlxSprite
 		var blockPos:FlxPoint = new FlxPoint(block.x + block.width/2 , block.y + block.height/2);//the block center point
 		
 		var res:FlxPoint = new FlxPoint(0, 0); 
-		res.x = offsetPos + ((Math.floor((blockPos.x - gridX) / tileSize)) * tileSize) + gridX;
-		res.y = offsetPos + ((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY;
+		res.x = ((Math.floor((blockPos.x - gridX) / tileSize)) * tileSize) + gridX;
+		res.y = ((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY;
 		
 		var posPoint = new FlxPoint();
 		posPoint.x = Math.floor((blockPos.x - gridX) / tileSize);
@@ -116,8 +114,8 @@ class GameGrid extends FlxSprite
 	public function getCoordinatesOfPosition(p:FlxPoint):FlxPoint 
 	{
 		var res:FlxPoint = new FlxPoint(0, 0);
-		res.x = offsetPos + gridX + p.x * tileSize; 
-		res.y = offsetPos + gridY + p.y * tileSize;
+		res.x =  gridX + p.x * tileSize; 
+		res.y =  gridY + p.y * tileSize;
 		return res;
 	}
 	public function getposOfBlock(b:Block):FlxPoint 

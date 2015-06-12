@@ -35,17 +35,20 @@ class BlockSource extends FlxSprite
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
-		switch(blockType)
+		if(!GlovalVars.level.isRunning)
 		{
-			case 0: new DirectionalBlock(0,0);
-			case 1: new IteratorBlock(0,0);
-			case 2: new GrouperBlock(0,0);
-			case 3: new WaiterBlock(0,0);
-			case 4: new DuplicatorBlock(0, 0);
-			case 5: new FilterBlock(0, 0, "r");
-			case 6: new FilterBlock(0, 0, "g");
-			case 7: new FilterBlock(0, 0, "b");
-			case 8: new SignalBlock(0,0);
+			switch(blockType)
+			{
+				case 0: new DirectionalBlock(0,0);
+				case 1: new IteratorBlock(0,0);
+				case 2: new GrouperBlock(0,0);
+				case 3: new WaiterBlock(0,0);
+				case 4: new DuplicatorBlock(0, 0);
+				case 5: new FilterBlock(0, 0, "r");
+				case 6: new FilterBlock(0, 0, "g");
+				case 7: new FilterBlock(0, 0, "b");
+				case 8: new SignalBlock(0,0);
+			}
 		}
 	}
 	
