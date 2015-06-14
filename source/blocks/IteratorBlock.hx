@@ -18,11 +18,11 @@ class IteratorBlock extends Block
 		var curruntString:String = s.seqString;
 		if (s.getString().length > 0 )
 		{
-			direct(new Seq(Math.floor(position.x), Math.floor(position.y), curruntString.charAt(0)),GlovalVars.RIGHT);
+			direct(new Seq(Math.floor(position.x), Math.floor(position.y), curruntString.charAt(0)),GlobalVars.RIGHT);
 			if(s.getString().length > 1)
 			{
 				s.setString(curruntString.substring(1, curruntString.length));
-				direct(s,GlovalVars.UP);
+				direct(s,GlobalVars.UP);
 			}
 			else
 			s.kill();

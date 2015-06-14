@@ -27,11 +27,11 @@ class FilterBlock extends Block
 		super.affectSeq(s);
 		if(s.getString().charAt(0)==filter_string)
 		{
-			direct(s, GlovalVars.RIGHT);
+			direct(s, GlobalVars.RIGHT);
 		}
 		else
 		{
-			direct(s, GlovalVars.UP);
+			direct(s, GlobalVars.UP);
 		}
 	}
 }

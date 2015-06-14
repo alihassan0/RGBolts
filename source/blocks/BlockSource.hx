@@ -35,7 +35,7 @@ class BlockSource extends FlxSprite
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
-		if(!GlovalVars.level.isRunning)
+		if(!GlobalVars.level.isRunning)
 		{
 			switch(blockType)
 			{

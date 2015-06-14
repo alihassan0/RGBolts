@@ -32,11 +32,11 @@ class LevelIcon extends FlxSprite
 	}
 	function onDown(Sprite:FlxSprite) 
 	{
-		GlovalVars.levelInfo = GlovalVars.levels[id-1];
+		GlobalVars.levelInfo = GlobalVars.levels[id-1];
 		FlxG.switchState(new Level());
 	}
 	function onOver(Sprite:FlxSprite) 
 	{
-		discriptionText.text = GlovalVars.levels[id-1].description;
+		discriptionText.text = GlobalVars.levels[id-1].description;
 	}
 }

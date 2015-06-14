@@ -26,12 +26,12 @@ class WaiterBlock extends Block
 		super.affectSeq(s);
 		if (curruntSeqs.indexOf(s) == -1)
 			curruntSeqs.push(s);
-		if (curruntSeqs.length > 0 && s == curruntSeqs[0] && GlovalVars.turn != lastTurn)
+		if (curruntSeqs.length > 0 && s == curruntSeqs[0] && GlobalVars.turn != lastTurn)
 		{
-			lastTurn = GlovalVars.turn;
+			lastTurn = GlobalVars.turn;
 			if (waiting)
 			{
-				direct(curruntSeqs.splice(0, 1)[0],GlovalVars.UP);
+				direct(curruntSeqs.splice(0, 1)[0],GlobalVars.UP);
 				waiting = false;
 			}
 			else

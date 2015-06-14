@@ -16,8 +16,8 @@ class LevelSelector extends FlxState
 	{
 		addDiscription();
 		bgColor = FlxColor.WHEAT;
-		GlovalVars.loadLevels();
-		for (i in 0...GlovalVars.levels.length)
+		GlobalVars.loadLevels();
+		for (i in 0...GlobalVars.levels.length)
 		{
 			new LevelIcon(50 + i*40, 50, i+1,textDiscription);
 		}

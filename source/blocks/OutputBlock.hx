@@ -16,12 +16,12 @@ class OutputBlock extends Block
 	
 	public function new(posX:Int,posY:Int) 
 	{
-		var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(new FlxPoint(posX, posY));
+		var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(new FlxPoint(posX, posY));
 		super(spritePos.x, spritePos.y);
 		position = new FlxPoint(posX, posY);
 		loadGraphic("assets/images/output.png");
 		followMouse = false;
-		this.testFunction = GlovalVars.level.levelInfo.testFunction;
+		this.testFunction = GlobalVars.level.levelInfo.testFunction;
 	}
 	override public function affectSeq(s:Seq) 
 	{
@@ -30,11 +30,11 @@ class OutputBlock extends Block
 		if (checkOutputString(inputString,s.getString()))
 		{
 			
-			GlovalVars.level.status_change(0);
+			GlobalVars.level.status_change(0);
 		}
 		else
 		{
-			GlovalVars.level.status_change(1);
+			GlobalVars.level.status_change(1);
 		}
 		
 	}
@@ -61,21 +61,21 @@ class OutputBlock extends Block
 	}
 	override public function checkPosInGrid() 
 	{
-		var bestfit:FlxPoint = GlovalVars.gameGrid.addInBestFit(this);
+		var bestfit:FlxPoint = GlobalVars.gameGrid.addInBestFit(this);
 		if(bestfit == null)
 		{
-			var p :FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(position);
+			var p :FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 			reset(p.x, p.y);
 		}
 		else
 		{
 			this.reset(bestfit.x, bestfit.y);
-			this.position = GlovalVars.gameGrid.getposOfBlock(this);
+			this.position = GlobalVars.gameGrid.getposOfBlock(this);
 		}
 	}
 	override public function onDown(Sprite:FlxSprite) 
 	{
-		if(!GlovalVars.level.isRunning)
+		if(!GlobalVars.level.isRunning)
 		{
 			followMouse = true;
 		}

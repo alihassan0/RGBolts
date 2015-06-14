@@ -40,16 +40,16 @@ class Block extends FlxSprite
 	}
 	public function checkPosInGrid() //adds the block to the grid if possible
 	{
-		var bestfit:FlxPoint = GlovalVars.gameGrid.addInBestFit(this);
+		var bestfit:FlxPoint = GlobalVars.gameGrid.addInBestFit(this);
 		if(bestfit == null)
 		{
-			GlovalVars.gameGrid.removeFromGrid(this);
+			GlobalVars.gameGrid.removeFromGrid(this);
 			kill();
 		}
 		else
 		{
 			this.reset(bestfit.x, bestfit.y);
-			this.position = GlovalVars.gameGrid.getposOfBlock(this);
+			this.position = GlobalVars.gameGrid.getposOfBlock(this);
 		}
 	}
 	public function toggleEnabled(?s:Seq)
@@ -72,7 +72,7 @@ class Block extends FlxSprite
 	}
 	public function onDown(Sprite:FlxSprite)
 	{
-		if(!GlovalVars.level.isRunning)
+		if(!GlobalVars.level.isRunning)
 		{
 			followMouse = true;
 			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
@@ -95,34 +95,34 @@ class Block extends FlxSprite
 			case 0:
 				switch(direction)
 				{
-					case GlovalVars.UP: s.set_direction(new FlxPoint(0,-1));
-					case GlovalVars.DOWN: s.set_direction(new FlxPoint(0,1));
-					case GlovalVars.LEFT: s.set_direction(new FlxPoint(-1,0));
-					case GlovalVars.RIGHT: s.set_direction(new FlxPoint(1,0));
+					case GlobalVars.UP: s.set_direction(new FlxPoint(0,-1));
+					case GlobalVars.DOWN: s.set_direction(new FlxPoint(0,1));
+					case GlobalVars.LEFT: s.set_direction(new FlxPoint(-1,0));
+					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(1,0));
 				}
 			case 1:
 				switch(direction)
 				{
-					case GlovalVars.UP: s.set_direction(new FlxPoint(1,0));
-					case GlovalVars.DOWN: s.set_direction(new FlxPoint(-1,0));
-					case GlovalVars.LEFT: s.set_direction(new FlxPoint(0,-1));
-					case GlovalVars.RIGHT: s.set_direction(new FlxPoint(0,1));
+					case GlobalVars.UP: s.set_direction(new FlxPoint(1,0));
+					case GlobalVars.DOWN: s.set_direction(new FlxPoint(-1,0));
+					case GlobalVars.LEFT: s.set_direction(new FlxPoint(0,-1));
+					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(0,1));
 				}
 			case 2:
 				switch(direction)
 				{
-					case GlovalVars.UP: s.set_direction(new FlxPoint(0,1));
-					case GlovalVars.DOWN: s.set_direction(new FlxPoint(0,-1));
-					case GlovalVars.LEFT: s.set_direction(new FlxPoint(1,0));
-					case GlovalVars.RIGHT: s.set_direction(new FlxPoint(-1,0));
+					case GlobalVars.UP: s.set_direction(new FlxPoint(0,1));
+					case GlobalVars.DOWN: s.set_direction(new FlxPoint(0,-1));
+					case GlobalVars.LEFT: s.set_direction(new FlxPoint(1,0));
+					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(-1,0));
 				}
 			case 3:
 				switch(direction)
 				{
-					case GlovalVars.UP: s.set_direction(new FlxPoint(-1,0));
-					case GlovalVars.DOWN: s.set_direction(new FlxPoint(1,0));
-					case GlovalVars.LEFT: s.set_direction(new FlxPoint(0,1));
-					case GlovalVars.RIGHT: s.set_direction(new FlxPoint(0,-1));
+					case GlobalVars.UP: s.set_direction(new FlxPoint(-1,0));
+					case GlobalVars.DOWN: s.set_direction(new FlxPoint(1,0));
+					case GlobalVars.LEFT: s.set_direction(new FlxPoint(0,1));
+					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(0,-1));
 				}
 		}
 	}

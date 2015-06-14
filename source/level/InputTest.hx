@@ -39,7 +39,7 @@ class InputTest extends FlxSprite
 	}
 	public function onDown(Sprite:FlxSprite) 
 	{
-		if(!GlovalVars.level.isRunning)
+		if(!GlobalVars.level.isRunning)
 		{
 			selected = true;
 			showSelection();
@@ -60,8 +60,8 @@ class InputTest extends FlxSprite
 		var lineStyle;
 		if(selected)
 		{
-			GlovalVars.level.selectedInputTest = this;
-			GlovalVars.level.resetTestCases();
+			GlobalVars.level.selectedInputTest = this;
+			GlobalVars.level.resetTestCases();
 			lineStyle = { color: FlxColor.YELLOW, thickness: 4.0 };
 			alpha =.6;
 		}

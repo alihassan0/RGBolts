@@ -19,11 +19,11 @@ class Seq extends FlxSprite
 	public function new(posX:Int,posY:Int, initialString:String) 
 	{
 		position = new FlxPoint(posX, posY);
-		var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(position);
+		var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 		super(spritePos.x, spritePos.y);
 		loadGraphic("assets/images/seq.png");
 		FlxG.state.add(this);
-		GlovalVars.Seqs.push(this);
+		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
 		trace(this);
 		seqRepresenter = new SeqRepresenter();
@@ -63,18 +63,18 @@ class Seq extends FlxSprite
 	public function move()
 	{
 		position.addPoint(direction);
-		if (!(position.x < GlovalVars.gameGrid.get_gridWidth() && position.x >= 0 && position.y < GlovalVars.gameGrid.get_gridHeight() && position.y >= 0))
+		if (!(position.x < GlobalVars.gameGrid.get_gridWidth() && position.x >= 0 && position.y < GlobalVars.gameGrid.get_gridHeight() && position.y >= 0))
 		{
 			position.subtractPoint(direction);
 			kill();
 		}
 		else
 		{
-			var spritePos:FlxPoint = GlovalVars.gameGrid.getCoordinatesOfPosition(position);
+			var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 			reset(spritePos.x, spritePos.y);
 		}
 		canMove = true;
-		var currBLock:Block = GlovalVars.gameGrid.getBlockOfPos(position);
+		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);
 		if (currBLock != null)
 		{
 			if(currBLock.enabled)

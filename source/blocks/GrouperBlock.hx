@@ -35,7 +35,7 @@ class GrouperBlock extends Block
 			else
 			{
 				curruntSeq.wait();
-				FlxG.log.add("i am the currnet sec at " + GlovalVars.turn);
+				FlxG.log.add("i am the currnet sec at " + GlobalVars.turn);
 			}
 		}
 	}

@@ -36,21 +36,21 @@ class GameGrid extends FlxSprite
 		super(gridX, gridY);
 		makeGraphic(gridWidth * tileSize, gridHeight * tileSize,0x00ff00ff);
 		resetGrid();
-		GlovalVars.gameGrid = this;
-		this.testFunction = GlovalVars.level.levelInfo.testFunction;
-		this.inputString = GlovalVars.level.getInputString();//TODO
+		GlobalVars.gameGrid = this;
+		this.testFunction = GlobalVars.level.levelInfo.testFunction;
+		this.inputString = GlobalVars.level.getInputString();//TODO
 		addIOBlocks();
 	}
 	
 	public function addIOBlocks() 
 	{
-		var pos :FlxPoint = GlovalVars.level.levelInfo.inputPos;
+		var pos :FlxPoint = GlobalVars.level.levelInfo.inputPos;
 		if(pos == null)
 			inputBlock = new InputBlock(0, 2);
 		else
 			inputBlock = new InputBlock(Std.int(pos.x), Std.int(pos.y));
 
-		var pos :FlxPoint = GlovalVars.level.levelInfo.outputPos;
+		var pos :FlxPoint = GlobalVars.level.levelInfo.outputPos;
 		if(pos == null)
 			outputBlock = new OutputBlock(gridWidth - 1, 2);
 		else

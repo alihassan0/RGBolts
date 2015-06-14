@@ -43,10 +43,10 @@ class Level extends FlxState
 	public var selectedInputTest:InputTest;
 	override public function create():Void
 	{
-		levelInfo = GlovalVars.levelInfo;
+		levelInfo = GlobalVars.levelInfo;
 		this.timer = new FlxTimer();
 		this.isRunning = false;
-		GlovalVars.level = this;
+		GlobalVars.level = this;
 		
 
 		addInputTests();
@@ -55,8 +55,8 @@ class Level extends FlxState
 		
 		bgColor = FlxColor.WHEAT;
 		new GameGrid();
-		GlovalVars.Seqs = new Array<Seq>();
-		FlxG.watch.add(GlovalVars.Seqs, "length");
+		GlobalVars.Seqs = new Array<Seq>();
+		FlxG.watch.add(GlobalVars.Seqs, "length");
 
 		addStatus();
 		
@@ -70,7 +70,7 @@ class Level extends FlxState
 	{
 		var dBlockSource:BlockSource;
         var allowedBlocks:Array<Int>;
-        var temp:Int = GlovalVars.levelInfo.allowedBlocksType;
+        var temp:Int = GlobalVars.levelInfo.allowedBlocksType;
 
         var discription:FlxSprite = new FlxSprite(480,50).makeGraphic(155,155,0x00000000);
 		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
@@ -205,7 +205,7 @@ class Level extends FlxState
 	}
 	function nextLevelF()
 	{
-		GlovalVars.levelInfo = GlovalVars.levels[levelInfo.id];
+		GlobalVars.levelInfo = GlobalVars.levels[levelInfo.id];
 		FlxG.switchState(new Level());
 	}
 	function switchBack()
@@ -305,11 +305,11 @@ class Level extends FlxState
 	public function resetSeqs():Void
 	{
 		status_change(2);
-		while (GlovalVars.Seqs.length != 0)
+		while (GlobalVars.Seqs.length != 0)
 		{
-			GlovalVars.Seqs.shift().kill();
+			GlobalVars.Seqs.shift().kill();
 		}
-		GlovalVars.gameGrid.resetBlocks();
+		GlobalVars.gameGrid.resetBlocks();
 	}
 	public function resetTestCases():Void
 	{
@@ -332,22 +332,22 @@ class Level extends FlxState
 	public function runGame():Void 
 	{
 		isRunning = true;
-		GlovalVars.gameGrid.inputBlock.inputString = getInputString();
-		GlovalVars.gameGrid.outputBlock.inputString = getInputString();
+		GlobalVars.gameGrid.inputBlock.inputString = getInputString();
+		GlobalVars.gameGrid.outputBlock.inputString = getInputString();
 
-		if (GlovalVars.Seqs.length == 0)//temp starter
+		if (GlobalVars.Seqs.length == 0)//temp starter
 		{
-			GlovalVars.gameGrid.inputBlock.started = true;
+			GlobalVars.gameGrid.inputBlock.started = true;
 			status_change(3);
 		}
 		
-		GlovalVars.turn ++;
-		GlovalVars.Seqs = Lambda.array(Lambda.filter(GlovalVars.Seqs, function(v) { return (v.alive == true); } ));
-		for (i in 0...GlovalVars.Seqs.length)
+		GlobalVars.turn ++;
+		GlobalVars.Seqs = Lambda.array(Lambda.filter(GlobalVars.Seqs, function(v) { return (v.alive == true); } ));
+		for (i in 0...GlobalVars.Seqs.length)
         {
-        	if(GlovalVars.Seqs[i] != null && GlovalVars.Seqs[i].canMove)
-			GlovalVars.Seqs[i].move();
-			//FlxG.log.add(GlovalVars.Seqs.length);
+        	if(GlobalVars.Seqs[i] != null && GlobalVars.Seqs[i].canMove)
+			GlobalVars.Seqs[i].move();
+			//FlxG.log.add(GlobalVars.Seqs.length);
         }
 		//FlxG.log.add("---------------------------------------");
 	}
@@ -356,7 +356,7 @@ class Level extends FlxState
 		super.update();
 		/*if (FlxG.keys.pressed.K)
 		{
-			FlxG.watch.add(GlovalVars.Seqs, "length");
+			FlxG.watch.add(GlobalVars.Seqs, "length");
 		}*/
 	}
 }
