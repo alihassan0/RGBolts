@@ -59,24 +59,44 @@ class Level extends FlxState
 		FlxG.watch.add(GlovalVars.Seqs, "length");
 
 		addStatus();
-		var dBlockSource:BlockSource;
-        for (i in 0 ... 9)
-        {
-			if (i < 5)
-			{
-				dBlockSource = new BlockSource(500, 50 + 45 * i, i); add(dBlockSource);
-			}
-			else
-			{
-				dBlockSource = new BlockSource(550, 50 + 45 * (i-5), i); add(dBlockSource);
-			}
-		}
-
+		
+		addBlockSources();
 		addUI();
 		addHelpPanel();
 		addDiscription();
 	}
 
+	private function addBlockSources()
+	{
+		var dBlockSource:BlockSource;
+        var allowedBlocks:Array<Int>;
+        var temp:Int = GlovalVars.levelInfo.allowedBlocksType;
+
+        var discription:FlxSprite = new FlxSprite(480,50).makeGraphic(155,155,0x00000000);
+		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
+		add(discription);
+        switch (temp) {
+        	case 0:allowedBlocks = [0];
+        	case 1:allowedBlocks = [0,1];
+        	case 2:allowedBlocks = [0,1,2,3,4,5,6,7,8];
+        	case 3:allowedBlocks = [0,1,2,3,4,5,6,7,8];
+        	default:allowedBlocks = [0,1,2,3,4,5,6,7,8];
+        }
+        for (i in 0 ... 9)
+        {
+        	if(allowedBlocks.indexOf(i)!=-1)
+        	{
+    			dBlockSource = new BlockSource(490 + 45 * (i%3), 60 + 45 * Math.floor(i/3), i);
+    			add(dBlockSource);
+        	}
+        	else
+        	{
+				var placeHolder:FlxSprite = new FlxSprite(490 + 45 * (i%3), 60 + 45 * Math.floor(i/3));
+        		placeHolder.makeGraphic(40,40,0xFF9C9F84);
+        		add(placeHolder);
+        	}
+		}
+	}
 	private function addUI()
 	{
 		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);

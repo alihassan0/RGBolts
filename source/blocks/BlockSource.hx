@@ -52,4 +52,8 @@ class BlockSource extends FlxSprite
 		}
 	}
 	
+	public function disable()
+	{
+		alpha = .5;
+	}
 }

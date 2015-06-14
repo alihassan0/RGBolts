@@ -31,12 +31,12 @@ class GlovalVars
 		levels.push(new LevelInfo(levels.length +1,
 			"direct the seq to the output block", checkSame,
 			["ggg","rrr","grg","rgr","rrgrr"],
-			new FlxPoint(0,3),new FlxPoint(7,6)));
+			new FlxPoint(0,3),new FlxPoint(7,6),0));
 
 		//--------------------------------level 2 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output the third element only", getTheThirdElement,
-			["ggg","rrr","grg","rgr","rrgrr"]));
+			["ggg","rrr","grg","rgr","rrgrr"],null,null,1));
 
 		//--------------------------------level 3 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
@@ -82,11 +82,11 @@ class GlovalVars
 
 
 		//change background in play mode .. allow to choose a certain subset of blockSources
-		//add discription to the levels .. allow to add more private tests
+		//.. allow to add more private tests
 		// add a title for each level containg it's name 
 		//in gamegrid make the seq tween between states
-		//fix the sprite of image source
-
+		//fix the sprite of signal source ..
+		//add major UI improvements
 
 
 
