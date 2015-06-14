@@ -3,9 +3,9 @@ import haxe.Constraints.Function;
 import flixel.util.FlxPoint;
 
 /**
- * ...
- * @author ...
- */
+* ...
+* @author ...
+*/
 
 class LevelInfo
 {
@@ -26,11 +26,5 @@ class LevelInfo
 		this.publicInputTests = publicInputTests;
 		this.inputPos = inputPos;
 		this.outputPos = outputPos;
-		/*this.publicInputTests = new Array<String>();
-		publicInputTests.push("g");
-		publicInputTests.push("rg");
-		publicInputTests.push("gr");
-		publicInputTests.push("rgr");
-		publicInputTests.push("grg");*/
 	}
 }

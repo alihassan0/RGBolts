@@ -12,8 +12,9 @@ import flixel.text.FlxText;
 class LevelIcon extends FlxSprite
 {
 	private var levelNumbertxt:FlxText;
+	private var discriptionText:FlxText;
 	private var id:Int;
-	public function new(X:Float=0, Y:Float=0, i:Int) 
+	public function new(X:Float=0, Y:Float=0, i:Int,discriptionText:FlxText) 
 	{
 		super(X, Y);
 		id = i;
@@ -26,12 +27,16 @@ class LevelIcon extends FlxSprite
 		else
 		levelNumbertxt.setFormat(null, 20, 0x9C9F84, "center");
 		FlxG.state.add(levelNumbertxt);
-		
-		MouseEventManager.add(this, onDown, null, null, null,true);
+		this.discriptionText = discriptionText;
+		MouseEventManager.add(this, onDown, null, onOver,true);
 	}
 	function onDown(Sprite:FlxSprite) 
 	{
 		GlovalVars.levelInfo = GlovalVars.levels[id-1];
 		FlxG.switchState(new Level());
+	}
+	function onOver(Sprite:FlxSprite) 
+	{
+		discriptionText.text = GlovalVars.levels[id-1].description;
 	}
 }

@@ -44,7 +44,6 @@ class Level extends FlxState
 	override public function create():Void
 	{
 		levelInfo = GlovalVars.levelInfo;
-		trace(this.levelInfo);
 		this.timer = new FlxTimer();
 		this.isRunning = false;
 		GlovalVars.level = this;
@@ -75,6 +74,7 @@ class Level extends FlxState
 
 		addUI();
 		addHelpPanel();
+		addDiscription();
 	}
 
 	private function addUI()
@@ -114,11 +114,23 @@ class Level extends FlxState
 		speedDown.updateHitbox();
 		add(speedDown);
 
-		nextLevel = new FlxButton(450, 300, "next level", nextLevelF);
+		nextLevel = new FlxButton(450, 250, "next level", nextLevelF);
 		nextLevel.scale.set(2,2);
 		nextLevel.updateHitbox();
 		nextLevel.visible = false;
 		add(nextLevel);
+	}
+	function addDiscription() 
+	{
+		var discription:FlxSprite = new FlxSprite(350,280).makeGraphic(280,60,0x00000000);
+		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
+		var offset:Int = 4;
+		discription.drawRoundRect(offset, offset, discription.width -2*offset, discription.height - 2*offset, 15, 15, FlxColor.WHEAT);
+		add(discription);
+		
+		var text:FlxText = new FlxText(discription.x + offset , discription.y + offset, discription.width - 2*offset, levelInfo.description, 12);
+		text.color = 0xAA5C755E;
+		add(text);
 	}
 	function addHelpPanel()
 	{
