@@ -17,9 +17,10 @@ class LevelInfo
 	public var publicInputTests:Array<String>;
 	public var privateInputTests:Array<String>;
 	public var allowedBlocksType:Int;
+	public var levelIntro:String;
 	public function new(id:Int , description:String , testFunction:String->String ,
 						 ?publicInputTests:Array<String> , ?inputPos:FlxPoint,?outputPos:FlxPoint,
-						 ?allowedBlocksType:Int)
+						 ?allowedBlocksType:Int , ?levelIntro:String)
 	{
 		this.id = id;
 		this.description = description;
@@ -28,5 +29,6 @@ class LevelInfo
 		this.inputPos = inputPos;
 		this.outputPos = outputPos;
 		this.allowedBlocksType = allowedBlocksType;
+		this.levelIntro = levelIntro;
 	}
 }

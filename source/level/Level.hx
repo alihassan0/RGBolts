@@ -166,10 +166,11 @@ class Level extends FlxState
  		
 		helpPanelText = new FlxText(helpPanel.x + offset.x , helpPanel.y + offset.y ,width-offset.x*2," ")
 						.setFormat(null, 12 , 0x9C9F84,"center");
-		helpPanelText.text= "this is a tutorial .. [[you don't say]] \n\n\n\n"+
+		/*helpPanelText.text= "this is a tutorial .. [[you don't say]] \n\n\n\n"+
 							" game is controld with the mouse \n\n\n\n"+
 							"description : "+ levelInfo.description+"\n\n\n\n"+
-							"hint: STOP looking for hints and keep trying";
+							"hint: STOP looking for hints and keep trying";*/
+		helpPanelText.text = levelInfo.levelIntro;
 		helpPanelText.visible  =false;
 		add(helpPanelText);
 	}

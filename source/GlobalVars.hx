@@ -22,8 +22,11 @@ class GlobalVars
 	public static var LEFT:Int = 2;
 	public static var RIGHT:Int = 3;
 	
+	public static var xml : Xml;
 	public static function loadLevels()
 	{
+		xml = Xml.parse(openfl.Assets.getText("assets/data/queries.xml"));
+	    
 		levels = new Array<LevelInfo>();
 
 		//********************************set 1 ***************************************************
@@ -31,7 +34,8 @@ class GlobalVars
 		levels.push(new LevelInfo(levels.length +1,
 			"direct the seq to the output block", checkSame,
 			["ggg","rrr","grg","rgr","rrgrr"],
-			new FlxPoint(0,3),new FlxPoint(7,6),0));
+			new FlxPoint(0,3),new FlxPoint(7,6),0,
+			getLevelIntro(levels.length +1)));
 
 		//--------------------------------level 2 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
@@ -73,30 +77,7 @@ class GlobalVars
 			["r","ggr","grg","gggb","gggggb"]));
 
 
-		"hello and welcomr to nawwar's Color Box\n
-		let's get you started with the basics \n 
-		in this level you have to direct the 
-		input seq(Sequence) from the input block
-		to the output block using the directionl block
-		only the directional block doesn't affect the seq
-		internally .. it changes it's direction only ."
 
-		"good job \n now le'ts add another useful block
-		the removefirst block .. to understand it first 
-		you understand what seq is . seq is a container
-		that list of one or more colors .. you can preview
-		any seq by clicking on it .. .. the removeFirst block 
-		devids the currunt seq into two seq .. one containing
-		the first color only .. and the second contains the 
-		rest of the colors"
-
-		"nice .. now let's make sure you understand those 
-		two previous blocks good enoug .. as well as 
-		introduce a new more block .. this new block is 
-		the red-filter block .. it will look on the first
-		color of the block and will leave it if it's not 
-		rid .. and will redirect it if it was red ... 
-		can you solve it in three blocks only ? "
 
 		
 
@@ -124,6 +105,21 @@ class GlobalVars
 		
 		levels.push(new LevelInfo(levels.length +1,
 			"dublicate string", duplicateString));*/
+	}
+	static function getLevelIntro(index:Int):String
+	{
+		var i:Int = 0;
+		for(child in xml.elements() ) {
+	    	/*trace(child);
+	    	trace("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");*/
+	    	if(index != i)
+	    	i++;
+	    	else
+	    	{
+	    		return child.firstChild().nodeValue;
+	    	}
+		}
+		return null;
 	}
 	static function sortRedThenGreen(inputString:String):String
 	{
@@ -173,8 +169,5 @@ class GlobalVars
 	static function getTheRedElement(inputString:String):String
 	{
 		return "r";
-	}
-	
-
-	
+	}	
 }

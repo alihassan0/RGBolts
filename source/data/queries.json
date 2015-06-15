@@ -1,7 +1,0 @@
-{"levels": [
-{
-	"discription":"Returns an array with the id, name, country and flag reference of all players",
-	"testCases":["r","g","rg","rgb","rr"],
-},
-]}
-//which block are allowed
