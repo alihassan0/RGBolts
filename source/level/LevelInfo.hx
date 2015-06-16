@@ -29,6 +29,6 @@ class LevelInfo
 		this.inputPos = inputPos;
 		this.outputPos = outputPos;
 		this.allowedBlocksType = allowedBlocksType;
-		this.levelIntro = levelIntro;
+		this.levelIntro = GlobalVars.getLevelIntro(id-1);
 	}
 }

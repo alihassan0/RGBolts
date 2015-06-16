@@ -18,7 +18,7 @@ class FilterBlock extends Block
 		{
 			case "r":loadGraphic("assets/images/ifred.png");
 			case "g":loadGraphic("assets/images/ifgreen.png");
-			case "b":loadGraphic("assets/images/ifblack.png");
+			case "b":loadGraphic("assets/images/ifblue.png");
 			default:loadGraphic("assets/images/ifred.png");
 		}
 	}

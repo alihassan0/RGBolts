@@ -42,12 +42,12 @@ class AssetData {
 			type.set ("assets/images/waiter.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/ifred.png", "assets/images/ifred.png");
 			type.set ("assets/images/ifred.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/ifblue.png", "assets/images/ifblue.png");
+			type.set ("assets/images/ifblue.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/iterator.png", "assets/images/iterator.png");
 			type.set ("assets/images/iterator.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/signal.png", "assets/images/signal.png");
 			type.set ("assets/images/signal.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("assets/images/ifblack.png", "assets/images/ifblack.png");
-			type.set ("assets/images/ifblack.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
 			type.set ("assets/data/data-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/data/queries.xml", "assets/data/queries.xml");

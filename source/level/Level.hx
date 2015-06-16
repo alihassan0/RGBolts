@@ -62,8 +62,8 @@ class Level extends FlxState
 		
 		addBlockSources();
 		addUI();
-		addHelpPanel();
 		addDiscription();
+		addHelpPanel();
 	}
 
 	private function addBlockSources()
@@ -78,8 +78,9 @@ class Level extends FlxState
         switch (temp) {
         	case 0:allowedBlocks = [0];
         	case 1:allowedBlocks = [0,1];
-        	case 2:allowedBlocks = [0,1,2,3,4,5,6,7,8];
-        	case 3:allowedBlocks = [0,1,2,3,4,5,6,7,8];
+        	case 2:allowedBlocks = [0,1,3];
+        	case 3:allowedBlocks = [0,1,3,4];
+        	case 4:allowedBlocks = [0,1,3,4,5,8];
         	default:allowedBlocks = [0,1,2,3,4,5,6,7,8];
         }
         for (i in 0 ... 9)
@@ -134,7 +135,7 @@ class Level extends FlxState
 		speedDown.updateHitbox();
 		add(speedDown);
 
-		nextLevel = new FlxButton(450, 250, "next level", nextLevelF);
+		nextLevel = new FlxButton(490-60, 235, "next level", nextLevelF);
 		nextLevel.scale.set(2,2);
 		nextLevel.updateHitbox();
 		nextLevel.visible = false;
@@ -154,10 +155,10 @@ class Level extends FlxState
 	}
 	function addHelpPanel()
 	{
-		var width:Int = 350;
-		var height:Int = 250;
+		var width:Int = 450;
+		var height:Int = 300;
 		
-		var center:FlxPoint = new FlxPoint(280,240);
+		var center:FlxPoint = new FlxPoint(320,240);
 		helpPanel = new FlxSprite(center.x-width/2,center.y - height/2).makeGraphic(width,height,0x00000000);
 		helpPanel.drawRoundRect(0, 0, helpPanel.width, helpPanel.height, 15, 15, 0xFF000000);
 		helpPanel.visible = false;
@@ -166,10 +167,6 @@ class Level extends FlxState
  		
 		helpPanelText = new FlxText(helpPanel.x + offset.x , helpPanel.y + offset.y ,width-offset.x*2," ")
 						.setFormat(null, 12 , 0x9C9F84,"center");
-		/*helpPanelText.text= "this is a tutorial .. [[you don't say]] \n\n\n\n"+
-							" game is controld with the mouse \n\n\n\n"+
-							"description : "+ levelInfo.description+"\n\n\n\n"+
-							"hint: STOP looking for hints and keep trying";*/
 		helpPanelText.text = levelInfo.levelIntro;
 		helpPanelText.visible  =false;
 		add(helpPanelText);

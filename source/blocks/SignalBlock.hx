@@ -15,7 +15,8 @@ class SignalBlock extends Block
 	}
 	override public function affectSeq(s:Seq) 
 	{
-		new Signal(Math.floor(position.x), Math.floor(position.y));
+		var sig :Signal = new Signal(Math.floor(position.x), Math.floor(position.y));
+		sig.set_direction(s.get_direction());
 		s.kill();
 	}
 }

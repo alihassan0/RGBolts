@@ -34,8 +34,7 @@ class GlobalVars
 		levels.push(new LevelInfo(levels.length +1,
 			"direct the seq to the output block", checkSame,
 			["ggg","rrr","grg","rgr","rrgrr"],
-			new FlxPoint(0,3),new FlxPoint(7,6),0,
-			getLevelIntro(levels.length +1)));
+			new FlxPoint(0,3),new FlxPoint(7,6),0));
 
 		//--------------------------------level 2 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
@@ -45,17 +44,17 @@ class GlobalVars
 		//--------------------------------level 3 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output the red element in the sequence", getTheRedElement,
-			["r","ggr","grg","gggr","gggggr"]));
+			["r","ggr","grg","gggr","gggggr"],null,null,2));
 
 		//--------------------------------level 4 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"filter the red elements", getTheBlueElement,
-			["b","ggb","gbg","gggb","gggggb"]));
+			"output the blue element in the sequence", getTheBlueElement,
+			["b","ggb","gbg","gggb","gggggb"],null,null,3));
 
-		//--------------------------------level 4 :  ---------------------------------------------------
+		//--------------------------------level 5 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"output the last element before black", getTheBlueElement,
-			["b","ggb","gbg","gggb","gggggb"]));
+			"output rest of the element after the first blue", getElementsAfterBlueElement,
+			["bgb","ggbgrg","gbrrgg","bgggb","rgrgbrgr"],null,null,4));
 
 
 		//#3 output the black block;
@@ -82,7 +81,7 @@ class GlobalVars
 		
 
 		
-
+ 
 
 		//change background in play mode .. add tutrial for each level
 		//.. allow to add more private tests
@@ -91,7 +90,7 @@ class GlobalVars
 		//fix the sprite of signal source ..
 		//add major UI improvements
 
-
+		// a GREAT design question .. should i be able to redirect signal blocks or not.
 
 		//before sorting we should do some fitering to introduce the remove first block and the 
 		//iteration ideas .
@@ -106,7 +105,7 @@ class GlobalVars
 		levels.push(new LevelInfo(levels.length +1,
 			"dublicate string", duplicateString));*/
 	}
-	static function getLevelIntro(index:Int):String
+	public static function getLevelIntro(index:Int):String
 	{
 		var i:Int = 0;
 		for(child in xml.elements() ) {
@@ -169,5 +168,9 @@ class GlobalVars
 	static function getTheRedElement(inputString:String):String
 	{
 		return "r";
+	}
+	static function getElementsAfterBlueElement(inputString:String):String
+	{
+		return inputString.substring(inputString.indexOf('b')+1,inputString.length);
 	}	
 }
