@@ -297,6 +297,7 @@ class Level extends FlxState
 	function resetGame() 
 	{
 		isRunning =  false;
+		bgColor = FlxColor.WHEAT;
 		resetSeqs();
 		resetTestCases();
 		
@@ -331,6 +332,7 @@ class Level extends FlxState
 	public function runGame():Void 
 	{
 		isRunning = true;
+		bgColor = 0xFFF2C968;
 		GlobalVars.gameGrid.inputBlock.inputString = getInputString();
 		GlobalVars.gameGrid.outputBlock.inputString = getInputString();
 
@@ -353,6 +355,7 @@ class Level extends FlxState
 	override public function update():Void
 	{
 		super.update();
+
 		/*if (FlxG.keys.pressed.K)
 		{
 			FlxG.watch.add(GlobalVars.Seqs, "length");
