@@ -4,6 +4,7 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxPoint;
 import blocks.Block;
+import blocks.DirectionalBlock;
 
 class Signal extends Seq{
 	
@@ -15,6 +16,7 @@ class Signal extends Seq{
 	}
 	override public function affectBlock(b:Block)
 	{
+		kill();
 		b.toggleEnabled(this);
 	}
 }

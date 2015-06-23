@@ -34,6 +34,10 @@ class ApplicationMain {
 		var types = [];
 		
 		
+		urls.push ("assets/images/sig.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/grouper.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -51,6 +55,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/output.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/question.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -78,15 +86,23 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/ifblue.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/iterator.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/ifblack.png");
+		urls.push ("assets/images/signal.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/data/data-goes-here.txt");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/data/queries.xml");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		

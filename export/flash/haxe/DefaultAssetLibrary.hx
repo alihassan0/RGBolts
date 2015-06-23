@@ -45,6 +45,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
+		className.set ("assets/images/sig.png", __ASSET__assets_images_sig_png);
+		type.set ("assets/images/sig.png", AssetType.IMAGE);
 		className.set ("assets/images/grouper.png", __ASSET__assets_images_grouper_png);
 		type.set ("assets/images/grouper.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
@@ -55,6 +57,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/color.png", AssetType.IMAGE);
 		className.set ("assets/images/output.png", __ASSET__assets_images_output_png);
 		type.set ("assets/images/output.png", AssetType.IMAGE);
+		className.set ("assets/images/question.png", __ASSET__assets_images_question_png);
+		type.set ("assets/images/question.png", AssetType.IMAGE);
 		className.set ("assets/images/ifgreen.png", __ASSET__assets_images_ifgreen_png);
 		type.set ("assets/images/ifgreen.png", AssetType.IMAGE);
 		className.set ("assets/images/duplicator.png", __ASSET__assets_images_duplicator_png);
@@ -67,12 +71,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/waiter.png", AssetType.IMAGE);
 		className.set ("assets/images/ifred.png", __ASSET__assets_images_ifred_png);
 		type.set ("assets/images/ifred.png", AssetType.IMAGE);
+		className.set ("assets/images/ifblue.png", __ASSET__assets_images_ifblue_png);
+		type.set ("assets/images/ifblue.png", AssetType.IMAGE);
 		className.set ("assets/images/iterator.png", __ASSET__assets_images_iterator_png);
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
-		className.set ("assets/images/ifblack.png", __ASSET__assets_images_ifblack_png);
-		type.set ("assets/images/ifblack.png", AssetType.IMAGE);
+		className.set ("assets/images/signal.png", __ASSET__assets_images_signal_png);
+		type.set ("assets/images/signal.png", AssetType.IMAGE);
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/data/queries.xml", __ASSET__assets_data_queries_xml);
+		type.set ("assets/data/queries.xml", AssetType.TEXT);
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		className.set ("assets/music/music-goes-here.txt", __ASSET__assets_music_music_goes_here_txt);
@@ -86,6 +94,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#elseif html5
 		
 		var id;
+		id = "assets/images/sig.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/grouper.png";
 		path.set (id, id);
 		
@@ -103,6 +115,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/output.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/question.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -130,15 +146,23 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/ifblue.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/iterator.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
-		id = "assets/images/ifblack.png";
+		id = "assets/images/signal.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
 		id = "assets/data/data-goes-here.txt";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "assets/data/queries.xml";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
@@ -190,11 +214,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
 		#end
 		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		
+		className.set ("assets/images/sig.png", __ASSET__assets_images_sig_png);
+		type.set ("assets/images/sig.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/grouper.png", __ASSET__assets_images_grouper_png);
 		type.set ("assets/images/grouper.png", AssetType.IMAGE);
@@ -210,6 +241,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/output.png", __ASSET__assets_images_output_png);
 		type.set ("assets/images/output.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/question.png", __ASSET__assets_images_question_png);
+		type.set ("assets/images/question.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/ifgreen.png", __ASSET__assets_images_ifgreen_png);
 		type.set ("assets/images/ifgreen.png", AssetType.IMAGE);
@@ -229,14 +263,20 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/images/ifred.png", __ASSET__assets_images_ifred_png);
 		type.set ("assets/images/ifred.png", AssetType.IMAGE);
 		
+		className.set ("assets/images/ifblue.png", __ASSET__assets_images_ifblue_png);
+		type.set ("assets/images/ifblue.png", AssetType.IMAGE);
+		
 		className.set ("assets/images/iterator.png", __ASSET__assets_images_iterator_png);
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		
-		className.set ("assets/images/ifblack.png", __ASSET__assets_images_ifblack_png);
-		type.set ("assets/images/ifblack.png", AssetType.IMAGE);
+		className.set ("assets/images/signal.png", __ASSET__assets_images_signal_png);
+		type.set ("assets/images/signal.png", AssetType.IMAGE);
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/data/queries.xml", __ASSET__assets_data_queries_xml);
+		type.set ("assets/data/queries.xml", AssetType.TEXT);
 		
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
@@ -850,20 +890,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if !display
 #if flash
 
+@:keep @:bind #if display private #end class __ASSET__assets_images_sig_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_grouper_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_directional_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_color_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_output_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_question_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_ifgreen_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_duplicator_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_input_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_seq_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_waiter_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_ifred_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_ifblue_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_iterator_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_images_ifblack_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_signal_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_queries_xml extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_goes_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_beep_mp3 extends flash.media.Sound { }
@@ -892,6 +936,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
 #else
 
 
@@ -899,20 +947,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux)
 
 
+@:image("assets/images/sig.png") #if display private #end class __ASSET__assets_images_sig_png extends lime.graphics.Image {}
 @:image("assets/images/grouper.png") #if display private #end class __ASSET__assets_images_grouper_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
 @:image("assets/images/directional.png") #if display private #end class __ASSET__assets_images_directional_png extends lime.graphics.Image {}
 @:image("assets/images/color.png") #if display private #end class __ASSET__assets_images_color_png extends lime.graphics.Image {}
 @:image("assets/images/output.png") #if display private #end class __ASSET__assets_images_output_png extends lime.graphics.Image {}
+@:image("assets/images/question.png") #if display private #end class __ASSET__assets_images_question_png extends lime.graphics.Image {}
 @:image("assets/images/ifgreen.png") #if display private #end class __ASSET__assets_images_ifgreen_png extends lime.graphics.Image {}
 @:image("assets/images/duplicator.png") #if display private #end class __ASSET__assets_images_duplicator_png extends lime.graphics.Image {}
 @:image("assets/images/input.png") #if display private #end class __ASSET__assets_images_input_png extends lime.graphics.Image {}
 @:image("assets/images/seq.png") #if display private #end class __ASSET__assets_images_seq_png extends lime.graphics.Image {}
 @:image("assets/images/waiter.png") #if display private #end class __ASSET__assets_images_waiter_png extends lime.graphics.Image {}
 @:image("assets/images/ifred.png") #if display private #end class __ASSET__assets_images_ifred_png extends lime.graphics.Image {}
+@:image("assets/images/ifblue.png") #if display private #end class __ASSET__assets_images_ifblue_png extends lime.graphics.Image {}
 @:image("assets/images/iterator.png") #if display private #end class __ASSET__assets_images_iterator_png extends lime.graphics.Image {}
-@:image("assets/images/ifblack.png") #if display private #end class __ASSET__assets_images_ifblack_png extends lime.graphics.Image {}
+@:image("assets/images/signal.png") #if display private #end class __ASSET__assets_images_signal_png extends lime.graphics.Image {}
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
+@:file("assets/data/queries.xml") #if display private #end class __ASSET__assets_data_queries_xml extends lime.utils.ByteArray {}
 @:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.ByteArray {}
 @:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.ByteArray {}
 @:file("/home/alihassan/Desktop/my folders/flixel/flixel/3,3,8/assets/sounds/beep.mp3") #if display private #end class __ASSET__assets_sounds_beep_mp3 extends lime.utils.ByteArray {}

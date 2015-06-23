@@ -55,28 +55,28 @@ class GlobalVars
 		levels.push(new LevelInfo(levels.length +1,
 			"output rest of the element after the first blue", getElementsAfterBlueElement,
 			["bgb","ggbgrg","gbrrgg","bgggb","rgrgbrgr"],null,null,4));
+		
+		//--------------------------------level 6 :  ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"output rest of the element after the second blue", getElementsAfterSecondBlueElement,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,4));
+
 
 
 		//#3 output the black block;
-		levels.push(new LevelInfo(levels.length +1,
-			"output the black element only", getTheBlackElement,
-			["ggbg","rbrr","grgb","rbgr","rrbgrr"]));
-
-		//#4 introduce blue seq and ask the player to filter them using filtering red and greeen
-
-		//#5 introduce the black block and that it is not read nor green or blue
-
-		//#6 introduce the grouper to filter all but a certain element
-
-		//#7 return all seqs after a certain element
 
 		//--------------------------------level 4 :  ---------------------------------------------------
+		/*levels.push(new LevelInfo(levels.length +1,
+			"output the black element only", getTheBlackElement,
+			["ggbg","rbrr","grgb","rbgr","rrbgrr"]));
+		
 		levels.push(new LevelInfo(levels.length +1,
 			"output the last element before black", getElementBeforeLast,
-			["r","ggr","grg","gggb","gggggb"]));
+			["r","ggr","grg","gggb","gggggb"]));*/
 
 
-
+		//made directional signals
+		
 
 		
 
@@ -172,5 +172,10 @@ class GlobalVars
 	static function getElementsAfterBlueElement(inputString:String):String
 	{
 		return inputString.substring(inputString.indexOf('b')+1,inputString.length);
-	}	
+	}
+	static function getElementsAfterSecondBlueElement(inputString:String):String	
+	{
+		return inputString.substring(inputString.indexOf
+				('b',inputString.indexOf('b')+1)+1,inputString.length);
+	}
 }

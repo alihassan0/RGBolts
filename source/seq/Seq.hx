@@ -77,7 +77,7 @@ class Seq extends FlxSprite
 		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);
 		if (currBLock != null)
 		{
-			if(currBLock.enabled && !Std.is(this, Signal))
+			if(currBLock.enabled && (!Std.is(this, Signal)||Std.is(currBLock, DirectionalBlock)))
 			currBLock.affectSeq(this);
 			affectBlock(currBLock);
 		}
