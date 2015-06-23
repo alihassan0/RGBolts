@@ -175,7 +175,7 @@ class Level extends FlxState
 	function intermedita(timer:FlxTimer)
 	{
 		if (isRunning && !isPaused)
-		runGame();
+		runGridOnce();
 	}
 	public function getInputString()
 	{
@@ -197,7 +197,7 @@ class Level extends FlxState
 	}
 	function speedDownF()
 	{
-		if (speed > 1)
+		if (speed > 0)
 		speed--;
         speedText.text = "Speed: " + speed;
 		addSpeed();
@@ -285,13 +285,25 @@ class Level extends FlxState
 	function addSpeed()
 	{
 		if (speed == 0)
+		{
 		   timer.cancel();
+		 	GlobalVars.moveDuration = 0;
+		}
 		if (speed == 1)
+		{
 		   timer.start(1, intermedita , 0);
+		   GlobalVars.moveDuration = 1;
+		}
 		if (speed == 2)
+		{
 		   timer.start(0.5, intermedita,0);
+		   GlobalVars.moveDuration = .5;
+		}
 		if (speed == 3)
+		{
 		   timer.start(0.25, intermedita,0);
+			GlobalVars.moveDuration = .25;
+		}
 
 	}
 	function resetGame() 
@@ -331,11 +343,23 @@ class Level extends FlxState
 	}
 	public function runGame():Void 
 	{
-		isRunning = true;
-		bgColor = 0xFFF2C968;
-		GlobalVars.gameGrid.inputBlock.inputString = getInputString();
-		GlobalVars.gameGrid.outputBlock.inputString = getInputString();
-
+		
+		if(!isRunning)
+		{
+			isRunning = true;
+			bgColor = 0xFFF2C968;
+		
+			GlobalVars.gameGrid.inputBlock.inputString = getInputString();
+			GlobalVars.gameGrid.outputBlock.inputString = getInputString();
+		}
+		else
+		{
+			if(speed == 0)
+			runGridOnce();
+		}
+	}
+	public function runGridOnce():Void 
+	{
 		if (GlobalVars.Seqs.length == 0)//temp starter
 		{
 			GlobalVars.gameGrid.inputBlock.started = true;
@@ -348,9 +372,7 @@ class Level extends FlxState
         {
         	if(GlobalVars.Seqs[i] != null && GlobalVars.Seqs[i].canMove)
 			GlobalVars.Seqs[i].move();
-			//FlxG.log.add(GlobalVars.Seqs.length);
         }
-		//FlxG.log.add("---------------------------------------");
 	}
 	override public function update():Void
 	{

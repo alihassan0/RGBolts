@@ -23,6 +23,10 @@ class GlobalVars
 	public static var RIGHT:Int = 3;
 	
 	public static var xml : Xml;
+	
+	public static var moveDuration : Float = 0;
+
+
 	public static function loadLevels()
 	{
 		xml = Xml.parse(openfl.Assets.getText("assets/data/queries.xml"));

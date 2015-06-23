@@ -4,7 +4,10 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
 import flixel.util.FlxPoint;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxTween.TweenOptions;
 
+import flixel.tweens.FlxEase;
 /**
  * ...
  * @author ...
@@ -16,6 +19,7 @@ class Seq extends FlxSprite
 	public var seqString:String = "";
 	public var seqRepresenter:SeqRepresenter;
 	public var canMove:Bool = true;
+	private var tween:FlxTween;
 	public function new(posX:Int,posY:Int, initialString:String) 
 	{
 		position = new FlxPoint(posX, posY);
@@ -59,7 +63,17 @@ class Seq extends FlxSprite
 		seqRepresenter.show(false);
 		//FlxG.log.add("out");
 	}
-
+	function moveTween(p:FlxPoint) 
+	{
+		var options:TweenOptions = { type: FlxTween.ONESHOT}
+		
+		if (tween != null) {
+			tween.cancel();
+		}
+		
+		tween = FlxTween.tween(this, { x: p.x, y: p.y}, GlobalVars.moveDuration, options);
+				
+	}
 	public function move()
 	{
 		position.addPoint(direction);
@@ -71,6 +85,9 @@ class Seq extends FlxSprite
 		else
 		{
 			var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
+			if(GlobalVars.moveDuration != 0)
+			moveTween(spritePos);
+			else
 			reset(spritePos.x, spritePos.y);
 		}
 		canMove = true;
