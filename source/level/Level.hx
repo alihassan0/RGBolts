@@ -22,6 +22,7 @@ class Level extends FlxState
 	private var backToMenuBtn:FlxButton;
 	
 	private var status_txt:FlxText;
+	private var title_txt:FlxText;
 	private var runBtn:FlxButton;
 	private var resetBtn:FlxButton;
 	private var helpBtn:FlxButton;
@@ -58,7 +59,6 @@ class Level extends FlxState
 		GlobalVars.Seqs = new Array<Seq>();
 		FlxG.watch.add(GlobalVars.Seqs, "length");
 
-		addStatus();
 		
 		addBlockSources();
 		addUI();
@@ -72,7 +72,7 @@ class Level extends FlxState
         var allowedBlocks:Array<Int>;
         var temp:Int = GlobalVars.levelInfo.allowedBlocksType;
 
-        var discription:FlxSprite = new FlxSprite(480,50).makeGraphic(155,155,0x00000000);
+        var discription:FlxSprite = new FlxSprite(480,50).makeGraphic(155,200,0x00000000);
 		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
 		add(discription);
         switch (temp) {
@@ -84,7 +84,7 @@ class Level extends FlxState
         	case 5:allowedBlocks = [0,1,3,4,5,7,8];
         	default:allowedBlocks = [0,1,2,3,4,5,6,7,8];
         }
-        for (i in 0 ... 9)
+        for (i in 0 ... 12)
         {
         	if(allowedBlocks.indexOf(i)!=-1)
         	{
@@ -101,18 +101,18 @@ class Level extends FlxState
 	}
 	private function addUI()
 	{
-		backToMenuBtn = new FlxButton (420, 10, "Back", switchBack);
-		backToMenuBtn.scale.set(0.6, 1);
+		backToMenuBtn = new FlxButton(400, 10, "Back", switchBack);
+		backToMenuBtn.scale.set(0.7, 1.2);
 		backToMenuBtn.updateHitbox();
 		add(backToMenuBtn);
 		
-		runBtn = new FlxButton(470, 10, "run", runGame);
-		runBtn.scale.set(0.6, 1);
+		runBtn = new FlxButton(460, 10, "run", runGame);
+		runBtn.scale.set(0.7, 1.2);
 		runBtn.updateHitbox();
 		add(runBtn);
 		
 		resetBtn = new FlxButton(520, 10, "reset", resetGame);
-		resetBtn.scale.set(0.6, 1);
+		resetBtn.scale.set(0.7, 1.2);
 		resetBtn.updateHitbox();
 		add(resetBtn);
 
@@ -141,10 +141,16 @@ class Level extends FlxState
 		nextLevel.updateHitbox();
 		nextLevel.visible = false;
 		add(nextLevel);
+
+		status_txt = new FlxText(500,25,80," ").setFormat(null, 12 , 0x9C9F84,"center");
+		add(status_txt);
+
+		title_txt = new FlxText(0,5,FlxG.width, "Level : " +GlobalVars.levelInfo.id).setFormat(null, 16 , 0x9C9F84,"center");
+		add(title_txt);
 	}
 	function addDiscription() 
 	{
-		var discription:FlxSprite = new FlxSprite(350,280).makeGraphic(280,60,0x00000000);
+		var discription:FlxSprite = new FlxSprite(350,265).makeGraphic(280,90,0x00000000);
 		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
 		var offset:Int = 4;
 		discription.drawRoundRect(offset, offset, discription.width -2*offset, discription.height - 2*offset, 15, 15, FlxColor.WHEAT);
@@ -213,8 +219,7 @@ class Level extends FlxState
 	}
 	function addStatus() 
 	{
-		status_txt = new FlxText(500,25,80," ").setFormat(null, 12 , 0x9C9F84,"center");
-		add(status_txt);
+		
 	}
 	public function status_change(type:Int)
 	{
