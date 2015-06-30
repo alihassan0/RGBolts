@@ -82,6 +82,7 @@ class Level extends FlxState
         	case 3:allowedBlocks = [0,1,3,4];
         	case 4:allowedBlocks = [0,1,3,4,5,8];
         	case 5:allowedBlocks = [0,1,3,4,5,7,8];
+        	case 6:allowedBlocks = [0,1,3,4,5,7,2];
         	default:allowedBlocks = [0,1,2,3,4,5,6,7,8];
         }
         for (i in 0 ... 12)
@@ -101,17 +102,17 @@ class Level extends FlxState
 	}
 	private function addUI()
 	{
-		backToMenuBtn = new FlxButton(400, 10, "Back", switchBack);
+		backToMenuBtn = new FlxButton(400, 1, "Back", switchBack);
 		backToMenuBtn.scale.set(0.7, 1.2);
 		backToMenuBtn.updateHitbox();
 		add(backToMenuBtn);
 		
-		runBtn = new FlxButton(460, 10, "run", runGame);
+		runBtn = new FlxButton(460, 1, "run", runGame);
 		runBtn.scale.set(0.7, 1.2);
 		runBtn.updateHitbox();
 		add(runBtn);
 		
-		resetBtn = new FlxButton(520, 10, "reset", resetGame);
+		resetBtn = new FlxButton(520, 1, "reset", resetGame);
 		resetBtn.scale.set(0.7, 1.2);
 		resetBtn.updateHitbox();
 		add(resetBtn);
@@ -185,6 +186,7 @@ class Level extends FlxState
 	}
 	public function getInputString()
 	{
+
 		if(selectedInputTest == null)
 		{
 			selectedInputTest = inputTests[0];
@@ -259,6 +261,8 @@ class Level extends FlxState
 			else
 			{
 				selectedInputTest = getNextInputTest();
+				GlobalVars.gameGrid.inputBlock.inputString = getInputString();
+				GlobalVars.gameGrid.outputBlock.inputString = getInputString();
 				resetSeqs();
 			}
 		}

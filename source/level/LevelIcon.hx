@@ -25,7 +25,7 @@ class LevelIcon extends FlxSprite
 		if((i + "").length == 1)
 		levelNumbertxt.setFormat(null, 22, 0x9C9F84, "center");
 		else
-		levelNumbertxt.setFormat(null, 20, 0x9C9F84, "center");
+		levelNumbertxt.setFormat(null, 18, 0x9C9F84, "center");
 		FlxG.state.add(levelNumbertxt);
 		this.discriptionText = discriptionText;
 		MouseEventManager.add(this, onDown, null, onOver,true);

@@ -29,7 +29,6 @@ class Seq extends FlxSprite
 		FlxG.state.add(this);
 		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
-		trace(this);
 		seqRepresenter = new SeqRepresenter();
 		seqRepresenter.seqParent = this;
 		setString(initialString);

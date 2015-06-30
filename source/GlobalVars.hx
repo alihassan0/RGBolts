@@ -65,7 +65,63 @@ class GlobalVars
 			"output rest of the element after the second blue", getElementsAfterSecondBlueElement,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,4));
 
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"output rest of the element after the second blue", groupAllElementsBeforeBlue,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"getFirstTwoElementsReversed", getFirstTwoElementsReversed,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"getFirstFourElementsEvenThenOdd", getFirstFourElementsEvenThenOdd,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"getFirstElementTwice", getFirstElementTwice,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"getFirstTwoElementsTwice", getFirstTwoElementsTwice,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"duplicateAllElementsExceptTheLastOne", duplicateAllElementsExceptTheLastOne,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"reverseAllElementsExceptTheLastOne", reverseAllElementsExceptTheLastOne,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"getEvenElementsOnly", getEvenElementsOnly,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		
+
+
+
+
+
+
+
+		/*
+
+groupAllElementsBeforeBlue
+getFirstTwoElementsReversed
+getFirstFourElementsEvenThenOdd
+getFirstElementTwice
+getFirstTwoElementsTwice
+duplicateAllElementsExceptTheLastOne
+reverseAllElementsExceptTheLastOne*/
+		
 
 		//#3 output the black block;
 
@@ -93,9 +149,9 @@ class GlobalVars
 		//in gamegrid make the seq tween between states
 		//fix the sprite of signal source ..
 		//add major UI improvements
+		//show more suitable stats after each level
 
-		// a GREAT design question .. should i be able to redirect signal blocks or not.
-
+	
 		//before sorting we should do some fitering to introduce the remove first block and the 
 		//iteration ideas .
 		//insert the blue elemnt;
@@ -108,6 +164,17 @@ class GlobalVars
 		
 		levels.push(new LevelInfo(levels.length +1,
 			"dublicate string", duplicateString));*/
+
+		//known bugs
+		//trigger affect seq after it reach it's distination
+		//reset disabled blocks every replay
+		//if all seqs are gone .. this should be a valid answer
+		//if all seqs are gone .. don't recreate new one's 
+		//sets
+		//filtering
+		//colors
+		//checking 
+		//insertion
 	}
 	public static function getLevelIntro(index:Int):String
 	{
@@ -182,4 +249,54 @@ class GlobalVars
 		return inputString.substring(inputString.indexOf
 				('b',inputString.indexOf('b')+1)+1,inputString.length);
 	}
+	static function groupAllElementsBeforeBlue(inputString:String):String	
+	{
+		return inputString.substring(0,inputString.indexOf('b'));
+	}
+	static function getFirstTwoElementsReversed(inputString:String):String	
+	{
+		return inputString.charAt(1)+inputString.charAt(0)+"";
+	}
+	static function getFirstFourElementsEvenThenOdd(inputString:String):String	
+	{
+		return inputString.charAt(0)+inputString.charAt(2)+inputString.charAt(1)+inputString.charAt(3)+"";
+	}
+	static function getFirstElementTwice(inputString:String):String	
+	{
+		return inputString.charAt(0)+inputString.charAt(0)+"";
+	}
+	static function getFirstTwoElementsTwice(inputString:String):String	
+	{
+		return inputString.charAt(0)+inputString.charAt(0)+"";
+	}
+	static function duplicateAllElementsExceptTheLastOne(inputString:String):String	
+	{
+		var res:String = "";
+		for (i in 0 ... inputString.length-1) 
+		{
+			res += inputString.charAt(i);
+			res += inputString.charAt(i);
+		}
+		return res;
+	}
+	static function reverseAllElementsExceptTheLastOne(inputString:String):String	
+	{
+		var res:String = "";
+		for (i in 0 ... inputString.length) 
+		{
+			res += inputString.charAt(inputString.length -2 - i);
+		}
+		return res;
+	}
+	static function getEvenElementsOnly(inputString:String):String	
+	{
+		var res:String = "";
+		for (i in 0 ... inputString.length) 
+		{
+			if(i%2 == 0)
+			res += inputString.charAt(i);
+		}
+		return res;
+	}
+
 }
