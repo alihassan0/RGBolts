@@ -1,0 +1,49 @@
+<level>
+	hello and welcomr to nawwar's Color Box 
+	let's get you started with the basics 
+	in this level you have to direct the 
+	input seq(Sequence) from the input block
+	to the output block using the directionl block
+	only the directional block doesn't affect the seq
+	internally .. it changes it's direction only .
+</level>	
+<level>
+	good job  now le'ts add another useful block
+	the removefirst block .. to understand it first 
+	you understand what seq is . seq is a container
+	that list of one or more colors .. you can preview
+	any seq by hovering on it .. .. the removeFirst block 
+	devids the currunt seq into two seq .. one containing
+	the first color only .. and the second contains
+	the rest of the colors
+</level>	
+
+<level>
+	nice .. now let's make sure you understand those 
+	two previous blocks good enough .. as well as 
+	introduce a new more block .. this new block is 
+	the red-filter block .. it will look on the first
+	color of the block and will leave it if it's not 
+	rid .. and will redirect it if it was red ... 
+	can you solve it in three blocks only ?
+</level>
+
+<level>
+	okay one last check .. can you filter the blue color
+	you can use the new block green-filter block now .. 
+</level>
+
+<level>
+	i will intoduce you now to a very interesting block 
+	the signal block .. it basicly transforms the block it
+	touches to a signal independent of what it's content is
+	. the signal can be used to toggle blocks on and off
+	. a disabled block will not affect a seq untill
+	it's enabled again 
+</level>
+
+<level>
+	let's 
+</level>	
+
+]}

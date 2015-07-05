@@ -386,7 +386,8 @@ class Level extends FlxState
 	override public function update():Void
 	{
 		super.update();
-
+		if (FlxG.keys.justPressed.ENTER)
+            FlxG.fullscreen = !FlxG.fullscreen;
 		/*if (FlxG.keys.pressed.K)
 		{
 			FlxG.watch.add(GlobalVars.Seqs, "length");

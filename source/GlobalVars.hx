@@ -71,6 +71,7 @@ class GlobalVars
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 
 		//--------------------------------level 7 : ---------------------------------------------------
+		//tested
 		levels.push(new LevelInfo(levels.length +1,
 			"getFirstTwoElementsReversed", getFirstTwoElementsReversed,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
@@ -163,7 +164,10 @@ reverseAllElementsExceptTheLastOne*/
 			"sort red first then green then black", sortRedThenGreen));
 		
 		levels.push(new LevelInfo(levels.length +1,
-			"dublicate string", duplicateString));*/
+			"dublicate string", duplicateString));
+
+		switch each two elememts*/
+		
 
 		//known bugs
 		//trigger affect seq after it reach it's distination
