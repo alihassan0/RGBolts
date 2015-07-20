@@ -54,6 +54,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/directional.png", "assets/images/directional.png");
 		type.set ("assets/images/directional.png", AssetType.IMAGE);
+		path.set ("assets/images/seq2.png", "assets/images/seq2.png");
+		type.set ("assets/images/seq2.png", AssetType.IMAGE);
 		path.set ("assets/images/color.png", "assets/images/color.png");
 		type.set ("assets/images/color.png", AssetType.IMAGE);
 		path.set ("assets/images/output.png", "assets/images/output.png");
@@ -78,6 +80,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		path.set ("assets/images/signal.png", "assets/images/signal.png");
 		type.set ("assets/images/signal.png", AssetType.IMAGE);
+		path.set ("assets/data/queries2.xml", "assets/data/queries2.xml");
+		type.set ("assets/data/queries2.xml", AssetType.TEXT);
 		path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/data/queries.xml", "assets/data/queries.xml");
@@ -105,6 +109,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/images/directional.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/seq2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/color.png";
@@ -143,6 +150,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/signal.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/data/queries2.xml";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
 		id = "assets/data/data-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -190,9 +200,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -856,7 +870,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #elseif html5
+
+
 
 
 
