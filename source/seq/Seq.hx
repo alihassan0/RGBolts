@@ -42,14 +42,16 @@ class Seq extends FlxSprite
 		MouseEventManager.add(this, null, null, onOver, onOut);
 		seqElements = new Array<SeqElem>();
 		var index:Int;
-		for (i in 0 ... 3) {
-			index = 2-i;
+		var numOfElements:Int = Math.floor(Math.min(3,initialString.length));
+		for (i in 0 ... numOfElements) {
+			index = numOfElements-1-i;
 			var color = (index<initialString.length)?getColor(initialString.charAt(index)):0xffffffff;
 			var elem:SeqElem = new SeqElem(x,y,color);
 			FlxG.state.add(elem);
 			seqElements.unshift(elem);
 		}
 		actionTimer = new FlxTimer();
+		
 	}
 	
 	public function getString():String
@@ -131,20 +133,26 @@ class Seq extends FlxSprite
 			else
 			reset(spritePos.x, spritePos.y);
 		}
-		actionTimer.start(GlobalVars.moveDuration,action,1);
+		if (GlobalVars.gameGrid.getBlockOfPos(position) != null)
+		{
+			if(!actionTimer.finished)
+				trace("not finished yet "+ position);
+			actionTimer.start(GlobalVars.moveDuration*.9,action,1);
+		}
 	}
 	public function action(t:FlxTimer)
 	{
 		canMove = true;
-		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);
-		if (currBLock != null)
+		trace("action made @"+position);
+		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);		
+		if(currBLock.enabled && (!Std.is(this, Signal)||Std.is(currBLock, DirectionalBlock)))
 		{
-			if(currBLock.enabled && (!Std.is(this, Signal)||Std.is(currBLock, DirectionalBlock)))
 			currBLock.affectSeq(this);
 			affectBlock(currBLock);
 		}
 		if (seqRepresenter != null)
 		seqRepresenter.represent();
+
 	}
 	override public function kill():Void 
 	{

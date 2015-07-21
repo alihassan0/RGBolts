@@ -179,7 +179,7 @@ class Level extends FlxState
 		helpPanelText.visible  =false;
 		add(helpPanelText);
 	}
-	function intermedita(timer:FlxTimer)
+	function intermediate(timer:FlxTimer)
 	{
 		if (isRunning && !isPaused)
 		runGridOnce();
@@ -300,20 +300,17 @@ class Level extends FlxState
 		}
 		if (speed == 1)
 		{
-		   timer.start(1, intermedita , 0);
 		   GlobalVars.moveDuration = 1;
 		}
 		if (speed == 2)
 		{
-		   timer.start(0.5, intermedita,0);
 		   GlobalVars.moveDuration = .5;
 		}
 		if (speed == 3)
 		{
-		   timer.start(0.25, intermedita,0);
 			GlobalVars.moveDuration = .25;
 		}
-
+		timer.start(GlobalVars.moveDuration, intermediate , 0);
 	}
 	function resetGame() 
 	{
