@@ -4,9 +4,9 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
 import flixel.util.FlxPoint;
+import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxTween.TweenOptions;
-
 import flixel.tweens.FlxEase;
 /**
  * ...
@@ -20,12 +20,18 @@ class Seq extends FlxSprite
 	public var seqRepresenter:SeqRepresenter;
 	public var canMove:Bool = true;
 	private var tween:FlxTween;
+	private var seqElements:Array<SeqElem>;
+	private var MoveReady:Bool;
+	private var elemIndex:Int;
+	private var MoveTimer:FlxTimer;
+	private var distinationPoint:FlxPoint;
 	public function new(posX:Int,posY:Int, initialString:String) 
 	{
 		position = new FlxPoint(posX, posY);
 		var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 		super(spritePos.x, spritePos.y);
 		loadGraphic("assets/images/seq.png");
+		visible = false;
 		FlxG.state.add(this);
 		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
@@ -33,6 +39,15 @@ class Seq extends FlxSprite
 		seqRepresenter.seqParent = this;
 		setString(initialString);
 		MouseEventManager.add(this, null, null, onOver, onOut);
+		seqElements = new Array<SeqElem>();
+		var index:Int;
+		for (i in 0 ... 3) {
+			index = 2-i;
+			var color = (index<initialString.length)?getColor(initialString.charAt(index)):0xffffffff;
+			var elem:SeqElem = new SeqElem(x,y,color);
+			FlxG.state.add(elem);
+			seqElements.unshift(elem);
+		}
 	}
 	
 	public function getString():String
@@ -42,16 +57,21 @@ class Seq extends FlxSprite
 	public function setString(newString:String) 
 	{
 		this.seqString = newString;
-		switch(seqString.charAt(0))
+		color = getColor(seqString.charAt(0));
+		seqRepresenter.set_seqString(newString);
+	}
+	public function getColor(c:String):Int
+	{
+		var color:Int ;
+		switch(c)
 		{
 			case 'r': color = 0xFFFF0000;
 			case 'g': color = 0xFF00FF00;
 			case 'b': color = 0xFF0000FF;
 			default : color = 0xFF000000;
 		}
-		seqRepresenter.set_seqString(newString);
+		return color;
 	}
-	
 	function onOver(Sprite:FlxSprite) 
 	{
 		seqRepresenter.show(true);
@@ -65,13 +85,33 @@ class Seq extends FlxSprite
 	function moveTween(p:FlxPoint) 
 	{
 		var options:TweenOptions = { type: FlxTween.ONESHOT}
+		distinationPoint = p;
 		
 		if (tween != null) {
 			tween.cancel();
 		}
-		
-		tween = FlxTween.tween(this, { x: p.x, y: p.y}, GlobalVars.moveDuration, options);
-				
+		var offset:Int;
+		if(MoveTimer == null)
+			MoveTimer = new FlxTimer();
+
+		elemIndex = 0;
+		MoveTimer.start(.1,moveNextElem,1);
+		for (i in 0 ... seqElements.length) {
+			tween = FlxTween.tween(this, { x: p.x, y: p.y}, GlobalVars.moveDuration, options);		
+		}
+		tween = FlxTween.tween(this, { x: p.x, y: p.y}, GlobalVars.moveDuration, options);		
+	}
+	public function moveNextElem(t:FlxTimer)
+	{
+		trace(elemIndex);
+		var options:TweenOptions = { type: FlxTween.ONESHOT}
+		if (seqElements[elemIndex].tween != null) {
+			seqElements[elemIndex].tween.cancel();
+		}
+		seqElements[elemIndex].tween = FlxTween.tween(seqElements[elemIndex], { x: distinationPoint.x, y: distinationPoint.y}, GlobalVars.moveDuration, options);
+		elemIndex ++;
+		if(elemIndex < seqElements.length)
+			MoveTimer.start(.1,moveNextElem,1);
 	}
 	public function move()
 	{

@@ -37,7 +37,7 @@ class GlobalVars
 		//-------------------------------level 1: -------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"direct the seq to the output block", checkSame,
-			["ggg","rrr","grg","rgr","rrgrr"],
+			["rgb","rrr","grg","rgr","rrgrr"],
 			new FlxPoint(0,3),new FlxPoint(7,6),0));
 
 		//--------------------------------level 2 :  ---------------------------------------------------

@@ -34,7 +34,7 @@ class Level extends FlxState
 	
 	public var levelInfo:LevelInfo;
 
-	private var speed:Int;
+	private var speed:Int = 1;
 	private var timer:FlxTimer;
 	private var speedText:FlxText;
 	public var isRunning:Bool;
@@ -121,7 +121,7 @@ class Level extends FlxState
 		helpBtn.loadGraphic("assets/images/question.png");
 		add(helpBtn);
 		
-		speed = 0;
+		speed = 1;
 		speedText = new FlxText(410 , 40, 100, "Speed: " + speed, 10);
 		speedText.color = 0xAA5C755E;
 		add(speedText);
