@@ -24,6 +24,7 @@ class Seq extends FlxSprite
 	private var MoveReady:Bool;
 	private var elemIndex:Int;
 	private var MoveTimer:FlxTimer;
+	private var actionTimer:FlxTimer;
 	private var distinationPoint:FlxPoint;
 	public function new(posX:Int,posY:Int, initialString:String) 
 	{
@@ -48,6 +49,7 @@ class Seq extends FlxSprite
 			FlxG.state.add(elem);
 			seqElements.unshift(elem);
 		}
+		actionTimer = new FlxTimer();
 	}
 	
 	public function getString():String
@@ -129,6 +131,10 @@ class Seq extends FlxSprite
 			else
 			reset(spritePos.x, spritePos.y);
 		}
+		actionTimer.start(GlobalVars.moveDuration,action,1);
+	}
+	public function action(t:FlxTimer)
+	{
 		canMove = true;
 		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);
 		if (currBLock != null)
