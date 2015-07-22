@@ -41,12 +41,15 @@ class Seq extends FlxSprite
 		setString(initialString);
 		MouseEventManager.add(this, null, null, onOver, onOut);
 		seqElements = new Array<SeqElem>();
+
 		var index:Int;
-		var numOfElements:Int = Math.floor(Math.min(3,initialString.length));
+		var numOfElements:Int = initialString.length;
 		for (i in 0 ... numOfElements) {
 			index = numOfElements-1-i;
 			var color = (index<initialString.length)?getColor(initialString.charAt(index)):0xffffffff;
 			var elem:SeqElem = new SeqElem(x,y,color);
+			/*if(i>GlobalVars.maxVisibleElemesInSeq)
+				elem.visible = false;*/
 			FlxG.state.add(elem);
 			seqElements.unshift(elem);
 		}
@@ -109,7 +112,8 @@ class Seq extends FlxSprite
 	{
 		trace(elemIndex);
 		var options:TweenOptions = { type: FlxTween.ONESHOT}
-		if (seqElements[elemIndex].tween != null) {
+		
+		if (elemIndex < seqElements.length&&seqElements[elemIndex].tween != null) {
 			seqElements[elemIndex].tween.cancel();
 		}
 		seqElements[elemIndex].tween = FlxTween.tween(seqElements[elemIndex], { x: distinationPoint.x, y: distinationPoint.y}, GlobalVars.moveDuration, options);
@@ -157,9 +161,20 @@ class Seq extends FlxSprite
 	override public function kill():Void 
 	{
 		super.kill();
+		for (i in 0 ... seqElements.length) {
+			seqElements[i].kill();
+		}
 		alpha = .3;
 		FlxG.watch.remove(this);
 		seqRepresenter.kill();
+	}
+	public function removeFirst():SeqElem
+	{
+		return seqElements.shift();
+	}
+	public function insertFirst(se:SeqElem)
+	{
+		seqElements.push(se);
 	}
 	public function wait() 
 	{
@@ -187,7 +202,6 @@ class Seq extends FlxSprite
 	{
 		return direction;
 	}
-	
 	public function get_position():FlxPoint 
 	{
 		return position;

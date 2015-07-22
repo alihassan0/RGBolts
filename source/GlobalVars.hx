@@ -25,6 +25,7 @@ class GlobalVars
 	public static var xml : Xml;
 	
 	public static var moveDuration : Float = 0;
+	public static var maxVisibleElemesInSeq : Int = 3;
 
 
 	public static function loadLevels()
@@ -48,7 +49,7 @@ class GlobalVars
 		//--------------------------------level 3 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output the red element in the sequence", getTheRedElement,
-			["r","ggr","grg","gggr","gggggr"],null,null,2));
+			["r","ggr","grg","gggr","gggggggr"],null,null,2));
 
 		//--------------------------------level 4 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
@@ -143,7 +144,7 @@ reverseAllElementsExceptTheLastOne*/
 
 		
  
-
+		//-------------------------improvements------------------------------
 		//change background in play mode .. add tutrial for each level
 		//.. allow to add more private tests
 		// add a title for each level containg it's name 
@@ -168,13 +169,14 @@ reverseAllElementsExceptTheLastOne*/
 
 		switch each two elememts*/
 		
-
-		//known bugs
-		//trigger affect seq after it reach it's distination
+		//-----------------------------------known bugs-----------------------------------
+		//## handle changing speed .. it screws everything up .
+		//trigger affect seq after it reach it's distination (done .. but i am not confident of the currunt implementation )
 		//reset disabled blocks every replay
-		//if all seqs are gone .. this should be a valid answer
-		//if all seqs are gone .. don't recreate new one's 
-		//sets
+		//if all seqs are gone .. this should be a valid answer ??
+		//if all seqs are gone .. don't recreate new one's (make new one's)
+		//don't declare a winner when there are still some seqs on the grid
+		//-------------------------------------sets----------------------------------------
 		//filtering
 		//colors
 		//checking 

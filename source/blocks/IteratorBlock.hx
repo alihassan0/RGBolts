@@ -18,7 +18,11 @@ class IteratorBlock extends Block
 		var curruntString:String = s.seqString;
 		if (s.getString().length > 0 )
 		{
-			direct(new Seq(Math.floor(position.x), Math.floor(position.y), curruntString.charAt(0)),GlobalVars.RIGHT);
+			var newSeq = new Seq(Math.floor(position.x), Math.floor(position.y),""); 
+			newSeq.setString(curruntString.charAt(0));
+			direct(newSeq,GlobalVars.RIGHT);
+			newSeq.insertFirst(s.removeFirst());
+			trace("removed "+curruntString.charAt(0) +"from " +curruntString );
 			if(s.getString().length > 1)
 			{
 				s.setString(curruntString.substring(1, curruntString.length));
