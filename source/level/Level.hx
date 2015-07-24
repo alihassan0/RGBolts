@@ -64,6 +64,8 @@ class Level extends FlxState
 		addUI();
 		addDiscription();
 		addHelpPanel();
+		TutVars.initSprites();
+		TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
 	}
 
 	private function addBlockSources()

@@ -1,0 +1,62 @@
+package ;
+import seq.*;
+import level.*;
+import flixel.util.FlxPoint;
+import flixel.FlxSprite;
+import flixel.FlxG;
+import flixel.util.FlxRect;
+import flixel.text.FlxText;
+/**
+ * ...
+ * @author ...
+ */
+class TutVars
+{
+	private static var sprites:Array<FlxSprite>;
+	private static var spriteColor:Int = 0xCC888888;
+	private static var helpPanel:FlxSprite;
+	private static var helpText:FlxText;
+	public static function initSprites()
+	{
+		sprites = new Array<FlxSprite>();
+		var sprite:FlxSprite;
+		for (i in 0 ... 4) {
+			sprite = new FlxSprite(0,0);
+			FlxG.state.add(sprite);
+			sprites.push(sprite);
+		}
+	}
+	public static function initHelpPanel()
+	{
+		helpPanel = new FlxSprite();
+		FlxG.state.add(helpPanel);
+		
+		helpText = new FlxText(0,0,200,"");
+		FlxG.state.add(helpText);
+	}
+	public static function showHelpPanel(s:FlxSprite)
+	{
+		helpPanel = new FlxSprite();
+		FlxG.state.add(helpPanel);
+
+		helpText = new FlxText(0,0,200,"");
+		FlxG.state.add(helpText);
+	}
+	public static function focusOn(rect:FlxSprite)
+	{
+		//up
+		sprites[0].makeGraphic(FlxG.width,Math.floor(rect.y),spriteColor);
+		sprites[0].reset(0,0);
+		//down
+		sprites[1].makeGraphic(FlxG.width,FlxG.height-Math.floor(rect.height+rect.y),spriteColor);
+		sprites[1].reset(0,rect.height+rect.y);
+		
+		//right
+		sprites[2].makeGraphic(Math.floor(rect.x),Math.floor(rect.height),spriteColor);
+		sprites[2].reset(0,rect.y);
+		
+		//left
+		sprites[3].makeGraphic(FlxG.width - Math.floor(rect.x+rect.width),Math.floor(rect.height),spriteColor);
+		sprites[3].reset(rect.width+rect.x,rect.y);
+	}
+}
