@@ -112,14 +112,24 @@ class Seq extends FlxSprite
 	{
 		trace(elemIndex);
 		var options:TweenOptions = { type: FlxTween.ONESHOT}
-		
-		if (elemIndex < seqElements.length&&seqElements[elemIndex].tween != null) {
+		if(elemIndex >= seqElements.length)
+			return;
+
+		if (seqElements[elemIndex].tween != null) {
 			seqElements[elemIndex].tween.cancel();
 		}
 		seqElements[elemIndex].tween = FlxTween.tween(seqElements[elemIndex], { x: distinationPoint.x, y: distinationPoint.y}, GlobalVars.moveDuration, options);
 		elemIndex ++;
 		if(elemIndex < seqElements.length)
 			MoveTimer.start(.1,moveNextElem,1);
+	}
+	public function action()
+	{
+		if (GlobalVars.gameGrid.getBlockOfPos(position) != null)
+		{
+			affect();
+		}
+		move();
 	}
 	public function move()
 	{
@@ -137,14 +147,8 @@ class Seq extends FlxSprite
 			else
 			reset(spritePos.x, spritePos.y);
 		}
-		if (GlobalVars.gameGrid.getBlockOfPos(position) != null)
-		{
-			if(!actionTimer.finished)
-				trace("not finished yet "+ position);
-			actionTimer.start(GlobalVars.moveDuration*.9,action,1);
-		}
 	}
-	public function action(t:FlxTimer)
+	public function affect()
 	{
 		canMove = true;
 		trace("action made @"+position);

@@ -107,22 +107,15 @@ class GlobalVars
 			"getEvenElementsOnly", getEvenElementsOnly,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 		
-
-
-
-
-
-
-
 		/*
 
-groupAllElementsBeforeBlue
-getFirstTwoElementsReversed
-getFirstFourElementsEvenThenOdd
-getFirstElementTwice
-getFirstTwoElementsTwice
-duplicateAllElementsExceptTheLastOne
-reverseAllElementsExceptTheLastOne*/
+		groupAllElementsBeforeBlue
+		getFirstTwoElementsReversed
+		getFirstFourElementsEvenThenOdd
+		getFirstElementTwice
+		getFirstTwoElementsTwice
+		duplicateAllElementsExceptTheLastOne
+		reverseAllElementsExceptTheLastOne*/
 		
 
 		//#3 output the black block;
@@ -152,7 +145,7 @@ reverseAllElementsExceptTheLastOne*/
 		//fix the sprite of signal source ..
 		//add major UI improvements
 		//show more suitable stats after each level
-
+		//make a block flicker when there it affect a seq
 	
 		//before sorting we should do some fitering to introduce the remove first block and the 
 		//iteration ideas .

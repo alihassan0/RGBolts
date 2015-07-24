@@ -377,7 +377,7 @@ class Level extends FlxState
 		for (i in 0...GlobalVars.Seqs.length)
         {
         	if(GlobalVars.Seqs[i] != null && GlobalVars.Seqs[i].canMove)
-			GlobalVars.Seqs[i].move();
+			GlobalVars.Seqs[i].action();
         }
 	}
 	override public function update():Void

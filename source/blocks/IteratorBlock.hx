@@ -22,6 +22,7 @@ class IteratorBlock extends Block
 			newSeq.setString(curruntString.charAt(0));
 			direct(newSeq,GlobalVars.RIGHT);
 			newSeq.insertFirst(s.removeFirst());
+			newSeq.move();
 			trace("removed "+curruntString.charAt(0) +"from " +curruntString );
 			if(s.getString().length > 1)
 			{
