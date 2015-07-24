@@ -1,5 +1,6 @@
 package ;
 import blocks.*;
+import seq.Seq;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxPoint;
@@ -37,8 +38,8 @@ class GameGrid extends FlxSprite
 		makeGraphic(gridWidth * tileSize, gridHeight * tileSize,0x00ff00ff);
 		resetGrid();
 		GlobalVars.gameGrid = this;
+		GlobalVars.Seqs = new Array<Seq>();
 		this.testFunction = GlobalVars.level.levelInfo.testFunction;
-		this.inputString = GlobalVars.level.getInputString();//TODO
 		addIOBlocks();
 	}
 	
@@ -67,7 +68,7 @@ class GameGrid extends FlxSprite
             for (y in 0...gridHeight)
             {
                 grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
-				FlxG.state.add(grid[x][y]);
+				GlobalVars.level.gridGroup.add(grid[x][y]);
             }
         }
 		for (x in 0...gridWidth)

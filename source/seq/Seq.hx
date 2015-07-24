@@ -26,7 +26,7 @@ class Seq extends FlxSprite
 		var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 		super(spritePos.x, spritePos.y);
 		loadGraphic("assets/images/seq.png");
-		FlxG.state.add(this);
+		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
 		seqRepresenter = new SeqRepresenter();
