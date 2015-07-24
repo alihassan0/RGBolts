@@ -77,6 +77,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		className.set ("assets/images/signal.png", __ASSET__assets_images_signal_png);
 		type.set ("assets/images/signal.png", AssetType.IMAGE);
+		className.set ("assets/data/queries2.xml", __ASSET__assets_data_queries2_xml);
+		type.set ("assets/data/queries2.xml", AssetType.TEXT);
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		className.set ("assets/data/queries.xml", __ASSET__assets_data_queries_xml);
@@ -158,6 +160,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "assets/data/queries2.xml";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
 		id = "assets/data/data-goes-here.txt";
 		path.set (id, id);
 		
@@ -194,6 +200,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#else
 		
 		#if openfl
+		
 		
 		
 		
@@ -271,6 +278,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/signal.png", __ASSET__assets_images_signal_png);
 		type.set ("assets/images/signal.png", AssetType.IMAGE);
+		
+		className.set ("assets/data/queries2.xml", __ASSET__assets_data_queries2_xml);
+		type.set ("assets/data/queries2.xml", AssetType.TEXT);
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
@@ -906,6 +916,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_images_ifblue_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_iterator_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_signal_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_data_queries2_xml extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_data_queries_xml extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends flash.utils.ByteArray { }
@@ -915,6 +926,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
 
 
 
@@ -963,6 +975,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/images/ifblue.png") #if display private #end class __ASSET__assets_images_ifblue_png extends lime.graphics.Image {}
 @:image("assets/images/iterator.png") #if display private #end class __ASSET__assets_images_iterator_png extends lime.graphics.Image {}
 @:image("assets/images/signal.png") #if display private #end class __ASSET__assets_images_signal_png extends lime.graphics.Image {}
+@:file("assets/data/queries2.xml") #if display private #end class __ASSET__assets_data_queries2_xml extends lime.utils.ByteArray {}
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
 @:file("assets/data/queries.xml") #if display private #end class __ASSET__assets_data_queries_xml extends lime.utils.ByteArray {}
 @:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.ByteArray {}
