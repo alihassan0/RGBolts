@@ -66,6 +66,8 @@ class Level extends FlxState
 		addHelpPanel();
 		TutVars.initSprites();
 		TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
+		TutVars.initHelpPanel();
+		TutVars.showHelpPanel(GlobalVars.gameGrid.inputBlock,"this is a test ... let's hope it works");
 	}
 
 	private function addBlockSources()

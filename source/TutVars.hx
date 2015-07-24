@@ -31,16 +31,14 @@ class TutVars
 		helpPanel = new FlxSprite();
 		FlxG.state.add(helpPanel);
 		
-		helpText = new FlxText(0,0,200,"");
+		helpText = new FlxText(0,0,200,"",8);
 		FlxG.state.add(helpText);
 	}
-	public static function showHelpPanel(s:FlxSprite)
+	public static function showHelpPanel(s:FlxSprite,text:String)
 	{
-		helpPanel = new FlxSprite();
-		FlxG.state.add(helpPanel);
-
-		helpText = new FlxText(0,0,200,"");
-		FlxG.state.add(helpText);
+		helpText.text = text;
+		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(helpText.height),0xff00ff00);
+		trace(helpText.textField.height);
 	}
 	public static function focusOn(rect:FlxSprite)
 	{
