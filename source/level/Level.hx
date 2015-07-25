@@ -59,10 +59,9 @@ class Level extends FlxState
 		this.isRunning = false;
 		GlobalVars.level = this;
 		
+		FlxG.watch.addMouse();
 		initGroups();
 
-		FlxG.watch.addMouse();
-		
 		bgColor = FlxColor.WHEAT;
 		new GameGrid();
 		
@@ -76,8 +75,8 @@ class Level extends FlxState
 
 		TutVars.initSprites();
 		TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
-		TutVars.initHelpPanel();
-		TutVars.showHelpPanel(GlobalVars.gameGrid.inputBlock,"this is a test ... let's hope it works");
+		/*TutVars.initHelpPanel();
+		TutVars.showHelpPanel(GlobalVars.gameGrid.inputBlock,"this is a test ... let's hope it works");*/
 	}
 
 	private function initGroups()

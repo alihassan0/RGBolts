@@ -6,6 +6,8 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxRect;
 import flixel.text.FlxText;
+
+import flixel.plugin.MouseEventManager;
 /**
  * ...
  * @author ...
@@ -22,8 +24,9 @@ class TutVars
 		var sprite:FlxSprite;
 		for (i in 0 ... 4) {
 			sprite = new FlxSprite(0,0);
-			FlxG.state.add(sprite);
+			GlobalVars.level.tutGroup.add(sprite);
 			sprites.push(sprite);
+			MouseEventManager.add(sprite, onDown, null, null, null);
 		}
 	}
 	public static function initHelpPanel()
@@ -43,6 +46,11 @@ class TutVars
 	public static function focusOn(rect:FlxSprite)
 	{
 		//up
+		/*sprites[0].makeGraphic(FlxG.width,FlxG.height,spriteColor);
+		sprites[0].reset(0,0);
+		GlobalVars.level.blocksGroup.remove(rect,true);
+		GlobalVars.level.tutGroup.add(rect);*/
+		//up
 		sprites[0].makeGraphic(FlxG.width,Math.floor(rect.y),spriteColor);
 		sprites[0].reset(0,0);
 		//down
@@ -56,5 +64,9 @@ class TutVars
 		//left
 		sprites[3].makeGraphic(FlxG.width - Math.floor(rect.x+rect.width),Math.floor(rect.height),spriteColor);
 		sprites[3].reset(rect.width+rect.x,rect.y);
+	}
+	static function onDown(Sprite:FlxSprite) 
+	{
+		trace("clicked on me ");
 	}
 }
