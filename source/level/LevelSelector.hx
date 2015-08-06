@@ -1,8 +1,12 @@
 package level;
 import flixel.FlxState;
+import flixel.text.FlxBitmapTextField;
+import flixel.text.pxText.PxBitmapFont;
+import flixel.text.pxText.PxTextAlign;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
+import openfl.Assets;
 
 using flixel.util.FlxSpriteUtil;
 /**
@@ -12,6 +16,7 @@ using flixel.util.FlxSpriteUtil;
 class LevelSelector extends FlxState
 {
 	public var textDiscription:FlxText;
+	public var font:PxBitmapFont; 
 	override public function create():Void 
 	{
 		addDiscription();
@@ -22,6 +27,14 @@ class LevelSelector extends FlxState
 		{
 			new LevelIcon(150+70 + (i%5)*110,0+140 +Math.floor(i/5)*100, i+1,textDiscription);
 		}
+		/*var textBytes = Assets.getText("assets/fonts/font.fnt");
+		var XMLData = Xml.parse(textBytes);
+		font = new PxBitmapFont().loadAngelCode(Assets.getBitmapData("assets/fonts/font.png"), XMLData);
+		*/
+		var t:FlxBitmapTextField = new FlxBitmapTextField(GlobalVars.font);
+		t.text = "hello text";
+		add(t);
+		
 	}
 	function addDiscription() 
 	{

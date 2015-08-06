@@ -81,6 +81,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -88,6 +90,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -633,6 +637,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		path.set ("assets/images/signal.png", "assets/images/signal.png");
 		type.set ("assets/images/signal.png", AssetType.IMAGE);
+		path.set ("assets/fonts/font.png", "assets/fonts/font.png");
+		type.set ("assets/fonts/font.png", AssetType.IMAGE);
+		path.set ("assets/fonts/font.fnt", "assets/fonts/font.fnt");
+		type.set ("assets/fonts/font.fnt", AssetType.TEXT);
 		path.set ("assets/data/queries2.xml", "assets/data/queries2.xml");
 		type.set ("assets/data/queries2.xml", AssetType.TEXT);
 		path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
@@ -710,6 +718,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/signal.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/fonts/font.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/fonts/font.fnt";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
 		id = "assets/data/queries2.xml";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -777,6 +791,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -785,6 +801,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1536,11 +1554,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
 
 
 

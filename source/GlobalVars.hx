@@ -2,7 +2,10 @@ package ;
 import seq.*;
 import level.*;
 import flixel.util.FlxPoint;
-
+import flixel.text.FlxBitmapTextField;
+import flixel.text.pxText.PxBitmapFont;
+import flixel.text.pxText.PxTextAlign;
+import openfl.Assets;
 /**
  * ...
  * @author ...
@@ -26,6 +29,7 @@ class GlobalVars
 	
 	public static var moveDuration : Float = 0;
 
+	public static var font:PxBitmapFont; 
 
 	public static function loadLevels()
 	{
@@ -33,6 +37,7 @@ class GlobalVars
 	    
 		levels = new Array<LevelInfo>();
 
+		loadFonts();
 		//********************************set 1 ***************************************************
 		//-------------------------------level 1: -------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
@@ -179,6 +184,12 @@ reverseAllElementsExceptTheLastOne*/
 		//colors
 		//checking 
 		//insertion
+	}
+	private static function loadFonts()
+	{
+		var textBytes = Assets.getText("assets/fonts/font.fnt");
+		var XMLData = Xml.parse(textBytes);
+		font = new PxBitmapFont().loadAngelCode(Assets.getBitmapData("assets/fonts/font.png"), XMLData);
 	}
 	public static function getLevelIntro(index:Int):String
 	{
