@@ -15,11 +15,12 @@ class LevelSelector extends FlxState
 	override public function create():Void 
 	{
 		addDiscription();
-		bgColor = FlxColor.WHEAT;
+		add(new FlxSprite(150,0,"assets/images/Levels.png"));
+		bgColor = 0xffafe4e5;
 		GlobalVars.loadLevels();
 		for (i in 0...GlobalVars.levels.length)
 		{
-			new LevelIcon(50 + i*40, 50, i+1,textDiscription);
+			new LevelIcon(150+70 + (i%5)*110,0+140 +Math.floor(i/5)*100, i+1,textDiscription);
 		}
 	}
 	function addDiscription() 

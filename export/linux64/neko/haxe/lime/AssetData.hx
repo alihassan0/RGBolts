@@ -18,6 +18,8 @@ class AssetData {
 			
 			path.set ("assets/images/sig.png", "assets/images/sig.png");
 			type.set ("assets/images/sig.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/Levels.png", "assets/images/Levels.png");
+			type.set ("assets/images/Levels.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/grouper.png", "assets/images/grouper.png");
 			type.set ("assets/images/grouper.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
@@ -36,6 +38,8 @@ class AssetData {
 			type.set ("assets/images/duplicator.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/input.png", "assets/images/input.png");
 			type.set ("assets/images/input.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/levelIcon.png", "assets/images/levelIcon.png");
+			type.set ("assets/images/levelIcon.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/seq.png", "assets/images/seq.png");
 			type.set ("assets/images/seq.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/waiter.png", "assets/images/waiter.png");
@@ -62,6 +66,10 @@ class AssetData {
 			type.set ("assets/sounds/beep.ogg", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/flixel.ogg", "assets/sounds/flixel.ogg");
 			type.set ("assets/sounds/flixel.ogg", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/fonts/nokiafc22.ttf", "assets/fonts/nokiafc22.ttf");
+			type.set ("assets/fonts/nokiafc22.ttf", Reflect.field (AssetType, "font".toUpperCase ()));
+			path.set ("assets/fonts/arial.ttf", "assets/fonts/arial.ttf");
+			type.set ("assets/fonts/arial.ttf", Reflect.field (AssetType, "font".toUpperCase ()));
 			
 			
 			initialized = true;

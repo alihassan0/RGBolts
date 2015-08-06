@@ -1,14 +1,14 @@
 -main ApplicationMain 
--cp /home/alihassan/Desktop/my folders/flixel/flixel/3,3,8
--D flixel=3.3.8
--cp /home/alihassan/Desktop/my folders/flixel/lime/2,4,4
--D lime=2.4.4
--cp /home/alihassan/Desktop/my folders/flixel/openfl/3,0,0-beta,3
--D openfl=3.0.0-beta.3
+-cp /home/alihassan/Desktop/my folders/flixel/flixel/3,3,11
+-D flixel=3.3.11
+-cp /home/alihassan/Desktop/my folders/flixel/lime/2,5,2
+-D lime=2.5.2
+-cp /home/alihassan/Desktop/my folders/flixel/openfl/3,2,2
+-D openfl=3.2.2
 -cp source
--cp /home/alihassan/Desktop/my folders/flixel/lime/2,4,4/legacy
+-cp /home/alihassan/Desktop/my folders/flixel/lime/2,5,2/legacy
 -D openfl-legacy
--D tools=2.4.4
+-D tools=2.5.2
 -D lime-legacy
 -D FLX_NO_DEBUG
 -D no-compilation

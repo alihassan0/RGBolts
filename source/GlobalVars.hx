@@ -82,7 +82,7 @@ class GlobalVars
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 		
 		//--------------------------------level 7 : ---------------------------------------------------
-		levels.push(new LevelInfo(levels.length +1,
+		/*levels.push(new LevelInfo(levels.length +1,
 			"getFirstElementTwice", getFirstElementTwice,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 		
@@ -104,7 +104,7 @@ class GlobalVars
 		//--------------------------------level 7 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"getEvenElementsOnly", getEvenElementsOnly,
-			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));*/
 		
 
 

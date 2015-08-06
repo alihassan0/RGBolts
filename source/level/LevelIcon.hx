@@ -5,10 +5,6 @@ import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
 import flixel.text.FlxText;
 
-/**
- * ...
- * @author ...
- */
 class LevelIcon extends FlxSprite
 {
 	private var levelNumbertxt:FlxText;
@@ -16,9 +12,9 @@ class LevelIcon extends FlxSprite
 	private var id:Int;
 	public function new(X:Float=0, Y:Float=0, i:Int,discriptionText:FlxText) 
 	{
-		super(X, Y);
+		super(X, Y,"assets/images/levelIcon.png");
 		id = i;
-		makeGraphic(30, 30, 0xFFA97D5D);
+		//makeGraphic(30, 30, 0xFFA97D5D);
 		FlxG.state.add(this);
 		
 		levelNumbertxt = new FlxText(X, Y, 30, i + "");
