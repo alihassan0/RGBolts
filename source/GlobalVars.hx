@@ -26,7 +26,6 @@ class GlobalVars
 	public static var RIGHT:Int = 3;
 	
 	public static var xml : Xml;
-	
 	public static var moveDuration : Float = 0;
 
 	public static var font:PxBitmapFont; 
@@ -173,9 +172,10 @@ reverseAllElementsExceptTheLastOne*/
 
 		switch each two elememts*/
 		
-
-		//known bugs
-		//trigger affect seq after it reach it's distination
+		//-----------------------------------known bugs-----------------------------------
+		// fix text offset
+		//## handle changing speed .. it screws everything up .
+		//trigger affect seq after it reach it's distination (done .. but i am not confident of the currunt implementation )
 		//reset disabled blocks every replay
 		//if all seqs are gone .. this should be a valid answer
 		//if all seqs are gone .. don't recreate new one's 

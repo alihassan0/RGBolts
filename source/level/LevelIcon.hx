@@ -9,9 +9,9 @@ import flixel.text.FlxBitmapTextField;
 class LevelIcon extends FlxSprite
 {
 	private var levelNumbertxt:FlxBitmapTextField;
-	private var discriptionText:FlxText;
+	private var discriptionText:FlxBitmapTextField;
 	private var id:Int;
-	public function new(X:Float=0, Y:Float=0, i:Int,discriptionText:FlxText) 
+	public function new(X:Float=0, Y:Float=0, i:Int,discriptionText:FlxBitmapTextField) 
 	{
 		super(X, Y,"assets/images/levelIcon.png");
 		id = i;
@@ -42,6 +42,7 @@ class LevelIcon extends FlxSprite
 	}
 	function onOver(Sprite:FlxSprite) 
 	{
+		trace(discriptionText);
 		discriptionText.text = GlobalVars.levels[id-1].description;
 	}
 }
