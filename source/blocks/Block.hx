@@ -18,7 +18,7 @@ class Block extends FlxSprite
 	{
 		super(X, Y);
 		MouseEventManager.add(this, onDown, onUp, null, null);
-		FlxG.state.add(this);
+		GlobalVars.level.blocksGroup.add(this);
 		followMouse = true;
 		
 	}

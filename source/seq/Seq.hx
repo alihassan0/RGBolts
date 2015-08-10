@@ -33,7 +33,7 @@ class Seq extends FlxSprite
 		super(spritePos.x, spritePos.y);
 		loadGraphic("assets/images/seq.png");
 		visible = false;
-		FlxG.state.add(this);
+		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
 		seqRepresenter = new SeqRepresenter();
