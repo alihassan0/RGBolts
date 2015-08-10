@@ -50,7 +50,7 @@ class Seq extends FlxSprite
 			var elem:SeqElem = new SeqElem(x,y,color);
 			/*if(i>GlobalVars.maxVisibleElemesInSeq)
 				elem.visible = false;*/
-			FlxG.state.add(elem);
+			GlobalVars.level.seqGroup.add(elem);
 			seqElements.unshift(elem);
 		}
 		actionTimer = new FlxTimer();

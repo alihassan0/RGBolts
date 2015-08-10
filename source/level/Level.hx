@@ -43,8 +43,9 @@ class Level extends FlxState
 	public var isPaused:Bool;
 	
 	public var gridGroup:FlxGroup;
-	public var blocksGroup:FlxGroup;
+	public var blocksBasesGroup:FlxGroup;
 	public var seqGroup:FlxGroup;
+	public var blocksGroup:FlxGroup;
 	public var panelsGroup:FlxGroup;
 	public var guiGroup:FlxGroup;
 	public var menuGroup:FlxGroup;
@@ -72,19 +73,24 @@ class Level extends FlxState
 		addBlockSources();//added to panels layer
 		addUI();//added to ui layer
 		addDiscription();//added to panels layer
-		
 	}
 
 	private function initGroups()
 	{
 		gridGroup = new FlxGroup();
 		add(gridGroup);
+
 		panelsGroup = new FlxGroup();
 		add(panelsGroup);
-		blocksGroup = new FlxGroup();
-		add(blocksGroup);
+		
+		blocksBasesGroup = new FlxGroup();
+		add(blocksBasesGroup);
+
 		seqGroup = new FlxGroup();
 		add(seqGroup);
+		
+		blocksGroup = new FlxGroup();
+		add(blocksGroup);
 		guiGroup = new FlxGroup();
 		add(guiGroup);
 		menuGroup = new FlxGroup();

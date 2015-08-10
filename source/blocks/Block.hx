@@ -14,12 +14,21 @@ class Block extends FlxSprite
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
+	private var blockBase:FlxSprite;
+	private var blockPillers:FlxSprite;
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
 		MouseEventManager.add(this, onDown, onUp, null, null);
 		GlobalVars.level.blocksGroup.add(this);
 		followMouse = true;
+		offset.set(0,8);
+		
+		blockPillers = new FlxSprite(X,Y,"assets/images/directional5.png");
+		GlobalVars.level.blocksGroup.add(blockPillers);
+		
+		blockBase = new FlxSprite(X,Y,"assets/images/directional3.png");
+		GlobalVars.level.blocksBasesGroup.add(blockBase);
 		
 	}
 	override public function update():Void 
@@ -37,6 +46,8 @@ class Block extends FlxSprite
 				checkPosInGrid();
 			}
 		}
+		blockBase.reset(x,y);
+		blockPillers.reset(x,y);
 	}
 	public function checkPosInGrid() //adds the block to the grid if possible
 	{
