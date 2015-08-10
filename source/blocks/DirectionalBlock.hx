@@ -12,7 +12,8 @@ class DirectionalBlock extends Block
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/directional.png");
+		loadGraphic("assets/images/directional4.png");
+		offset.set(0,8);
 	}
 	override public function affectSeq(s:Seq) 
 	{

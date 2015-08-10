@@ -15,7 +15,7 @@ class SeqElem extends FlxSprite
 	
 	public function new(X:Float , Y:Float, C:Int)
 	{
-		super(X, Y, "assets/images/seq.png");
+		super(X, Y, "assets/images/bolt.png");
 		color = C;
 	}
 	function moveTween(p:FlxPoint) 
