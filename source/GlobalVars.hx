@@ -27,7 +27,6 @@ class GlobalVars
 	public static var moveDuration : Float = 0;
 	public static var maxVisibleElemesInSeq : Int = 3;
 
-
 	public static function loadLevels()
 	{
 		xml = Xml.parse(openfl.Assets.getText("assets/data/queries.xml"));
