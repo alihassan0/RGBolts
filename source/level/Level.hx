@@ -19,6 +19,8 @@ import seq.Seq;
  * A FlxState which can be used for the game's menu.
  */
 using flixel.util.FlxSpriteUtil;
+using Level.ButtonExtender;
+
 class Level extends FlxState
 {
 	private var backToMenuBtn:FlxButton;
@@ -37,6 +39,7 @@ class Level extends FlxState
 	public var levelInfo:LevelInfo;
 
 	private var speed:Int = 1;
+
 	private var timer:FlxTimer;
 	private var speedText:FlxText;
 	public var isRunning:Bool;
@@ -103,7 +106,6 @@ class Level extends FlxState
 		var dBlockSource:BlockSource;
         var allowedBlocks:Array<Int>;
         var temp:Int = GlobalVars.levelInfo.allowedBlocksType;
-
         var discription:FlxSprite = new FlxSprite(480,50).makeGraphic(155,200,0x00000000);
 		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
 		panelsGroup.add(discription);
@@ -135,18 +137,15 @@ class Level extends FlxState
 	private function addUI()
 	{
 		backToMenuBtn = new FlxButton(400, 1, "Back", switchBack);
-		backToMenuBtn.scale.set(0.7, 1.2);
-		backToMenuBtn.updateHitbox();
+		backToMenuBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(backToMenuBtn);
 		
 		runBtn = new FlxButton(460, 1, "run", runGame);
-		runBtn.scale.set(0.7, 1.2);
-		runBtn.updateHitbox();
+		runBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(runBtn);
 		
 		resetBtn = new FlxButton(520, 1, "reset", resetGame);
-		resetBtn.scale.set(0.7, 1.2);
-		resetBtn.updateHitbox();
+		resetBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(resetBtn);
 
 		helpBtn = new FlxButton(580, 10, "", toggleHelpPanel);
@@ -160,18 +159,15 @@ class Level extends FlxState
 		changeSpeed();
 		
 		speedUp = new FlxButton(420, 50, "Up", speedUpF);
-		speedUp.scale.set(0.4,0.6);
-		speedUp.updateHitbox();
+		speedUp.scalebtn(0.4,0.6);
 		guiGroup.add(speedUp);
 		
 		speedDown = new FlxButton(420, 63, "Down", speedDownF);
-		speedDown.scale.set(0.4,0.6);
-		speedDown.updateHitbox();
+		speedDown.scalebtn(0.4,0.6);
 		guiGroup.add(speedDown);
 
 		nextLevel = new FlxButton(490-60, 235, "next level", nextLevelF);
-		nextLevel.scale.set(2,2);
-		nextLevel.updateHitbox();
+		nextLevel.scalebtn(2,2);
 		nextLevel.visible = false;
 		guiGroup.add(nextLevel);
 
@@ -288,6 +284,7 @@ class Level extends FlxState
 			if(getNextInputTest() == null)
 			{
 				nextLevel.visible = true;
+				resetSeqs();
 				togglePauseGame();
 			}	
 			else
@@ -327,30 +324,24 @@ class Level extends FlxState
 	{
 		if (speed == 0)
 		{
-		   timer.cancel();
+			timer.cancel();
 		 	GlobalVars.moveDuration = 0;
 		}
-		if (speed == 1)
-		{
-		   GlobalVars.moveDuration = 1;
-		}
-		if (speed == 2)
-		{
-		   GlobalVars.moveDuration = .5;
-		}
-		if (speed == 3)
-		{
-			GlobalVars.moveDuration = .25;
-		}
+		GlobalVars.moveDuration = Math.pow(2,1-speed);
+		GlobalVars.seqStep = 40/60;//((36*GlobalVars.moveDuration)/60);
 		timer.start(GlobalVars.moveDuration, intermediate , 0);
 	}
 	function resetGame() 
 	{
-		isRunning =  false;
-		bgColor = FlxColor.WHEAT;
+		exitPlayMode();
 		resetSeqs();
 		resetTestCases();
 		
+	}
+	function exitPlayMode() 
+	{
+		isRunning =  false;
+		bgColor = FlxColor.WHEAT;
 	}
 	public function resetSeqs():Void
 	{
@@ -422,4 +413,12 @@ class Level extends FlxState
 			FlxG.watch.add(GlobalVars.Seqs, "length");
 		}*/
 	}
+}
+class ButtonExtender {
+  static public function scalebtn(btn:FlxButton,scaleX:Float,scaleY:Float) {
+	    btn.scale.set(scaleX, scaleY);
+		btn.updateHitbox();
+		btn.label.offset.set(btn.offset.x,btn.offset.y); 
+		return btn;
+  }
 }

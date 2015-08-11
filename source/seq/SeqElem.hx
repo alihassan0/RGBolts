@@ -12,13 +12,16 @@ import flixel.tweens.FlxEase;
 class SeqElem extends FlxSprite
 {
 	public var tween:FlxTween;
-	
-	public function new(X:Float , Y:Float, C:Int)
+	public var direction:FlxPoint;
+	public var seq:Seq;
+	public function new(X:Float , Y:Float, C:Int,s:Seq)
 	{
 		super(X, Y, "assets/images/bolt.png");
 		color = C;
+		this.seq = s;
+		direction = new FlxPoint(0,0);
 	}
-	function moveTween(p:FlxPoint) 
+	/*function moveTween(p:FlxPoint) 
 	{
 		var options:TweenOptions = { type: FlxTween.ONESHOT}
 		
@@ -26,5 +29,15 @@ class SeqElem extends FlxSprite
 			tween.cancel();
 		}
 		tween = FlxTween.tween(this, { x: p.x, y: p.y}, GlobalVars.moveDuration, options);		
-	}	
+	}*/
+	public function moveBySpeed()
+	{
+		reset(x + (40/GlobalVars.moveDuration)*FlxG.elapsed*(direction.x),
+			  y + (40/GlobalVars.moveDuration)*FlxG.elapsed*(direction.y));
+	}
+	override public function update()
+	{
+		super.update();
+		moveBySpeed();
+	}
 }

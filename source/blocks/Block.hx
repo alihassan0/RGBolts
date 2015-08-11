@@ -22,7 +22,7 @@ class Block extends FlxSprite
 		MouseEventManager.add(this, onDown, onUp, null, null);
 		GlobalVars.level.blocksGroup.add(this);
 		followMouse = true;
-		offset.set(0,8);
+		offset.set(0,5);
 		
 		blockPillers = new FlxSprite(X,Y,"assets/images/directional5.png");
 		GlobalVars.level.blocksGroup.add(blockPillers);
@@ -136,5 +136,13 @@ class Block extends FlxSprite
 					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(0,-1));
 				}
 		}
+	}
+	override public function kill()
+	{
+		blockBase.kill();
+		blockPillers.kill();
+		GlobalVars.level.blocksGroup.remove(blockPillers);
+		GlobalVars.level.blocksBasesGroup.remove(blockBase);
+		super.kill();
 	}
 }

@@ -25,6 +25,7 @@ class GlobalVars
 	public static var xml : Xml;
 	
 	public static var moveDuration : Float = 0;
+	public static var seqStep:Float = 80/60;//how many pixels should the seq move per second 
 	public static var maxVisibleElemesInSeq : Int = 3;
 
 	public static function loadLevels()

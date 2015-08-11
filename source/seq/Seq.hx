@@ -15,6 +15,7 @@ import flixel.tweens.FlxEase;
 class Seq extends FlxSprite
 {
 	private var position(get, null):FlxPoint;
+	private var initialPosition:FlxPoint;
 	public var direction:FlxPoint ;
 	public var seqString:String = "";
 	public var seqRepresenter:SeqRepresenter;
@@ -22,17 +23,22 @@ class Seq extends FlxSprite
 	private var tween:FlxTween;
 	private var seqElements:Array<SeqElem>;
 	private var MoveReady:Bool;
-	private var elemIndex:Int;
+	private var elemIndex:Int =0;
+	private var ofst:Int = 10;
 	private var MoveTimer:FlxTimer;
 	private var actionTimer:FlxTimer;
 	private var distinationPoint:FlxPoint;
+	private var firstElemPositions:Array<FlxPoint>;
+
 	public function new(posX:Int,posY:Int, initialString:String) 
 	{
 		position = new FlxPoint(posX, posY);
-		var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
-		super(spritePos.x, spritePos.y);
+		initialPosition = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
+		super(initialPosition.x, initialPosition.y);
+
 		loadGraphic("assets/images/seq.png");
 		visible = false;
+		
 		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
@@ -47,16 +53,74 @@ class Seq extends FlxSprite
 		for (i in 0 ... numOfElements) {
 			index = numOfElements-1-i;
 			var color = (index<initialString.length)?getColor(initialString.charAt(index)):0xffffffff;
-			var elem:SeqElem = new SeqElem(x,y,color);
+			trace(x+"************"+y);
+			var elem:SeqElem = new SeqElem(x,y,color,this);
 			/*if(i>GlobalVars.maxVisibleElemesInSeq)
 				elem.visible = false;*/
 			GlobalVars.level.seqGroup.add(elem);
 			seqElements.unshift(elem);
 		}
 		actionTimer = new FlxTimer();
-		
+		firstElemPositions = new Array<FlxPoint>();
 	}
-	
+	override public function update() 
+	{
+		super.update();
+		trace(x);
+		moveElementsOneByOne();
+		//moveBySpeed();
+	}
+	public function moveElementsOneByOne()
+	{
+		if(elemIndex == seqElements.length)
+			return;
+
+		/*if(elemIndex == 0 ||
+			(direction.x != 0 && Math.abs(seqElements[elemIndex-1].x - initialPosition.x) >13) ||
+			(direction.y != 0 && Math.abs(seqElements[elemIndex-1].y - initialPosition.y) >13))
+		{
+			trace("send Next element");
+			//trace(elemIndex + "     " + direction);
+			seqElements[elemIndex].direction = direction;
+			elemIndex ++;
+		}*/
+		/*
+		if(elemIndex == 0 || 
+			((seqElements[0].x - initialPosition.x)* direction.x) >elemIndex *3 ||
+			((seqElements[0].y - initialPosition.y)* direction.y) >elemIndex *3)
+		{
+			trace("send Next element");
+			seqElements[elemIndex].direction = direction;
+			elemIndex ++;
+		}*/
+		/*if(elemIndex == 0 )
+		{
+			trace("send Next element");
+			seqElements[elemIndex].direction = direction;
+		}
+		var countX :Float = Math.floor(((seqElements[0].x - initialPosition.x)* direction.x) /3);
+		var countY :Float = Math.floor(((seqElements[0].y - initialPosition.y)* direction.x) /3);
+		var count:Float;*/
+		seqElements[0].direction = direction;
+		firstElemPositions.unshift(FlxPoint.get(seqElements[0].x, seqElements[0].y));
+		if (firstElemPositions.length >= seqElements.length*ofst)
+		{
+			firstElemPositions.pop();
+		}
+		for (i in 1 ... seqElements.length) {
+			if(i*ofst < firstElemPositions.length)
+				seqElements[i].reset(firstElemPositions[i*ofst].x,firstElemPositions[i*ofst].y);
+		}
+	}
+	public function moveNextElem(t:FlxTimer)
+	{
+		trace(elemIndex);
+		if(elemIndex >= seqElements.length)
+			return;
+		elemIndex ++;
+		if(elemIndex < seqElements.length)
+			MoveTimer.start(.1,moveNextElem,1);
+	}
 	public function getString():String
 	{
 		return seqString;
@@ -79,57 +143,23 @@ class Seq extends FlxSprite
 		}
 		return color;
 	}
-	function onOver(Sprite:FlxSprite) 
+	public function onOver(Sprite:FlxSprite) 
 	{
 		seqRepresenter.show(true);
 		//FlxG.log.add("over");
 	}
-	function onOut(Sprite:FlxSprite) 
+	public function onOut(Sprite:FlxSprite) 
 	{
 		seqRepresenter.show(false);
 		//FlxG.log.add("out");
 	}
-	function moveTween(p:FlxPoint) 
-	{
-		var options:TweenOptions = { type: FlxTween.ONESHOT}
-		distinationPoint = p;
-		
-		if (tween != null) {
-			tween.cancel();
-		}
-		var offset:Int;
-		if(MoveTimer == null)
-			MoveTimer = new FlxTimer();
-
-		elemIndex = 0;
-		MoveTimer.start(.1,moveNextElem,1);
-		for (i in 0 ... seqElements.length) {
-			tween = FlxTween.tween(this, { x: p.x, y: p.y}, GlobalVars.moveDuration, options);		
-		}
-		tween = FlxTween.tween(this, { x: p.x, y: p.y}, GlobalVars.moveDuration, options);		
-	}
-	public function moveNextElem(t:FlxTimer)
-	{
-		trace(elemIndex);
-		var options:TweenOptions = { type: FlxTween.ONESHOT}
-		if(elemIndex >= seqElements.length)
-			return;
-
-		if (seqElements[elemIndex].tween != null) {
-			seqElements[elemIndex].tween.cancel();
-		}
-		seqElements[elemIndex].tween = FlxTween.tween(seqElements[elemIndex], { x: distinationPoint.x, y: distinationPoint.y}, GlobalVars.moveDuration, options);
-		elemIndex ++;
-		if(elemIndex < seqElements.length)
-			MoveTimer.start(.1,moveNextElem,1);
-	}
 	public function action()
 	{
+		move();
 		if (GlobalVars.gameGrid.getBlockOfPos(position) != null)
 		{
 			affect();
 		}
-		move();
 	}
 	public function move()
 	{
@@ -141,12 +171,16 @@ class Seq extends FlxSprite
 		}
 		else
 		{
-			var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
-			if(GlobalVars.moveDuration != 0)
-			moveTween(spritePos);
-			else
-			reset(spritePos.x, spritePos.y);
+			initialPosition = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
+			reset(initialPosition.x,initialPosition.y);
+			elemIndex = 0;
+			trace(direction);
 		}
+	}
+	public function moveBySpeed()
+	{
+		reset(x + GlobalVars.seqStep*(direction.x),
+			  y + GlobalVars.seqStep*(direction.y));
 	}
 	public function affect()
 	{
@@ -160,20 +194,14 @@ class Seq extends FlxSprite
 		}
 		if (seqRepresenter != null)
 		seqRepresenter.represent();
-
-	}
-	override public function kill():Void 
-	{
-		super.kill();
-		for (i in 0 ... seqElements.length) {
-			seqElements[i].kill();
-		}
-		alpha = .3;
-		FlxG.watch.remove(this);
-		seqRepresenter.kill();
 	}
 	public function removeFirst():SeqElem
 	{
+		/*for (i in 0 ... ofst) {
+			firstElemPositions.shift();
+		}*/
+		if(seqElements.length>1)
+			seqElements[1].reset(seqElements[0].x,seqElements[0].y);
 		return seqElements.shift();
 	}
 	public function insertFirst(se:SeqElem)
@@ -189,19 +217,15 @@ class Seq extends FlxSprite
 		canMove = true;
 	}
 	public function showSeq():Void
-	{
-		
+	{	
 	}
 	public function affectBlock(b:Block)
-	{
-		
+	{	
 	}
-	
 	public function set_direction(value:FlxPoint):FlxPoint 
 	{
 		return direction = value;
 	}
-	
 	public function get_direction():FlxPoint 
 	{
 		return direction;
@@ -209,5 +233,15 @@ class Seq extends FlxSprite
 	public function get_position():FlxPoint 
 	{
 		return position;
+	}
+	override public function kill():Void 
+	{
+		super.kill();
+		for (i in 0 ... seqElements.length) {
+			seqElements[i].kill();
+		}
+		alpha = .3;
+		FlxG.watch.remove(this);
+		seqRepresenter.kill();
 	}
 }
