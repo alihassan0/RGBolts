@@ -233,7 +233,7 @@ class Level extends FlxState
 	}
 	function speedDownF()
 	{
-		if (speed > 0)
+		if (speed > 1)
 		speed--;
         speedText.text = "Speed: " + speed;
 		changeSpeed();
@@ -328,8 +328,7 @@ class Level extends FlxState
 		 	GlobalVars.moveDuration = 0;
 		}
 		GlobalVars.moveDuration = Math.pow(2,1-speed);
-		GlobalVars.seqStep = 40/60;//((36*GlobalVars.moveDuration)/60);
-		timer.start(GlobalVars.moveDuration, intermediate , 0);
+		//timer.start(GlobalVars.moveDuration, intermediate , 0);
 	}
 	function resetGame() 
 	{
@@ -381,11 +380,10 @@ class Level extends FlxState
 			GlobalVars.gameGrid.inputBlock.inputString = getInputString();
 			GlobalVars.gameGrid.outputBlock.inputString = getInputString();
 		}
-		else
-		{
-			if(speed == 0)
+		if(speed == 0)
 			runGridOnce();
-		}
+		else
+			timer.start(GlobalVars.moveDuration, intermediate , 1);
 	}
 	public function runGridOnce():Void 
 	{
@@ -394,14 +392,15 @@ class Level extends FlxState
 			GlobalVars.gameGrid.inputBlock.started = true;
 			status_change(3);
 		}
-		
 		GlobalVars.turn ++;
+		GlobalVars.stepDuration = GlobalVars.moveDuration;
 		GlobalVars.Seqs = Lambda.array(Lambda.filter(GlobalVars.Seqs, function(v) { return (v.alive == true); } ));
 		for (i in 0...GlobalVars.Seqs.length)
         {
         	if(GlobalVars.Seqs[i] != null && GlobalVars.Seqs[i].canMove)
 			GlobalVars.Seqs[i].action();
         }
+        timer.start(GlobalVars.moveDuration, intermediate , 1);
 	}
 	override public function update():Void
 	{

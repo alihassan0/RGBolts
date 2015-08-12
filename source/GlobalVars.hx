@@ -25,7 +25,7 @@ class GlobalVars
 	public static var xml : Xml;
 	
 	public static var moveDuration : Float = 0;
-	public static var seqStep:Float = 80/60;//how many pixels should the seq move per second 
+	public static var stepDuration:Float = 0;//same as moveDuration but only at the beginnning of any move .. i couldn't come up with a better name :"|
 	public static var maxVisibleElemesInSeq : Int = 3;
 
 	public static function loadLevels()
@@ -133,8 +133,13 @@ class GlobalVars
 		//made directional signals
 		
 
+		//---------------------------changelog------------------------
+		//add seq highlighting
+		//fix all operation for seqs
+		//only be able to change speed at the start of each move
+		//maintain the same offset through all speed
+		//fix the remove first block
 		
-
 		
  
 		//-------------------------improvements------------------------------

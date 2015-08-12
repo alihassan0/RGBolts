@@ -24,7 +24,8 @@ class Seq extends FlxSprite
 	private var seqElements:Array<SeqElem>;
 	private var MoveReady:Bool;
 	private var elemIndex:Int =0;
-	private var ofst:Int = 10;
+	private var normalOfst:Int = 12;
+	private var ofst:Int;
 	private var MoveTimer:FlxTimer;
 	private var actionTimer:FlxTimer;
 	private var distinationPoint:FlxPoint;
@@ -37,7 +38,7 @@ class Seq extends FlxSprite
 		super(initialPosition.x, initialPosition.y);
 
 		loadGraphic("assets/images/seq.png");
-		visible = false;
+		visible = true;
 		
 		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
@@ -62,6 +63,7 @@ class Seq extends FlxSprite
 		}
 		actionTimer = new FlxTimer();
 		firstElemPositions = new Array<FlxPoint>();
+		ofst = normalOfst;
 	}
 	override public function update() 
 	{
@@ -75,32 +77,6 @@ class Seq extends FlxSprite
 		if(elemIndex == seqElements.length)
 			return;
 
-		/*if(elemIndex == 0 ||
-			(direction.x != 0 && Math.abs(seqElements[elemIndex-1].x - initialPosition.x) >13) ||
-			(direction.y != 0 && Math.abs(seqElements[elemIndex-1].y - initialPosition.y) >13))
-		{
-			trace("send Next element");
-			//trace(elemIndex + "     " + direction);
-			seqElements[elemIndex].direction = direction;
-			elemIndex ++;
-		}*/
-		/*
-		if(elemIndex == 0 || 
-			((seqElements[0].x - initialPosition.x)* direction.x) >elemIndex *3 ||
-			((seqElements[0].y - initialPosition.y)* direction.y) >elemIndex *3)
-		{
-			trace("send Next element");
-			seqElements[elemIndex].direction = direction;
-			elemIndex ++;
-		}*/
-		/*if(elemIndex == 0 )
-		{
-			trace("send Next element");
-			seqElements[elemIndex].direction = direction;
-		}
-		var countX :Float = Math.floor(((seqElements[0].x - initialPosition.x)* direction.x) /3);
-		var countY :Float = Math.floor(((seqElements[0].y - initialPosition.y)* direction.x) /3);
-		var count:Float;*/
 		seqElements[0].direction = direction;
 		firstElemPositions.unshift(FlxPoint.get(seqElements[0].x, seqElements[0].y));
 		if (firstElemPositions.length >= seqElements.length*ofst)
@@ -174,13 +150,9 @@ class Seq extends FlxSprite
 			initialPosition = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 			reset(initialPosition.x,initialPosition.y);
 			elemIndex = 0;
+			ofst = Math.floor(normalOfst*GlobalVars.moveDuration);
 			trace(direction);
 		}
-	}
-	public function moveBySpeed()
-	{
-		reset(x + GlobalVars.seqStep*(direction.x),
-			  y + GlobalVars.seqStep*(direction.y));
 	}
 	public function affect()
 	{

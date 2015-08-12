@@ -34,6 +34,10 @@ class ApplicationMain {
 		var types = [];
 		
 		
+		urls.push ("assets/images/directional3.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/sig.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -50,11 +54,23 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/bolt.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/seq2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/color.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/output.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/directional2.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -86,7 +102,15 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/directional5.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/ifblue.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/directional4.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -96,6 +120,10 @@ class ApplicationMain {
 		
 		urls.push ("assets/images/signal.png");
 		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/data/queries2.xml");
+		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		urls.push ("assets/data/data-goes-here.txt");
@@ -120,6 +148,14 @@ class ApplicationMain {
 		
 		urls.push ("assets/sounds/flixel.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("Nokia Cellphone FC Small");
+		types.push (lime.Assets.AssetType.FONT);
+		
+		
+		urls.push ("Arial");
+		types.push (lime.Assets.AssetType.FONT);
 		
 		
 		
@@ -169,7 +205,7 @@ class ApplicationMain {
 		
 		
 		
-		if (loaded == total) {
+		if (total == 0) {
 			
 			start ();
 			
@@ -190,6 +226,7 @@ class ApplicationMain {
 			file: "sequenceCSGame",
 			fps: Std.int (60),
 			fullscreen: false,
+			hardware: true,
 			height: Std.int (480),
 			orientation: "portrait",
 			packageName: "com.example.myapp",

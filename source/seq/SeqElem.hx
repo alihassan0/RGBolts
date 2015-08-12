@@ -32,8 +32,8 @@ class SeqElem extends FlxSprite
 	}*/
 	public function moveBySpeed()
 	{
-		reset(x + (40/GlobalVars.moveDuration)*FlxG.elapsed*(direction.x),
-			  y + (40/GlobalVars.moveDuration)*FlxG.elapsed*(direction.y));
+		reset(x + (40/GlobalVars.stepDuration)*FlxG.elapsed*(direction.x),
+			  y + (40/GlobalVars.stepDuration)*FlxG.elapsed*(direction.y));
 	}
 	override public function update()
 	{
