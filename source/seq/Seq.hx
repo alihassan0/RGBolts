@@ -38,7 +38,7 @@ class Seq extends FlxSprite
 		super(initialPosition.x, initialPosition.y);
 
 		loadGraphic("assets/images/seq.png");
-		visible = true;
+		visible = false;
 		
 		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
@@ -157,7 +157,6 @@ class Seq extends FlxSprite
 	public function affect()
 	{
 		canMove = true;
-		trace("action made @"+position);
 		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);		
 		if(currBLock.enabled && (!Std.is(this, Signal)||Std.is(currBLock, DirectionalBlock)))
 		{
@@ -167,14 +166,23 @@ class Seq extends FlxSprite
 		if (seqRepresenter != null)
 		seqRepresenter.represent();
 	}
-	public function removeFirst():SeqElem
+	public function removeFirst()
 	{
 		/*for (i in 0 ... ofst) {
 			firstElemPositions.shift();
 		}*/
 		if(seqElements.length>1)
+		{
 			seqElements[1].reset(seqElements[0].x,seqElements[0].y);
-		return seqElements.shift();
+			seqElements.shift().kill();
+		}
+		else
+		{
+			seqElements[0].alpha = .6;
+			kill();
+		}
+
+
 	}
 	public function insertFirst(se:SeqElem)
 	{
@@ -209,11 +217,12 @@ class Seq extends FlxSprite
 	override public function kill():Void 
 	{
 		super.kill();
-		for (i in 0 ... seqElements.length) {
-			seqElements[i].kill();
+		while (seqElements.length != 0)
+		{
+			seqElements.shift().kill();	
 		}
 		alpha = .3;
-		FlxG.watch.remove(this);
+		//FlxG.watch.remove(this);
 		seqRepresenter.kill();
 	}
 }

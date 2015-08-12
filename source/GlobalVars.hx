@@ -134,11 +134,11 @@ class GlobalVars
 		
 
 		//---------------------------changelog------------------------
-		//add seq highlighting
-		//fix all operation for seqs
+		//fix the remove first block
 		//only be able to change speed at the start of each move
 		//maintain the same offset through all speed
-		//fix the remove first block
+		//fix all operation for seqs
+		//add seq highlighting
 		
 		
  

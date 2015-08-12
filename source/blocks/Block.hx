@@ -3,6 +3,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
 import flixel.util.FlxPoint;
+import flixel.effects.FlxFlicker;
 import seq.Seq;
 /**
  * ...
@@ -96,7 +97,8 @@ class Block extends FlxSprite
 	}
 	public function affectSeq(s:Seq)
 	{
-		
+		FlxFlicker.flicker(this, .5, 0.04);
+		FlxG.sound.play("assets/sounds/powerup.wav", .5);
 	}
 	public function direct(s:Seq,direction:Int)
 	{

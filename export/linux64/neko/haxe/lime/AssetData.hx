@@ -66,6 +66,8 @@ class AssetData {
 			type.set ("assets/data/data-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/data/queries.xml", "assets/data/queries.xml");
 			type.set ("assets/data/queries.xml", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/sounds/powerup.wav", "assets/sounds/powerup.wav");
+			type.set ("assets/sounds/powerup.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 			type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
