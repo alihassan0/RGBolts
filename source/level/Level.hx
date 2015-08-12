@@ -73,10 +73,10 @@ class Level extends FlxState
 		addDiscription();//added to panels layer
 		
 
-		TutVars.initSprites();
-		TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
-		/*TutVars.initHelpPanel();
-		TutVars.showHelpPanel(GlobalVars.gameGrid.inputBlock,"this is a test ... let's hope it works");*/
+		//TutVars.initSprites();
+		//TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
+		TutVars.initHelpPanel();
+		TutVars.showNextTip();
 	}
 
 	private function initGroups()

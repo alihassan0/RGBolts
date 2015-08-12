@@ -6,7 +6,7 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxRect;
 import flixel.text.FlxText;
-
+import flixel.ui.FlxButton;
 import flixel.plugin.MouseEventManager;
 /**
  * ...
@@ -18,6 +18,8 @@ class TutVars
 	private static var spriteColor:Int = 0xCC888888;
 	private static var helpPanel:FlxSprite;
 	private static var helpText:FlxText;
+	private static var helpNextButton:FlxButton;
+	private static var curruntHint:Int = 0;
 	public static function initSprites()
 	{
 		sprites = new Array<FlxSprite>();
@@ -34,14 +36,20 @@ class TutVars
 		helpPanel = new FlxSprite();
 		FlxG.state.add(helpPanel);
 		
-		helpText = new FlxText(0,0,200,"",8);
+		helpText = new FlxText(0,0,200).setFormat(null, 16 , 0xffffff,"center");
 		FlxG.state.add(helpText);
+
+		helpNextButton = new FlxButton(0, 0, "next",showNextTip);
+		FlxG.state.add(helpNextButton);
 	}
 	public static function showHelpPanel(s:FlxSprite,text:String)
 	{
 		helpText.text = text;
-		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(helpText.height),0xff00ff00);
-		trace(helpText.textField.height);
+		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(((1+Math.floor(text.length/25))*24) + helpNextButton.height + 4),0xff000000);
+
+		helpText.reset(s.x+s.width,s.y + s.height);
+		helpPanel.reset(s.x+s.width,s.y + s.height);
+		helpNextButton.reset(s.x+s.width + Math.floor((helpPanel.width-helpNextButton.width)/2),s.y + s.height + helpPanel.height - 2 - helpNextButton.height);
 	}
 	public static function focusOn(rect:FlxSprite)
 	{
@@ -68,5 +76,14 @@ class TutVars
 	static function onDown(Sprite:FlxSprite) 
 	{
 		trace("clicked on me ");
+	}
+	public static function showNextTip() {
+		switch (curruntHint ) {
+			case 0:
+				TutVars.showHelpPanel(GlobalVars.gameGrid.inputBlock,"this is the input block  ");
+			case 1:
+				TutVars.showHelpPanel(GlobalVars.gameGrid.outputBlock,"this is the output block  ");
+		}
+		curruntHint ++;
 	}
 }
