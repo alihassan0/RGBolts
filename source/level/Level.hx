@@ -23,16 +23,16 @@ class Level extends FlxState
 {
 	private var backToMenuBtn:FlxButton;
 	
-	private var status_txt:FlxText;
-	private var title_txt:FlxText;
-	private var runBtn:FlxButton;
-	private var resetBtn:FlxButton;
-	private var helpBtn:FlxButton;
-	private var speedUp:FlxButton;
-	private var speedDown:FlxButton;
-	private var nextLevel:FlxButton;
-	private var helpPanel:FlxSprite;
-	private var helpPanelText:FlxText;
+	public var status_txt:FlxText;
+	public var title_txt:FlxText;
+	public var runBtn:FlxButton;
+	public var resetBtn:FlxButton;
+	public var helpBtn:FlxButton;
+	public var speedUp:FlxButton;
+	public var speedDown:FlxButton;
+	public var nextLevel:FlxButton;
+	public var helpPanel:FlxSprite;
+	public var helpPanelText:FlxText;
 	
 	public var levelInfo:LevelInfo;
 
