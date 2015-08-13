@@ -396,6 +396,13 @@ class Level extends FlxState
 			if(speed == 0)
 			runGridOnce();
 		}
+		checkForTutorial("runBtn");
+
+	}
+	public function checkForTutorial(key:String)
+	{
+		if(TutVars.exists && TutVars.curruntHint == TutVars.triggers[key])
+			TutVars.showNextTip();
 	}
 	public function runGridOnce():Void 
 	{

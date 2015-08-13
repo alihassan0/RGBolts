@@ -19,8 +19,16 @@ class TutVars
 	private static var helpPanel:FlxSprite;
 	private static var helpText:FlxText;
 	private static var helpNextButton:FlxButton;
-	private static var curruntHint:Int = 0;
-	private static var exists:Bool = true;
+	public static var curruntHint:Int = 0;
+	public static var exists:Bool = true;
+
+	public static var RunBtnSignal:Int = 4;
+	public static var triggers:Map<String, Int> =
+    [
+      "runBtn"=>4,
+      "resetBtn"=>2,
+      "testCase"=>3
+    ];
 	public static function initSprites()
 	{
 		sprites = new Array<FlxSprite>();
@@ -107,6 +115,8 @@ class TutVars
 				TutVars.showHelpPanelAtPos(new FlxPoint(130,130),"your job is to direct block from the input block to the output block       ", true);
 			case 3: 
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press the run runBtn  ",Direction.down,false);
+			case 4: 
+				TutVars.showHelpPanelAtPos(new FlxPoint(130,130),"it works :'D ", true);
 		}
 		curruntHint ++;
 	}
