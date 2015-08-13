@@ -11,6 +11,7 @@ import flixel.util.FlxMath;
 import flixel.util.FlxTimer;
 import flixel.util.FlxPoint;
 import flixel.group.FlxGroup;
+import flixel.group.FlxTypedGroup;
 
 import haxe.Constraints.Function;
 import seq.Seq;
@@ -25,16 +26,16 @@ class Level extends FlxState
 {
 	private var backToMenuBtn:FlxButton;
 	
-	private var status_txt:FlxText;
-	private var title_txt:FlxText;
-	private var runBtn:FlxButton;
-	private var resetBtn:FlxButton;
-	private var helpBtn:FlxButton;
-	private var speedUp:FlxButton;
-	private var speedDown:FlxButton;
-	private var nextLevel:FlxButton;
-	private var helpPanel:FlxSprite;
-	private var helpPanelText:FlxText;
+	public var status_txt:FlxText;
+	public var title_txt:FlxText;
+	public var runBtn:FlxButton;
+	public var resetBtn:FlxButton;
+	public var helpBtn:FlxButton;
+	public var speedUp:FlxButton;
+	public var speedDown:FlxButton;
+	public var nextLevel:FlxButton;
+	public var helpPanel:FlxSprite;
+	public var helpPanelText:FlxText;
 	
 	public var levelInfo:LevelInfo;
 
@@ -50,7 +51,8 @@ class Level extends FlxState
 	public var seqGroup:FlxGroup;
 	public var blocksGroup:FlxGroup;
 	public var panelsGroup:FlxGroup;
-	public var guiGroup:FlxGroup;
+	public var blockSourcesGroup:FlxTypedGroup<FlxSprite>;
+	public  var guiGroup:FlxGroup;
 	public var menuGroup:FlxGroup;
 	public var tutGroup:FlxGroup;
 
@@ -63,10 +65,9 @@ class Level extends FlxState
 		this.isRunning = false;
 		GlobalVars.level = this;
 		
+		FlxG.watch.addMouse();
 		initGroups();
 
-		FlxG.watch.addMouse();
-		
 		bgColor = FlxColor.WHEAT;
 		new GameGrid();
 		
@@ -76,6 +77,11 @@ class Level extends FlxState
 		addBlockSources();//added to panels layer
 		addUI();//added to ui layer
 		addDiscription();//added to panels layer
+
+		//TutVars.initSprites();
+		//TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
+		TutVars.initHelpPanel();
+		TutVars.showNextTip();
 	}
 
 	private function initGroups()
@@ -85,6 +91,9 @@ class Level extends FlxState
 
 		panelsGroup = new FlxGroup();
 		add(panelsGroup);
+
+		blockSourcesGroup = new FlxTypedGroup<FlxSprite>();
+		add(blockSourcesGroup);
 		
 		blocksBasesGroup = new FlxGroup();
 		add(blocksBasesGroup);
@@ -124,7 +133,7 @@ class Level extends FlxState
         	if(allowedBlocks.indexOf(i)!=-1)
         	{
     			dBlockSource = new BlockSource(490 + 45 * (i%3), 60 + 45 * Math.floor(i/3), i);
-    			panelsGroup.add(dBlockSource);
+    			blockSourcesGroup.add(dBlockSource);
         	}
         	else
         	{
@@ -335,6 +344,7 @@ class Level extends FlxState
 		exitPlayMode();
 		resetSeqs();
 		resetTestCases();
+		checkForTutorial("resetBtn");
 		
 	}
 	function exitPlayMode() 
@@ -384,6 +394,12 @@ class Level extends FlxState
 			runGridOnce();
 		else
 			timer.start(GlobalVars.moveDuration, intermediate , 1);
+		checkForTutorial("runBtn");
+	}
+	public function checkForTutorial(key:String)
+	{
+		if(TutVars.exists && TutVars.curruntHint == TutVars.triggers[key])
+			TutVars.showNextTip();
 	}
 	public function runGridOnce():Void 
 	{

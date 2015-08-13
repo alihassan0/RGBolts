@@ -278,6 +278,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
 		
 		
 		
@@ -286,6 +287,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
+=======
+>>>>>>> tutSystem
 		#end
 		
 		#if (windows || mac || linux)
@@ -1135,6 +1138,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -1143,6 +1147,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
 
+=======
+>>>>>>> tutSystem
 #else
 
 
