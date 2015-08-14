@@ -59,18 +59,20 @@ class OutputBlock extends Block
 	{
 		return testFunction(inputString) == outputString;
 	}
-	override public function checkPosInGrid() 
+	override public function checkPosInGrid()
 	{
 		var bestfit:FlxPoint = GlobalVars.gameGrid.addInBestFit(this);
 		if(bestfit == null)
 		{
 			var p :FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 			reset(p.x, p.y);
+			return false;//i will probably change this later
 		}
 		else
 		{
 			this.reset(bestfit.x, bestfit.y);
 			this.position = GlobalVars.gameGrid.getposOfBlock(this);
+			return true;
 		}
 	}
 	override public function onDown(Sprite:FlxSprite) 

@@ -80,8 +80,17 @@ class Level extends FlxState
 
 		//TutVars.initSprites();
 		//TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
-		TutVars.initHelpPanel();
-		TutVars.showNextTip();
+		if(levelInfo.id == 1)
+		{
+			TutVars.exists = true;
+			TutVars.curruntHint = 0;
+			TutVars.initHelpPanel();
+			TutVars.showNextTip();
+		}
+		else
+		{
+			TutVars.exists = false;
+		}
 	}
 
 	private function initGroups()
@@ -398,7 +407,7 @@ class Level extends FlxState
 	}
 	public function checkForTutorial(key:String)
 	{
-		if(TutVars.exists && TutVars.curruntHint == TutVars.triggers[key])
+		if(TutVars.exists && TutVars.triggers[key].indexOf(TutVars.curruntHint)!= -1)
 			TutVars.showNextTip();
 	}
 	public function runGridOnce():Void 

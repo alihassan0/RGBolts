@@ -44,7 +44,8 @@ class Block extends FlxSprite
 			if(!FlxG.mouse.pressed)
 			{
 				followMouse = false;
-				checkPosInGrid();
+				if(checkPosInGrid())//later i need to make sure to do a check for the block type
+						GlobalVars.level.checkForTutorial("directional_place");
 			}
 		}
 		blockBase.reset(x,y);
@@ -57,11 +58,13 @@ class Block extends FlxSprite
 		{
 			GlobalVars.gameGrid.removeFromGrid(this);
 			kill();
+			return false;
 		}
 		else
 		{
 			this.reset(bestfit.x, bestfit.y);
 			this.position = GlobalVars.gameGrid.getposOfBlock(this);
+			return true;
 		}
 	}
 	public function toggleEnabled(?s:Seq)
@@ -90,6 +93,9 @@ class Block extends FlxSprite
 			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
 			angle += 90;
 		}
+		if(checkPosInGrid())//later i need to make sure to do a check for the block type :"|
+			GlobalVars.level.checkForTutorial("directional_rotate");
+
 	}
 	public function onUp(Sprite:FlxSprite)
 	{

@@ -13,7 +13,7 @@ import flixel.util.FlxPoint;
 // position refers to position in grid
 class GameGrid extends FlxSprite
 {
-	private var grid:Array<Array<FlxSprite>>;
+	public var grid:Array<Array<FlxSprite>>;
 	private var blocksGrid:Array<Array<Block>>;
 	
 	private var gridWidth(get, null):Int = 8;

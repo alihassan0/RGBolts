@@ -50,6 +50,8 @@ class BlockSource extends FlxSprite
 				case 8: new SignalBlock(0,0);
 			}
 		}
+		if(blockType == 0)
+			GlobalVars.level.checkForTutorial("directional_click");
 	}
 	
 	public function disable()
