@@ -68,7 +68,7 @@ class Level extends FlxState
 		FlxG.watch.addMouse();
 		initGroups();
 
-		bgColor = 0xFFfff5b3;
+		bgColor = FlxColor.WHEAT;
 		new GameGrid();
 		
 
@@ -125,7 +125,7 @@ class Level extends FlxState
         var allowedBlocks:Array<Int>;
         var temp:Int = GlobalVars.levelInfo.allowedBlocksType;
         var discription:FlxSprite = new FlxSprite(480,50).makeGraphic(155,200,0x00000000);
-		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFF294052);
+		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
 		panelsGroup.add(discription);
         switch (temp) {
         	case 0:allowedBlocks = [0];
@@ -147,7 +147,7 @@ class Level extends FlxState
         	else
         	{
 				var placeHolder:FlxSprite = new FlxSprite(490 + 45 * (i%3), 60 + 45 * Math.floor(i/3));
-        		placeHolder.makeGraphic(40,40,0xFF8FBCDB);
+        		placeHolder.makeGraphic(40,40,0xFF9C9F84);
         		panelsGroup.add(placeHolder);
         	}
 		}
@@ -192,13 +192,13 @@ class Level extends FlxState
 		status_txt = new FlxText(500,25,80," ").setFormat(null, 12 , 0x9C9F84,"center");
 		guiGroup.add(status_txt);
 
-		title_txt = new FlxText(0,5,FlxG.width, "Level : " +GlobalVars.levelInfo.id).setFormat(null, 16 , 0x153450,"center");
+		title_txt = new FlxText(0,5,FlxG.width, "Level : " +GlobalVars.levelInfo.id).setFormat(null, 16 , 0x9C9F84,"center");
 		guiGroup.add(title_txt);
 	}
 	function addDiscription() 
 	{
 		var discription:FlxSprite = new FlxSprite(350,265).makeGraphic(280,90,0x00000000);
-		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFF294052);
+		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
 		var offset:Int = 4;
 		discription.drawRoundRect(offset, offset, discription.width -2*offset, discription.height - 2*offset, 15, 15, FlxColor.WHEAT);
 		panelsGroup.add(discription);
@@ -220,7 +220,7 @@ class Level extends FlxState
 		var offset:FlxPoint = new FlxPoint(10,10);
  		
 		helpPanelText = new FlxText(helpPanel.x + offset.x , helpPanel.y + offset.y ,width-offset.x*2," ")
-						.setFormat(null, 12 , 0x153450,"center");
+						.setFormat(null, 12 , 0x9C9F84,"center");
 		helpPanelText.text = levelInfo.levelIntro;
 		helpPanelText.visible  =false;
 		menuGroup.add(helpPanelText);
@@ -322,7 +322,7 @@ class Level extends FlxState
 	function addInputTests() 
 	{
 		var discription:FlxSprite = new FlxSprite(0,360).makeGraphic(640,100,0x00000000);
-		discription.drawRoundRect(20, 0, 600, 100, 15, 15, 0xFF294052);
+		discription.drawRoundRect(20, 0, 600, 100, 15, 15, 0xFFA97D5D);
 		panelsGroup.add(discription);
 
 		inputTests = new Array<InputTest>();
@@ -359,7 +359,7 @@ class Level extends FlxState
 	function exitPlayMode() 
 	{
 		isRunning =  false;
-		bgColor = 0xFFfff5b3;
+		bgColor = FlxColor.WHEAT;
 	}
 	public function resetSeqs():Void
 	{
