@@ -65,11 +65,11 @@ class GlobalVars
 			["bgb","ggbgrg","gbrrgg","bgggb","rgrgbrgr"],null,null,4));
 		
 		//--------------------------------level 6 :  ---------------------------------------------------
-		levels.push(new LevelInfo(levels.length +1,
+		/*levels.push(new LevelInfo(levels.length +1,
 			"output rest of the element after the second blue", getElementsAfterSecondBlueElement,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,4));
-
-		//--------------------------------level 7 : ---------------------------------------------------
+*/
+		/*//--------------------------------level 7 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output rest of the element after the second blue", groupAllElementsBeforeBlue,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
@@ -83,7 +83,41 @@ class GlobalVars
 		//--------------------------------level 7 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"getFirstFourElementsEvenThenOdd", getFirstFourElementsEvenThenOdd,
+			["bgbgr", "bggbgrg", "gbrrbgg", "bgbggb", "rgbrgbrgr"], null, null, 6));
+			*/
+		
+			
+			
+			
+			
+		//Sayegh's levels	
+		//--------------------------------level 8 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"moveBlueToEnd", moveBlueToEnd,
+			["bgbg","bgg","gbrr","bgbg","rbrgr"],new FlxPoint(0,3),new FlxPoint(7,6),6, "Right here"));
+		
+		//--------------------------------level 9 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"Only 3 Blues", OutputThreeBluesOnly,
+			["bgbbr", "bggbgrb", "gbbbbgg", "bgbggb", "bgbrgbrbb"], null, null, 6));*/
+			
+		//--------------------------------level 9 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"Reverse", reverse,
+			["bgbgr","bgbgrg","gbrbgg","bgbggb","rgbrgr"],null,null,6));
+			
+		//--------------------------------level 9 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"Green then blue No red", greenThenBlueNoRed,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		//--------------------------------level 9 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"Remove al first characters", removeFirstCharacter,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,4));
+			
+		
+			
+		
 		
 		//--------------------------------level 7 : ---------------------------------------------------
 		/*levels.push(new LevelInfo(levels.length +1,
@@ -312,6 +346,65 @@ reverseAllElementsExceptTheLastOne*/
 			res += inputString.charAt(i);
 		}
 		return res;
+	}
+	
+	static function moveBlueToEnd(inputString:String):String
+	{
+		if (inputString.length == 0)
+			return "";
+		
+		if (inputString.charAt(0) == "b"){
+			return  moveBlueToEnd(inputString.substring(1) + "b");
+		}else{
+			return inputString.charAt(0) + moveBlueToEnd(inputString.substring(1));
+		}
+	}
+	
+	static function OutputThreeBluesOnly(input:String):String
+	{
+		return "bbb";	
+	}
+	
+	static function reverse(inputString:String):String
+	{
+		if (inputString.length == 0)
+			return "";
+		return reverse(inputString.substring(1)) + inputString.charAt(0);
+		
+	}
+	
+	static function greenThenBlueNoRed(inputString:String):String
+	{
+		if (inputString.length == 0)
+			return "";
+		
+		if (inputString.charAt(0) == "b"){
+			return  moveBlueToEnd(inputString.substring(1) + "b");
+		}	
+		if (inputString.charAt(0) == "g"){
+			return "g" + moveBlueToEnd(inputString.substring(1));
+		}
+		if (inputString.charAt(0) == "r"){
+			return moveBlueToEnd(inputString.substring(1));
+		}
+		
+		return null;
+	}
+	
+	static function removeFirstCharacter(input:String):String
+	{
+		var firstCharacter = input.charAt(0);
+		var solution = "";
+		for (i in 0 ... input.length)
+		{
+			if(input.charAt(i)==firstCharacter){
+				continue;
+			}else{
+				solution += input.charAt(i);
+			}
+		}
+		
+		return solution;
 	}
 
 }
