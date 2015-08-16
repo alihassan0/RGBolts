@@ -67,7 +67,7 @@ class GameGrid extends FlxSprite
             grid[x] = new Array<FlxSprite>();
             for (y in 0...gridHeight)
             {
-                grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
+                grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xFF447294);
 				GlobalVars.level.gridGroup.add(grid[x][y]);
             }
         }

@@ -28,10 +28,10 @@ class InputTest extends FlxSprite
 		makeGraphic(100,80,0x00000000,true);
 		this.inputString = inputString;
 		this.id = id;
-		drawRoundRect(0, 0, 100, 80, 15, 15, FlxColor.WHEAT);
+		drawRoundRect(0, 0, 100, 80, 15, 15, 0xFFffee80);
 		GlobalVars.level.panelsGroup.add(this);
 		text = new FlxText(x , y ,width, "")
-							.setFormat(null, 10 , 0x9C9F84,"center");
+							.setFormat(null, 10 , 0x153450,"center");
 		text.text = "i : "+inputString+" \n\n o : "+outputString+" \n\n s : 'untested' \n\n";
 		GlobalVars.level.panelsGroup.add(text);
 		
