@@ -99,7 +99,7 @@ class GlobalVars
 		//--------------------------------level 9 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"Only 3 Blues", OutputThreeBluesOnly,
-			["bgbbr", "bggbgrb", "gbbbbgg", "bgbggb", "bgbrgbrbb"], null, null, 6));*/
+			["bgbbr", "bgbgrb", "gbbbbgg", "bgbbgb", "bgbrbb"], null, null, 6));
 			
 		//--------------------------------level 9 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
@@ -348,19 +348,18 @@ reverseAllElementsExceptTheLastOne*/
 		return res;
 	}
 	
-	static function moveBlueToEnd(inputString:String):String
+	 static function moveBlueToEnd(inputString:String):String
 	{
 		if (inputString.length == 0)
 			return "";
 		
 		if (inputString.charAt(0) == "b"){
-			return  moveBlueToEnd(inputString.substring(1) + "b");
+			return  moveBlueToEnd(inputString.substring(1)) + "b";
 		}else{
-			return inputString.charAt(0) + moveBlueToEnd(inputString.substring(1));
+			return inputString.charAt(0) +	moveBlueToEnd(inputString.substring(1));
 		}
 	}
-	
-	static function OutputThreeBluesOnly(input:String):String
+	static function OutputThreeBluesOnly(_):String
 	{
 		return "bbb";	
 	}

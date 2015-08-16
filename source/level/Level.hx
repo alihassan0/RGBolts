@@ -52,6 +52,8 @@ class Level extends FlxState
 
 	private var inputTests:Array<InputTest>;
 	public var selectedInputTest:InputTest;
+	
+	
 	override public function create():Void
 	{
 		levelInfo = GlobalVars.levelInfo;
