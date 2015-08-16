@@ -22,7 +22,6 @@ class IteratorBlock extends Block
 			var newSeq = new Seq(Math.floor(position.x), Math.floor(position.y),curruntString.charAt(0)); 
 			direct(newSeq,GlobalVars.RIGHT);
 			s.removeFirst();
-			//trace("removed "+curruntString.charAt(0) +"from " +curruntString );
 			if(s.getString().length > 1)
 			{
 				s.setString(curruntString.substring(1, curruntString.length));
@@ -34,6 +33,6 @@ class IteratorBlock extends Block
 		else
 		{
 			s.kill();
-		}	
+		}
 	}
 }

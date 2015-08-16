@@ -68,11 +68,11 @@ class GlobalVars
 
 		//--------------------------------level 7 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"output rest of the element after the second blue", groupAllElementsBeforeBlue,
-			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+			"output rest of the element after the first  green and red elements", getElementsAfterFirstRedAndGreen,
+			["rgbbb","rbgbgr","gbrrbgg","brgrgrg","gggrrrbbb"],null,null,6));
 
-		//--------------------------------level 7 : ---------------------------------------------------
-		//tested
+		//--------------------------------level 8 : ---------------------------------------------------
+		/*
 		levels.push(new LevelInfo(levels.length +1,
 			"getFirstTwoElementsReversed", getFirstTwoElementsReversed,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
@@ -106,7 +106,7 @@ class GlobalVars
 		levels.push(new LevelInfo(levels.length +1,
 			"getEvenElementsOnly", getEvenElementsOnly,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
-		
+		*/
 		/*
 
 		groupAllElementsBeforeBlue
@@ -301,6 +301,11 @@ class GlobalVars
 			res += inputString.charAt(i);
 		}
 		return res;
+	}
+	static function getElementsAfterFirstRedAndGreen(inputString:String):String
+	{
+        var i:Int = Std.int(Math.max(inputString.indexOf("r"),inputString.indexOf("g")));
+        return inputString.substring(i+1,inputString.length);
 	}
 
 }

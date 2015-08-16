@@ -80,7 +80,7 @@ class Level extends FlxState
 
 		//TutVars.initSprites();
 		//TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
-		if(levelInfo.id == 1)
+		if(levelInfo.id == 0)
 		{
 			TutVars.exists = true;
 			TutVars.curruntHint = 0;

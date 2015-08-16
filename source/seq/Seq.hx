@@ -54,7 +54,6 @@ class Seq extends FlxSprite
 		for (i in 0 ... numOfElements) {
 			index = numOfElements-1-i;
 			var color = (index<initialString.length)?getColor(initialString.charAt(index)):0xffffffff;
-			trace(x+"************"+y);
 			var elem:SeqElem = new SeqElem(x,y,color,this);
 			/*if(i>GlobalVars.maxVisibleElemesInSeq)
 				elem.visible = false;*/
@@ -64,11 +63,11 @@ class Seq extends FlxSprite
 		actionTimer = new FlxTimer();
 		firstElemPositions = new Array<FlxPoint>();
 		ofst = normalOfst;
+		FlxG.watch.add(this,"x");
 	}
 	override public function update() 
 	{
 		super.update();
-		trace(x);
 		moveElementsOneByOne();
 		//moveBySpeed();
 	}
@@ -132,7 +131,7 @@ class Seq extends FlxSprite
 	public function action()
 	{
 		move();
-		if (GlobalVars.gameGrid.getBlockOfPos(position) != null)
+		if (GlobalVars.gameGrid.getBlockOfPos(position) != null && alive)
 		{
 			affect();
 		}
@@ -144,6 +143,8 @@ class Seq extends FlxSprite
 		{
 			position.subtractPoint(direction);
 			kill();
+			trace("killed");
+
 		}
 		else
 		{
@@ -175,14 +176,13 @@ class Seq extends FlxSprite
 		{
 			seqElements[1].reset(seqElements[0].x,seqElements[0].y);
 			seqElements.shift().kill();
+			trace("a");
 		}
 		else
 		{
-			seqElements[0].alpha = .6;
 			kill();
+			trace("b");
 		}
-
-
 	}
 	public function insertFirst(se:SeqElem)
 	{
@@ -216,13 +216,13 @@ class Seq extends FlxSprite
 	}
 	override public function kill():Void 
 	{
-		super.kill();
 		while (seqElements.length != 0)
 		{
+			seqElements[0].alpha = 0;
 			seqElements.shift().kill();	
 		}
-		alpha = .3;
-		//FlxG.watch.remove(this);
+		FlxG.watch.remove(this);
 		seqRepresenter.kill();
+		super.kill();
 	}
 }
