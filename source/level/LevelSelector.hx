@@ -18,21 +18,19 @@ class LevelSelector extends FlxState
 	public var textDiscription:FlxBitmapTextField;
 	override public function create():Void 
 	{
-		add(new FlxSprite(150,0,"assets/images/Levels.png"));
+		var sprite:FlxSprite = new FlxSprite(150,0,"assets/images/Levels.png");
+		sprite.scale.set(.5,.5);
+		//add(sprite);
 		bgColor = 0xffafe4e5;
 		GlobalVars.loadLevels();
 		addDiscription();
 		for (i in 0...GlobalVars.levels.length)
 		{
-			new LevelIcon(150+70 + (i%5)*110,0+140 +Math.floor(i/5)*100, i+1,textDiscription);
+			new LevelIcon(30+ (i%5)*110, 30+Math.floor(i/5)*100, i+1,textDiscription);
 		}
-		/*var textBytes = Assets.getText("assets/fonts/font.fnt");
-		var XMLData = Xml.parse(textBytes);
-		font = new PxBitmapFont().loadAngelCode(Assets.getBitmapData("assets/fonts/font.png"), XMLData);
-		*/
 		var t:FlxBitmapTextField = new FlxBitmapTextField(GlobalVars.font);
 		t.text = "hello text";
-		add(t);
+		//add(t);
 		
 	}
 	function addDiscription() 

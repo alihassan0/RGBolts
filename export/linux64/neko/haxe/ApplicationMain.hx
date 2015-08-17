@@ -46,8 +46,8 @@ class ApplicationMain {
 				
 				#if mobile
 				
-				forceWidth = 480;
-				forceHeight = 300;
+				forceWidth = 640;
+				forceHeight = 480;
 				
 				container = new flash.display.Sprite ();
 				barA = new flash.display.Sprite ();
@@ -116,7 +116,7 @@ class ApplicationMain {
 				}
 				
 			},
-			480, 300, 
+			640, 480, 
 			60, 
 			0,
 			(true ? flash.Lib.HARDWARE : 0) |
@@ -237,13 +237,13 @@ class ScaledStage extends flash.display.Stage {
 	
 	private override function get_stageHeight ():Int {
 		
-		return 300;
+		return 480;
 	
 	}
 	
 	private override function get_stageWidth ():Int {
 		
-		return 480;
+		return 640;
 	
 	}
 	
@@ -314,11 +314,11 @@ class ApplicationMain {
 		wx.App.boot (function () {
 			
 			
-			frame = wx.Frame.create (null, null, "sequenceCSGame", null, { width: 480, height: 300 });
+			frame = wx.Frame.create (null, null, "sequenceCSGame", null, { width: 640, height: 480 });
 			
 			
 			#if openfl
-			var stage = wx.NMEStage.create (frame, null, null, { width: 480, height: 300 });
+			var stage = wx.NMEStage.create (frame, null, null, { width: 640, height: 480 });
 			#end
 			
 			var hasMain = false;
@@ -494,7 +494,7 @@ class ApplicationMain {
 			file: "sequenceCSGame",
 			fps: Std.int (60),
 			fullscreen: false,
-			height: Std.int (300),
+			height: Std.int (480),
 			orientation: "landscape",
 			packageName: "com.example.myapp",
 			resizable: true,
@@ -502,13 +502,13 @@ class ApplicationMain {
 			title: "sequenceCSGame",
 			version: "0.0.1",
 			vsync: true,
-			width: Std.int (480),
+			width: Std.int (640),
 			
 		}
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 480, 300, "null");
+		openfl.Lib.embed (null, 640, 480, "null");
 		#end
 		#else
 		create ();

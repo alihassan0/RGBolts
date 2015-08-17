@@ -39,7 +39,7 @@ class GlobalVars
 		levels = new Array<LevelInfo>();
 
 		loadFonts();
-		//********************************set 1 ***************************************************
+		//********************************ali' levels***************************************************
 		//-------------------------------level 1: -------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"direct the seq to the output block", checkSame,
@@ -76,16 +76,34 @@ class GlobalVars
 			"output rest of the element after the first  green and red elements", getElementsAfterFirstRedAndGreen,
 			["rgbbb","rbgbgr","gbrrbgg","brgrgrg","gggrrrbbb"],null,null,6));
 
+		//********************************sayegh levels***************************************************
 		//--------------------------------level 8 : ---------------------------------------------------
-		/*
 		levels.push(new LevelInfo(levels.length +1,
-			"getFirstTwoElementsReversed", getFirstTwoElementsReversed,
-			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+			"moveBlueToEnd", moveBlueToEnd,
+			["bgbg","bgg","gbrr","bgbg","rbrgr"],new FlxPoint(0,3),new FlxPoint(7,6),6, "Right here"));
 		
-		//--------------------------------level 7 : ---------------------------------------------------
+		//--------------------------------level 9 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"getFirstFourElementsEvenThenOdd", getFirstFourElementsEvenThenOdd,
+			"Only 3 Blues", OutputThreeBluesOnly,
+			["bgbbr", "bgbgrb", "gbbbbgg", "bgbbgb", "bgbrbb"], null, null, 6));
+			
+		//--------------------------------level 10 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"Reverse", reverse,
+			["bgbgr","bgbgrg","gbrbgg","bgbggb","rgbrgr"],null,null,6));
+			
+		//--------------------------------level 11 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"Green then blue No red", greenThenBlueNoRed,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		//--------------------------------level 12 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"Remove al first characters", removeFirstCharacter,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,4));
+			
+		
+			
+		
 		
 		//--------------------------------level 7 : ---------------------------------------------------
 		/*levels.push(new LevelInfo(levels.length +1,
@@ -113,7 +131,18 @@ class GlobalVars
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
-		*/
+			//--------------------------------level 8 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"getFirstTwoElementsReversed", getFirstTwoElementsReversed,
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		
+		//--------------------------------level 7 : ---------------------------------------------------
+		levels.push(new LevelInfo(levels.length +1,
+			"getFirstFourElementsEvenThenOdd", getFirstFourElementsEvenThenOdd,
+			["bgbgr", "bggbgrg", "gbrrbgg", "bgbggb", "rgbrgbrgr"], null, null, 6));
+			*/
+		
+			
 
 		/*groupAllElementsBeforeBlue
 		getFirstTwoElementsReversed
@@ -197,8 +226,6 @@ class GlobalVars
 	{
 		var i:Int = 0;
 		for(child in xml.elements() ) {
-	    	/*trace(child);
-	    	trace("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");*/
 	    	if(index != i)
 	    	i++;
 	    	else
@@ -319,6 +346,64 @@ class GlobalVars
 	{
         var i:Int = Std.int(Math.max(inputString.indexOf("r"),inputString.indexOf("g")));
         return inputString.substring(i+1,inputString.length);
+    }
+	
+	 static function moveBlueToEnd(inputString:String):String
+	{
+		if (inputString.length == 0)
+			return "";
+		
+		if (inputString.charAt(0) == "b"){
+			return  moveBlueToEnd(inputString.substring(1)) + "b";
+		}else{
+			return inputString.charAt(0) +	moveBlueToEnd(inputString.substring(1));
+		}
+	}
+	static function OutputThreeBluesOnly(_):String
+	{
+		return "bbb";	
+	}
+	
+	static function reverse(inputString:String):String
+	{
+		if (inputString.length == 0)
+			return "";
+		return reverse(inputString.substring(1)) + inputString.charAt(0);
+		
+	}
+	
+	static function greenThenBlueNoRed(inputString:String):String
+	{
+		if (inputString.length == 0)
+			return "";
+		
+		if (inputString.charAt(0) == "b"){
+			return  moveBlueToEnd(inputString.substring(1) + "b");
+		}	
+		if (inputString.charAt(0) == "g"){
+			return "g" + moveBlueToEnd(inputString.substring(1));
+		}
+		if (inputString.charAt(0) == "r"){
+			return moveBlueToEnd(inputString.substring(1));
+		}
+		
+		return null;
+	}
+	
+	static function removeFirstCharacter(input:String):String
+	{
+		var firstCharacter = input.charAt(0);
+		var solution = "";
+		for (i in 0 ... input.length)
+		{
+			if(input.charAt(i)==firstCharacter){
+				continue;
+			}else{
+				solution += input.charAt(i);
+			}
+		}
+		
+		return solution;
 	}
 
 }
