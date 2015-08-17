@@ -29,6 +29,8 @@ class GlobalVars
 	public static var moveDuration : Float = 0;
 
 	public static var font:PxBitmapFont; 
+	public static var stepDuration:Float = 0;//same as moveDuration but only at the beginnning of any move .. i couldn't come up with a better name :"|
+	public static var maxVisibleElemesInSeq : Int = 3;
 
 	public static function loadLevels()
 	{
@@ -41,7 +43,7 @@ class GlobalVars
 		//-------------------------------level 1: -------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"direct the seq to the output block", checkSame,
-			["ggg","rrr","grg","rgr","rrgrr"],
+			["rgb","rrr","grg","rgr","rrgrr"],
 			new FlxPoint(0,3),new FlxPoint(7,6),0));
 
 		//--------------------------------level 2 :  ---------------------------------------------------
@@ -52,7 +54,7 @@ class GlobalVars
 		//--------------------------------level 3 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output the red element in the sequence", getTheRedElement,
-			["r","ggr","grg","gggr","gggggr"],null,null,2));
+			["r","ggr","grg","gggr","gggggggr"],null,null,2));
 
 		//--------------------------------level 4 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
@@ -71,11 +73,11 @@ class GlobalVars
 
 		//--------------------------------level 7 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"output rest of the element after the second blue", groupAllElementsBeforeBlue,
-			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+			"output rest of the element after the first  green and red elements", getElementsAfterFirstRedAndGreen,
+			["rgbbb","rbgbgr","gbrrbgg","brgrgrg","gggrrrbbb"],null,null,6));
 
-		//--------------------------------level 7 : ---------------------------------------------------
-		//tested
+		//--------------------------------level 8 : ---------------------------------------------------
+		/*
 		levels.push(new LevelInfo(levels.length +1,
 			"getFirstTwoElementsReversed", getFirstTwoElementsReversed,
 			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
@@ -108,24 +110,18 @@ class GlobalVars
 		//--------------------------------level 7 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"getEvenElementsOnly", getEvenElementsOnly,
-			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));*/
-		
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+		*/
 
-
-
-
-
-
-		/*
-
-groupAllElementsBeforeBlue
-getFirstTwoElementsReversed
-getFirstFourElementsEvenThenOdd
-getFirstElementTwice
-getFirstTwoElementsTwice
-duplicateAllElementsExceptTheLastOne
-reverseAllElementsExceptTheLastOne*/
+		/*groupAllElementsBeforeBlue
+		getFirstTwoElementsReversed
+		getFirstFourElementsEvenThenOdd
+		getFirstElementTwice
+		getFirstTwoElementsTwice
+		duplicateAllElementsExceptTheLastOne
+		reverseAllElementsExceptTheLastOne*/
 		
 
 		//#3 output the black block;
@@ -143,11 +139,16 @@ reverseAllElementsExceptTheLastOne*/
 		//made directional signals
 		
 
+		//---------------------------changelog------------------------
+		//fix the remove first block
+		//only be able to change speed at the start of each move
+		//maintain the same offset through all speed
+		//fix all operation for seqs
+		//add seq highlighting
 		
-
 		
  
-
+		//-------------------------improvements------------------------------
 		//change background in play mode .. add tutrial for each level
 		//.. allow to add more private tests
 		// add a title for each level containg it's name 
@@ -155,7 +156,7 @@ reverseAllElementsExceptTheLastOne*/
 		//fix the sprite of signal source ..
 		//add major UI improvements
 		//show more suitable stats after each level
-
+		//make a block flicker when there it affect a seq
 	
 		//before sorting we should do some fitering to introduce the remove first block and the 
 		//iteration ideas .
@@ -177,9 +178,10 @@ reverseAllElementsExceptTheLastOne*/
 		//## handle changing speed .. it screws everything up .
 		//trigger affect seq after it reach it's distination (done .. but i am not confident of the currunt implementation )
 		//reset disabled blocks every replay
-		//if all seqs are gone .. this should be a valid answer
-		//if all seqs are gone .. don't recreate new one's 
-		//sets
+		//if all seqs are gone .. this should be a valid answer ??
+		//if all seqs are gone .. don't recreate new one's (make new one's)
+		//don't declare a winner when there are still some seqs on the grid
+		//-------------------------------------sets----------------------------------------
 		//filtering
 		//colors
 		//checking 
@@ -312,6 +314,11 @@ reverseAllElementsExceptTheLastOne*/
 			res += inputString.charAt(i);
 		}
 		return res;
+	}
+	static function getElementsAfterFirstRedAndGreen(inputString:String):String
+	{
+        var i:Int = Std.int(Math.max(inputString.indexOf("r"),inputString.indexOf("g")));
+        return inputString.substring(i+1,inputString.length);
 	}
 
 }

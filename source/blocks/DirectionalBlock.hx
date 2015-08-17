@@ -11,8 +11,9 @@ class DirectionalBlock extends Block
 {
 	public function new(X:Int,Y:Int) 
 	{
+		
 		super(X, Y);
-		loadGraphic("assets/images/directional.png");
+		loadGraphic("assets/images/directional4.png");
 	}
 	override public function affectSeq(s:Seq) 
 	{
@@ -26,5 +27,4 @@ class DirectionalBlock extends Block
 			case 3: s.set_direction(new FlxPoint(-1,0));
 		}
 	}
-	
 }

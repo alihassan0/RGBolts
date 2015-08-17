@@ -3,6 +3,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
 import flixel.util.FlxPoint;
+import flixel.effects.FlxFlicker;
 import seq.Seq;
 /**
  * ...
@@ -14,12 +15,21 @@ class Block extends FlxSprite
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
+	private var blockBase:FlxSprite;
+	private var blockPillers:FlxSprite;
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
 		MouseEventManager.add(this, onDown, onUp, null, null);
 		GlobalVars.level.blocksGroup.add(this);
 		followMouse = true;
+		offset.set(0,5);
+		
+		blockPillers = new FlxSprite(X,Y,"assets/images/directional5.png");
+		GlobalVars.level.blocksGroup.add(blockPillers);
+		
+		blockBase = new FlxSprite(X,Y,"assets/images/directional3.png");
+		GlobalVars.level.blocksBasesGroup.add(blockBase);
 		
 	}
 	override public function update():Void 
@@ -34,9 +44,12 @@ class Block extends FlxSprite
 			if(!FlxG.mouse.pressed)
 			{
 				followMouse = false;
-				checkPosInGrid();
+				if(checkPosInGrid())//later i need to make sure to do a check for the block type
+						GlobalVars.level.checkForTutorial("directional_place");
 			}
 		}
+		blockBase.reset(x,y);
+		blockPillers.reset(x,y);
 	}
 	public function checkPosInGrid() //adds the block to the grid if possible
 	{
@@ -45,11 +58,13 @@ class Block extends FlxSprite
 		{
 			GlobalVars.gameGrid.removeFromGrid(this);
 			kill();
+			return false;
 		}
 		else
 		{
 			this.reset(bestfit.x, bestfit.y);
 			this.position = GlobalVars.gameGrid.getposOfBlock(this);
+			return true;
 		}
 	}
 	public function toggleEnabled(?s:Seq)
@@ -78,6 +93,9 @@ class Block extends FlxSprite
 			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
 			angle += 90;
 		}
+		if(checkPosInGrid())//later i need to make sure to do a check for the block type :"|
+			GlobalVars.level.checkForTutorial("directional_rotate");
+
 	}
 	public function onUp(Sprite:FlxSprite)
 	{
@@ -85,7 +103,8 @@ class Block extends FlxSprite
 	}
 	public function affectSeq(s:Seq)
 	{
-		
+		FlxFlicker.flicker(this, .5, 0.04);
+		FlxG.sound.play("assets/sounds/powerup.wav", .5);
 	}
 	public function direct(s:Seq,direction:Int)
 	{
@@ -125,5 +144,13 @@ class Block extends FlxSprite
 					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(0,-1));
 				}
 		}
+	}
+	override public function kill()
+	{
+		blockBase.kill();
+		blockPillers.kill();
+		GlobalVars.level.blocksGroup.remove(blockPillers);
+		GlobalVars.level.blocksBasesGroup.remove(blockBase);
+		super.kill();
 	}
 }

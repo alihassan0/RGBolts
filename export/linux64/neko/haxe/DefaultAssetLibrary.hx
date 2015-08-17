@@ -84,6 +84,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -91,6 +98,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -603,6 +617,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
+		path.set ("assets/images/directional3.png", "assets/images/directional3.png");
+		type.set ("assets/images/directional3.png", AssetType.IMAGE);
 		path.set ("assets/images/sig.png", "assets/images/sig.png");
 		type.set ("assets/images/sig.png", AssetType.IMAGE);
 		path.set ("assets/images/Levels.png", "assets/images/Levels.png");
@@ -613,12 +629,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/directional.png", "assets/images/directional.png");
 		type.set ("assets/images/directional.png", AssetType.IMAGE);
+		path.set ("assets/images/bolt.png", "assets/images/bolt.png");
+		type.set ("assets/images/bolt.png", AssetType.IMAGE);
+		path.set ("assets/images/seq2.png", "assets/images/seq2.png");
+		type.set ("assets/images/seq2.png", AssetType.IMAGE);
 		path.set ("assets/images/color.png", "assets/images/color.png");
 		type.set ("assets/images/color.png", AssetType.IMAGE);
 		path.set ("assets/images/output.png", "assets/images/output.png");
 		type.set ("assets/images/output.png", AssetType.IMAGE);
 		path.set ("assets/images/discreptionPanel.png", "assets/images/discreptionPanel.png");
 		type.set ("assets/images/discreptionPanel.png", AssetType.IMAGE);
+		path.set ("assets/images/directional2.png", "assets/images/directional2.png");
+		type.set ("assets/images/directional2.png", AssetType.IMAGE);
 		path.set ("assets/images/question.png", "assets/images/question.png");
 		type.set ("assets/images/question.png", AssetType.IMAGE);
 		path.set ("assets/images/ifgreen.png", "assets/images/ifgreen.png");
@@ -635,8 +657,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/waiter.png", AssetType.IMAGE);
 		path.set ("assets/images/ifred.png", "assets/images/ifred.png");
 		type.set ("assets/images/ifred.png", AssetType.IMAGE);
+		path.set ("assets/images/directional5.png", "assets/images/directional5.png");
+		type.set ("assets/images/directional5.png", AssetType.IMAGE);
 		path.set ("assets/images/ifblue.png", "assets/images/ifblue.png");
 		type.set ("assets/images/ifblue.png", AssetType.IMAGE);
+		path.set ("assets/images/directional4.png", "assets/images/directional4.png");
+		type.set ("assets/images/directional4.png", AssetType.IMAGE);
 		path.set ("assets/images/iterator.png", "assets/images/iterator.png");
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		path.set ("assets/images/signal.png", "assets/images/signal.png");
@@ -651,6 +677,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/data/queries.xml", "assets/data/queries.xml");
 		type.set ("assets/data/queries.xml", AssetType.TEXT);
+		path.set ("assets/sounds/powerup.wav", "assets/sounds/powerup.wav");
+		type.set ("assets/sounds/powerup.wav", AssetType.SOUND);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
@@ -668,6 +696,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#elseif html5
 		
 		var id;
+		id = "assets/images/directional3.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/sig.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -683,6 +714,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/directional.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/bolt.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/seq2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/color.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -690,6 +727,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/discreptionPanel.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directional2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/question.png";
@@ -716,7 +756,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/ifred.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directional5.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/ifblue.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directional4.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/iterator.png";
@@ -740,6 +786,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/data/queries.xml";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/sounds/powerup.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
 		id = "assets/sounds/sounds-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -801,6 +850,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -809,6 +865,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1566,11 +1629,25 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
+
+
+
+
+
 
 
 

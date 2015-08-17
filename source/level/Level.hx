@@ -11,6 +11,7 @@ import flixel.util.FlxMath;
 import flixel.util.FlxTimer;
 import flixel.util.FlxPoint;
 import flixel.group.FlxGroup;
+import flixel.group.FlxTypedGroup;
 
 import haxe.Constraints.Function;
 import seq.Seq;
@@ -19,34 +20,39 @@ import seq.Seq;
  * A FlxState which can be used for the game's menu.
  */
 using flixel.util.FlxSpriteUtil;
+using Level.ButtonExtender;
+
 class Level extends FlxState
 {
 	private var backToMenuBtn:FlxButton;
 	
-	private var status_txt:FlxText;
-	private var title_txt:FlxText;
-	private var runBtn:FlxButton;
-	private var resetBtn:FlxButton;
-	private var helpBtn:FlxButton;
-	private var speedUp:FlxButton;
-	private var speedDown:FlxButton;
-	private var nextLevel:FlxButton;
-	private var helpPanel:FlxSprite;
-	private var helpPanelText:FlxText;
+	public var status_txt:FlxText;
+	public var title_txt:FlxText;
+	public var runBtn:FlxButton;
+	public var resetBtn:FlxButton;
+	public var helpBtn:FlxButton;
+	public var speedUp:FlxButton;
+	public var speedDown:FlxButton;
+	public var nextLevel:FlxButton;
+	public var helpPanel:FlxSprite;
+	public var helpPanelText:FlxText;
 	
 	public var levelInfo:LevelInfo;
 
-	private var speed:Int;
+	private var speed:Int = 1;
+
 	private var timer:FlxTimer;
 	private var speedText:FlxText;
 	public var isRunning:Bool;
 	public var isPaused:Bool;
 	
 	public var gridGroup:FlxGroup;
-	public var blocksGroup:FlxGroup;
+	public var blocksBasesGroup:FlxGroup;
 	public var seqGroup:FlxGroup;
+	public var blocksGroup:FlxGroup;
 	public var panelsGroup:FlxGroup;
-	public var guiGroup:FlxGroup;
+	public var blockSourcesGroup:FlxTypedGroup<FlxSprite>;
+	public  var guiGroup:FlxGroup;
 	public var menuGroup:FlxGroup;
 	public var tutGroup:FlxGroup;
 
@@ -59,10 +65,9 @@ class Level extends FlxState
 		this.isRunning = false;
 		GlobalVars.level = this;
 		
+		FlxG.watch.addMouse();
 		initGroups();
 
-		FlxG.watch.addMouse();
-		
 		bgColor = FlxColor.WHEAT;
 		new GameGrid();
 		
@@ -72,19 +77,41 @@ class Level extends FlxState
 		addBlockSources();//added to panels layer
 		addUI();//added to ui layer
 		addDiscription();//added to panels layer
-		
+
+		//TutVars.initSprites();
+		//TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
+		if(levelInfo.id == 0)
+		{
+			TutVars.exists = true;
+			TutVars.curruntHint = 0;
+			TutVars.initHelpPanel();
+			TutVars.showNextTip();
+		}
+		else
+		{
+			TutVars.exists = false;
+		}
 	}
 
 	private function initGroups()
 	{
 		gridGroup = new FlxGroup();
 		add(gridGroup);
+
 		panelsGroup = new FlxGroup();
 		add(panelsGroup);
-		blocksGroup = new FlxGroup();
-		add(blocksGroup);
+
+		blockSourcesGroup = new FlxTypedGroup<FlxSprite>();
+		add(blockSourcesGroup);
+		
+		blocksBasesGroup = new FlxGroup();
+		add(blocksBasesGroup);
+
 		seqGroup = new FlxGroup();
 		add(seqGroup);
+		
+		blocksGroup = new FlxGroup();
+		add(blocksGroup);
 		guiGroup = new FlxGroup();
 		add(guiGroup);
 		menuGroup = new FlxGroup();
@@ -97,7 +124,6 @@ class Level extends FlxState
 		var dBlockSource:BlockSource;
         var allowedBlocks:Array<Int>;
         var temp:Int = GlobalVars.levelInfo.allowedBlocksType;
-
         var discription:FlxSprite = new FlxSprite(480,50).makeGraphic(155,200,0x00000000);
 		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
 		panelsGroup.add(discription);
@@ -116,7 +142,7 @@ class Level extends FlxState
         	if(allowedBlocks.indexOf(i)!=-1)
         	{
     			dBlockSource = new BlockSource(490 + 45 * (i%3), 60 + 45 * Math.floor(i/3), i);
-    			panelsGroup.add(dBlockSource);
+    			blockSourcesGroup.add(dBlockSource);
         	}
         	else
         	{
@@ -129,43 +155,37 @@ class Level extends FlxState
 	private function addUI()
 	{
 		backToMenuBtn = new FlxButton(400, 1, "Back", switchBack);
-		backToMenuBtn.scale.set(0.7, 1.2);
-		backToMenuBtn.updateHitbox();
+		backToMenuBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(backToMenuBtn);
 		
 		runBtn = new FlxButton(460, 1, "run", runGame);
-		runBtn.scale.set(0.7, 1.2);
-		runBtn.updateHitbox();
+		runBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(runBtn);
 		
 		resetBtn = new FlxButton(520, 1, "reset", resetGame);
-		resetBtn.scale.set(0.7, 1.2);
-		resetBtn.updateHitbox();
+		resetBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(resetBtn);
 
 		helpBtn = new FlxButton(580, 10, "", toggleHelpPanel);
 		helpBtn.loadGraphic("assets/images/question.png");
 		guiGroup.add(helpBtn);
 		
-		speed = 0;
+		speed = 1;
 		speedText = new FlxText(410 , 40, 100, "Speed: " + speed, 10);
 		speedText.color = 0xAA5C755E;
 		guiGroup.add(speedText);
 		changeSpeed();
 		
 		speedUp = new FlxButton(420, 50, "Up", speedUpF);
-		speedUp.scale.set(0.4,0.6);
-		speedUp.updateHitbox();
+		speedUp.scalebtn(0.4,0.6);
 		guiGroup.add(speedUp);
 		
 		speedDown = new FlxButton(420, 63, "Down", speedDownF);
-		speedDown.scale.set(0.4,0.6);
-		speedDown.updateHitbox();
+		speedDown.scalebtn(0.4,0.6);
 		guiGroup.add(speedDown);
 
 		nextLevel = new FlxButton(490-60, 235, "next level", nextLevelF);
-		nextLevel.scale.set(2,2);
-		nextLevel.updateHitbox();
+		nextLevel.scalebtn(2,2);
 		nextLevel.visible = false;
 		guiGroup.add(nextLevel);
 
@@ -205,7 +225,7 @@ class Level extends FlxState
 		helpPanelText.visible  =false;
 		menuGroup.add(helpPanelText);
 	}
-	function intermedita(timer:FlxTimer)
+	function intermediate(timer:FlxTimer)
 	{
 		if (isRunning && !isPaused)
 		runGridOnce();
@@ -231,7 +251,7 @@ class Level extends FlxState
 	}
 	function speedDownF()
 	{
-		if (speed > 0)
+		if (speed > 1)
 		speed--;
         speedText.text = "Speed: " + speed;
 		changeSpeed();
@@ -282,6 +302,7 @@ class Level extends FlxState
 			if(getNextInputTest() == null)
 			{
 				nextLevel.visible = true;
+				resetSeqs();
 				togglePauseGame();
 			}	
 			else
@@ -321,33 +342,24 @@ class Level extends FlxState
 	{
 		if (speed == 0)
 		{
-		   timer.cancel();
+			timer.cancel();
 		 	GlobalVars.moveDuration = 0;
 		}
-		if (speed == 1)
-		{
-		   timer.start(1, intermedita , 0);
-		   GlobalVars.moveDuration = 1;
-		}
-		if (speed == 2)
-		{
-		   timer.start(0.5, intermedita,0);
-		   GlobalVars.moveDuration = .5;
-		}
-		if (speed == 3)
-		{
-		   timer.start(0.25, intermedita,0);
-			GlobalVars.moveDuration = .25;
-		}
-
+		GlobalVars.moveDuration = Math.pow(2,1-speed);
+		//timer.start(GlobalVars.moveDuration, intermediate , 0);
 	}
 	function resetGame() 
 	{
-		isRunning =  false;
-		bgColor = FlxColor.WHEAT;
+		exitPlayMode();
 		resetSeqs();
 		resetTestCases();
+		checkForTutorial("resetBtn");
 		
+	}
+	function exitPlayMode() 
+	{
+		isRunning =  false;
+		bgColor = FlxColor.WHEAT;
 	}
 	public function resetSeqs():Void
 	{
@@ -387,11 +399,16 @@ class Level extends FlxState
 			GlobalVars.gameGrid.inputBlock.inputString = getInputString();
 			GlobalVars.gameGrid.outputBlock.inputString = getInputString();
 		}
-		else
-		{
-			if(speed == 0)
+		if(speed == 0)
 			runGridOnce();
-		}
+		else
+			timer.start(GlobalVars.moveDuration, intermediate , 1);
+		checkForTutorial("runBtn");
+	}
+	public function checkForTutorial(key:String)
+	{
+		if(TutVars.exists && TutVars.triggers[key].indexOf(TutVars.curruntHint)!= -1)
+			TutVars.showNextTip();
 	}
 	public function runGridOnce():Void 
 	{
@@ -400,14 +417,15 @@ class Level extends FlxState
 			GlobalVars.gameGrid.inputBlock.started = true;
 			status_change(3);
 		}
-		
 		GlobalVars.turn ++;
+		GlobalVars.stepDuration = GlobalVars.moveDuration;
 		GlobalVars.Seqs = Lambda.array(Lambda.filter(GlobalVars.Seqs, function(v) { return (v.alive == true); } ));
 		for (i in 0...GlobalVars.Seqs.length)
         {
         	if(GlobalVars.Seqs[i] != null && GlobalVars.Seqs[i].canMove)
-			GlobalVars.Seqs[i].move();
+			GlobalVars.Seqs[i].action();
         }
+        timer.start(GlobalVars.moveDuration, intermediate , 1);
 	}
 	override public function update():Void
 	{
@@ -419,4 +437,12 @@ class Level extends FlxState
 			FlxG.watch.add(GlobalVars.Seqs, "length");
 		}*/
 	}
+}
+class ButtonExtender {
+  static public function scalebtn(btn:FlxButton,scaleX:Float,scaleY:Float) {
+	    btn.scale.set(scaleX, scaleY);
+		btn.updateHitbox();
+		btn.label.offset.set(btn.offset.x,btn.offset.y); 
+		return btn;
+  }
 }

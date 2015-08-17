@@ -16,6 +16,8 @@ class AssetData {
 		
 		if (!initialized) {
 			
+			path.set ("assets/images/directional3.png", "assets/images/directional3.png");
+			type.set ("assets/images/directional3.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/sig.png", "assets/images/sig.png");
 			type.set ("assets/images/sig.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/Levels.png", "assets/images/Levels.png");
@@ -26,12 +28,18 @@ class AssetData {
 			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/directional.png", "assets/images/directional.png");
 			type.set ("assets/images/directional.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/bolt.png", "assets/images/bolt.png");
+			type.set ("assets/images/bolt.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/seq2.png", "assets/images/seq2.png");
+			type.set ("assets/images/seq2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/color.png", "assets/images/color.png");
 			type.set ("assets/images/color.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/output.png", "assets/images/output.png");
 			type.set ("assets/images/output.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/discreptionPanel.png", "assets/images/discreptionPanel.png");
 			type.set ("assets/images/discreptionPanel.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/directional2.png", "assets/images/directional2.png");
+			type.set ("assets/images/directional2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/question.png", "assets/images/question.png");
 			type.set ("assets/images/question.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/ifgreen.png", "assets/images/ifgreen.png");
@@ -48,8 +56,12 @@ class AssetData {
 			type.set ("assets/images/waiter.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/ifred.png", "assets/images/ifred.png");
 			type.set ("assets/images/ifred.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/directional5.png", "assets/images/directional5.png");
+			type.set ("assets/images/directional5.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/ifblue.png", "assets/images/ifblue.png");
 			type.set ("assets/images/ifblue.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/directional4.png", "assets/images/directional4.png");
+			type.set ("assets/images/directional4.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/iterator.png", "assets/images/iterator.png");
 			type.set ("assets/images/iterator.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/signal.png", "assets/images/signal.png");
@@ -64,6 +76,8 @@ class AssetData {
 			type.set ("assets/data/data-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/data/queries.xml", "assets/data/queries.xml");
 			type.set ("assets/data/queries.xml", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/sounds/powerup.wav", "assets/sounds/powerup.wav");
+			type.set ("assets/sounds/powerup.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 			type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");

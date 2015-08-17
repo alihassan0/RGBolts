@@ -15,10 +15,13 @@ class IteratorBlock extends Block
 	}
 	override public function affectSeq(s:Seq) 
 	{
+		super.affectSeq(s);
 		var curruntString:String = s.seqString;
 		if (s.getString().length > 0 )
 		{
-			direct(new Seq(Math.floor(position.x), Math.floor(position.y), curruntString.charAt(0)),GlobalVars.RIGHT);
+			var newSeq = new Seq(Math.floor(position.x), Math.floor(position.y),curruntString.charAt(0)); 
+			direct(newSeq,GlobalVars.RIGHT);
+			s.removeFirst();
 			if(s.getString().length > 1)
 			{
 				s.setString(curruntString.substring(1, curruntString.length));
@@ -30,6 +33,6 @@ class IteratorBlock extends Block
 		else
 		{
 			s.kill();
-		}	
+		}
 	}
 }
