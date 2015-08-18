@@ -112,6 +112,7 @@ class Level extends FlxState
 
 		blockSourcesGroup = new FlxTypedGroup<FlxSprite>();
 		add(blockSourcesGroup);
+
 		
 		blocksBasesGroup = new FlxGroup();
 		add(blocksBasesGroup);
@@ -302,7 +303,7 @@ class Level extends FlxState
             GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x] = new Array<Int>();
             for (y in 0...GlobalVars.gameGrid.gridHeight)
             {
-                 GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x][y] = 0;
+                 GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x][y] = -1;
             }
         }
         for (x in 0...GlobalVars.gameGrid.gridWidth)
@@ -311,8 +312,14 @@ class Level extends FlxState
             {
             	if(GlobalVars.gameGrid.blocksGrid[x][y] != null)
             	{
-               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] = 1;
-            		trace("savedBlock @ " + x +" , " +  y);
+            		
+            		for (key in GlobalVars.blocksMap.keys()) {
+					    if(GlobalVars.blocksMap[key] == Type.getClass(GlobalVars.gameGrid.blocksGrid[x][y]))
+					    {
+		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] = key;
+	    	        		trace("savedBlock @ " + x +" , " +  y);		    	
+					    }
+					}
             	}
             }
         }
@@ -486,10 +493,6 @@ class Level extends FlxState
 		super.update();
 		if (FlxG.keys.justPressed.ENTER)
             FlxG.fullscreen = !FlxG.fullscreen;
-		/*if (FlxG.keys.pressed.K)
-		{
-			FlxG.watch.add(GlobalVars.Seqs, "length");
-		}*/
 	}
 }
 class ButtonExtender {

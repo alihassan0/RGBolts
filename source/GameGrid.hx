@@ -113,10 +113,11 @@ class GameGrid extends FlxSprite
         {
             for (y in 0...gridHeight)
             {
-            	if(GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] == 1)
+            	var blockId:Int = GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y];
+            	if(blockId != -1)
             	{
             		var p:FlxPoint = getCoordinatesOfPosition(FlxPoint.get(x,y));
-            		var d:DirectionalBlock = new DirectionalBlock(Math.floor(p.x),Math.floor(p.y));
+            		var d = Type.createInstance( GlobalVars.blocksMap[blockId], [Math.floor(p.x),Math.floor(p.y)] );
             		d.followMouse = false;
             		d.checkPosInGrid();
             		trace("loaded Block @ " + x +" , " +  y + " position @" + p.x + "  " + p.y);
