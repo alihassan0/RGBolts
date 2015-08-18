@@ -16,6 +16,7 @@ class DuplicatorBlock extends Block
 	}
 	override public function affectSeq(s:Seq) 
 	{
+		super.affectSeq(s);
 		var seq :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
 		direct(s, GlobalVars.UP);
 		direct(seq, GlobalVars.DOWN);

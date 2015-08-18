@@ -22,7 +22,7 @@ class BlockSource extends FlxSprite
 
 		switch(blockType)
 		{
-			case 0: loadGraphic("assets/images/directional.png");
+			case 0: loadGraphic("assets/images/directionalUp.png");
 			case 1: loadGraphic("assets/images/iterator.png");
 			case 2: loadGraphic("assets/images/grouper.png");
 			case 3: loadGraphic("assets/images/ifred.png");

@@ -90,8 +90,8 @@ class Block extends FlxSprite
 		if(!GlobalVars.level.isRunning)
 		{
 			followMouse = true;
-			mouseOffset.set(FlxG.mouse.x - x, FlxG.mouse.y - y);
-			angle += 90;
+			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
+			angle+= 90;
 		}
 		if(checkPosInGrid())//later i need to make sure to do a check for the block type :"|
 			GlobalVars.level.checkForTutorial("directional_rotate");
@@ -103,7 +103,7 @@ class Block extends FlxSprite
 	}
 	public function affectSeq(s:Seq)
 	{
-		FlxFlicker.flicker(this, .5, 0.04);
+		//FlxFlicker.flicker(this, .5, 0.04);
 		FlxG.sound.play("assets/sounds/powerup.wav", .5);
 	}
 	public function direct(s:Seq,direction:Int)

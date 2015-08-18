@@ -5,6 +5,8 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.util.FlxMath;
@@ -70,7 +72,7 @@ class Level extends FlxState
 		FlxG.watch.addMouse();
 		initGroups();
 
-		bgColor = FlxColor.WHEAT;
+		bgColor = FlxColor.CRIMSON;
 		new GameGrid();
 		
 
@@ -126,8 +128,10 @@ class Level extends FlxState
 		var dBlockSource:BlockSource;
         var allowedBlocks:Array<Int>;
         var temp:Int = GlobalVars.levelInfo.allowedBlocksType;
-        var discription:FlxSprite = new FlxSprite(480,50).makeGraphic(155,200,0x00000000);
-		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
+        var discription:FlxSprite = new FlxSprite(410, 50);// .makeGraphic(155, 155, 0x00000000);
+		
+		discription.loadGraphic("assets/images/Container.png");
+		//discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, FlxColor.AZURE);
 		panelsGroup.add(discription);
         switch (temp) {
         	case 0:allowedBlocks = [0];
@@ -139,16 +143,16 @@ class Level extends FlxState
         	case 6:allowedBlocks = [0,1,2,3,4,5,6,7,8];
         	default:allowedBlocks = [0,1,2,3,4,5,6,7,8];
         }
-        for (i in 0 ... 12)
+        for (i in 0 ... 9)
         {
         	if(allowedBlocks.indexOf(i)!=-1)
         	{
-    			dBlockSource = new BlockSource(490 + 45 * (i%3), 60 + 45 * Math.floor(i/3), i);
+    			dBlockSource = new BlockSource(425 + 45 * (i%3), 65 + 45 * Math.floor(i/3), i);
     			blockSourcesGroup.add(dBlockSource);
         	}
         	else
         	{
-				var placeHolder:FlxSprite = new FlxSprite(490 + 45 * (i%3), 60 + 45 * Math.floor(i/3));
+				var placeHolder:FlxSprite = new FlxSprite(425 + 45 * (i%3), 65 + 45 * Math.floor(i/3));
         		placeHolder.makeGraphic(40,40,0xFF9C9F84);
         		panelsGroup.add(placeHolder);
         	}
@@ -156,15 +160,15 @@ class Level extends FlxState
 	}
 	private function addUI()
 	{
-		backToMenuBtn = new FlxButton(400, 1, "Back", switchBack);
+		backToMenuBtn = new FlxButton(400, 220, "Back", switchBack);
 		backToMenuBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(backToMenuBtn);
 		
-		runBtn = new FlxButton(460, 1, "run", runGame);
+		runBtn = new FlxButton(460, 220, "run", runGame);
 		runBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(runBtn);
 		
-		resetBtn = new FlxButton(520, 1, "reset", resetGame);
+		resetBtn = new FlxButton(520, 220, "reset", resetGame);
 		resetBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(resetBtn);
 
@@ -173,17 +177,19 @@ class Level extends FlxState
 		guiGroup.add(helpBtn);
 		
 		speed = 1;
-		speedText = new FlxText(410 , 40, 100, "Speed: " + speed, 10);
+		speedText = new FlxText(355 , 40, 100, "Speed: " + speed, 10);
 		speedText.color = 0xAA5C755E;
 		guiGroup.add(speedText);
 		changeSpeed();
 		
-		speedUp = new FlxButton(420, 50, "Up", speedUpF);
-		speedUp.scalebtn(0.4,0.6);
+		speedUp = new FlxButton(365, 60, "", speedUpF);
+		//speedUp.scalebtn(0.4,0.6);
+		speedUp.loadGraphic("assets/images/Entypo_2b(1)_24.png");
 		guiGroup.add(speedUp);
 		
-		speedDown = new FlxButton(420, 63, "Down", speedDownF);
-		speedDown.scalebtn(0.4,0.6);
+		speedDown = new FlxButton(365, 87, "", speedDownF);
+		//speedDown.scalebtn(0.4,0.6);
+		speedDown.loadGraphic("assets/images/Entypo_2d(0)_24.png");
 		guiGroup.add(speedDown);
 
 		nextLevel = new FlxButton(490-60, 235, "next level", nextLevelF);
@@ -199,10 +205,10 @@ class Level extends FlxState
 	}
 	function addDiscription() 
 	{
-		var discription:FlxSprite = new FlxSprite(350,265).makeGraphic(280,90,0x00000000);
-		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
+		var discription:FlxSprite = new FlxSprite(370,265).makeGraphic(280,90,0x00000000);
+		discription.drawRoundRect(0, 0, discription.width-30, discription.height, 15, 15, 0xFFA97D5D);
 		var offset:Int = 4;
-		discription.drawRoundRect(offset, offset, discription.width -2*offset, discription.height - 2*offset, 15, 15, FlxColor.WHEAT);
+		discription.drawRoundRect(offset, offset, discription.width-30 -2*offset, discription.height - 2*offset, 15, 15, FlxColor.RED);
 		panelsGroup.add(discription);
 		
 		var text:FlxText = new FlxText(discription.x + offset , discription.y + offset, discription.width - 2*offset, levelInfo.description, 12);
@@ -246,13 +252,27 @@ class Level extends FlxState
 	}
 	function speedUpF() {
 
+		FlxTween.num(1, 0, 0.1, { ease:FlxEase.circIn, complete:fadeOut }, changeColor);
 		if (speed < 3)
 		speed++;
 	    speedText.text = "Speed: " + speed;
 		changeSpeed();
 	}
+	function changeColor(opacity:Float){
+		speedUp.alpha = opacity;
+	}
+	function changeColor2(opacity:Float){
+		speedDown.alpha = opacity;
+	}
+	function fadeOut(_){
+		FlxTween.num(0, 1, 0.1, { ease:FlxEase.circInOut }, changeColor);
+	}
+	function fadeOut2(_){
+		FlxTween.num(0, 1, 0.1, { ease:FlxEase.circInOut }, changeColor2);
+	}
 	function speedDownF()
 	{
+		FlxTween.num(1, 0, 0.1, { ease:FlxEase.circIn, complete:fadeOut2 }, changeColor2);
 		if (speed > 1)
 		speed--;
         speedText.text = "Speed: " + speed;
@@ -392,7 +412,8 @@ class Level extends FlxState
 	}
 	public function runGame():Void 
 	{
-		
+		if (isRunning)
+			return;
 		if(!isRunning)
 		{
 			isRunning = true;
@@ -434,6 +455,8 @@ class Level extends FlxState
 		super.update();
 		if (FlxG.keys.justPressed.ENTER)
             FlxG.fullscreen = !FlxG.fullscreen;
+			
+		
 		/*if (FlxG.keys.pressed.K)
 		{
 			FlxG.watch.add(GlobalVars.Seqs, "length");
