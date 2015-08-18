@@ -46,7 +46,9 @@ class GlobalVars
 			5=> FilterBlock,
 			6=> WaiterBlock,
 			7=> DuplicatorBlock,
-			8=> SignalBlock
+			8=> SignalBlock,
+			9=> InputBlock,
+			10=> OutputBlock
     ];
 	public static function loadLevels()
 	{

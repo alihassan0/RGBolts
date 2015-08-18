@@ -30,6 +30,9 @@ class Block extends FlxSprite
 		
 		blockBase = new FlxSprite(X,Y,"assets/images/directional3.png");
 		GlobalVars.level.blocksBasesGroup.add(blockBase);
+		angle = 0;
+		if(mouseOffset == null)
+			mouseOffset = new FlxPoint(width/2, height/2);
 		
 	}
 	override public function update():Void 
@@ -37,8 +40,6 @@ class Block extends FlxSprite
 		super.update();
 		if (followMouse)
 		{
-			if(mouseOffset == null)
-				mouseOffset = new FlxPoint(width/2, height/2);
 			x = FlxG.mouse.x - mouseOffset.x;
 			y = FlxG.mouse.y - mouseOffset.y;
 			if(!FlxG.mouse.pressed)
@@ -48,6 +49,7 @@ class Block extends FlxSprite
 						GlobalVars.level.checkForTutorial("directional_place");
 			}
 		}
+		this.angle = angle;
 		blockBase.reset(x,y);
 		blockPillers.reset(x,y);
 	}
@@ -98,7 +100,7 @@ class Block extends FlxSprite
 	}
 	public function onUp(Sprite:FlxSprite)
 	{
-		
+		trace(angle);
 	}
 	public function affectSeq(s:Seq)
 	{

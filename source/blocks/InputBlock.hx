@@ -14,13 +14,12 @@ class InputBlock extends Block
 	private var direction:FlxPoint ;
 	public var started:Bool = false;
 	public var inputString:String ;
-	public function new(posX:Int,posY:Int) 
+	public function new(X:Int,Y:Int) 
 	{
-		var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(new FlxPoint(posX, posY));
-		super(spritePos.x, spritePos.y);
-		position = new FlxPoint(posX, posY);
+		super(X, Y);
 		loadGraphic("assets/images/input.png");
 		followMouse = false;
+		GlobalVars.gameGrid.inputBlock =  this;
 	}
 	override public function checkPosInGrid():Bool
 	{

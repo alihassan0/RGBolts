@@ -48,7 +48,6 @@ class GameGrid extends FlxSprite
 		{
 			trace("no save found");
 			resetGrid();
-			addIOBlocks();
 		}
 		this.testFunction = GlobalVars.level.levelInfo.testFunction;
 	}
@@ -57,15 +56,18 @@ class GameGrid extends FlxSprite
 	{
 		var pos :FlxPoint = GlobalVars.level.levelInfo.inputPos;
 		if(pos == null)
-			inputBlock = new InputBlock(0, 2);
-		else
-			inputBlock = new InputBlock(Std.int(pos.x), Std.int(pos.y));
+			pos = new FlxPoint(0,2);
+		
+		var p:FlxPoint = getCoordinatesOfPosition(FlxPoint.get(pos.x,pos.y));
+            		
+		new InputBlock(Std.int(p.x), Std.int(p.y));
 
-		var pos :FlxPoint = GlobalVars.level.levelInfo.outputPos;
+		pos = GlobalVars.level.levelInfo.outputPos;
 		if(pos == null)
-			outputBlock = new OutputBlock(gridWidth - 1, 2);
-		else
-			outputBlock = new OutputBlock(Std.int(pos.x), Std.int(pos.y));
+			pos =new FlxPoint(gridWidth - 1, 2);
+		p = getCoordinatesOfPosition(FlxPoint.get(pos.x,pos.y));
+        
+		new OutputBlock(Std.int(p.x), Std.int(p.y));
 			
 		inputBlock.checkPosInGrid();
 		outputBlock.checkPosInGrid();
@@ -89,6 +91,7 @@ class GameGrid extends FlxSprite
                 blocksGrid[x][y] = null;
             }
         }
+        addIOBlocks();
 	}
 	public function loadGrid() 
 	{
@@ -113,14 +116,17 @@ class GameGrid extends FlxSprite
         {
             for (y in 0...gridHeight)
             {
-            	var blockId:Int = GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y];
-            	if(blockId != -1)
+            	var blockId:Array<Int> = GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y];
+            	if(blockId != null)
             	{
             		var p:FlxPoint = getCoordinatesOfPosition(FlxPoint.get(x,y));
-            		var d = Type.createInstance( GlobalVars.blocksMap[blockId], [Math.floor(p.x),Math.floor(p.y)] );
+            		var d = Type.createInstance( GlobalVars.blocksMap[blockId[0]], [Math.floor(p.x),Math.floor(p.y)] );
             		d.followMouse = false;
             		d.checkPosInGrid();
-            		trace("loaded Block @ " + x +" , " +  y + " position @" + p.x + "  " + p.y);
+            		d.angle += blockId[1];
+            		d.angle %= 360;
+            		d.draw();
+            		trace("loaded Block @ " + x +" , " +  y + " position @" + p.x + "  " + p.y + "with angle of " + blockId[1]);
             		trace(d.position);
             	}
             }

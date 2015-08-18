@@ -14,14 +14,13 @@ class OutputBlock extends Block
 	public var inputString:String;
 	private var testFunction:String->String;
 	
-	public function new(posX:Int,posY:Int) 
+	public function new(X:Int,Y:Int) 
 	{
-		var spritePos:FlxPoint = GlobalVars.gameGrid.getCoordinatesOfPosition(new FlxPoint(posX, posY));
-		super(spritePos.x, spritePos.y);
-		position = new FlxPoint(posX, posY);
+		super(X, Y);
 		loadGraphic("assets/images/output.png");
 		followMouse = false;
 		this.testFunction = GlobalVars.level.levelInfo.testFunction;
+		GlobalVars.gameGrid.outputBlock =  this;
 	}
 	override public function affectSeq(s:Seq) 
 	{
