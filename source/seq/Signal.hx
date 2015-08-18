@@ -16,7 +16,19 @@ class Signal extends Seq{
 	}
 	override public function affectBlock(b:Block)
 	{
-		kill();
 		b.toggleEnabled(this);
+		kill();
+		trace("something should happen here ");
+	}
+	override public function affect()
+	{
+
+		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);		
+		if(currBLock.enabled)
+		{
+			affectBlock(currBLock);
+		}
+		if (seqRepresenter != null)
+		seqRepresenter.represent();
 	}
 }

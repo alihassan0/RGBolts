@@ -21,7 +21,8 @@ class GrouperBlock extends Block
 		if (curruntSeq == null)
 		{
 			curruntSeq = s;
-			s.wait();
+			curruntSeq.wait();
+			trace("aaa");
 		}
 		else if(s.alive)
 		{
@@ -31,11 +32,13 @@ class GrouperBlock extends Block
 				s.kill();
 				curruntSeq.wait();
 				s.wait();
+				trace("bbb");
 			}
 			else
 			{
 				curruntSeq.wait();
 				FlxG.log.add("i am the currnet sec at " + GlobalVars.turn);
+				trace("ccc");
 			}
 		}
 	}

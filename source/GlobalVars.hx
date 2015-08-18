@@ -99,7 +99,7 @@ class GlobalVars
 		//--------------------------------level 12 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"Remove al first characters", removeFirstCharacter,
-			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,4));
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 			
 		
 			

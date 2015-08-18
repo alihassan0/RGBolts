@@ -38,7 +38,7 @@ class Seq extends FlxSprite
 		super(initialPosition.x, initialPosition.y);
 
 		loadGraphic("assets/images/seq.png");
-		visible = false;
+		visible = true;
 		
 		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
@@ -69,13 +69,11 @@ class Seq extends FlxSprite
 	{
 		super.update();
 		moveElementsOneByOne();
-		//moveBySpeed();
 	}
 	public function moveElementsOneByOne()
 	{
 		if(elemIndex == seqElements.length)
 			return;
-
 		seqElements[0].direction = direction;
 		firstElemPositions.unshift(FlxPoint.get(seqElements[0].x, seqElements[0].y));
 		if (firstElemPositions.length >= seqElements.length*ofst)
@@ -131,6 +129,7 @@ class Seq extends FlxSprite
 	public function action()
 	{
 		move();
+		//canMove = true;
 		if (GlobalVars.gameGrid.getBlockOfPos(position) != null && alive)
 		{
 			affect();
@@ -143,7 +142,6 @@ class Seq extends FlxSprite
 		{
 			position.subtractPoint(direction);
 			kill();
-			trace("killed");
 
 		}
 		else
@@ -152,12 +150,11 @@ class Seq extends FlxSprite
 			reset(initialPosition.x,initialPosition.y);
 			elemIndex = 0;
 			ofst = Math.floor(normalOfst*GlobalVars.moveDuration);
-			trace(direction);
+			//seqElements[0].direction = direction;
 		}
 	}
 	public function affect()
 	{
-		canMove = true;
 		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);		
 		if(currBLock.enabled && (!Std.is(this, Signal)||Std.is(currBLock, DirectionalBlock)))
 		{
@@ -190,7 +187,10 @@ class Seq extends FlxSprite
 	}
 	public function wait() 
 	{
-		canMove = false;
+		/*canMove = false;
+		if(!this.alive) return;
+		position.subtractPoint(direction);*/
+		direction = new FlxPoint(0,0);
 	}
 	public function unwait() 
 	{

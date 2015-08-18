@@ -70,7 +70,6 @@ class Block extends FlxSprite
 	public function toggleEnabled(?s:Seq)
 	{
 		enabled = !enabled;
-
 		if(!enabled)
 		{
 			alpha = .6;
