@@ -6,6 +6,7 @@ import flixel.text.FlxBitmapTextField;
 import flixel.text.pxText.PxBitmapFont;
 import flixel.text.pxText.PxTextAlign;
 import openfl.Assets;
+import flixel.util.FlxSave;
 /**
  * ...
  * @author ...
@@ -32,6 +33,7 @@ class GlobalVars
 	public static var stepDuration:Float = 0;//same as moveDuration but only at the beginnning of any move .. i couldn't come up with a better name :"|
 	public static var maxVisibleElemesInSeq : Int = 3;
 
+	public static var save:FlxSave;
 	public static function loadLevels()
 	{
 		xml = Xml.parse(openfl.Assets.getText("assets/data/queries.xml"));

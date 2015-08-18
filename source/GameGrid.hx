@@ -14,11 +14,11 @@ import flixel.util.FlxPoint;
 class GameGrid extends FlxSprite
 {
 	public var grid:Array<Array<FlxSprite>>;
-	private var blocksGrid:Array<Array<Block>>;
+	public var blocksGrid:Array<Array<Block>>;
 	
-	private var gridWidth(get, null):Int = 8;
+	public var gridWidth(get, null):Int = 8;
 	
-	private var gridHeight(get, null):Int = 8;
+	public var gridHeight(get, null):Int = 8;
 	
 	private var gridX:Int = 30;
 	private var gridY:Int = 30;
@@ -36,11 +36,21 @@ class GameGrid extends FlxSprite
 		blocksGrid = new Array<Array<Block>>();
 		super(gridX, gridY);
 		makeGraphic(gridWidth * tileSize, gridHeight * tileSize,0x00ff00ff);
-		resetGrid();
+		
 		GlobalVars.gameGrid = this;
 		GlobalVars.Seqs = new Array<Seq>();
+		if (GlobalVars.save.data.levels!= null && GlobalVars.save.data.levels[GlobalVars.levelInfo.id] == true)
+		{
+			trace("save found");
+			loadGrid();
+		}
+		else
+		{
+			trace("no save found");
+			resetGrid();
+			addIOBlocks();
+		}
 		this.testFunction = GlobalVars.level.levelInfo.testFunction;
-		addIOBlocks();
 	}
 	
 	public function addIOBlocks() 
@@ -77,6 +87,41 @@ class GameGrid extends FlxSprite
             for (y in 0...gridHeight)
             {
                 blocksGrid[x][y] = null;
+            }
+        }
+	}
+	public function loadGrid() 
+	{
+		for (x in 0...gridWidth)
+        {
+            grid[x] = new Array<FlxSprite>();
+            for (y in 0...gridHeight)
+            {
+                grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
+				GlobalVars.level.gridGroup.add(grid[x][y]);
+            }
+        }
+		for (x in 0...gridWidth)
+        {
+            blocksGrid[x] = new Array<Block>();
+            for (y in 0...gridHeight)
+            {
+                blocksGrid[x][y] = null;
+            }
+        }
+        for (x in 0...gridWidth)
+        {
+            for (y in 0...gridHeight)
+            {
+            	if(GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] == 1)
+            	{
+            		var p:FlxPoint = getCoordinatesOfPosition(FlxPoint.get(x,y));
+            		var d:DirectionalBlock = new DirectionalBlock(Math.floor(p.x),Math.floor(p.y));
+            		d.followMouse = false;
+            		d.checkPosInGrid();
+            		trace("loaded Block @ " + x +" , " +  y + " position @" + p.x + "  " + p.y);
+            		trace(d.position);
+            	}
             }
         }
 	}

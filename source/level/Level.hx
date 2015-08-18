@@ -12,7 +12,7 @@ import flixel.util.FlxTimer;
 import flixel.util.FlxPoint;
 import flixel.group.FlxGroup;
 import flixel.group.FlxTypedGroup;
-
+import flixel.util.FlxSave;
 import haxe.Constraints.Function;
 import seq.Seq;
 
@@ -33,6 +33,8 @@ class Level extends FlxState
 	public var helpBtn:FlxButton;
 	public var speedUp:FlxButton;
 	public var speedDown:FlxButton;
+	public var saveButton:FlxButton;
+	public var loadButton:FlxButton;
 	public var nextLevel:FlxButton;
 	public var helpPanel:FlxSprite;
 	public var helpPanelText:FlxText;
@@ -67,6 +69,13 @@ class Level extends FlxState
 		this.isRunning = false;
 		GlobalVars.level = this;
 		
+		if(GlobalVars.save == null)
+		{
+			GlobalVars.save = new FlxSave();
+			GlobalVars.save.bind("SaveTest3");
+		}
+		
+
 		FlxG.watch.addMouse();
 		initGroups();
 
@@ -80,8 +89,6 @@ class Level extends FlxState
 		addUI();//added to ui layer
 		addDiscription();//added to panels layer
 
-		//TutVars.initSprites();
-		//TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
 		if(levelInfo.id == 0)
 		{
 			TutVars.exists = true;
@@ -92,7 +99,7 @@ class Level extends FlxState
 		else
 		{
 			TutVars.exists = false;
-		}
+		}            		
 	}
 
 	private function initGroups()
@@ -156,6 +163,14 @@ class Level extends FlxState
 	}
 	private function addUI()
 	{
+		loadButton = new FlxButton(30, 1, "load", loadLevel);
+		loadButton.scalebtn(0.7, 1.2);
+		guiGroup.add(loadButton);
+		
+		saveButton = new FlxButton(90, 1, "save", saveLevel);
+		saveButton.scalebtn(0.7, 1.2);
+		guiGroup.add(saveButton);
+
 		backToMenuBtn = new FlxButton(400, 1, "Back", switchBack);
 		backToMenuBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(backToMenuBtn);
@@ -266,6 +281,43 @@ class Level extends FlxState
 	function switchBack()
 	{
 		FlxG.switchState(new LevelSelector());
+	}
+	function loadLevel()
+	{
+		GlobalVars.gameGrid.loadGrid();
+	}
+	function saveLevel()
+	{
+		if(GlobalVars.save.data.levels == null)
+			GlobalVars.save.data.levels = new Array<Bool>();
+
+		GlobalVars.save.data.levels[levelInfo.id] = true;
+
+		if(GlobalVars.save.data.levelBlocksGrid == null)
+			GlobalVars.save.data.levelBlocksGrid = new Array<Array<Array<Int>>>();
+		
+		GlobalVars.save.data.levelBlocksGrid[levelInfo.id] = new Array<Array<Int>>();
+		for (x in 0...GlobalVars.gameGrid.gridWidth)
+        {
+            GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x] = new Array<Int>();
+            for (y in 0...GlobalVars.gameGrid.gridHeight)
+            {
+                 GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x][y] = 0;
+            }
+        }
+        for (x in 0...GlobalVars.gameGrid.gridWidth)
+        {
+            for (y in 0...GlobalVars.gameGrid.gridHeight)
+            {
+            	if(GlobalVars.gameGrid.blocksGrid[x][y] != null)
+            	{
+               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] = 1;
+            		trace("savedBlock @ " + x +" , " +  y);
+            	}
+            }
+        }
+		GlobalVars.save.flush();
+		 
 	}
 	function addStatus() 
 	{
