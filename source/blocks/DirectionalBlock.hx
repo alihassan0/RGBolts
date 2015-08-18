@@ -13,7 +13,7 @@ class DirectionalBlock extends Block
 	{
 		
 		super(X, Y);
-		loadGraphic("assets/images/directional4.png");
+		loadGraphic("assets/images/directional.png");
 	}
 	override public function affectSeq(s:Seq) 
 	{

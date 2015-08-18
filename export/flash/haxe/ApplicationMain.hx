@@ -34,23 +34,23 @@ class ApplicationMain {
 		var types = [];
 		
 		
-		urls.push ("assets/images/directional3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/sig.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/grouper.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/images-go-here.txt");
+		urls.push ("assets/data/data-goes-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/images/directional.png");
+		urls.push ("assets/data/queries.xml");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/data/queries2.xml");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/fonts/font.fnt");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/fonts/font.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -58,11 +58,11 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/seq2.png");
+		urls.push ("assets/images/color.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/color.png");
+		urls.push ("assets/images/directional - Copy.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -70,13 +70,30 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-<<<<<<< HEAD
 		urls.push ("assets/images/directional2.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/question.png");
-=======
+		urls.push ("assets/images/directional3.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/directional4.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/directional5.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/directionala.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/directionaly.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/discreptionPanel.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -85,12 +102,15 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/Entypo_2191(0)_32.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/grouper.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/ifblue.png");
->>>>>>> levelsTest
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -110,6 +130,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/inputold.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/iterator.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -122,27 +146,15 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-<<<<<<< HEAD
-		urls.push ("assets/images/directional5.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/ifblue.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/directional4.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/iterator.png");
-=======
 		urls.push ("assets/images/output.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/outputold.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/question.png");
->>>>>>> levelsTest
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -150,38 +162,32 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-<<<<<<< HEAD
-		urls.push ("assets/data/queries2.xml");
-		types.push (lime.Assets.AssetType.TEXT);
+		urls.push ("assets/images/seq2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/data/data-goes-here.txt");
-		types.push (lime.Assets.AssetType.TEXT);
-=======
 		urls.push ("assets/images/sig.png");
 		types.push (lime.Assets.AssetType.IMAGE);
->>>>>>> levelsTest
 		
 		
 		urls.push ("assets/images/signal.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-<<<<<<< HEAD
-		urls.push ("assets/sounds/powerup.wav");
-		types.push (lime.Assets.AssetType.SOUND);
+		urls.push ("assets/images/transparent_spacer.gif");
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/sounds/sounds-go-here.txt");
-		types.push (lime.Assets.AssetType.TEXT);
-=======
 		urls.push ("assets/images/waiter.png");
 		types.push (lime.Assets.AssetType.IMAGE);
->>>>>>> levelsTest
 		
 		
 		urls.push ("assets/music/music-goes-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/sounds/powerup.wav");
+		types.push (lime.Assets.AssetType.SOUND);
 		
 		
 		urls.push ("assets/sounds/sounds-go-here.txt");
@@ -273,11 +279,7 @@ class ApplicationMain {
 			fps: Std.int (60),
 			fullscreen: false,
 			hardware: true,
-<<<<<<< HEAD
 			height: Std.int (480),
-=======
-			height: Std.int (300),
->>>>>>> levelsTest
 			orientation: "portrait",
 			packageName: "com.example.myapp",
 			resizable: true,

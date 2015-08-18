@@ -20,8 +20,8 @@ class GameGrid extends FlxSprite
 	
 	private var gridHeight(get, null):Int = 8;
 	
-	private var gridX:Int = 30;
-	private var gridY:Int = 30;
+	private var gridX:Int = 36;
+	private var gridY:Int = 36;
 	
 	private var tileSize:Int = 40;
 	private var tileActuallSize:Int = 36;
@@ -85,8 +85,8 @@ class GameGrid extends FlxSprite
 		var blockPos:FlxPoint = new FlxPoint(block.x + block.width/2 , block.y + block.height/2);//the block center point
 		
 		var res:FlxPoint = new FlxPoint(0, 0); 
-		res.x = ((Math.floor((blockPos.x - gridX) / tileSize)) * tileSize) + gridX;
-		res.y = ((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY;
+		res.x = ((Math.floor((blockPos.x - gridX) / tileSize)) * tileSize) + gridX ;
+		res.y = ((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY+5;
 		
 		var posPoint = new FlxPoint();
 		posPoint.x = Math.floor((blockPos.x - gridX) / tileSize);

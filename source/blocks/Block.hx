@@ -15,9 +15,9 @@ class Block extends FlxSprite
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
-	private var blockBase:FlxSprite;
+	/*private var blockBase:FlxSprite;
 	private var blockPillers:FlxSprite;
-	public function new(X:Float,Y:Float)
+	*/public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
 		MouseEventManager.add(this, onDown, onUp, null, null);
@@ -25,11 +25,11 @@ class Block extends FlxSprite
 		followMouse = true;
 		offset.set(0,5);
 		
-		blockPillers = new FlxSprite(X,Y,"assets/images/directional5.png");
+		/*blockPillers = new FlxSprite(X,Y,"assets/images/transparent_spacer.gif");
 		GlobalVars.level.blocksGroup.add(blockPillers);
 		
-		blockBase = new FlxSprite(X,Y,"assets/images/directional3.png");
-		GlobalVars.level.blocksBasesGroup.add(blockBase);
+		blockBase = new FlxSprite(X,Y,"assets/images/transparent_spacer.gif");
+		GlobalVars.level.blocksBasesGroup.add(blockBase);*/
 		
 	}
 	override public function update():Void 
@@ -48,8 +48,8 @@ class Block extends FlxSprite
 						GlobalVars.level.checkForTutorial("directional_place");
 			}
 		}
-		blockBase.reset(x,y);
-		blockPillers.reset(x,y);
+		/*blockBase.reset(x,y);
+		blockPillers.reset(x,y);*/
 	}
 	public function checkPosInGrid() //adds the block to the grid if possible
 	{
@@ -90,7 +90,7 @@ class Block extends FlxSprite
 		if(!GlobalVars.level.isRunning)
 		{
 			followMouse = true;
-			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
+			mouseOffset.set(FlxG.mouse.x - x, FlxG.mouse.y - y);
 			angle += 90;
 		}
 		if(checkPosInGrid())//later i need to make sure to do a check for the block type :"|
@@ -146,11 +146,11 @@ class Block extends FlxSprite
 		}
 	}
 	override public function kill()
-	{
+	{/*
 		blockBase.kill();
 		blockPillers.kill();
 		GlobalVars.level.blocksGroup.remove(blockPillers);
-		GlobalVars.level.blocksBasesGroup.remove(blockBase);
+		GlobalVars.level.blocksBasesGroup.remove(blockBase);*/
 		super.kill();
 	}
 }
