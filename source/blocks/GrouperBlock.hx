@@ -28,16 +28,22 @@ class GrouperBlock extends Block
 		{
 			if(curruntSeq != s)
 			{
-				curruntSeq.setString(curruntSeq.getString() + s.getString());
+				var newString:String = curruntSeq.getString()+s.getString();
+				curruntSeq.kill();
 				s.kill();
+				s.setString("");
+				curruntSeq.setString("");
+				trace("merge [ "+curruntSeq.getString()+" , "+s.getString()+ " ]");
+				trace("@ pos [ "+curruntSeq.position.x+" , "+curruntSeq.position.y+ " ]");
+
+				curruntSeq = new Seq(Math.floor(curruntSeq.position.x),Math.floor(curruntSeq.position.y),newString);
 				curruntSeq.wait();
-				s.wait();
+				//s.wait();
 				trace("bbb");
 			}
 			else
 			{
 				curruntSeq.wait();
-				FlxG.log.add("i am the currnet sec at " + GlobalVars.turn);
 				trace("ccc");
 			}
 		}
@@ -45,9 +51,14 @@ class GrouperBlock extends Block
 	override public function toggleEnabled(?s:Seq)
 	{
 		super.toggleEnabled();
-		curruntSeq.canMove = true;
-		if(s!=null)
-		curruntSeq.set_direction(s.get_direction());
+		
+		if(s!=null && curruntSeq != null)
+		{
+			curruntSeq.set_direction(s.get_direction());
+			curruntSeq.canMove = false;
+		}
+		if(!enabled)
+			curruntSeq = null;
 	}
 	override public function reset_state() 
 	{

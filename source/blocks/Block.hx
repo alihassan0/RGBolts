@@ -30,7 +30,6 @@ class Block extends FlxSprite
 		
 		blockBase = new FlxSprite(X,Y,"assets/images/directional3.png");
 		GlobalVars.level.blocksBasesGroup.add(blockBase);
-		angle = 0;
 		if(mouseOffset == null)
 			mouseOffset = new FlxPoint(width/2, height/2);
 		

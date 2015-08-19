@@ -14,7 +14,7 @@ import flixel.tweens.FlxEase;
  */
 class Seq extends FlxSprite
 {
-	private var position(get, null):FlxPoint;
+	public var position:FlxPoint;
 	private var initialPosition:FlxPoint;
 	public var direction:FlxPoint ;
 	public var lastDirection:FlxPoint ;
@@ -131,8 +131,10 @@ class Seq extends FlxSprite
 	}
 	public function action()
 	{
-		move();
-		//canMove = true;
+		if(canMove)
+			move();
+		canMove = true;
+		trace(canMove);
 		if (GlobalVars.gameGrid.getBlockOfPos(position) != null && alive)
 		{
 			affect();
@@ -145,7 +147,6 @@ class Seq extends FlxSprite
 		{
 			position.subtractPoint(direction);
 			kill();
-
 		}
 		else
 		{
@@ -159,19 +160,16 @@ class Seq extends FlxSprite
 	public function affect()
 	{
 		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);		
-		if(currBLock.enabled && (!Std.is(this, Signal)||Std.is(currBLock, DirectionalBlock)))
+		if(currBLock.enabled )
 		{
 			currBLock.affectSeq(this);
-			affectBlock(currBLock);
 		}
+		affectBlock(currBLock);
 		if (seqRepresenter != null)
-		seqRepresenter.represent();
+			seqRepresenter.represent();
 	}
 	public function removeFirst()
 	{
-		/*for (i in 0 ... ofst) {
-			firstElemPositions.shift();
-		}*/
 		if(seqElements.length>1)
 		{
 			seqElements[1].reset(seqElements[0].x,seqElements[0].y);
@@ -183,6 +181,16 @@ class Seq extends FlxSprite
 			kill();
 			trace("b");
 		}
+	}
+	public function insertLast(s:Seq)
+	{
+		/*seq.initialPosition += s.getString();
+		for (i in 0 ... s.getString().length) {
+			var color = getColor(s.charAt(i));
+			var elem:SeqElem = new SeqElem(x,y,color,this);
+			GlobalVars.level.seqGroup.add(elem);
+			seqElements.push(elem);
+		}*/
 	}
 	public function insertFirst(se:SeqElem)
 	{

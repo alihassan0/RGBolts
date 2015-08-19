@@ -66,6 +66,8 @@ class AssetData {
 			type.set ("assets/images/iterator.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/signal.png", "assets/images/signal.png");
 			type.set ("assets/images/signal.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/ifblack.png", "assets/images/ifblack.png");
+			type.set ("assets/images/ifblack.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/fonts/font.png", "assets/fonts/font.png");
 			type.set ("assets/fonts/font.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/fonts/font.fnt", "assets/fonts/font.fnt");

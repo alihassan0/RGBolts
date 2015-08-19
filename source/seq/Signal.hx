@@ -24,10 +24,7 @@ class Signal extends Seq{
 	{
 
 		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);		
-		if(currBLock.enabled)
-		{
-			affectBlock(currBLock);
-		}
+		affectBlock(currBLock);
 		if (seqRepresenter != null)
 		seqRepresenter.represent();
 	}

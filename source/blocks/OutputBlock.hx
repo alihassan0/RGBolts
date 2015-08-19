@@ -28,7 +28,6 @@ class OutputBlock extends Block
 		FlxG.log.add(inputString +" "+ s.getString() +" "+checkOutputString("rgrgb","rrggb")+" "+" please work");
 		if (checkOutputString(inputString,s.getString()))
 		{
-			
 			GlobalVars.level.status_change(0);
 		}
 		else

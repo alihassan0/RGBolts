@@ -485,7 +485,7 @@ class Level extends FlxState
 		GlobalVars.Seqs = Lambda.array(Lambda.filter(GlobalVars.Seqs, function(v) { return (v.alive == true); } ));
 		for (i in 0...GlobalVars.Seqs.length)
         {
-        	if(GlobalVars.Seqs[i] != null && GlobalVars.Seqs[i].canMove)
+        	if(GlobalVars.Seqs[i] != null)
 			GlobalVars.Seqs[i].action();
         }
         timer.start(GlobalVars.moveDuration, intermediate , 1);
