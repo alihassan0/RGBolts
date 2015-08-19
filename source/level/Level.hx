@@ -14,7 +14,7 @@ import flixel.util.FlxTimer;
 import flixel.util.FlxPoint;
 import flixel.group.FlxGroup;
 import flixel.group.FlxTypedGroup;
-
+import flixel.util.FlxSave;
 import haxe.Constraints.Function;
 import seq.Seq;
 
@@ -35,6 +35,8 @@ class Level extends FlxState
 	public var helpBtn:FlxButton;
 	public var speedUp:FlxButton;
 	public var speedDown:FlxButton;
+	public var saveButton:FlxButton;
+	public var resetGridButton:FlxButton;
 	public var nextLevel:FlxButton;
 	public var helpPanel:FlxSprite;
 	public var helpPanelText:FlxText;
@@ -69,6 +71,13 @@ class Level extends FlxState
 		this.isRunning = false;
 		GlobalVars.level = this;
 		
+		if(GlobalVars.save == null)
+		{
+			GlobalVars.save = new FlxSave();
+			GlobalVars.save.bind("SaveTest4");
+		}
+		
+
 		FlxG.watch.addMouse();
 		initGroups();
 
@@ -82,8 +91,6 @@ class Level extends FlxState
 		addUI();//added to ui layer
 		addDiscription();//added to panels layer
 
-		//TutVars.initSprites();
-		//TutVars.focusOn(GlobalVars.gameGrid.inputBlock);
 		if(levelInfo.id == 0)
 		{
 			TutVars.exists = true;
@@ -94,7 +101,7 @@ class Level extends FlxState
 		else
 		{
 			TutVars.exists = false;
-		}
+		}            		
 	}
 
 	private function initGroups()
@@ -107,6 +114,7 @@ class Level extends FlxState
 
 		blockSourcesGroup = new FlxTypedGroup<FlxSprite>();
 		add(blockSourcesGroup);
+
 		
 		blocksBasesGroup = new FlxGroup();
 		add(blocksBasesGroup);
@@ -161,6 +169,14 @@ class Level extends FlxState
 	private function addUI()
 	{
 		backToMenuBtn = new FlxButton(400, 220, "Back", switchBack);
+		resetGridButton = new FlxButton(30, 1, "load", resetGrid);
+		resetGridButton.scalebtn(0.7, 1.2);
+		guiGroup.add(resetGridButton);
+		
+		saveButton = new FlxButton(90, 1, "save", saveLevel);
+		saveButton.scalebtn(0.7, 1.2);
+		guiGroup.add(saveButton);
+
 		backToMenuBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(backToMenuBtn);
 		
@@ -286,6 +302,51 @@ class Level extends FlxState
 	function switchBack()
 	{
 		FlxG.switchState(new LevelSelector());
+	}
+	function resetGrid()
+	{
+		GlobalVars.gameGrid.resetGrid();
+	}
+	function saveLevel()
+	{
+		if(GlobalVars.save.data.levels == null)
+			GlobalVars.save.data.levels = new Array<Bool>();
+
+		GlobalVars.save.data.levels[levelInfo.id] = true;
+
+		if(GlobalVars.save.data.levelBlocksGrid == null)
+			GlobalVars.save.data.levelBlocksGrid = new Array<Array<Array<Array<Int>>>>();
+		
+		GlobalVars.save.data.levelBlocksGrid[levelInfo.id] = new Array<Array<Array<Int>>>();
+		for (x in 0...GlobalVars.gameGrid.gridWidth)
+        {
+            GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x] = new Array<Array<Int>>();
+            for (y in 0...GlobalVars.gameGrid.gridHeight)
+            {
+                 GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x][y] = null;
+            }
+        }
+        for (x in 0...GlobalVars.gameGrid.gridWidth)
+        {
+            for (y in 0...GlobalVars.gameGrid.gridHeight)
+            {
+            	if(GlobalVars.gameGrid.blocksGrid[x][y] != null)
+            	{
+            		
+            		for (key in GlobalVars.blocksMap.keys()) {
+					    if(GlobalVars.blocksMap[key] == Type.getClass(GlobalVars.gameGrid.blocksGrid[x][y]))
+					    {
+		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] = new Array<Int>();
+		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y][0] = key;
+		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y][1] = GlobalVars.gameGrid.blocksGrid[x][y].angle;
+	    	        		trace("savedBlock @ " + x +" , " +  y + "with angle of " + GlobalVars.gameGrid.blocksGrid[x][y].angle);		    	
+					    }
+					}
+            	}
+            }
+        }
+		GlobalVars.save.flush();
+		 
 	}
 	function addStatus() 
 	{
@@ -455,12 +516,6 @@ class Level extends FlxState
 		super.update();
 		if (FlxG.keys.justPressed.ENTER)
             FlxG.fullscreen = !FlxG.fullscreen;
-			
-		
-		/*if (FlxG.keys.pressed.K)
-		{
-			FlxG.watch.add(GlobalVars.Seqs, "length");
-		}*/
 	}
 }
 class ButtonExtender {
