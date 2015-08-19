@@ -31,6 +31,7 @@ class BlockSource extends FlxSprite
 			case 6: loadGraphic("assets/images/waiter.png");
 			case 7: loadGraphic("assets/images/duplicator.png");
 			case 8: loadGraphic("assets/images/signal.png");
+			case 9: loadGraphic("assets/images/ifblack.png");
 		}
 	}
 	private function onDown(Sprite:FlxSprite)
@@ -48,6 +49,7 @@ class BlockSource extends FlxSprite
 				case 6: new WaiterBlock(0,0);
 				case 7: new DuplicatorBlock(0, 0);
 				case 8: new SignalBlock(0,0);
+				case 9: new FilterBlackBlock(0,0);
 			}
 		}
 		if(blockType == 0)

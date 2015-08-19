@@ -17,6 +17,7 @@ class Seq extends FlxSprite
 	private var position(get, null):FlxPoint;
 	private var initialPosition:FlxPoint;
 	public var direction:FlxPoint ;
+	public var lastDirection:FlxPoint ;
 	public var seqString:String = "";
 	public var seqRepresenter:SeqRepresenter;
 	public var canMove:Bool = true;
@@ -43,6 +44,7 @@ class Seq extends FlxSprite
 		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(1, 0);
+		lastDirection = new FlxPoint(0, 0);
 		seqRepresenter = new SeqRepresenter();
 		seqRepresenter.seqParent = this;
 		setString(initialString);
@@ -112,6 +114,7 @@ class Seq extends FlxSprite
 			case 'r': color = 0xFFFF0000;
 			case 'g': color = 0xFF00FF00;
 			case 'b': color = 0xFF0000FF;
+			case 'k': color = 0xFF000000;
 			default : color = 0xFF000000;
 		}
 		return color;
