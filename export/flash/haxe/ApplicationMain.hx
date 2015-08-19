@@ -74,6 +74,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/addblack.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/Balanced_scale_of_Justice.svg");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -211,6 +215,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/groupesr.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/ifblack.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		

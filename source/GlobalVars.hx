@@ -49,7 +49,8 @@ class GlobalVars
 			8=> SignalBlock,
 			9=> InputBlock,
 			10=> OutputBlock,
-			11=> FilterBlackBlock
+			11=> FilterBlackBlock,
+			12=> AddBlack
     ];
 	public static function loadLevels()
 	{
@@ -99,7 +100,7 @@ class GlobalVars
 		//--------------------------------level 8 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"moveBlueToEnd", moveBlueToEnd,
-			["bgbgk","bggk","gbrrk","bgbgk","rbrgrk"],new FlxPoint(0,3),new FlxPoint(7,6),6, "Right here"));
+			["ggbb","bggk","gbrrk","bgbgk","rbrgrk"],new FlxPoint(0,3),new FlxPoint(7,6),7, "Right here"));
 		
 		//--------------------------------level 9 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,

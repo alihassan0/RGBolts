@@ -50,7 +50,7 @@ class SeqRepresenter extends FlxSprite
 		show(false);
 	}
 	
-	public function represent() 
+	public function represent():Void 
 	{	
 		reset(seqParent.x + seqParent.width / 2 - seqColorArray.length * 5, seqParent.y -10);
 		//FlxG.log.add("-_- " + seqColorArray);

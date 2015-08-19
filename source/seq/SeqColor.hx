@@ -11,5 +11,6 @@ class SeqColor extends FlxSprite
 	{
 		super(X, Y, "assets/images/color.png");
 		color = C;
+		visible = false;
 	}	
 }

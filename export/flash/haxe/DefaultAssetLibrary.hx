@@ -70,6 +70,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/fonts/font.fnt", AssetType.TEXT);
 		className.set ("assets/fonts/font.png", __ASSET__assets_fonts_font_png);
 		type.set ("assets/fonts/font.png", AssetType.IMAGE);
+		className.set ("assets/images/addblack.png", __ASSET__assets_images_addblack_png);
+		type.set ("assets/images/addblack.png", AssetType.IMAGE);
 		className.set ("assets/images/Balanced_scale_of_Justice.svg", __ASSET__assets_images_balanced_scale_of_justice_svg);
 		type.set ("assets/images/Balanced_scale_of_Justice.svg", AssetType.TEXT);
 		className.set ("assets/images/bolt.png", __ASSET__assets_images_bolt_png);
@@ -140,6 +142,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/grouper.png", AssetType.IMAGE);
 		className.set ("assets/images/groupesr.png", __ASSET__assets_images_groupesr_png);
 		type.set ("assets/images/groupesr.png", AssetType.IMAGE);
+		className.set ("assets/images/ifblack.png", __ASSET__assets_images_ifblack_png);
+		type.set ("assets/images/ifblack.png", AssetType.IMAGE);
 		className.set ("assets/images/ifblue.png", __ASSET__assets_images_ifblue_png);
 		type.set ("assets/images/ifblue.png", AssetType.IMAGE);
 		className.set ("assets/images/ifblue2.png", __ASSET__assets_images_ifblue2_png);
@@ -252,6 +256,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.TEXT);
 		id = "assets/fonts/font.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/addblack.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -392,6 +400,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/groupesr.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/ifblack.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -626,6 +638,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -664,6 +678,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/fonts/font.png", __ASSET__assets_fonts_font_png);
 		type.set ("assets/fonts/font.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/addblack.png", __ASSET__assets_images_addblack_png);
+		type.set ("assets/images/addblack.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/Balanced_scale_of_Justice.svg", __ASSET__assets_images_balanced_scale_of_justice_svg);
 		type.set ("assets/images/Balanced_scale_of_Justice.svg", AssetType.TEXT);
@@ -769,6 +786,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/groupesr.png", __ASSET__assets_images_groupesr_png);
 		type.set ("assets/images/groupesr.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/ifblack.png", __ASSET__assets_images_ifblack_png);
+		type.set ("assets/images/ifblack.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/ifblue.png", __ASSET__assets_images_ifblue_png);
 		type.set ("assets/images/ifblue.png", AssetType.IMAGE);
@@ -1575,6 +1595,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_directionalup_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_font_fnt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_font_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_addblack_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_balanced_scale_of_justice_svg extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_bolt_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_color_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1610,6 +1631,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_images_entypo_e4ad_0__42_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_grouper_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_groupesr_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_ifblack_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_ifblue_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_ifblue2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_ifgreen_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1727,6 +1749,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
@@ -1748,6 +1772,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/directionalUp.png") #if display private #end class __ASSET__assets_directionalup_png extends lime.graphics.Image {}
 @:file("assets/fonts/font.fnt") #if display private #end class __ASSET__assets_fonts_font_fnt extends lime.utils.ByteArray {}
 @:image("assets/fonts/font.png") #if display private #end class __ASSET__assets_fonts_font_png extends lime.graphics.Image {}
+@:image("assets/images/addblack.png") #if display private #end class __ASSET__assets_images_addblack_png extends lime.graphics.Image {}
 @:file("assets/images/Balanced_scale_of_Justice.svg") #if display private #end class __ASSET__assets_images_balanced_scale_of_justice_svg extends lime.utils.ByteArray {}
 @:image("assets/images/bolt.png") #if display private #end class __ASSET__assets_images_bolt_png extends lime.graphics.Image {}
 @:image("assets/images/color.png") #if display private #end class __ASSET__assets_images_color_png extends lime.graphics.Image {}
@@ -1783,6 +1808,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/images/Entypo_e4ad(0)_42.png") #if display private #end class __ASSET__assets_images_entypo_e4ad_0__42_png extends lime.graphics.Image {}
 @:image("assets/images/grouper.png") #if display private #end class __ASSET__assets_images_grouper_png extends lime.graphics.Image {}
 @:image("assets/images/groupesr.png") #if display private #end class __ASSET__assets_images_groupesr_png extends lime.graphics.Image {}
+@:image("assets/images/ifblack.png") #if display private #end class __ASSET__assets_images_ifblack_png extends lime.graphics.Image {}
 @:image("assets/images/ifblue.png") #if display private #end class __ASSET__assets_images_ifblue_png extends lime.graphics.Image {}
 @:image("assets/images/ifblue2.png") #if display private #end class __ASSET__assets_images_ifblue2_png extends lime.graphics.Image {}
 @:image("assets/images/ifgreen.png") #if display private #end class __ASSET__assets_images_ifgreen_png extends lime.graphics.Image {}

@@ -22,7 +22,7 @@ class Seq extends FlxSprite
 	public var seqRepresenter:SeqRepresenter;
 	public var canMove:Bool = true;
 	private var tween:FlxTween;
-	private var seqElements:Array<SeqElem>;
+	public  var seqElements:Array<SeqElem>;
 	private var MoveReady:Bool;
 	private var elemIndex:Int =0;
 	private var normalOfst:Int = 12;

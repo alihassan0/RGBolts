@@ -149,20 +149,26 @@ class Level extends FlxState
         	case 4:allowedBlocks = [0,1,3,4,5,8];
         	case 5:allowedBlocks = [0,1,3,4,5,7,8];
         	case 6:allowedBlocks = [0,1,2,3,4,5,6,7,8,9];
+        	//test case
+			case 7:allowedBlocks = [0, 1, 2, 3, 4, 5, 6, 7, 10];
+			//----------------------------------
         	default:allowedBlocks = [0,1,2,3,4,5,6,7,8,9];
         }
-        for (i in 0 ... 9)
+		var actualCount:Int = 0;
+        for (i in 0 ... 12)
         {
         	if(allowedBlocks.indexOf(i)!=-1)
         	{
-    			dBlockSource = new BlockSource(425 + 45 * (i%3), 65 + 45 * Math.floor(i/3), i);
+    			dBlockSource = new BlockSource(425 + 45 * (actualCount%3), 65 + 45 * Math.floor(actualCount/3), i);
     			blockSourcesGroup.add(dBlockSource);
+				actualCount++;
         	}
         	else
-        	{
+        	{	if (i < allowedBlocks.length-1){
 				var placeHolder:FlxSprite = new FlxSprite(425 + 45 * (i%3), 65 + 45 * Math.floor(i/3));
         		placeHolder.makeGraphic(40,40,0xFF9C9F84);
         		panelsGroup.add(placeHolder);
+			}
         	}
 		}
 	}
