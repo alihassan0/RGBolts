@@ -37,8 +37,8 @@ class Seq extends FlxSprite
 		initialPosition = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 		super(initialPosition.x, initialPosition.y);
 
-		loadGraphic("assets/images/seq.png");
-		visible = true;
+		//loadGraphic("assets/images/seq.png");
+		//visible = false;
 		
 		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);

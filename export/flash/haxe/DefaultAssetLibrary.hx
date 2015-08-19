@@ -50,6 +50,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
+		className.set ("assets/data/bolt.png", __ASSET__assets_data_bolt_png);
+		type.set ("assets/data/bolt.png", AssetType.IMAGE);
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		className.set ("assets/data/queries.xml", __ASSET__assets_data_queries_xml);
@@ -78,6 +80,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/Container.png", AssetType.IMAGE);
 		className.set ("assets/images/directional - Copy.png", __ASSET__assets_images_directional___copy_png);
 		type.set ("assets/images/directional - Copy.png", AssetType.IMAGE);
+		className.set ("assets/images/directional.png", __ASSET__assets_images_directional_png);
+		type.set ("assets/images/directional.png", AssetType.IMAGE);
 		className.set ("assets/images/directional2.png", __ASSET__assets_images_directional2_png);
 		type.set ("assets/images/directional2.png", AssetType.IMAGE);
 		className.set ("assets/images/directional3.png", __ASSET__assets_images_directional3_png);
@@ -122,6 +126,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/duplicatosr.png", AssetType.IMAGE);
 		className.set ("assets/images/duplicatsor.png", __ASSET__assets_images_duplicatsor_png);
 		type.set ("assets/images/duplicatsor.png", AssetType.IMAGE);
+		className.set ("assets/images/Entypo_2191(0)_32.png", __ASSET__assets_images_entypo_2191_0__32_png);
+		type.set ("assets/images/Entypo_2191(0)_32.png", AssetType.IMAGE);
 		className.set ("assets/images/Entypo_2191(0)_36.bmp", __ASSET__assets_images_entypo_2191_0__36_bmp);
 		type.set ("assets/images/Entypo_2191(0)_36.bmp", AssetType.TEXT);
 		className.set ("assets/images/Entypo_2b(1)_24.png", __ASSET__assets_images_entypo_2b_1__24_png);
@@ -209,6 +215,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#elseif html5
 		
 		var id;
+		id = "assets/data/bolt.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/data/data-goes-here.txt";
 		path.set (id, id);
 		
@@ -262,6 +272,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/directional - Copy.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directional.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -350,6 +364,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/duplicatsor.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Entypo_2191(0)_32.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -605,6 +623,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -613,6 +634,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		
+		className.set ("assets/data/bolt.png", __ASSET__assets_data_bolt_png);
+		type.set ("assets/data/bolt.png", AssetType.IMAGE);
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
@@ -655,6 +679,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/directional - Copy.png", __ASSET__assets_images_directional___copy_png);
 		type.set ("assets/images/directional - Copy.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/directional.png", __ASSET__assets_images_directional_png);
+		type.set ("assets/images/directional.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/directional2.png", __ASSET__assets_images_directional2_png);
 		type.set ("assets/images/directional2.png", AssetType.IMAGE);
@@ -721,6 +748,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/duplicatsor.png", __ASSET__assets_images_duplicatsor_png);
 		type.set ("assets/images/duplicatsor.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Entypo_2191(0)_32.png", __ASSET__assets_images_entypo_2191_0__32_png);
+		type.set ("assets/images/Entypo_2191(0)_32.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/Entypo_2191(0)_36.bmp", __ASSET__assets_images_entypo_2191_0__36_bmp);
 		type.set ("assets/images/Entypo_2191(0)_36.bmp", AssetType.TEXT);
@@ -1535,6 +1565,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if !display
 #if flash
 
+@:keep @:bind #if display private #end class __ASSET__assets_data_bolt_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_data_queries_xml extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_data_queries2_xml extends flash.utils.ByteArray { }
@@ -1549,6 +1580,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_images_color_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_container_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_directional___copy_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_directional_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_directional2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_directional3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_directional4_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1571,6 +1603,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_images_duplicators_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_duplicatosr_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_duplicatsor_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_entypo_2191_0__32_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_entypo_2191_0__36_bmp extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_entypo_2b_1__24_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_entypo_2d_0__24_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1691,6 +1724,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
@@ -1702,6 +1738,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux)
 
 
+@:image("assets/data/bolt.png") #if display private #end class __ASSET__assets_data_bolt_png extends lime.graphics.Image {}
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
 @:file("assets/data/queries.xml") #if display private #end class __ASSET__assets_data_queries_xml extends lime.utils.ByteArray {}
 @:file("assets/data/queries2.xml") #if display private #end class __ASSET__assets_data_queries2_xml extends lime.utils.ByteArray {}
@@ -1716,6 +1753,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/images/color.png") #if display private #end class __ASSET__assets_images_color_png extends lime.graphics.Image {}
 @:image("assets/images/Container.png") #if display private #end class __ASSET__assets_images_container_png extends lime.graphics.Image {}
 @:image("assets/images/directional - Copy.png") #if display private #end class __ASSET__assets_images_directional___copy_png extends lime.graphics.Image {}
+@:image("assets/images/directional.png") #if display private #end class __ASSET__assets_images_directional_png extends lime.graphics.Image {}
 @:image("assets/images/directional2.png") #if display private #end class __ASSET__assets_images_directional2_png extends lime.graphics.Image {}
 @:image("assets/images/directional3.png") #if display private #end class __ASSET__assets_images_directional3_png extends lime.graphics.Image {}
 @:image("assets/images/directional4.png") #if display private #end class __ASSET__assets_images_directional4_png extends lime.graphics.Image {}
@@ -1738,6 +1776,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/images/duplicators.png") #if display private #end class __ASSET__assets_images_duplicators_png extends lime.graphics.Image {}
 @:image("assets/images/duplicatosr.png") #if display private #end class __ASSET__assets_images_duplicatosr_png extends lime.graphics.Image {}
 @:image("assets/images/duplicatsor.png") #if display private #end class __ASSET__assets_images_duplicatsor_png extends lime.graphics.Image {}
+@:image("assets/images/Entypo_2191(0)_32.png") #if display private #end class __ASSET__assets_images_entypo_2191_0__32_png extends lime.graphics.Image {}
 @:file("assets/images/Entypo_2191(0)_36.bmp") #if display private #end class __ASSET__assets_images_entypo_2191_0__36_bmp extends lime.utils.ByteArray {}
 @:image("assets/images/Entypo_2b(1)_24.png") #if display private #end class __ASSET__assets_images_entypo_2b_1__24_png extends lime.graphics.Image {}
 @:image("assets/images/Entypo_2d(0)_24.png") #if display private #end class __ASSET__assets_images_entypo_2d_0__24_png extends lime.graphics.Image {}

@@ -34,6 +34,10 @@ class ApplicationMain {
 		var types = [];
 		
 		
+		urls.push ("assets/data/bolt.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/data/data-goes-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -87,6 +91,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/directional - Copy.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/directional.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -175,6 +183,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/duplicatsor.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Entypo_2191(0)_32.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
