@@ -42,9 +42,9 @@ class BlockSource extends FlxSprite
 				case 0: new DirectionalBlock(0,0);
 				case 1: new IteratorBlock(0,0);
 				case 2: new GrouperBlock(0,0);
-				case 3: new FilterBlock(0, 0, "r");
-				case 4: new FilterBlock(0, 0, "g");
-				case 5: new FilterBlock(0, 0, "b");
+				case 3: new FilterRedBlock(0, 0);
+				case 4: new FilterGreenBlock(0, 0);
+				case 5: new FilterBlueBlock(0, 0);
 				case 6: new WaiterBlock(0,0);
 				case 7: new DuplicatorBlock(0, 0);
 				case 8: new SignalBlock(0,0);
