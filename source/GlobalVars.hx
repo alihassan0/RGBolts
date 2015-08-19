@@ -48,7 +48,8 @@ class GlobalVars
 			7=> DuplicatorBlock,
 			8=> SignalBlock,
 			9=> InputBlock,
-			10=> OutputBlock
+			10=> OutputBlock,
+			11=> FilterBlackBlock
     ];
 	public static function loadLevels()
 	{
@@ -98,7 +99,7 @@ class GlobalVars
 		//--------------------------------level 8 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"moveBlueToEnd", moveBlueToEnd,
-			["bgbg","bgg","gbrr","bgbg","rbrgr"],new FlxPoint(0,3),new FlxPoint(7,6),6, "Right here"));
+			["bgbgk","bggk","gbrrk","bgbgk","rbrgrk"],new FlxPoint(0,3),new FlxPoint(7,6),6, "Right here"));
 		
 		//--------------------------------level 9 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
@@ -365,9 +366,9 @@ class GlobalVars
         var i:Int = Std.int(Math.max(inputString.indexOf("r"),inputString.indexOf("g")));
         return inputString.substring(i+1,inputString.length);
     }
-	
 	 static function moveBlueToEnd(inputString:String):String
 	{
+		inputString = StringTools.replace(inputString,"k","");
 		if (inputString.length == 0)
 			return "";
 		

@@ -114,6 +114,7 @@ class Seq extends FlxSprite
 			case 'r': color = 0xFFFF0000;
 			case 'g': color = 0xFF00FF00;
 			case 'b': color = 0xFF0000FF;
+			case 'k': color = 0xFF000000;
 			default : color = 0xFF000000;
 		}
 		return color;
