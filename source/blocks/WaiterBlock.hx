@@ -17,33 +17,17 @@ class WaiterBlock extends Block
 		super(X, Y);
 		loadGraphic("assets/images/waiter.png");
 		curruntSeqs = new Array<Seq>();
-		FlxG.watch.add(this, "waiting");
-		FlxG.watch.add(this, "lastTurn");
-		FlxG.watch.add(this, "curruntSeqs.length");
 	}
 	override public function affectSeq(s:Seq) 
 	{
 		super.affectSeq(s);
-		if (curruntSeqs.indexOf(s) == -1)
-			curruntSeqs.push(s);
-		if (curruntSeqs.length > 0 && s == curruntSeqs[0] && GlobalVars.turn != lastTurn)
+		if (s.direction.x != 0 || s.direction.y != 0)
 		{
-			lastTurn = GlobalVars.turn;
-			if (waiting)
-			{
-				direct(curruntSeqs.splice(0, 1)[0],GlobalVars.UP);
-				waiting = false;
-			}
-			else
-			{
-				waiting = true;
-			}
+			s.lastDirection.set(s.direction.x,s.direction.y);
+			s.direction.set(0,0);
 		}
-		for (i in 0...curruntSeqs.length)
-		{
-			curruntSeqs[i].wait();
-		}
-		
+		else
+			s.direction.set(s.lastDirection.x,s.lastDirection.y);
 	}
 	override public function reset_state() 
 	{
