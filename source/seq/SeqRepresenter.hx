@@ -25,11 +25,11 @@ class SeqRepresenter extends FlxSprite
 	}	
 	override public function kill():Void 
 	{
-		super.kill();
 		while (seqColorArray.length != 0)
 		{
 			seqColorArray.shift().kill();
 		}
+		super.kill();
 	}
 	public function set_seqString(value:String):Void 
 	{

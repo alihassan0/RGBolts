@@ -91,6 +91,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -98,6 +99,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -667,6 +669,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		path.set ("assets/images/signal.png", "assets/images/signal.png");
 		type.set ("assets/images/signal.png", AssetType.IMAGE);
+		path.set ("assets/images/ifblack.png", "assets/images/ifblack.png");
+		type.set ("assets/images/ifblack.png", AssetType.IMAGE);
 		path.set ("assets/fonts/font.png", "assets/fonts/font.png");
 		type.set ("assets/fonts/font.png", AssetType.IMAGE);
 		path.set ("assets/fonts/font.fnt", "assets/fonts/font.fnt");
@@ -771,6 +775,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/signal.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/ifblack.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/fonts/font.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -857,6 +864,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -865,6 +873,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1636,11 +1645,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
 
 
 

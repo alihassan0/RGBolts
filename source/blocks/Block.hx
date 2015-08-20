@@ -26,7 +26,6 @@ class Block extends FlxSprite
 		
 		
 		
-		angle = 0;
 		if(mouseOffset == null)
 			mouseOffset = new FlxPoint(width/2, height/2);
 		

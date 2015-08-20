@@ -110,12 +110,12 @@ class GlobalVars
 		//--------------------------------level 10 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"Reverse", reverse,
-			["bgbgr","bgbgrg","gbrbgg","bgbggb","rgbrgr"],null,null,6));
+			["bgbgrk","bgbgrgk","gbrbggk","bgbggbk","rgbrgrk"],null,null,6));
 			
 		//--------------------------------level 11 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"Green then blue No red", greenThenBlueNoRed,
-			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
+			["b","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
 		//--------------------------------level 12 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"Remove al first characters", removeFirstCharacter,
@@ -386,6 +386,7 @@ class GlobalVars
 	
 	static function reverse(inputString:String):String
 	{
+		inputString = StringTools.replace(inputString,"k","");
 		if (inputString.length == 0)
 			return "";
 		return reverse(inputString.substring(1)) + inputString.charAt(0);
