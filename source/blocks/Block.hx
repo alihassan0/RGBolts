@@ -15,7 +15,6 @@ class Block extends FlxSprite
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
-	private var blockPillers:FlxSprite;
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
@@ -23,7 +22,6 @@ class Block extends FlxSprite
 		GlobalVars.level.blocksGroup.add(this);
 		followMouse = true;
 		offset.set(0,5);
-		
 		
 		
 		if(mouseOffset == null)
@@ -45,6 +43,7 @@ class Block extends FlxSprite
 			}
 		}
 		this.angle = angle;
+	
 	
 	}
 	public function checkPosInGrid() //adds the block to the grid if possible
@@ -98,7 +97,7 @@ class Block extends FlxSprite
 	}
 	public function affectSeq(s:Seq)
 	{
-		//FlxFlicker.flicker(this, .5, 0.04);
+		FlxFlicker.flicker(this, .5, 0.04);
 		FlxG.sound.play("assets/sounds/powerup.wav", .5);
 	}
 	public function direct(s:Seq,direction:Int)
@@ -141,11 +140,7 @@ class Block extends FlxSprite
 		}
 	}
 	override public function kill()
-	{/*
-		blockBase.kill();
-		blockPillers.kill();
-		GlobalVars.level.blocksGroup.remove(blockPillers);
-		GlobalVars.level.blocksBasesGroup.remove(blockBase);*/
+	{
 		super.kill();
 	}
 }
