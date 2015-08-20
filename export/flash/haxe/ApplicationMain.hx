@@ -34,6 +34,7 @@ class ApplicationMain {
 		var types = [];
 		
 		
+<<<<<<< Updated upstream
 		urls.push ("assets/data/bolt.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -68,12 +69,41 @@ class ApplicationMain {
 		
 		urls.push ("assets/fonts/font.fnt");
 		types.push (lime.Assets.AssetType.TEXT);
+=======
+		urls.push ("assets/data/data-goes-here.txt");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/data/queries.xml");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/data/queries2.xml");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/fonts/font.fnt");
+		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		urls.push ("assets/fonts/font.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/bolt.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/color.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+>>>>>>> Stashed changes
+		
+		
+		urls.push ("assets/fonts/font.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+<<<<<<< Updated upstream
 		urls.push ("assets/images/addblack.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -83,14 +113,25 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/bolt.png");
+=======
+		urls.push ("assets/images/directional2.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/color.png");
+		urls.push ("assets/images/directional3.png");
+>>>>>>> Stashed changes
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/directional4.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+<<<<<<< Updated upstream
 		urls.push ("assets/images/Container.png");
+=======
+		urls.push ("assets/images/directional5.png");
+>>>>>>> Stashed changes
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -102,10 +143,11 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/directional2.png");
+		urls.push ("assets/images/duplicator.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+<<<<<<< Updated upstream
 		urls.push ("assets/images/directional3.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -171,13 +213,21 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/duplicato2.png");
+=======
+		urls.push ("assets/images/grouper.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/duplicator.png");
+		urls.push ("assets/images/ifblack.png");
+>>>>>>> Stashed changes
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/ifblue.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+<<<<<<< Updated upstream
 		urls.push ("assets/images/duplicators.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -219,13 +269,37 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/ifblack.png");
+=======
+		urls.push ("assets/images/ifgreen.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/ifblue.png");
+		urls.push ("assets/images/ifred.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/images-go-here.txt");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/input.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/iterator.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/levelIcon.png");
+>>>>>>> Stashed changes
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Levels.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+<<<<<<< Updated upstream
 		urls.push ("assets/images/ifblue2.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -259,13 +333,17 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/inputold.png");
+=======
+		urls.push ("assets/images/output.png");
+>>>>>>> Stashed changes
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/iterator.png");
+		urls.push ("assets/images/question.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+<<<<<<< Updated upstream
 		urls.push ("assets/images/iterator2.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -331,6 +409,25 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/waiter2.png");
+=======
+		urls.push ("assets/images/seq.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/seq2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sig.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/signal.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/waiter.png");
+>>>>>>> Stashed changes
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
