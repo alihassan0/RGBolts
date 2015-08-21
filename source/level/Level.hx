@@ -63,7 +63,7 @@ class Level extends FlxState
 	private var inputTests:Array<InputTest>;
 	public var selectedInputTest:InputTest;
 	
-	
+	private var wonPanel:WonPanel;	
 	override public function create():Void
 	{
 		levelInfo = GlobalVars.levelInfo;
@@ -224,6 +224,10 @@ class Level extends FlxState
 
 		title_txt = new FlxText(0,5,FlxG.width, "Level : " +GlobalVars.levelInfo.id).setFormat(null, 16 , 0x9C9F84,"center");
 		guiGroup.add(title_txt);
+
+		wonPanel = new WonPanel();
+		//guiGroup.add(wonPanel);
+		
 	}
 	function addDiscription() 
 	{

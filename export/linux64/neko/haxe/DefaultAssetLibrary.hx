@@ -92,6 +92,50 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -99,6 +143,50 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -619,66 +707,148 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
+		path.set ("assets/images/inputold.png", "assets/images/inputold.png");
+		type.set ("assets/images/inputold.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalUps.png", "assets/images/directionalUps.png");
+		type.set ("assets/images/directionalUps.png", AssetType.IMAGE);
 		path.set ("assets/images/directional3.png", "assets/images/directional3.png");
 		type.set ("assets/images/directional3.png", AssetType.IMAGE);
 		path.set ("assets/images/sig.png", "assets/images/sig.png");
 		type.set ("assets/images/sig.png", AssetType.IMAGE);
 		path.set ("assets/images/Levels.png", "assets/images/Levels.png");
 		type.set ("assets/images/Levels.png", AssetType.IMAGE);
+		path.set ("assets/images/MINUS.png", "assets/images/MINUS.png");
+		type.set ("assets/images/MINUS.png", AssetType.IMAGE);
+		path.set ("assets/images/Entypo_2d(0)_24.png", "assets/images/Entypo_2d(0)_24.png");
+		type.set ("assets/images/Entypo_2d(0)_24.png", AssetType.IMAGE);
 		path.set ("assets/images/grouper.png", "assets/images/grouper.png");
 		type.set ("assets/images/grouper.png", AssetType.IMAGE);
+		path.set ("assets/images/ifgreen2.png", "assets/images/ifgreen2.png");
+		type.set ("assets/images/ifgreen2.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalxUp.png", "assets/images/directionalxUp.png");
+		type.set ("assets/images/directionalxUp.png", AssetType.IMAGE);
+		path.set ("assets/images/ifblue2.png", "assets/images/ifblue2.png");
+		type.set ("assets/images/ifblue2.png", AssetType.IMAGE);
+		path.set ("assets/images/iterator2.png", "assets/images/iterator2.png");
+		type.set ("assets/images/iterator2.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/directional.png", "assets/images/directional.png");
 		type.set ("assets/images/directional.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalUpd.png", "assets/images/directionalUpd.png");
+		type.set ("assets/images/directionalUpd.png", AssetType.IMAGE);
+		path.set ("assets/images/directionala.png", "assets/images/directionala.png");
+		type.set ("assets/images/directionala.png", AssetType.IMAGE);
 		path.set ("assets/images/bolt.png", "assets/images/bolt.png");
 		type.set ("assets/images/bolt.png", AssetType.IMAGE);
 		path.set ("assets/images/seq2.png", "assets/images/seq2.png");
 		type.set ("assets/images/seq2.png", AssetType.IMAGE);
+		path.set ("assets/images/Entypo_2191(0)_36.bmp", "assets/images/Entypo_2191(0)_36.bmp");
+		type.set ("assets/images/Entypo_2191(0)_36.bmp", AssetType.TEXT);
 		path.set ("assets/images/color.png", "assets/images/color.png");
 		type.set ("assets/images/color.png", AssetType.IMAGE);
+		path.set ("assets/images/outputs.png", "assets/images/outputs.png");
+		type.set ("assets/images/outputs.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalUp.png", "assets/images/directionalUp.png");
+		type.set ("assets/images/directionalUp.png", AssetType.IMAGE);
+		path.set ("assets/images/Entypo_2191(0)_32.png", "assets/images/Entypo_2191(0)_32.png");
+		type.set ("assets/images/Entypo_2191(0)_32.png", AssetType.IMAGE);
 		path.set ("assets/images/output.png", "assets/images/output.png");
 		type.set ("assets/images/output.png", AssetType.IMAGE);
+		path.set ("assets/images/duplicato2.png", "assets/images/duplicato2.png");
+		type.set ("assets/images/duplicato2.png", AssetType.IMAGE);
 		path.set ("assets/images/discreptionPanel.png", "assets/images/discreptionPanel.png");
 		type.set ("assets/images/discreptionPanel.png", AssetType.IMAGE);
+		path.set ("assets/images/duplicators.png", "assets/images/duplicators.png");
+		type.set ("assets/images/duplicators.png", AssetType.IMAGE);
 		path.set ("assets/images/directional2.png", "assets/images/directional2.png");
 		type.set ("assets/images/directional2.png", AssetType.IMAGE);
+		path.set ("assets/images/waiter2.png", "assets/images/waiter2.png");
+		type.set ("assets/images/waiter2.png", AssetType.IMAGE);
+		path.set ("assets/images/Container.png", "assets/images/Container.png");
+		type.set ("assets/images/Container.png", AssetType.IMAGE);
+		path.set ("assets/images/Entypo_e4ad(0)_42.png", "assets/images/Entypo_e4ad(0)_42.png");
+		type.set ("assets/images/Entypo_e4ad(0)_42.png", AssetType.IMAGE);
 		path.set ("assets/images/question.png", "assets/images/question.png");
 		type.set ("assets/images/question.png", AssetType.IMAGE);
+		path.set ("assets/images/directionaly.png", "assets/images/directionaly.png");
+		type.set ("assets/images/directionaly.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalUpd (2).png", "assets/images/directionalUpd (2).png");
+		type.set ("assets/images/directionalUpd (2).png", AssetType.IMAGE);
+		path.set ("assets/images/inputd.png", "assets/images/inputd.png");
+		type.set ("assets/images/inputd.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalUpi.png", "assets/images/directionalUpi.png");
+		type.set ("assets/images/directionalUpi.png", AssetType.IMAGE);
+		path.set ("assets/images/outputold.png", "assets/images/outputold.png");
+		type.set ("assets/images/outputold.png", AssetType.IMAGE);
 		path.set ("assets/images/ifgreen.png", "assets/images/ifgreen.png");
 		type.set ("assets/images/ifgreen.png", AssetType.IMAGE);
 		path.set ("assets/images/duplicator.png", "assets/images/duplicator.png");
 		type.set ("assets/images/duplicator.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalLeft.png", "assets/images/directionalLeft.png");
+		type.set ("assets/images/directionalLeft.png", AssetType.IMAGE);
 		path.set ("assets/images/input.png", "assets/images/input.png");
 		type.set ("assets/images/input.png", AssetType.IMAGE);
 		path.set ("assets/images/levelIcon.png", "assets/images/levelIcon.png");
 		type.set ("assets/images/levelIcon.png", AssetType.IMAGE);
+		path.set ("assets/images/Balanced_scale_of_Justice.svg", "assets/images/Balanced_scale_of_Justice.svg");
+		type.set ("assets/images/Balanced_scale_of_Justice.svg", AssetType.TEXT);
+		path.set ("assets/images/signal2.png", "assets/images/signal2.png");
+		type.set ("assets/images/signal2.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalsUp.png", "assets/images/directionalsUp.png");
+		type.set ("assets/images/directionalsUp.png", AssetType.IMAGE);
+		path.set ("assets/images/directional - Copy.png", "assets/images/directional - Copy.png");
+		type.set ("assets/images/directional - Copy.png", AssetType.IMAGE);
 		path.set ("assets/images/seq.png", "assets/images/seq.png");
 		type.set ("assets/images/seq.png", AssetType.IMAGE);
+		path.set ("assets/images/PLUS.png", "assets/images/PLUS.png");
+		type.set ("assets/images/PLUS.png", AssetType.IMAGE);
 		path.set ("assets/images/waiter.png", "assets/images/waiter.png");
 		type.set ("assets/images/waiter.png", AssetType.IMAGE);
 		path.set ("assets/images/ifred.png", "assets/images/ifred.png");
 		type.set ("assets/images/ifred.png", AssetType.IMAGE);
+		path.set ("assets/images/duplicatsor.png", "assets/images/duplicatsor.png");
+		type.set ("assets/images/duplicatsor.png", AssetType.IMAGE);
 		path.set ("assets/images/directional5.png", "assets/images/directional5.png");
 		type.set ("assets/images/directional5.png", AssetType.IMAGE);
 		path.set ("assets/images/ifblue.png", "assets/images/ifblue.png");
 		type.set ("assets/images/ifblue.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalDown.png", "assets/images/directionalDown.png");
+		type.set ("assets/images/directionalDown.png", AssetType.IMAGE);
 		path.set ("assets/images/directional4.png", "assets/images/directional4.png");
 		type.set ("assets/images/directional4.png", AssetType.IMAGE);
+		path.set ("assets/images/ifred2.png", "assets/images/ifred2.png");
+		type.set ("assets/images/ifred2.png", AssetType.IMAGE);
 		path.set ("assets/images/iterator.png", "assets/images/iterator.png");
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		path.set ("assets/images/signal.png", "assets/images/signal.png");
 		type.set ("assets/images/signal.png", AssetType.IMAGE);
+		path.set ("assets/images/transparent_spacer.gif", "assets/images/transparent_spacer.gif");
+		type.set ("assets/images/transparent_spacer.gif", AssetType.IMAGE);
+		path.set ("assets/images/addblack.png", "assets/images/addblack.png");
+		type.set ("assets/images/addblack.png", AssetType.IMAGE);
+		path.set ("assets/images/Entypo_2b(1)_24.png", "assets/images/Entypo_2b(1)_24.png");
+		type.set ("assets/images/Entypo_2b(1)_24.png", AssetType.IMAGE);
 		path.set ("assets/images/ifblack.png", "assets/images/ifblack.png");
 		type.set ("assets/images/ifblack.png", AssetType.IMAGE);
+		path.set ("assets/images/duplicatosr.png", "assets/images/duplicatosr.png");
+		type.set ("assets/images/duplicatosr.png", AssetType.IMAGE);
+		path.set ("assets/images/groupesr.png", "assets/images/groupesr.png");
+		type.set ("assets/images/groupesr.png", AssetType.IMAGE);
+		path.set ("assets/images/directionalRight.png", "assets/images/directionalRight.png");
+		type.set ("assets/images/directionalRight.png", AssetType.IMAGE);
 		path.set ("assets/fonts/font.png", "assets/fonts/font.png");
 		type.set ("assets/fonts/font.png", AssetType.IMAGE);
 		path.set ("assets/fonts/font.fnt", "assets/fonts/font.fnt");
 		type.set ("assets/fonts/font.fnt", AssetType.TEXT);
+		path.set ("assets/directionalUp.png", "assets/directionalUp.png");
+		type.set ("assets/directionalUp.png", AssetType.IMAGE);
 		path.set ("assets/data/queries2.xml", "assets/data/queries2.xml");
 		type.set ("assets/data/queries2.xml", AssetType.TEXT);
 		path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		path.set ("assets/data/bolt.png", "assets/data/bolt.png");
+		type.set ("assets/data/bolt.png", AssetType.IMAGE);
 		path.set ("assets/data/queries.xml", "assets/data/queries.xml");
 		type.set ("assets/data/queries.xml", AssetType.TEXT);
 		path.set ("assets/sounds/powerup.wav", "assets/sounds/powerup.wav");
@@ -687,6 +857,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
+		path.set ("assets/directionalLeft.png", "assets/directionalLeft.png");
+		type.set ("assets/directionalLeft.png", AssetType.IMAGE);
+		path.set ("assets/directionalDown.png", "assets/directionalDown.png");
+		type.set ("assets/directionalDown.png", AssetType.IMAGE);
+		path.set ("assets/directionalRight.png", "assets/directionalRight.png");
+		type.set ("assets/directionalRight.png", AssetType.IMAGE);
 		path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");
 		type.set ("assets/sounds/beep.ogg", AssetType.SOUND);
 		path.set ("assets/sounds/flixel.ogg", "assets/sounds/flixel.ogg");
@@ -700,6 +876,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#elseif html5
 		
 		var id;
+		id = "assets/images/inputold.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalUps.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/directional3.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -709,7 +891,25 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/Levels.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/MINUS.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Entypo_2d(0)_24.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/grouper.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/ifgreen2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalxUp.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/ifblue2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/iterator2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
@@ -718,25 +918,73 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/directional.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalUpd.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionala.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/bolt.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/seq2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Entypo_2191(0)_36.bmp";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
 		id = "assets/images/color.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/outputs.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalUp.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Entypo_2191(0)_32.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/output.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/duplicato2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/discreptionPanel.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/duplicators.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/directional2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/waiter2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Container.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Entypo_e4ad(0)_42.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/question.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionaly.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalUpd (2).png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/inputd.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalUpi.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/outputold.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/ifgreen.png";
@@ -745,13 +993,31 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/duplicator.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalLeft.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/input.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/levelIcon.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Balanced_scale_of_Justice.svg";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
+		id = "assets/images/signal2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalsUp.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directional - Copy.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/seq.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/PLUS.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/waiter.png";
@@ -760,13 +1026,22 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/ifred.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/duplicatsor.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/directional5.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/ifblue.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalDown.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/directional4.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/ifred2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/iterator.png";
@@ -775,7 +1050,25 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/signal.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/transparent_spacer.gif";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/addblack.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Entypo_2b(1)_24.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/ifblack.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/duplicatosr.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/groupesr.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/directionalRight.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/fonts/font.png";
@@ -784,12 +1077,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/fonts/font.fnt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/directionalUp.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/data/queries2.xml";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/data/data-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/data/bolt.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/data/queries.xml";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -802,6 +1101,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/music/music-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/directionalLeft.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/directionalDown.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/directionalRight.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/sounds/beep.ogg";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
@@ -865,6 +1173,50 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -873,6 +1225,50 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1646,11 +2042,99 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
