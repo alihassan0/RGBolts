@@ -176,7 +176,9 @@ class Level extends FlxState
 		
 		
 		//test
-		add(new BlockPanel(new FilterGreenBlock(0, 0)));
+		var b = new BlockPanel(new FilterGreenBlock(0, 0));
+		
+		add(b);
 		
 		
 		

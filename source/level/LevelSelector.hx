@@ -1,4 +1,5 @@
 package level;
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.text.FlxBitmapTextField;
 import flixel.text.pxText.PxBitmapFont;
@@ -18,6 +19,8 @@ class LevelSelector extends FlxState
 	public var textDiscription:FlxBitmapTextField;
 	override public function create():Void 
 	{
+		FlxG.camera.antialiasing = true;
+		
 		var sprite:FlxSprite = new FlxSprite(150,0,"assets/images/Levels.png");
 		sprite.scale.set(.5,.5);
 		//add(sprite);
