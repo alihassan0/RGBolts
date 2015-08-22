@@ -67,6 +67,7 @@ class Level extends FlxState
 	override public function create():Void
 	{
 		levelInfo = GlobalVars.levelInfo;
+		FlxG.camera.antialiasing = true;
 		this.timer = new FlxTimer();
 		this.isRunning = false;
 		GlobalVars.level = this;
@@ -171,6 +172,14 @@ class Level extends FlxState
 			}
         	}
 		}
+		
+		
+		
+		//test
+		add(new BlockPanel(new FilterGreenBlock(0, 0)));
+		
+		
+		
 	}
 	private function addUI()
 	{
