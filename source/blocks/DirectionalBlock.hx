@@ -19,14 +19,18 @@ class DirectionalBlock extends Block
 	override public function affectSeq(s:Seq) 
 	{
 		super.affectSeq(s);
-		var dir:Int = Math.floor((angle % 360) / 90);
-		switch(dir)
-		{
-			case 0: s.set_direction(new FlxPoint(0,-1));
-			case 1: s.set_direction(new FlxPoint(1,0));
-			case 2: s.set_direction(new FlxPoint(0,1));
-			case 3: s.set_direction(new FlxPoint(-1,0));
-		}
+			if ("k" == directionBoxDown){
+			direct(s, GlobalVars.DOWN);
+			}
+			if ("k" == directionBoxUp){
+				direct(s, GlobalVars.UP);
+			}
+			if ("k" == directionBoxLeft){
+				direct(s, GlobalVars.LEFT);
+			}
+			if ("k" == directionBoxRight){
+				direct(s, GlobalVars.RIGHT);
+			}
 	}
 	/*override public function update():Void 
 	{

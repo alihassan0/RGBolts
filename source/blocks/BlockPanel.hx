@@ -82,9 +82,14 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 		add(directionsBoxRight);
 		directionBoxes.add(directionsBoxRight);
 	
-		loadFromBlock();
+		if(Std.is(block, FilterBlock))
+		loadFromFilterBlock();
+		
+		if(Std.is(block, DirectionalBlock))
+		loadFromDirectionalBlock();
+		
+		
 
-		choices = 5;
 		addArrows();
 	}
 	
@@ -100,9 +105,10 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 		
 	}
 	
-	function loadFromBlock():Void {	
+	function loadFromFilterBlock():Void {	
 		var make:Bool = false;
 		var c:Int = 0;
+		choices = 5;
 		switch(block.directionBoxDown){
 			case "k": c = 0;
 			case "b": c = 1;
@@ -152,5 +158,16 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 		directionsBoxRight.loadGraphic("assets/images/customArrow" + c + ".png", false);
 	}
 	
-	
+	function loadFromDirectionalBlock():Void {
+		choices = 1;
+		if (block.directionBoxDown == "k")
+			directionsBoxDown.loadGraphic("assets/images/customArrow3.png", false);
+		if (block.directionBoxUp == "k")
+			directionsBoxUp.loadGraphic("assets/images/customArrow3.png", false);
+		if (block.directionBoxLeft == "k")
+			directionsBoxLeft.loadGraphic("assets/images/customArrow3.png", false);
+		if (block.directionBoxRight == "k")
+			directionsBoxRight.loadGraphic("assets/images/customArrow3.png", false);
+
+	}
 }	
