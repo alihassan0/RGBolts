@@ -27,7 +27,7 @@ class FilterBlock extends Block
 		}
 
 	}
-	override public function affectSeq(s:Seq) 
+	/*override public function affectSeq(s:Seq) 
 	{
 		super.affectSeq(s);
 		if(s.getString().charAt(0)==filter_string)
@@ -38,5 +38,47 @@ class FilterBlock extends Block
 		{
 			direct(s, GlobalVars.UP);
 		}
+	}*/
+	
+	
+	override public function affectSeq(s:Seq) 
+	{
+		super.affectSeq(s);
+		var sequence:String = s.getString().charAt(0);
+		var found:Bool = false;
+		if (sequence == directionBoxDown){
+			direct(s, GlobalVars.DOWN);
+			found = true;
+		}
+		if (sequence == directionBoxUp){
+			direct(s, GlobalVars.UP);
+			found = true;
+		}
+		if (sequence == directionBoxLeft){
+			direct(s, GlobalVars.LEFT);
+			found = true;
+		}
+		if (sequence == directionBoxRight){
+			direct(s, GlobalVars.RIGHT);
+			found = true;
+		}
+		
+		if (!found) {
+			if ("e" == directionBoxDown){
+			direct(s, GlobalVars.DOWN);
+			}
+			if ("e" == directionBoxUp){
+				direct(s, GlobalVars.UP);
+			}
+			if ("e" == directionBoxLeft){
+				direct(s, GlobalVars.LEFT);
+			}
+			if ("e" == directionBoxRight){
+				direct(s, GlobalVars.RIGHT);
+			}
+		}
+		
 	}
+	
+	
 }

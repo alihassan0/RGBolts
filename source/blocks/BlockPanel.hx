@@ -16,7 +16,7 @@ using flixel.util.FlxSpriteUtil;
 class BlockPanel extends FlxTypedGroup<FlxSprite>
 {
 	var background:FlxSprite;
-	var block:FlxSprite;
+	var blockImage:FlxSprite;
 	public var directionsBoxUp:FlxSprite;
 	public var directionsBoxDown:FlxSprite;
 	public var directionsBoxLeft:FlxSprite;
@@ -30,12 +30,16 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 	var posY:Float;
 	var selection:Int;
 	var offset = 40 - 10;
+	public var block:Block;
 	public var directionBoxes:FlxTypedGroup<FlxSprite>;
 
 	
 	public function new(z:Block) 
 	{
 		super();
+		
+		
+		block = z;
 		posX = 430+(75-8);
 		posY = 100;
 		//background
@@ -43,11 +47,14 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 		background.loadGraphic("assets/images/Container.png", false);
 		add(background);
 		
+		if (block == null) {
+			return;	
+		}
 		//block
-		if(z!=null){
-		block = new FlxSprite(posX-8, posY-8);
-		block.loadGraphicFromSprite(z);
-		add(block);}
+		blockImage = new FlxSprite(posX-8, posY-8);
+		blockImage.loadGraphicFromSprite(z);
+		add(blockImage);
+		
 		
 		directionBoxes = new FlxTypedGroup<FlxSprite>();
 		
@@ -75,11 +82,10 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 		add(directionsBoxRight);
 		directionBoxes.add(directionsBoxRight);
 	
-		
+		loadFromBlock();
+
 		choices = 5;
 		addArrows();
-		FlxG.watch.add(directionBoxes, "shit");
-		
 	}
 	
 	public function addArrows():Void {
@@ -93,5 +99,58 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 		}
 		
 	}
+	
+	function loadFromBlock():Void {	
+		var make:Bool = false;
+		var c:Int = 0;
+		switch(block.directionBoxDown){
+			case "k": c = 0;
+			case "b": c = 1;
+			case "g": c = 2;
+			case "e": c = 3;
+			case "r": c = 4;
+			default: make = true;
+		}
+		if(!make)
+		directionsBoxDown.loadGraphic("assets/images/customArrow" + c + ".png", false);
+		
+		
+		make = false;
+		switch(block.directionBoxUp){
+			case "k": c = 0;
+			case "b": c = 1;
+			case "g": c = 2;
+			case "e": c = 3;
+			case "r": c = 4;
+			default: make = true;
+		}
+		if(!make)
+		directionsBoxUp.loadGraphic("assets/images/customArrow" + c + ".png", false);
+		
+		make = false;
+		switch(block.directionBoxLeft){
+			case "k": c = 0;
+			case "b": c = 1;
+			case "g": c = 2;
+			case "e": c = 3;
+			case "r": c = 4;
+			default: make = true;
+		}
+		if(!make)
+		directionsBoxLeft.loadGraphic("assets/images/customArrow" + c + ".png", false);
+		
+		make = false;
+		switch(block.directionBoxRight){
+			case "k": c = 0;
+			case "b": c = 1;
+			case "g": c = 2;
+			case "e": c = 3;
+			case "r": c = 4;
+			default: make = true;
+		}
+		if(!make)
+		directionsBoxRight.loadGraphic("assets/images/customArrow" + c + ".png", false);
+	}
+	
 	
 }	

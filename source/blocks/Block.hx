@@ -17,7 +17,13 @@ class Block extends FlxSprite
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
-	public var selectedBlock:Block;
+	public var directionBoxUp:String;
+	public var directionBoxDown:String;
+	public var directionBoxLeft:String;
+	public var directionBoxRight:String;
+	
+	
+	
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
@@ -49,6 +55,17 @@ class Block extends FlxSprite
 	
 	
 	}
+	
+	public function addDirection(direction:String, color:String) {
+		switch(direction) {
+		case "up": directionBoxUp = color;	
+		case "down": directionBoxDown = color;	
+		case "left": directionBoxLeft = color;	
+		case "right": directionBoxRight = color;	
+		}
+	}
+	
+	
 	public function checkPosInGrid() //adds the block to the grid if possible
 	{
 		var bestfit:FlxPoint = GlobalVars.gameGrid.addInBestFit(this);

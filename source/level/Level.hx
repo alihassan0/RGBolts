@@ -87,7 +87,7 @@ class Level extends FlxState
 		bgColor = FlxColor.CRIMSON;
 		new GameGrid();
 		
-		customizePanel = new BlockPanel(new FilterGreenBlock(0, 0));
+		customizePanel = new BlockPanel(null);
 		add(customizePanel);
 		
 		addInputTests();//added to panels layer
@@ -114,7 +114,7 @@ class Level extends FlxState
 		customizePanel = (newPanel);
 		add(customizePanel);
 		GlobalVars.customizationPanel = customizePanel;
-		
+
 		
 	}
 
