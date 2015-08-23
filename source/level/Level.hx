@@ -62,10 +62,12 @@ class Level extends FlxState
 
 	private var inputTests:Array<InputTest>;
 	public var selectedInputTest:InputTest;
-	
+	public static var customizePanel:BlockPanel;
+	public static var level:Level;
 	
 	override public function create():Void
 	{
+		level = this;
 		levelInfo = GlobalVars.levelInfo;
 		FlxG.camera.antialiasing = true;
 		this.timer = new FlxTimer();
@@ -85,7 +87,9 @@ class Level extends FlxState
 		bgColor = FlxColor.CRIMSON;
 		new GameGrid();
 		
-
+		customizePanel = new BlockPanel(new FilterGreenBlock(0, 0));
+		add(customizePanel);
+		
 		addInputTests();//added to panels layer
 		addHelpPanel();//added to menu layer
 		addBlockSources();//added to panels layer
@@ -103,6 +107,15 @@ class Level extends FlxState
 		{
 			TutVars.exists = false;
 		}            		
+	}
+	
+	public function changePanel(newPanel:BlockPanel):Void{
+		remove(customizePanel);
+		customizePanel = (newPanel);
+		add(customizePanel);
+		GlobalVars.customizationPanel = customizePanel;
+		
+		
 	}
 
 	private function initGroups()
@@ -137,11 +150,11 @@ class Level extends FlxState
 		var dBlockSource:BlockSource;
         var allowedBlocks:Array<Int>;
         var temp:Int = GlobalVars.levelInfo.allowedBlocksType;
-        var discription:FlxSprite = new FlxSprite(410, 50);// .makeGraphic(155, 155, 0x00000000);
+       // var discription:FlxSprite = new FlxSprite(410, 50);// .makeGraphic(155, 155, 0x00000000);
 		
-		discription.loadGraphic("assets/images/Container.png");
+	//	discription.loadGraphic("assets/images/Container.png");
 		//discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, FlxColor.AZURE);
-		panelsGroup.add(discription);
+	//	panelsGroup.add(discription);
         switch (temp) {
         	case 0:allowedBlocks = [0];
         	case 1:allowedBlocks = [0,1];
@@ -160,7 +173,7 @@ class Level extends FlxState
         {
         	if(allowedBlocks.indexOf(i)!=-1)
         	{
-    			dBlockSource = new BlockSource(425 + 45 * (actualCount%3), 65 + 45 * Math.floor(actualCount/3), i);
+    			dBlockSource = new BlockSource(10, 35 + 36 * Math.floor(actualCount), i);
     			blockSourcesGroup.add(dBlockSource);
 				actualCount++;
         	}
@@ -176,16 +189,14 @@ class Level extends FlxState
 		
 		
 		//test
-		var b = new BlockPanel(new FilterGreenBlock(0, 0));
 		
-		add(b);
 		
 		
 		
 	}
 	private function addUI()
 	{
-		backToMenuBtn = new FlxButton(400, 220, "Back", switchBack);
+		backToMenuBtn = new FlxButton(420, 220, "Back", switchBack);
 		resetGridButton = new FlxButton(30, 1, "load", resetGrid);
 		resetGridButton.scalebtn(0.7, 1.2);
 		guiGroup.add(resetGridButton);
@@ -197,11 +208,11 @@ class Level extends FlxState
 		backToMenuBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(backToMenuBtn);
 		
-		runBtn = new FlxButton(460, 220, "run", runGame);
+		runBtn = new FlxButton(480, 220, "run", runGame);
 		runBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(runBtn);
 		
-		resetBtn = new FlxButton(520, 220, "reset", resetGame);
+		resetBtn = new FlxButton(540, 220, "reset", resetGame);
 		resetBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(resetBtn);
 
@@ -209,18 +220,20 @@ class Level extends FlxState
 		helpBtn.loadGraphic("assets/images/question.png");
 		guiGroup.add(helpBtn);
 		
+		
+		var speedX = 380;
 		speed = 1;
-		speedText = new FlxText(355 , 40, 100, "Speed: " + speed, 10);
+		speedText = new FlxText(speedX , 40, 100, "Speed: " + speed, 10);
 		speedText.color = 0xAA5C755E;
 		guiGroup.add(speedText);
 		changeSpeed();
 		
-		speedUp = new FlxButton(365, 60, "", speedUpF);
+		speedUp = new FlxButton(speedX +10, 60, "", speedUpF);
 		//speedUp.scalebtn(0.4,0.6);
 		speedUp.loadGraphic("assets/images/Entypo_2b(1)_24.png");
 		guiGroup.add(speedUp);
 		
-		speedDown = new FlxButton(365, 87, "", speedDownF);
+		speedDown = new FlxButton(speedX+10, 87, "", speedDownF);
 		//speedDown.scalebtn(0.4,0.6);
 		speedDown.loadGraphic("assets/images/Entypo_2d(0)_24.png");
 		guiGroup.add(speedDown);
@@ -239,12 +252,12 @@ class Level extends FlxState
 	function addDiscription() 
 	{
 		var discription:FlxSprite = new FlxSprite(370,265).makeGraphic(280,90,0x00000000);
-		discription.drawRoundRect(0, 0, discription.width-30, discription.height, 15, 15, 0xFFA97D5D);
+		discription.drawRoundRect(30, 0, discription.width-60, discription.height, 15, 15, 0xFFA97D5D);
 		var offset:Int = 4;
-		discription.drawRoundRect(offset, offset, discription.width-30 -2*offset, discription.height - 2*offset, 15, 15, FlxColor.RED);
+		discription.drawRoundRect(30+offset, offset, discription.width-60 -2*offset, discription.height - 2*offset, 15, 15, FlxColor.RED);
 		panelsGroup.add(discription);
 		
-		var text:FlxText = new FlxText(discription.x + offset , discription.y + offset, discription.width - 2*offset, levelInfo.description, 12);
+		var text:FlxText = new FlxText(discription.x + offset + 30 , discription.y + offset, discription.width - 5*(offset+10), levelInfo.description, 12);
 		text.color = 0xAA5C755E;
 		panelsGroup.add(text);
 	}
@@ -421,7 +434,7 @@ class Level extends FlxState
 	}
 	function addInputTests() 
 	{
-		var discription:FlxSprite = new FlxSprite(0,360).makeGraphic(640,100,0x00000000);
+		var discription:FlxSprite = new FlxSprite(0,370).makeGraphic(640,100,0x00000000);
 		discription.drawRoundRect(20, 0, 600, 100, 15, 15, 0xFFA97D5D);
 		panelsGroup.add(discription);
 

@@ -1,7 +1,9 @@
 package blocks;
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.group.FlxTypedGroup;
+import flixel.plugin.MouseEventManager;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
@@ -15,11 +17,11 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 {
 	var background:FlxSprite;
 	var block:FlxSprite;
-	var directionsBoxUp:FlxSprite;
-	var directionsBoxDown:FlxSprite;
-	var directionsBoxLeft:FlxSprite;
-	var directionsBoxRight:FlxSprite;
-	var choices :Array<FlxSprite>;
+	public var directionsBoxUp:FlxSprite;
+	public var directionsBoxDown:FlxSprite;
+	public var directionsBoxLeft:FlxSprite;
+	public var directionsBoxRight:FlxSprite;
+	var choices :Int;
 	var okBtn:FlxButton;
 	var cancelBtn:FlxButton;
 	var height:Float;
@@ -27,56 +29,68 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 	var posX:Float;
 	var posY:Float;
 	var selection:Int;
+	var offset = 40 - 10;
+	public var directionBoxes:FlxTypedGroup<FlxSprite>;
 
 	
-	public function new(?z:FilterBlock) 
+	public function new(z:Block) 
 	{
 		super();
-		posX = 400;
-		posY = 210;
-		var offset = 50 - 10;
-		
+		posX = 430+(75-8);
+		posY = 100;
 		//background
 		background = new FlxSprite(posX-(75-8), posY-50);
-		//background.makeGraphic(Math.floor(posX), Math.floor(posY), FlxColor.TRANSPARENT);
-		//background.drawRoundRect(0, 0, 150, 150, 30, 30, FlxColor.GRAY);
 		background.loadGraphic("assets/images/Container.png", false);
 		add(background);
 		
 		//block
+		if(z!=null){
 		block = new FlxSprite(posX-8, posY-8);
 		block.loadGraphicFromSprite(z);
-		add(block);
+		add(block);}
+		
+		directionBoxes = new FlxTypedGroup<FlxSprite>();
 		
 		directionsBoxDown = new FlxSprite(posX, posY+offset);
-		directionsBoxDown.makeGraphic(18, 18, FlxColor.BLACK);
-		//directionsBoxDown.drawRoundRect(0, 0, 36, 36, 30, 30, FlxColor.CYAN);
+		directionsBoxDown.makeGraphic(18, 18, FlxColor.TRANSPARENT);
+		directionsBoxDown.drawRoundRect(0, 0, 18, 18, 5, 5, FlxColor.BLACK);
 		add(directionsBoxDown);
+		directionBoxes.add(directionsBoxDown);
 		
 		directionsBoxUp = new FlxSprite(posX, posY-offset);
-		directionsBoxUp.makeGraphic(18, 18, FlxColor.BLACK);
-		//directionsBoxDown.drawRoundRect(0, 0, 36, 36, 30, 30, FlxColor.CYAN);
+		directionsBoxUp.makeGraphic(18, 18, FlxColor.TRANSPARENT);
+		directionsBoxUp.drawRoundRect(0, 0, 18, 18, 5, 5, FlxColor.BLACK);
 		add(directionsBoxUp);
+		directionBoxes.add(directionsBoxUp);
 		
 		directionsBoxLeft = new FlxSprite(posX-offset, posY);
-		directionsBoxLeft.makeGraphic(18, 18, FlxColor.BLACK);
-		//directionsBoxDown.drawRoundRect(0, 0, 36, 36, 30, 30, FlxColor.CYAN);
+		directionsBoxLeft.makeGraphic(18, 18, FlxColor.TRANSPARENT);
+		directionsBoxLeft.drawRoundRect(0, 0, 18, 18, 5, 5, FlxColor.BLACK);
 		add(directionsBoxLeft);
+		directionBoxes.add(directionsBoxLeft);
 		
 		directionsBoxRight = new FlxSprite(posX+offset, posY);
-		directionsBoxRight.makeGraphic(18, 18, FlxColor.BLACK);
-		//directionsBoxDown.drawRoundRect(0, 0, 36, 36, 30, 30, FlxColor.CYAN);
+		directionsBoxRight.makeGraphic(18, 18, FlxColor.TRANSPARENT);
+		directionsBoxRight.drawRoundRect(0, 0, 18, 18, 5, 5, FlxColor.BLACK);
 		add(directionsBoxRight);
+		directionBoxes.add(directionsBoxRight);
+	
 		
+		choices = 5;
+		addArrows();
+		FlxG.watch.add(directionBoxes, "shit");
 		
-		choices = new Array<FlxSprite>();
-		for (i in 0...5){
-			var spr = new FlxSprite(posX + i * 20, posY+offset+20);
-			spr.makeGraphic(18, 18, FlxColor.BLACK);
+	}
+	
+	public function addArrows():Void {
+		
+		for (i in 0...choices){
+			var spr = new ArrowBlock(posX-40 + i * 20, posY+offset+30, i);
+			//spr.makeGraphic(18, 18, FlxColor.BLACK);
+			//spr.drawRoundRect(0, 0, 18, 18, 5, 5, FlxColor.BLACK);
 			add(spr);
 
 		}
-		
 		
 	}
 	

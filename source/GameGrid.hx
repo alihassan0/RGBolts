@@ -20,7 +20,7 @@ class GameGrid extends FlxSprite
 	
 	public var gridHeight(get, null):Int = 8;
 	
-	private var gridX:Int = 36;
+	private var gridX:Int = 61;
 	private var gridY:Int = 36;
 	
 	private var tileSize:Int = 40;

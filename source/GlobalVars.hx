@@ -21,7 +21,6 @@ class GlobalVars
 	public static var Signals:Array<Signal>;
 	public static var levels:Array<LevelInfo>;
 	public static var turn:Int = 0;
-	
 	public static var UP:Int = 0;
 	public static var DOWN:Int = 1;
 	public static var LEFT:Int = 2;
@@ -29,7 +28,8 @@ class GlobalVars
 	
 	public static var xml : Xml;
 	public static var moveDuration : Float = 0;
-
+	public static var selectedBlock : Block;
+	public static var customizationPanel:BlockPanel;
 	public static var font:PxBitmapFont; 
 	public static var stepDuration:Float = 0;//same as moveDuration but only at the beginnning of any move .. i couldn't come up with a better name :"|
 	public static var maxVisibleElemesInSeq : Int = 3;
@@ -55,7 +55,6 @@ class GlobalVars
 	public static function loadLevels()
 	{
 		xml = Xml.parse(openfl.Assets.getText("assets/data/queries.xml"));
-	    
 		levels = new Array<LevelInfo>();
 
 		loadFonts();

@@ -2,8 +2,10 @@ package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
+import flixel.util.FlxColor;
 import flixel.util.FlxPoint;
 import flixel.effects.FlxFlicker;
+import level.Level;
 import seq.Seq;
 /**
  * ...
@@ -15,6 +17,7 @@ class Block extends FlxSprite
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
+	public var selectedBlock:Block;
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
@@ -85,7 +88,13 @@ class Block extends FlxSprite
 		{
 			followMouse = true;
 			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
-			angle+= 90;
+		//	angle+= 90;
+			Level.level.changePanel(new BlockPanel(this));
+			if (GlobalVars.selectedBlock != null){
+				GlobalVars.selectedBlock.alpha = 1;
+			}
+				alpha = 0.5;
+				GlobalVars.selectedBlock = this;
 		}
 		if(checkPosInGrid())//later i need to make sure to do a check for the block type :"|
 			GlobalVars.level.checkForTutorial("directional_rotate");

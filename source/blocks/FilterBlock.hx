@@ -1,8 +1,10 @@
 package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.plugin.MouseEventManager;
 import flixel.util.FlxPoint;
 import seq.Seq;
+import level.Level;
 /**
  * ...
  * @author ...
@@ -14,6 +16,7 @@ class FilterBlock extends Block
 	{
 		super(X, Y);
 		filter_string = c;
+		
 		switch(c)
 		{
 			case "r":loadGraphic("assets/images/ifred.png");
@@ -22,6 +25,7 @@ class FilterBlock extends Block
 			case "k":loadGraphic("assets/images/ifblack.png");
 			default:loadGraphic("assets/images/ifred.png");
 		}
+
 	}
 	override public function affectSeq(s:Seq) 
 	{
