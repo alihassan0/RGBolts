@@ -6,6 +6,7 @@ import flixel.group.FlxTypedGroup;
 import flixel.plugin.MouseEventManager;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
+import flixel.util.FlxPoint;
 import flixel.util.FlxSpriteUtil;
 using flixel.util.FlxSpriteUtil;
 
@@ -88,6 +89,12 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 		if(Std.is(block, DirectionalBlock))
 		loadFromDirectionalBlock();
 		
+		if(Std.is(block, DuplicatorBlock))
+		loadFromDuplicatorBlock();
+		
+		if(Std.is(block, IteratorBlock))
+		loadFromIteratorBlock();
+
 		
 
 		addArrows();
@@ -161,13 +168,75 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 	function loadFromDirectionalBlock():Void {
 		choices = 1;
 		if (block.directionBoxDown == "k")
-			directionsBoxDown.loadGraphic("assets/images/customArrow3.png", false);
+			directionsBoxDown.loadGraphic("assets/images/customArrow0.png", false);
 		if (block.directionBoxUp == "k")
-			directionsBoxUp.loadGraphic("assets/images/customArrow3.png", false);
+			directionsBoxUp.loadGraphic("assets/images/customArrow0.png", false);
 		if (block.directionBoxLeft == "k")
-			directionsBoxLeft.loadGraphic("assets/images/customArrow3.png", false);
+			directionsBoxLeft.loadGraphic("assets/images/customArrow0.png", false);
 		if (block.directionBoxRight == "k")
-			directionsBoxRight.loadGraphic("assets/images/customArrow3.png", false);
+			directionsBoxRight.loadGraphic("assets/images/customArrow0.png", false);
 
+	}
+	
+	function loadFromDuplicatorBlock():Void {
+		choices = 1;
+		if (block.directionBoxDown == "k")
+			directionsBoxDown.loadGraphic("assets/images/customArrow0.png", false);
+		if (block.directionBoxUp == "k")
+			directionsBoxUp.loadGraphic("assets/images/customArrow0.png", false);
+		if (block.directionBoxLeft == "k")
+			directionsBoxLeft.loadGraphic("assets/images/customArrow0.png", false);
+		if (block.directionBoxRight == "k")
+			directionsBoxRight.loadGraphic("assets/images/customArrow0.png", false);
+
+	}
+	
+	function loadFromIteratorBlock():Void {
+	choices = 2;
+		if (block.directionBoxDown == "k")
+			directionsBoxDown.loadGraphic("assets/images/customArrow0.png", false);
+		if (block.directionBoxUp == "k")
+			directionsBoxUp.loadGraphic("assets/images/customArrow0.png", false);
+		if (block.directionBoxLeft == "k")
+			directionsBoxLeft.loadGraphic("assets/images/customArrow0.png", false);
+		if (block.directionBoxRight == "k")
+			directionsBoxRight.loadGraphic("assets/images/customArrow0.png", false);
+			
+		if (block.directionBoxDown == "b")
+			directionsBoxDown.loadGraphic("assets/images/customArrow1.png", false);
+		if (block.directionBoxUp == "b")
+			directionsBoxUp.loadGraphic("assets/images/customArrow1.png", false);
+		if (block.directionBoxLeft == "b")
+			directionsBoxLeft.loadGraphic("assets/images/customArrow1.png", false);
+		if (block.directionBoxRight == "b")
+			directionsBoxRight.loadGraphic("assets/images/customArrow1.png", false);
+
+	}
+	
+	override public function update():Void 
+	{
+		super.update();
+		if (FlxG.mouse.justPressed) {
+				var click:FlxSprite = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
+				FlxG.overlap(click, directionBoxes, clearBox);
+		}
+	}
+	
+	
+	function clearBox(_, box:FlxSprite):Void {
+		box.loadGraphicFromSprite(ArrowBlock.emptyBlock);
+		if (directionsBoxUp == box) {
+					block.directionBoxUp = "";
+		}
+		if (directionsBoxDown == box) {
+					block.directionBoxDown = "";
+		}
+		if (directionsBoxLeft == box) {
+					block.directionBoxLeft = "";
+		}
+		if (directionsBoxRight == box) {
+					block.directionBoxRight = "";
+		}
+			
 	}
 }	

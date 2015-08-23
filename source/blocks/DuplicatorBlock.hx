@@ -17,8 +17,23 @@ class DuplicatorBlock extends Block
 	override public function affectSeq(s:Seq) 
 	{
 		super.affectSeq(s);
+		s.kill();
 		var seq :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
-		direct(s, GlobalVars.UP);
-		direct(seq, GlobalVars.DOWN);
+		var seq1 :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
+		var seq2 :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
+		var seq3 :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
+			
+			if ("k" == directionBoxDown){
+				direct(seq3, GlobalVars.DOWN);
+			}
+			if ("k" == directionBoxUp){
+				direct(seq, GlobalVars.UP);
+			}
+			if ("k" == directionBoxLeft){
+				direct(seq1, GlobalVars.LEFT);
+			}
+			if ("k" == directionBoxRight){
+				direct(seq2, GlobalVars.RIGHT);
+			}
 	}
 }

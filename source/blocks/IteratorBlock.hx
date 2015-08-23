@@ -20,12 +20,34 @@ class IteratorBlock extends Block
 		if (s.getString().length > 0 )
 		{
 			var newSeq = new Seq(Math.floor(position.x), Math.floor(position.y),curruntString.charAt(0)); 
-			direct(newSeq,GlobalVars.RIGHT);
+				if ("b" == directionBoxDown){
+					direct(newSeq, GlobalVars.DOWN);
+				}
+				if ("b" == directionBoxUp){
+					direct(newSeq, GlobalVars.UP);
+				}
+				if ("b" == directionBoxLeft){
+					direct(newSeq, GlobalVars.LEFT);
+				}
+				if ("b" == directionBoxRight){
+					direct(newSeq, GlobalVars.RIGHT);
+				}			
 			s.removeFirst();
 			if(s.getString().length > 1)
 			{
 				s.setString(curruntString.substring(1, curruntString.length));
-				direct(s,GlobalVars.UP);
+				if ("k" == directionBoxDown){
+					direct(s, GlobalVars.DOWN);
+				}
+				if ("k" == directionBoxUp){
+					direct(s, GlobalVars.UP);
+				}
+				if ("k" == directionBoxLeft){
+					direct(s, GlobalVars.LEFT);
+				}
+				if ("k" == directionBoxRight){
+					direct(s, GlobalVars.RIGHT);
+				}			
 			}
 			else
 			s.kill();

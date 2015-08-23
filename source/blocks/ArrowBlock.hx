@@ -13,7 +13,7 @@ class ArrowBlock extends FlxSprite
 	var arrowcolor:Int;
 	var followMouse:Bool = false;
 	var cc:String;
-	var emptyBlock:FlxSprite;
+	public static var emptyBlock:FlxSprite;
 	
 	public function new(x:Float, y:Float, c:Int) 
 	{
@@ -65,23 +65,25 @@ class ArrowBlock extends FlxSprite
 	function snapToDirectionBox(arrowBlock:ArrowBlock, box:FlxSprite) {
 		var panel = GlobalVars.customizationPanel;
 		
-		if (panel.directionsBoxUp.cachedGraphics == this.cachedGraphics) {
-				panel.directionsBoxUp.loadGraphicFromSprite(emptyBlock);
-				panel.block.directionBoxUp = "";
+		//dont allow duplicate arrows except in duplicator blocks
+		if(!Std.is(panel.block, DuplicatorBlock)){
+			if (panel.directionsBoxUp.cachedGraphics == this.cachedGraphics) {
+					panel.directionsBoxUp.loadGraphicFromSprite(emptyBlock);
+					panel.block.directionBoxUp = "";
+			}
+			if (panel.directionsBoxDown.cachedGraphics == this.cachedGraphics) {
+					panel.directionsBoxDown.loadGraphicFromSprite(emptyBlock);
+					panel.block.directionBoxDown = "";
+			}
+			if (panel.directionsBoxLeft.cachedGraphics == this.cachedGraphics) {
+					panel.directionsBoxLeft.loadGraphicFromSprite(emptyBlock);
+					panel.block.directionBoxLeft = "";
+			}
+			if (panel.directionsBoxRight.cachedGraphics == this.cachedGraphics) {
+					panel.directionsBoxRight.loadGraphicFromSprite(emptyBlock);
+					panel.block.directionBoxRight = "";
+			}
 		}
-		if (panel.directionsBoxDown.cachedGraphics == this.cachedGraphics) {
-				panel.directionsBoxDown.loadGraphicFromSprite(emptyBlock);
-				panel.block.directionBoxDown = "";
-		}
-		if (panel.directionsBoxLeft.cachedGraphics == this.cachedGraphics) {
-				panel.directionsBoxLeft.loadGraphicFromSprite(emptyBlock);
-				panel.block.directionBoxLeft = "";
-		}
-		if (panel.directionsBoxRight.cachedGraphics == this.cachedGraphics) {
-				panel.directionsBoxRight.loadGraphicFromSprite(emptyBlock);
-				panel.block.directionBoxRight = "";
-		}
-	
 		
 		
 		if (box == panel.directionsBoxDown) 
