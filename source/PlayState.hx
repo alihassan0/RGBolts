@@ -6,6 +6,10 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxColor;
+import flixel.util.FlxAngle;
+import flixel.util.FlxPoint;
+import customizationPanel.*;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -15,9 +19,13 @@ class PlayState extends FlxState
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
+	var block:CustomizableBlock;
+	var arrow:Arrow;
 	override public function create():Void
 	{
 		super.create();
+		bgColor = FlxColor.GRAY;
+		block = new CustomizableBlock(320,240);
 	}
 	
 	/**

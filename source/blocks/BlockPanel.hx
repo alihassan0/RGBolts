@@ -39,7 +39,6 @@ class BlockPanel extends FlxTypedGroup<FlxSprite>
 	{
 		super();
 		
-		
 		block = z;
 		posX = 430+(75-8);
 		posY = 100;

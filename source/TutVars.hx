@@ -178,9 +178,3 @@ class TutVars
 		showNextTip();	
 	}
 }
-enum Direction {
-  left;
-  up;
-  right;
-  down;
-}
