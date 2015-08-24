@@ -1,8 +1,8 @@
 package util;
 
 enum Color {
-  Red;
-  Green;
-  Blue;
-  Rgb(r:Int, g:Int, b:Int);
+  red;
+  green;
+  blue;
+  black;
 }

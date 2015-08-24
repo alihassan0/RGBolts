@@ -10,6 +10,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxAngle;
 import flixel.util.FlxPoint;
 import customizationPanel.*;
+import util.*;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -25,7 +26,13 @@ class PlayState extends FlxState
 	{
 		super.create();
 		bgColor = FlxColor.GRAY;
-		block = new CustomizableBlock(320,240);
+		block = new DirectionalCustomizableBlock(40,240);
+		block = new FilterCustomizableBlock(120,240);
+		add(new ToggleColorButton(120,280,Color.green,block));
+		add(new ToggleColorButton(150,280,Color.red,block));
+		add(new ToggleColorButton(180,280,Color.blue,block));
+		add(new ToggleColorButton(180,280,Color.black,block));
+		add(new ToggleColorButton(180,280,Color.blue,block));
 	}
 	
 	/**
