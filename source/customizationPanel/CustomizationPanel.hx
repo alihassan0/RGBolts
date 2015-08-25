@@ -13,29 +13,28 @@ import blocks.*;
 using flixel.util.FlxSpriteUtil;
 
 /**
- * ...
- * @author Ahmed El Sayegh
+ * The panel that holds all customization stuff 
  */
 class CustomizationPanel extends FlxTypedGroup<FlxSprite>
 {
-	public var block:Block;
 	private var background:FlxSprite;
 	private var customizableBlock:CustomizableBlock;
-
 	public function new()
 	{
 		super();
 		add(background = new FlxSprite(430, 50).loadGraphic("assets/images/Container.png", false));
 		FlxG.state.add(this);
-	}	
+	}
+	/**
+	 * a function that is called whenever you click on a new grid block
+	 * it loads a new customization block and deletes the old one . 
+	 */ 
 	public function customize(block:Block)
 	{
-		this.block = block;
 		if(customizableBlock != null)
 		{
 			customizableBlock.kill();
 			customizableBlock.destroy();
-			trace("killedAnfDestroyed");
 		}
 		customizableBlock = block.addCustomizableBlock(500,100,block);
 	}

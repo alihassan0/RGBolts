@@ -8,7 +8,7 @@ import flixel.plugin.MouseEventManager;
 import util.*;
 
 /**
- * The arrow class .. i am not very good at discribing things :D  
+ * The arrow class .. represents the customizable arrows that appears on the customizable block  
  */
 class Arrow extends FlxSprite
 {
@@ -107,6 +107,6 @@ class Arrow extends FlxSprite
 	{
 		angle =  Math.round((angle+360)/90)*90;
 		setDirection(getDirection());
-		block.updateGridBlock();
+		block.updateGridBlock();//update the sprite of the grid block
 	}
 }

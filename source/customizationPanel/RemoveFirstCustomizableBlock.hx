@@ -6,7 +6,7 @@ import util.*;
 import blocks.*;
 
 /**
- * the customizable version of a directional block
+ * the customizable version of a RemoveFirst block
  */
 class RemoveFirstCustomizableBlock extends CustomizableBlock
 {

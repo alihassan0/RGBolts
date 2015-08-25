@@ -50,6 +50,9 @@ class CustomizableBlock extends FlxSprite
 		FlxG.state.add(arrow);
 		arrows.push(arrow);
 	}
+	/**
+	* overridable method that update the gridBlock whenever you change the direction of an arrow
+	*/
 	public function updateGridBlock()
 	{
 		
