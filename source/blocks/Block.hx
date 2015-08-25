@@ -7,6 +7,8 @@ import flixel.util.FlxPoint;
 import flixel.effects.FlxFlicker;
 import level.Level;
 import seq.Seq;
+import customizationPanel.*;
+import util.*;
 /**
  * ...
  * @author ...
@@ -17,20 +19,13 @@ class Block extends FlxSprite
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
-	public var directionBoxUp:String;
-	public var directionBoxDown:String;
-	public var directionBoxLeft:String;
-	public var directionBoxRight:String;
-	
-	
 	
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
-		MouseEventManager.add(this, onDown, onUp, null, null);
+		MouseEventManager.add(this, onDown, null, null, null);
 		GlobalVars.level.blocksGroup.add(this);
 		followMouse = true;
-		offset.set(0,5);
 		
 		
 		if(mouseOffset == null)
@@ -42,8 +37,7 @@ class Block extends FlxSprite
 		super.update();
 		if (followMouse)
 		{
-			x = FlxG.mouse.x - mouseOffset.x;
-			y = FlxG.mouse.y - mouseOffset.y;
+			reset(FlxG.mouse.x - mouseOffset.x,FlxG.mouse.y - mouseOffset.y);
 			if(!FlxG.mouse.pressed)
 			{
 				followMouse = false;
@@ -55,17 +49,6 @@ class Block extends FlxSprite
 	
 	
 	}
-	
-	public function addDirection(direction:String, color:String) {
-		switch(direction) {
-		case "up": directionBoxUp = color;	
-		case "down": directionBoxDown = color;	
-		case "left": directionBoxLeft = color;	
-		case "right": directionBoxRight = color;	
-		}
-	}
-	
-	
 	public function checkPosInGrid() //adds the block to the grid if possible
 	{
 		var bestfit:FlxPoint = GlobalVars.gameGrid.addInBestFit(this);
@@ -105,68 +88,71 @@ class Block extends FlxSprite
 		{
 			followMouse = true;
 			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
-		//	angle+= 90;
-			Level.level.changePanel(new BlockPanel(this));
+			Level.level.changePanel(this);
 			if (GlobalVars.selectedBlock != null){
 				GlobalVars.selectedBlock.alpha = 1;
 			}
-				alpha = 0.5;
-				GlobalVars.selectedBlock = this;
+			alpha = 0.5;
+			GlobalVars.selectedBlock = this;
 		}
 		if(checkPosInGrid())//later i need to make sure to do a check for the block type :"|
 			GlobalVars.level.checkForTutorial("directional_rotate");
 
 	}
-	public function onUp(Sprite:FlxSprite)
+	public function addCustomizableBlock(X:Float , Y:Float,block:Block):CustomizableBlock
 	{
-		trace(angle);
+		return null;
 	}
 	public function affectSeq(s:Seq)
 	{
 		FlxFlicker.flicker(this, .5, 0.04);
 		FlxG.sound.play("assets/sounds/powerup.wav", .5);
 	}
-	public function direct(s:Seq,direction:Int)
+	public function direct(s:Seq,direction:Direction)
 	{
-		var dir:Int = Math.floor((angle % 360) / 90);
+		/*var dir:Int = Math.floor((angle % 360) / 90);
 		switch(dir)
 		{
 			case 0:
 				switch(direction)
 				{
-					case GlobalVars.UP: s.set_direction(new FlxPoint(0,-1));
-					case GlobalVars.DOWN: s.set_direction(new FlxPoint(0,1));
-					case GlobalVars.LEFT: s.set_direction(new FlxPoint(-1,0));
-					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(1,0));
+					case GlobalVars.UP: s.setDirection();
+					case GlobalVars.DOWN: s.setDirection(new FlxPoint(0,1));
+					case GlobalVars.LEFT: s.setDirection(new FlxPoint(-1,0));
+					case GlobalVars.RIGHT: s.setDirection(new FlxPoint(1,0));
 				}
 			case 1:
 				switch(direction)
 				{
-					case GlobalVars.UP: s.set_direction(new FlxPoint(1,0));
-					case GlobalVars.DOWN: s.set_direction(new FlxPoint(-1,0));
-					case GlobalVars.LEFT: s.set_direction(new FlxPoint(0,-1));
-					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(0,1));
+					case GlobalVars.UP: s.setDirection(new FlxPoint(1,0));
+					case GlobalVars.DOWN: s.setDirection(new FlxPoint(-1,0));
+					case GlobalVars.LEFT: s.setDirection(new FlxPoint(0,-1));
+					case GlobalVars.RIGHT: s.setDirection(new FlxPoint(0,1));
 				}
 			case 2:
 				switch(direction)
 				{
-					case GlobalVars.UP: s.set_direction(new FlxPoint(0,1));
-					case GlobalVars.DOWN: s.set_direction(new FlxPoint(0,-1));
-					case GlobalVars.LEFT: s.set_direction(new FlxPoint(1,0));
-					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(-1,0));
+					case GlobalVars.UP: s.setDirection(new FlxPoint(0,1));
+					case GlobalVars.DOWN: s.setDirection(new FlxPoint(0,-1));
+					case GlobalVars.LEFT: s.setDirection(new FlxPoint(1,0));
+					case GlobalVars.RIGHT: s.setDirection(new FlxPoint(-1,0));
 				}
 			case 3:
 				switch(direction)
 				{
-					case GlobalVars.UP: s.set_direction(new FlxPoint(-1,0));
-					case GlobalVars.DOWN: s.set_direction(new FlxPoint(1,0));
-					case GlobalVars.LEFT: s.set_direction(new FlxPoint(0,1));
-					case GlobalVars.RIGHT: s.set_direction(new FlxPoint(0,-1));
+					case GlobalVars.UP: s.setDirection(new FlxPoint(-1,0));
+					case GlobalVars.DOWN: s.setDirection(new FlxPoint(1,0));
+					case GlobalVars.LEFT: s.setDirection(new FlxPoint(0,1));
+					case GlobalVars.RIGHT: s.setDirection(new FlxPoint(0,-1));
 				}
-		}
+		}*/
 	}
 	override public function kill()
 	{
 		super.kill();
+	}
+	public function loadCustomBehaviour(block:CustomizableBlock)
+	{
+		
 	}
 }

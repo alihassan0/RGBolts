@@ -46,6 +46,8 @@ class AssetData {
 			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/directional.png", "assets/images/directional.png");
 			type.set ("assets/images/directional.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/arrowSprite.png", "assets/images/arrowSprite.png");
+			type.set ("assets/images/arrowSprite.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/directionalUpd.png", "assets/images/directionalUpd.png");
 			type.set ("assets/images/directionalUpd.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/directionala.png", "assets/images/directionala.png");
@@ -136,6 +138,8 @@ class AssetData {
 			type.set ("assets/images/ifred2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/customArrow1.png", "assets/images/customArrow1.png");
 			type.set ("assets/images/customArrow1.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/cyanBlock.png", "assets/images/cyanBlock.png");
+			type.set ("assets/images/cyanBlock.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/iterator.png", "assets/images/iterator.png");
 			type.set ("assets/images/iterator.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/signal.png", "assets/images/signal.png");

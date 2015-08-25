@@ -1,13 +1,14 @@
 package ;
 import seq.*;
 import level.*;
+import blocks.*;
+import customizationPanel.*;
 import flixel.util.FlxPoint;
 import flixel.text.FlxBitmapTextField;
 import flixel.text.pxText.PxBitmapFont;
 import flixel.text.pxText.PxTextAlign;
 import openfl.Assets;
 import flixel.util.FlxSave;
-import blocks.*;
 /**
  * ...
  * @author ...
@@ -29,7 +30,7 @@ class GlobalVars
 	public static var xml : Xml;
 	public static var moveDuration : Float = 0;
 	public static var selectedBlock : Block;
-	public static var customizationPanel:BlockPanel;
+	public static var customizationPanel:CustomizationPanel;
 	public static var font:PxBitmapFont; 
 	public static var stepDuration:Float = 0;//same as moveDuration but only at the beginnning of any move .. i couldn't come up with a better name :"|
 	public static var maxVisibleElemesInSeq : Int = 3;
@@ -39,7 +40,7 @@ class GlobalVars
 	public static var blocksMap:Map<Int, Class<Dynamic>> =
     [
    		   	0=> DirectionalBlock,
-   		   	1=> IteratorBlock,
+   		   	1=> RemoveFirstBlock,
 			2=> GrouperBlock,
 			3=> FilterRedBlock,
 			4=> FilterGreenBlock,

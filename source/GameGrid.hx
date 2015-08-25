@@ -138,7 +138,7 @@ class GameGrid extends FlxSprite
 		
 		var res:FlxPoint = new FlxPoint(0, 0); 
 		res.x = ((Math.floor((blockPos.x - gridX) / tileSize)) * tileSize) + gridX ;
-		res.y = ((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY+5;
+		res.y = ((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY;
 		
 		var posPoint = new FlxPoint();
 		posPoint.x = Math.floor((blockPos.x - gridX) / tileSize);

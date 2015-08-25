@@ -24,7 +24,7 @@ class AddBlack extends Block
 		var newString =  s.seqString + "k";
 		var newSeq = new Seq(Math.floor(position.x), Math.floor(position.y),newString); 
 		var dir:FlxPoint = s.direction;
-		newSeq.set_direction(dir);
+		newSeq.setDirection(dir);
 
 		s.kill();
 		

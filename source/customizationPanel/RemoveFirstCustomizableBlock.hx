@@ -8,19 +8,21 @@ import blocks.*;
 /**
  * the customizable version of a directional block
  */
-class DirectionalCustomizableBlock extends CustomizableBlock
+class RemoveFirstCustomizableBlock extends CustomizableBlock
 {
 	public function new(x:Float , y:Float, block:Block)
 	{
 		super(x,y);
-		loadGraphic("assets/images/greenBlock.png");
+		loadGraphic("assets/images/cyanBlock.png");
 		this.block = block;
-		arrows[0].setDirection(cast(block,DirectionalBlock).direction);
+		arrows[0].setDirection(cast(block,RemoveFirstBlock).otherElementsArrow.direction);
+		arrows[1].setDirection(cast(block,RemoveFirstBlock).firstElementArrow.direction);
 	}
 	override public function addArrows()
 	{
 		super.addArrows();
-		addArrow(Color.black,Direction.down);
+		addArrow(Color.black,Direction.up);
+		addArrow(Color.grey,Direction.right);
 	}
 	override public function updateGridBlock()
 	{

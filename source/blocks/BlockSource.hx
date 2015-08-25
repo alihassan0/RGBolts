@@ -42,7 +42,7 @@ class BlockSource extends FlxSprite
 			switch(blockType)
 			{
 				case 0: new DirectionalBlock(0,0);
-				case 1: new IteratorBlock(0,0);
+				case 1: new RemoveFirstBlock(0,0);
 				case 2: new GrouperBlock(0,0);
 				case 3: new FilterRedBlock(0, 0);
 				case 4: new FilterGreenBlock(0, 0);

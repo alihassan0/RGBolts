@@ -6,14 +6,29 @@ import flixel.plugin.MouseEventManager;
 import util.*;
 
 /**
- * ...
- * @author ...
+ * toggle buttons that can add or remove arrows
  */
 class ToggleColorButton extends FlxSprite
 {
+	/**
+	 * internal , describes whether the button is curruntly enabled or disabled
+	 */
 	private var enabled:Bool;
+	/**
+	 * internal, reference to the block it affects
+	 */
 	private var block:CustomizableBlock;
+	/**
+	 * the color of the arrow that this button can add or remove
+	 */
 	private var rgbColor:Color;
+
+	/**
+	 * @param	X				The initial X position of the button.
+	 * @param	Y				The initial Y position of the button.
+	 * @param 	rgbColor		the initial color of the button
+	 * @param 	block			reference to the customizable block it affects
+	 */
 	public function new(X:Float , Y:Float, rgbColor:Color , block:CustomizableBlock)
 	{
 		super(X,Y);
@@ -30,7 +45,7 @@ class ToggleColorButton extends FlxSprite
 		this.color = Util.colorToValue[rgbColor];
 		trace(this.color);
 	}
-	public function toggleEnabled()
+	private function toggleEnabled()
 	{
 		if(enabled)
 		{
@@ -45,11 +60,11 @@ class ToggleColorButton extends FlxSprite
 			enableArrow();
 		}
 	}
-	public function onDown(Sprite:FlxSprite)
+	private function onDown(Sprite:FlxSprite)
 	{
 		toggleEnabled();
 	}
-	public function disableArrow()
+	private function disableArrow()
 	{
 		for (i in 0 ... block.arrows.length) {
 			if(block.arrows[i].rgbColor == this.rgbColor)
@@ -58,7 +73,8 @@ class ToggleColorButton extends FlxSprite
 				block.arrows[i].alpha = .3;
 			}
 		}
-	}public function enableArrow():Bool
+	}
+	private function enableArrow():Bool
 	{
 		for (i in 0 ... block.arrows.length) {
 			if(block.arrows[i].rgbColor == this.rgbColor)

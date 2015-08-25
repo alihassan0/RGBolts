@@ -12,6 +12,7 @@ class FilterCustomizableBlock extends CustomizableBlock
 	public function new(X:Float , Y:Float)
 	{
 		super(X,Y);
+		loadGraphic("assets/images/cyanBlock.png");
 	}
 	override public function addArrows()
 	{

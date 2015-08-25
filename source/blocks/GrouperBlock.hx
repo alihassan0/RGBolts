@@ -54,7 +54,7 @@ class GrouperBlock extends Block
 		
 		if(s!=null && curruntSeq != null)
 		{
-			curruntSeq.set_direction(s.get_direction());
+			curruntSeq.setDirection(s.get_direction());
 			curruntSeq.canMove = false;
 		}
 		if(!enabled)

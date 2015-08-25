@@ -23,7 +23,7 @@ class DuplicatorBlock extends Block
 		var seq2 :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
 		var seq3 :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
 			
-			if ("k" == directionBoxDown){
+			/*if ("k" == directionBoxDown){
 				direct(seq3, GlobalVars.DOWN);
 			}
 			if ("k" == directionBoxUp){
@@ -34,6 +34,6 @@ class DuplicatorBlock extends Block
 			}
 			if ("k" == directionBoxRight){
 				direct(seq2, GlobalVars.RIGHT);
-			}
+			}*/
 	}
 }

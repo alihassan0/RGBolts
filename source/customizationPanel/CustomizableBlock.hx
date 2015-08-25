@@ -3,6 +3,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import util.*;
+import blocks.*;
 
 /**
  * The base for all customizable blocks 
@@ -13,6 +14,10 @@ class CustomizableBlock extends FlxSprite
 	 * array to hold all Arrows 
 	 */
 	public var arrows:Array<Arrow>;
+	/**
+	 * reference to the block that this class edits 
+	 */
+	public var block:Block;
 
 	/**
 	 * Constructor for the customizable Block
@@ -44,5 +49,23 @@ class CustomizableBlock extends FlxSprite
 		var arrow:Arrow = new Arrow(this, color , direction);
 		FlxG.state.add(arrow);
 		arrows.push(arrow);
+	}
+	public function updateGridBlock()
+	{
+		
+	}
+	override public function kill()
+	{
+		super.kill();
+		for (i in 0 ... arrows.length) {
+			arrows[i].kill();
+		}
+	}
+	override public function destroy()
+	{
+		for (i in 0 ... arrows.length) {
+			arrows[i].destroy();
+		}
+		super.destroy();
 	}
 }

@@ -5,4 +5,5 @@ enum Color {
   green;
   blue;
   black;
+  grey;
 }

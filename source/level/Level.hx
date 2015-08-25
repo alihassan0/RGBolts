@@ -1,6 +1,7 @@
 package level;
 
 import blocks.*;
+import customizationPanel.*;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -62,7 +63,7 @@ class Level extends FlxState
 
 	private var inputTests:Array<InputTest>;
 	public var selectedInputTest:InputTest;
-	public static var customizePanel:BlockPanel;
+	public static var customizePanel:CustomizationPanel;
 	public static var level:Level;
 	
 	override public function create():Void
@@ -87,8 +88,7 @@ class Level extends FlxState
 		bgColor = FlxColor.CRIMSON;
 		new GameGrid();
 		
-		customizePanel = new BlockPanel(null);
-		add(customizePanel);
+		customizePanel = new CustomizationPanel();
 		
 		addInputTests();//added to panels layer
 		addHelpPanel();//added to menu layer
@@ -107,17 +107,10 @@ class Level extends FlxState
 		{
 			TutVars.exists = false;
 		}            		
+	}	
+	public function changePanel(block:Block):Void{
+		customizePanel.customize(block);
 	}
-	
-	public function changePanel(newPanel:BlockPanel):Void{
-		remove(customizePanel);
-		customizePanel = (newPanel);
-		add(customizePanel);
-		GlobalVars.customizationPanel = customizePanel;
-
-		
-	}
-
 	private function initGroups()
 	{
 		gridGroup = new FlxGroup();

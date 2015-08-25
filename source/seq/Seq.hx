@@ -39,7 +39,7 @@ class Seq extends FlxSprite
 		super(initialPosition.x, initialPosition.y);
 
 		//loadGraphic("assets/images/seq.png");
-		//visible = false;
+		visible = false;
 		
 		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
@@ -213,7 +213,7 @@ class Seq extends FlxSprite
 	public function affectBlock(b:Block)
 	{	
 	}
-	public function set_direction(value:FlxPoint):FlxPoint 
+	public function setDirection(value:FlxPoint):FlxPoint 
 	{
 		return direction = value;
 	}

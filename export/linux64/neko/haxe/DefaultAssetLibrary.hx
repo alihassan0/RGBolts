@@ -143,6 +143,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -150,6 +152,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -751,6 +755,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/directional.png", "assets/images/directional.png");
 		type.set ("assets/images/directional.png", AssetType.IMAGE);
+		path.set ("assets/images/arrowSprite.png", "assets/images/arrowSprite.png");
+		type.set ("assets/images/arrowSprite.png", AssetType.IMAGE);
 		path.set ("assets/images/directionalUpd.png", "assets/images/directionalUpd.png");
 		type.set ("assets/images/directionalUpd.png", AssetType.IMAGE);
 		path.set ("assets/images/directionala.png", "assets/images/directionala.png");
@@ -841,6 +847,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/ifred2.png", AssetType.IMAGE);
 		path.set ("assets/images/customArrow1.png", "assets/images/customArrow1.png");
 		type.set ("assets/images/customArrow1.png", AssetType.IMAGE);
+		path.set ("assets/images/cyanBlock.png", "assets/images/cyanBlock.png");
+		type.set ("assets/images/cyanBlock.png", AssetType.IMAGE);
 		path.set ("assets/images/iterator.png", "assets/images/iterator.png");
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		path.set ("assets/images/signal.png", "assets/images/signal.png");
@@ -947,6 +955,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/images/directional.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/arrowSprite.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/directionalUpd.png";
@@ -1082,6 +1093,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/customArrow1.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/cyanBlock.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/iterator.png";
@@ -1273,6 +1287,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -1281,6 +1297,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -2156,11 +2174,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
 
 
 

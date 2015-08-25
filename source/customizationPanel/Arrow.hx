@@ -107,5 +107,6 @@ class Arrow extends FlxSprite
 	{
 		angle =  Math.round((angle+360)/90)*90;
 		setDirection(getDirection());
+		block.updateGridBlock();
 	}
 }

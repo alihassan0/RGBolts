@@ -70,8 +70,6 @@ class InputTest extends FlxSprite
 			lineStyle = { color: FlxColor.WHEAT, thickness:  4.0 };
 			alpha = 1;
 		}
-
 		drawRoundRect(0, 0, 100, 80, 15, 15, FlxColor.TRANSPARENT,lineStyle);
-		
 	}
 }

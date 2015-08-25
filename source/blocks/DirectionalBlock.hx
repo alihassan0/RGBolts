@@ -2,48 +2,34 @@ package blocks ;
 import flixel.FlxSprite;
 import flixel.util.FlxPoint;
 import seq.Seq;
-
+import customizationPanel.*;
+import util.*;
 /**
  * ...
  * @author ...
  */
 class DirectionalBlock extends Block
 {
-	
-	public function new(X:Int,Y:Int) 
-	{
-		
+	public var direction:Direction;
+	public function new(X:Int,Y:Int)
+	{	
 		super(X, Y);
 		loadGraphic("assets/images/directionalUp.png");
+		direction = Direction.up;
 	}
 	override public function affectSeq(s:Seq) 
 	{
 		super.affectSeq(s);
-			if ("k" == directionBoxDown){
-			direct(s, GlobalVars.DOWN);
-			}
-			if ("k" == directionBoxUp){
-				direct(s, GlobalVars.UP);
-			}
-			if ("k" == directionBoxLeft){
-				direct(s, GlobalVars.LEFT);
-			}
-			if ("k" == directionBoxRight){
-				direct(s, GlobalVars.RIGHT);
-			}
+		s.setDirection(Util.directionToFlxPoint[direction]);
 	}
-	/*override public function update():Void 
+	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
 	{
-		
-		
-				switch(dirctn){
-					case 0:loadGraphic("assets/images/directionalUp.png");
-					case 1:loadGraphic("assets/images/directionalRight.png");
-					case 2:loadGraphic("assets/images/directionalDown.png");
-					case 3:loadGraphic("assets/images/directionalLeft.png");
-				}
-		super.update();
-		}*/
-		
+		return new DirectionalCustomizableBlock(x,y,block);
 	}
+	override public function loadCustomBehaviour(customizableBlock:CustomizableBlock)
+	{
+		direction = customizableBlock.arrows[0].getDirection();
+		angle = Util.directionToAngle[direction];
+	}
+}
 
