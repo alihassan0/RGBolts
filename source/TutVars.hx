@@ -154,7 +154,7 @@ class TutVars
 			case 6:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.blockSourcesGroup.members[0],"now drag this block", Direction.left,false);
 			case 7:
-				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.grid[7][3],"into here ", Direction.up,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.getGrid()[7][3],"into here ", Direction.up,false);
 			case 8:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press runBtn  ",Direction.down,false);
 			case 9:
@@ -163,10 +163,10 @@ class TutVars
 			case 10:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.resetBtn, "press reset button again",Direction.down,false);
 			case 11:
-				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.grid[7][3], "now rotate the block by clicking on it ",Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.getGrid()[7][3], "now rotate the block by clicking on it ",Direction.down,false);
 				TutTimer.start(3, showNextTipTimed , 1);
 			case 12:
-				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.grid[7][3], "make sure it is facing downwards",Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.getGrid()[7][3], "make sure it is facing downwards",Direction.down,false);
 			case 13:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press the run btn one more time", Direction.down,false);
 			case 14:

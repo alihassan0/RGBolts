@@ -19,7 +19,6 @@ class InputBlock extends Block
 		super(X, Y);
 		loadGraphic("assets/images/input.png");
 		followMouse = false;
-		GlobalVars.gameGrid.inputBlock =  this;
 	}
 	override public function checkPosInGrid():Bool
 	{

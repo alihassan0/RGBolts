@@ -6,39 +6,44 @@ import flixel.FlxSprite;
 import flixel.util.FlxPoint;
 
 /**
- * ...
- * @author ...
+ * The class that handles all Grid 
  */
 // coordinates refer to actual x , y coordinates 
 // position refers to position in grid
 class GameGrid extends FlxSprite
 {
+	/**
+	 * the array that holds temp sprites that represents the empty slots for blocks
+	 */
 	public var grid:Array<Array<FlxSprite>>;
+	/**
+	 * the array that holds the actuall blocks that exists on the grid
+	 */
 	public var blocksGrid:Array<Array<Block>>;
-	
-	public var gridWidth(get, null):Int = 8;
-	
-	public var gridHeight(get, null):Int = 8;
-	
-	private var gridX:Int = 61;
-	private var gridY:Int = 36;
-	
-	private var tileSize:Int = 40;
-	private var tileActuallSize:Int = 36;
-	
 	public var inputBlock:InputBlock ;
 	public var outputBlock:OutputBlock ;
+	public var gridWidth:Int = 8;
+	public var gridHeight:Int = 8;
+
+	private var gridX:Int = 61;
+	private var gridY:Int = 36;
+	private var tileSize:Int = 40;
+	private var tileActuallSize:Int = 36;
 	private var testFunction:String->String;
 	private var inputString:String;
+
 	public function new() 
 	{
 		grid = new Array<Array<FlxSprite>>();
 		blocksGrid = new Array<Array<Block>>();
 		super(gridX, gridY);
 		makeGraphic(gridWidth * tileSize, gridHeight * tileSize,0x00ff00ff);
-		
 		GlobalVars.gameGrid = this;
 		GlobalVars.Seqs = new Array<Seq>();
+		makeGrid();
+	}
+	public function makeGrid() 
+	{
 		if (GlobalVars.save.data.levels!= null && GlobalVars.save.data.levels[GlobalVars.levelInfo.id] == true)
 		{
 			trace("save found");
@@ -51,44 +56,30 @@ class GameGrid extends FlxSprite
 		}
 		this.testFunction = GlobalVars.level.levelInfo.testFunction;
 	}
-	
 	public function addIOBlocks() 
 	{
 		var pos :FlxPoint = GlobalVars.level.levelInfo.inputPos;
-		if(pos == null)
-			pos = new FlxPoint(0,2);
-		
-		var p:FlxPoint = getCoordinatesOfPosition(FlxPoint.get(pos.x,pos.y));
-            		
-		new InputBlock(Std.int(p.x), Std.int(p.y));
+		var p:FlxPoint = getCoordinatesOfPosition(pos!=null?pos:new FlxPoint(0,2));
+		this.inputBlock = new InputBlock(Math.floor(p.x), Math.floor(p.y));
 
 		pos = GlobalVars.level.levelInfo.outputPos;
-		if(pos == null)
-			pos =new FlxPoint(gridWidth - 1, 2);
-		p = getCoordinatesOfPosition(FlxPoint.get(pos.x,pos.y));
-        
-		new OutputBlock(Std.int(p.x), Std.int(p.y));
+		p = getCoordinatesOfPosition(pos!=null?pos:new FlxPoint(gridWidth - 1, 2));
+		this.outputBlock = new OutputBlock(Std.int(p.x), Std.int(p.y));
 			
 		inputBlock.checkPosInGrid();
 		outputBlock.checkPosInGrid();
 	}
-	public function resetGrid() 
+	public function resetGrid()
 	{
 		for (x in 0...gridWidth)
         {
             grid[x] = new Array<FlxSprite>();
+            blocksGrid[x] = new Array<Block>();
             for (y in 0...gridHeight)
             {
                 grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
 				GlobalVars.level.gridGroup.add(grid[x][y]);
-            }
-        }
-		for (x in 0...gridWidth)
-        {
-            blocksGrid[x] = new Array<Block>();
-            for (y in 0...gridHeight)
-            {
-                blocksGrid[x][y] = null;
+				blocksGrid[x][y] = null;
             }
         }
         addIOBlocks();
@@ -98,22 +89,15 @@ class GameGrid extends FlxSprite
 		for (x in 0...gridWidth)
         {
             grid[x] = new Array<FlxSprite>();
+            blocksGrid[x] = new Array<Block>();
             for (y in 0...gridHeight)
             {
                 grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
 				GlobalVars.level.gridGroup.add(grid[x][y]);
-            }
-        }
-		for (x in 0...gridWidth)
-        {
-            blocksGrid[x] = new Array<Block>();
-            for (y in 0...gridHeight)
-            {
-                blocksGrid[x][y] = null;
+				blocksGrid[x][y] = null;
             }
         }
         for (x in 0...gridWidth)
-        {
             for (y in 0...gridHeight)
             {
             	var blockId:Array<Int> = GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y];
@@ -126,23 +110,18 @@ class GameGrid extends FlxSprite
             		d.angle += blockId[1];
             		d.angle %= 360;
             		d.draw();
-            		trace("loaded Block @ " + x +" , " +  y + " position @" + p.x + "  " + p.y + "with angle of " + blockId[1]);
-            		trace(d.position);
             	}
             }
-        }
 	}
 	public function addInBestFit(block:Block):FlxPoint 
 	{
 		var blockPos:FlxPoint = new FlxPoint(block.x + block.width/2 , block.y + block.height/2);//the block center point
 		
-		var res:FlxPoint = new FlxPoint(0, 0); 
-		res.x = ((Math.floor((blockPos.x - gridX) / tileSize)) * tileSize) + gridX ;
-		res.y = ((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY;
+		var res:FlxPoint = new FlxPoint(((Math.floor((blockPos.x - gridX) / tileSize)) * tileSize) + gridX ,
+										((Math.floor((blockPos.y - gridY) / tileSize)) * tileSize) + gridY);
 		
-		var posPoint = new FlxPoint();
-		posPoint.x = Math.floor((blockPos.x - gridX) / tileSize);
-		posPoint.y = Math.floor((blockPos.y - gridY) / tileSize);
+		var posPoint = new FlxPoint(Math.floor((blockPos.x - gridX) / tileSize),
+									Math.floor((blockPos.y - gridY) / tileSize));
 	
 		if(!inBounds(posPoint) || (blocksGrid[Std.int(posPoint.x)][Std.int(posPoint.y)] != null
 			&& blocksGrid[Std.int(posPoint.x)][Std.int(posPoint.y)] != block))
@@ -159,7 +138,7 @@ class GameGrid extends FlxSprite
 	}
 	public function inBounds(p:FlxPoint):Bool
 	{
-		if(p.x < 0 || p.x >= gridWidth || p.y < 0 || p.y > gridHeight)
+		if(p.x < 0 || p.x >= gridWidth || p.y < 0 || p.y >= gridHeight)
 			return false;
 		else
 			return true;
@@ -174,13 +153,9 @@ class GameGrid extends FlxSprite
 	public function getposOfBlock(b:Block):FlxPoint 
 	{
 		for (x in 0...gridWidth)
-        {
             for (y in 0...gridHeight)
-            {
                if (b == blocksGrid[x][y])
-			   return new FlxPoint(x, y);
-            }
-        }
+				   return new FlxPoint(x, y);
 		return null;
 	}
 	public function getBlockOfPos(p:FlxPoint):Block
@@ -190,16 +165,14 @@ class GameGrid extends FlxSprite
 	public function removeFromGrid(b:Block)
 	{
 		for (x in 0...gridWidth)
-        {
             for (y in 0...gridHeight)
-            {
                if (b == blocksGrid[x][y])
-			    blocksGrid[x][y] = null;
-            }
-        }
+			    	blocksGrid[x][y] = null;
 	}
-	
-
+	public function getGrid():Array<Array<FlxSprite>> 
+	{
+		return grid;
+	}
 	public function get_gridWidth():Int 
 	{
 		return gridWidth;
@@ -211,14 +184,8 @@ class GameGrid extends FlxSprite
 	public function resetBlocks() 
 	{
 		for (x in 0...gridWidth)
-        {
             for (y in 0...gridHeight)
-            {
 				if( blocksGrid[x][y] != null)
-                {
                 	blocksGrid[x][y].reset_state();
-                }
-            }
-        }
 	}
 }

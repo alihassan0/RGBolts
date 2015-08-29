@@ -20,7 +20,7 @@ import haxe.Constraints.Function;
 import seq.Seq;
 
 /**
- * A FlxState which can be used for the game's menu.
+ * the state that contains all playelemets
  */
 using flixel.util.FlxSpriteUtil;
 using Level.ButtonExtender;

@@ -389,10 +389,8 @@ class GlobalVars
 		inputString = StringTools.replace(inputString,"k","");
 		if (inputString.length == 0)
 			return "";
-		return reverse(inputString.substring(1)) + inputString.charAt(0);
-		
+		return reverse(inputString.substring(1)) + inputString.charAt(0);	
 	}
-	
 	static function greenThenBlueNoRed(inputString:String):String
 	{
 		if (inputString.length == 0)
@@ -407,7 +405,6 @@ class GlobalVars
 		if (inputString.charAt(0) == "r"){
 			return moveBlueToEnd(inputString.substring(1));
 		}
-		
 		return null;
 	}
 	
@@ -423,7 +420,6 @@ class GlobalVars
 				solution += input.charAt(i);
 			}
 		}
-		
 		return solution;
 	}
 

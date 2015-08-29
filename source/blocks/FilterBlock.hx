@@ -5,6 +5,7 @@ import flixel.plugin.MouseEventManager;
 import flixel.util.FlxPoint;
 import seq.Seq;
 import level.Level;
+import customizationPanel.*;
 /**
  * ...
  * @author ...
@@ -26,6 +27,10 @@ class FilterBlock extends Block
 			default:loadGraphic("assets/images/ifred.png");
 		}
 
+	}
+	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
+	{
+		return new FilterCustomizableBlock(x,y,block);
 	}
 	/*override public function affectSeq(s:Seq) 
 	{
