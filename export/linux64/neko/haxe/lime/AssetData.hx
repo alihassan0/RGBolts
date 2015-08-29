@@ -172,8 +172,6 @@ class AssetData {
 			type.set ("assets/fonts/font.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/fonts/font.fnt", "assets/fonts/font.fnt");
 			type.set ("assets/fonts/font.fnt", Reflect.field (AssetType, "text".toUpperCase ()));
-			path.set ("assets/directionalUp.png", "assets/directionalUp.png");
-			type.set ("assets/directionalUp.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/data/queries2.xml", "assets/data/queries2.xml");
 			type.set ("assets/data/queries2.xml", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
@@ -188,12 +186,6 @@ class AssetData {
 			type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 			type.set ("assets/music/music-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
-			path.set ("assets/directionalLeft.png", "assets/directionalLeft.png");
-			type.set ("assets/directionalLeft.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("assets/directionalDown.png", "assets/directionalDown.png");
-			type.set ("assets/directionalDown.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("assets/directionalRight.png", "assets/directionalRight.png");
-			type.set ("assets/directionalRight.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");
 			type.set ("assets/sounds/beep.ogg", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/flixel.ogg", "assets/sounds/flixel.ogg");

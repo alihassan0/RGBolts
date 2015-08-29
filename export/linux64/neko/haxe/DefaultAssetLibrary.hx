@@ -143,10 +143,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-		
-		
-		
-		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -154,10 +150,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -885,8 +877,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/fonts/font.png", AssetType.IMAGE);
 		path.set ("assets/fonts/font.fnt", "assets/fonts/font.fnt");
 		type.set ("assets/fonts/font.fnt", AssetType.TEXT);
-		path.set ("assets/directionalUp.png", "assets/directionalUp.png");
-		type.set ("assets/directionalUp.png", AssetType.IMAGE);
 		path.set ("assets/data/queries2.xml", "assets/data/queries2.xml");
 		type.set ("assets/data/queries2.xml", AssetType.TEXT);
 		path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
@@ -901,12 +891,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
-		path.set ("assets/directionalLeft.png", "assets/directionalLeft.png");
-		type.set ("assets/directionalLeft.png", AssetType.IMAGE);
-		path.set ("assets/directionalDown.png", "assets/directionalDown.png");
-		type.set ("assets/directionalDown.png", AssetType.IMAGE);
-		path.set ("assets/directionalRight.png", "assets/directionalRight.png");
-		type.set ("assets/directionalRight.png", AssetType.IMAGE);
 		path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");
 		type.set ("assets/sounds/beep.ogg", AssetType.SOUND);
 		path.set ("assets/sounds/flixel.ogg", "assets/sounds/flixel.ogg");
@@ -1154,9 +1138,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/fonts/font.fnt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
-		id = "assets/directionalUp.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
 		id = "assets/data/queries2.xml";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -1178,15 +1159,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/music/music-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
-		id = "assets/directionalLeft.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "assets/directionalDown.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "assets/directionalRight.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
 		id = "assets/sounds/beep.ogg";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
@@ -1301,10 +1273,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-		
-		
-		
-		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -1313,10 +1281,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -2192,19 +2156,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-
-
-
-
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
-
-
-
-
 
 
 

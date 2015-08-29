@@ -50,7 +50,6 @@ class Level extends FlxState
 	private var speedText:FlxText;
 	public var isRunning:Bool;
 	public var isPaused:Bool;
-	
 	public var gridGroup:FlxGroup;
 	public var blocksBasesGroup:FlxGroup;
 	public var seqGroup:FlxGroup;
@@ -151,14 +150,8 @@ class Level extends FlxState
         	case 0:allowedBlocks = [0];
         	case 1:allowedBlocks = [0,1];
         	case 2:allowedBlocks = [0,1,3];
-        	case 3:allowedBlocks = [0,1,3,4];
-        	case 4:allowedBlocks = [0,1,3,4,5,8];
-        	case 5:allowedBlocks = [0,1,3,4,5,7,8];
-        	case 6:allowedBlocks = [0,1,2,3,4,5,6,7,8,9];
-        	//test case
-			case 7:allowedBlocks = [0, 1, 2, 3, 4, 5, 6, 7, 10];
 			//----------------------------------
-        	default:allowedBlocks = [0,1,2,3,4,5,6,7,8,9];
+        	default:allowedBlocks = [0,1,2,3,4,5,6,7];
         }
 		var actualCount:Int = 0;
         for (i in 0 ... 12)

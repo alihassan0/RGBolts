@@ -3,6 +3,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxPoint;
 import seq.Seq;
+import customizationPanel.*;
 /**
  * ...
  * @author ...
@@ -38,7 +39,6 @@ class GrouperBlock extends Block
 
 				curruntSeq = new Seq(Math.floor(curruntSeq.position.x),Math.floor(curruntSeq.position.y),newString);
 				curruntSeq.wait();
-				//s.wait();
 				trace("bbb");
 			}
 			else
@@ -64,5 +64,13 @@ class GrouperBlock extends Block
 	{
 		super.reset_state();
 		curruntSeq = null;
+	}
+	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
+	{
+		return new GrouperCustomizableBlock(x,y,block);
+	}
+	override public function loadCustomBehaviour(customizableBlock:CustomizableBlock)
+	{
+
 	}
 }
