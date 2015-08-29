@@ -19,6 +19,7 @@ class CustomizableBlock extends FlxSprite
 	 */
 	public var block:Block;
 
+	private var toggleColorButtons:Array<ToggleColorButton>;
 	/**
 	 * Constructor for the customizable Block
 	 * 
@@ -30,6 +31,7 @@ class CustomizableBlock extends FlxSprite
 		super(X, Y, "assets/images/greenBlock.png");
 		FlxG.state.add(this);
 		addArrows();
+		addToggleButtons();
 	}
 	/**
 	* initialize the arrows array .. should be overriden by each block to add it's own arrows
@@ -37,6 +39,10 @@ class CustomizableBlock extends FlxSprite
 	public function addArrows()
 	{
 		arrows = new Array<Arrow>();
+	}
+	public function addToggleButtons()
+	{
+		toggleColorButtons = new Array<ToggleColorButton>();
 	}
 	/**
 	* adds a new arrow to the block 

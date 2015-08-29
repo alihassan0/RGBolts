@@ -43,7 +43,6 @@ class ToggleColorButton extends FlxSprite
 	{
 		this.rgbColor = rgbColor;
 		this.color = Util.colorToValue[rgbColor];
-		trace(this.color);
 	}
 	private function toggleEnabled()
 	{
@@ -69,8 +68,8 @@ class ToggleColorButton extends FlxSprite
 		for (i in 0 ... block.arrows.length) {
 			if(block.arrows[i].rgbColor == this.rgbColor)
 			{
-				//block.arrows[i].kill();
-				block.arrows[i].alpha = .3;
+				block.arrows[i].kill();
+				//block.arrows[i].alpha = .3;
 			}
 		}
 	}
@@ -79,18 +78,18 @@ class ToggleColorButton extends FlxSprite
 		for (i in 0 ... block.arrows.length) {
 			if(block.arrows[i].rgbColor == this.rgbColor)
 			{
-				//block.arrows[i].revive();
-				block.arrows[i].alpha = .7;
+				block.arrows[i].revive();
+				//block.arrows[i].alpha = .7;
 				return true;
 			}
 		}
 		var possibleDirections:Array<Direction> = [Direction.up,Direction.right,Direction.down,Direction.left];
-		for (i in 0 ... block.arrows.length) {
-			possibleDirections.remove(block.arrows[i].getDirection());
-		}
+		for (i in 0 ... block.arrows.length)
+			if(block.arrows[i].alive)
+				possibleDirections.remove(block.arrows[i].getDirection());
 		if(possibleDirections.length == 0)
 			return false;
-
+		trace(possibleDirections);
 		block.addArrow(rgbColor,possibleDirections[0]);
 		return true;
 	}

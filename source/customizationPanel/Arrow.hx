@@ -66,6 +66,7 @@ class Arrow extends FlxSprite
 	{
 		var oldDirection:Direction = this.direction;
 		this.direction = direction;
+		trace(direction);
 		this.angle = Util.directionToAngle[direction];
 		for (i in 0 ... block.arrows.length) {
 			if(block.arrows[i] != this && block.arrows[i].direction == direction)
