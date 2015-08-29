@@ -2,6 +2,7 @@ package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import util.*;
+import customizationPanel.*;
 /**
  * ...
  * @author ...
@@ -9,16 +10,46 @@ import util.*;
 class ArrowSprite extends FlxSprite
 {
 	public var direction:Direction;
-	public function new(x:Float , y:Float, direction:Direction, color:Color)
+	private var enabled:Bool;
+	public var rgbColor:Color;
+	public function new(block:Block, direction:Direction, rgbColor:Color, ?enabled:Bool = true)
 	{
-		super(x, y, "assets/images/arrowSprite.png");
+		super(block.x , block.y, "assets/images/arrowSprite.png");
 		setDirection(direction);
-		this.color = Util.colorToValue[color];
+		setEnabled(enabled);
+		this.rgbColor = rgbColor;
+		this.color = Util.colorToValue[rgbColor];
 		GlobalVars.level.blocksGroup.add(this);
+		block.arrowSprites.push(this);
 	}
 	public function setDirection(direction:Direction)
 	{
 		this.direction = direction;
 		this.angle = Util.directionToAngle[direction];
 	}
+	public function loadDataFromArrow(arrow:Arrow)
+	{
+		if(arrow.alive)
+		{
+			revive();
+			this.setDirection(arrow.getDirection());
+		}
+		else
+		{
+			kill();	
+		}
+	}
+	public function setEnabled(enabled:Bool)
+	{
+		this.enabled = enabled;
+		if(enabled)
+		{
+			revive();
+		}
+		else
+		{
+			kill();
+		}
+	}
+
 }

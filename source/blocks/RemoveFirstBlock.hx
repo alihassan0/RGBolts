@@ -17,8 +17,8 @@ class RemoveFirstBlock extends Block
 	{
 		super(x, y);
 		loadGraphic("assets/images/cyanBlock.png");
-		otherElementsArrow = new ArrowSprite(x,y,Direction.up,Color.black);
-		firstElementArrow = new ArrowSprite(x,y,Direction.right,Color.grey);
+		otherElementsArrow = new ArrowSprite(this,Direction.up,Color.black);
+		firstElementArrow = new ArrowSprite(this,Direction.right,Color.grey);
 	}
 	override public function affectSeq(s:Seq) 
 	{
@@ -54,13 +54,10 @@ class RemoveFirstBlock extends Block
 	override public function reset (x:Float, y:Float)
 	{
 		super.reset(x,y);
-		firstElementArrow.reset(x,y);
-		otherElementsArrow.reset(x,y);
-	}
-	override public function kill()
-	{
-		super.kill();
-		firstElementArrow.kill();
-		otherElementsArrow.kill();
+		for (i in 0 ... arrowSprites.length) {
+			arrowSprites[i].setPosition(x,y);
+		}
+		otherElementsArrow.setPosition(x,y);
+		firstElementArrow.setPosition(x,y);
 	}
 }

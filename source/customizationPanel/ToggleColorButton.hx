@@ -1,4 +1,4 @@
-package customizationPanel ;
+ package customizationPanel ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
@@ -29,14 +29,13 @@ class ToggleColorButton extends FlxSprite
 	 * @param 	rgbColor		the initial color of the button
 	 * @param 	block			reference to the customizable block it affects
 	 */
-	public function new(X:Float , Y:Float, rgbColor:Color , block:CustomizableBlock)
+	public function new(X:Float , Y:Float, rgbColor:Color , block:CustomizableBlock,?enabled = false)
 	{
 		super(X,Y);
 		makeGraphic(20,20);
 		this.block = block;
 		setColor(rgbColor);
-		enabled = true;
-		toggleEnabled();
+		this.setEnabled(enabled);
 		MouseEventManager.add(this, onDown, null, null, null);
 	}
 	public function setColor(rgbColor:Color)
@@ -44,20 +43,27 @@ class ToggleColorButton extends FlxSprite
 		this.rgbColor = rgbColor;
 		this.color = Util.colorToValue[rgbColor];
 	}
-	private function toggleEnabled()
+
+	private function setEnabled(enabled:Bool)
 	{
+		this.enabled = enabled;
 		if(enabled)
 		{
-			enabled = false;
-			alpha = .4;
-			disableArrow();
+			if(enableArrow())
+				alpha = 1;
+			else
+				enabled = false;
 		}
 		else
 		{
-			enabled = true;
-			alpha = 1;
-			enableArrow();
+			disableArrow();//there is no checking here .. because there is no way you are unable to disable an arrow
+			alpha = .3;
 		}
+	}
+	private function toggleEnabled()
+	{
+		setEnabled(!enabled);
+		block.updateGridBlock();
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
@@ -69,28 +75,45 @@ class ToggleColorButton extends FlxSprite
 			if(block.arrows[i].rgbColor == this.rgbColor)
 			{
 				block.arrows[i].kill();
-				//block.arrows[i].alpha = .3;
 			}
 		}
 	}
 	private function enableArrow():Bool
 	{
-		for (i in 0 ... block.arrows.length) {
-			if(block.arrows[i].rgbColor == this.rgbColor)
-			{
-				block.arrows[i].revive();
-				//block.arrows[i].alpha = .7;
-				return true;
-			}
+		var newDirection = getEmptyDirection();
+		if(newDirection == null)
+		{
+			return false;
 		}
+		else
+		{
+			for (i in 0 ... block.arrows.length) 
+			{
+				if(block.arrows[i].rgbColor == this.rgbColor)
+				{
+					block.arrows[i].revive();
+					var overlaps:Bool = false;
+					for (j in 0 ... block.arrows.length) 
+						if(i != j && block.arrows[j].alive && block.arrows[j].getDirection() == block.arrows[i].getDirection())
+							overlaps = true;
+					if(overlaps)
+						block.arrows[i].setDirection(newDirection);
+					return true;
+				}
+			}
+			trace("the new direction is" + newDirection);
+			block.addArrow(rgbColor,newDirection);
+			return true;
+		}
+	}
+	private function getEmptyDirection():Direction
+	{
 		var possibleDirections:Array<Direction> = [Direction.up,Direction.right,Direction.down,Direction.left];
 		for (i in 0 ... block.arrows.length)
 			if(block.arrows[i].alive)
 				possibleDirections.remove(block.arrows[i].getDirection());
 		if(possibleDirections.length == 0)
-			return false;
-		trace(possibleDirections);
-		block.addArrow(rgbColor,possibleDirections[0]);
-		return true;
+			return null;
+		return possibleDirections[0];
 	}
 }

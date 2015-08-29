@@ -6,6 +6,7 @@ import flixel.util.FlxPoint;
 import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
 import util.*;
+import blocks.*;
 
 /**
  * The arrow class .. represents the customizable arrows that appears on the customizable block  
@@ -34,7 +35,7 @@ class Arrow extends FlxSprite
 	 * @param	rgbColor	the color of the arrow.
 	 * @param	direction	the direction of the arrow.
 	 */
-	public function new(block:CustomizableBlock,rgbColor:Color,direction:Direction)
+	public function new(block:CustomizableBlock,rgbColor:Color,direction:Direction,?enabled:Bool = true)
 	{
 		super(block.x + block.width/2 - 8 ,block.y + block.height/2 - 24);
 		loadGraphic("assets/images/arrow.png", false, 0,0,true);
@@ -42,8 +43,11 @@ class Arrow extends FlxSprite
 		this.origin.set(width/2,height);
 		setColor(rgbColor);
 		this.draggable = false;
-		setDirection(direction);
 		MouseEventManager.add(this, onDown, null, null, null);
+		if(enabled)
+			setDirection(direction);
+		else
+			kill();
 	}
 	override public function update():Void
 	{
@@ -71,7 +75,8 @@ class Arrow extends FlxSprite
 		for (i in 0 ... block.arrows.length) {
 			if(block.arrows[i] != this && block.arrows[i].direction == direction)
 			{
-				block.arrows[i].setDirection(oldDirection);
+				if(block.arrows[i].alive)
+					block.arrows[i].setDirection(oldDirection);
 			}
 		}
 	}

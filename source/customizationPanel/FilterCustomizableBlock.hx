@@ -10,8 +10,11 @@ import blocks.*;
  */
 class FilterCustomizableBlock extends CustomizableBlock
 {
+	private var filterBlock:FilterBlock;
 	public function new(X:Float , Y:Float, block:Block)
 	{
+		this.filterBlock = cast(block,FilterBlock);//i know it's better to cast in the add arrows function 
+														//.. but for some reason i couldn't cast outside constructor
 		super(X,Y);
 		loadGraphic("assets/images/pinkBlock.png");
 		this.block = block;
@@ -19,17 +22,20 @@ class FilterCustomizableBlock extends CustomizableBlock
 	override public function addArrows()
 	{
 		super.addArrows();
-		addArrow(Color.grey,Direction.up);
-		addArrow(Color.red,Direction.right);
+		addArrowFromArrowSprite(filterBlock.greyArrow);
+		addArrowFromArrowSprite(filterBlock.redArrow);
+		addArrowFromArrowSprite(filterBlock.greenArrow);
+		addArrowFromArrowSprite(filterBlock.blueArrow);
+		addArrowFromArrowSprite(filterBlock.blackArrow);
 	}
 	override public function addToggleButtons()
 	{
 		super.addToggleButtons();
-		FlxG.state.add(new ToggleColorButton(440,160,Color.red,this));
-		FlxG.state.add(new ToggleColorButton(465,160,Color.blue,this));
+		FlxG.state.add(new ToggleColorButton(440,160,Color.red,this,true));
+		FlxG.state.add(new ToggleColorButton(465,160,Color.grey,this,true));
 		FlxG.state.add(new ToggleColorButton(490,160,Color.green,this));
-		FlxG.state.add(new ToggleColorButton(515,160,Color.black,this));
-		FlxG.state.add(new ToggleColorButton(540,160,Color.grey,this));
+		FlxG.state.add(new ToggleColorButton(515,160,Color.blue,this));
+		FlxG.state.add(new ToggleColorButton(540,160,Color.black,this));
 	}
 	override public function updateGridBlock()
 	{

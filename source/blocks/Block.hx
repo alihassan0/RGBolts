@@ -19,15 +19,14 @@ class Block extends FlxSprite
 	public var position:FlxPoint = new FlxPoint(0, 0);
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
-	
+	public var arrowSprites:Array<ArrowSprite>;
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
 		MouseEventManager.add(this, onDown, null, null, null);
 		GlobalVars.level.blocksGroup.add(this);
 		followMouse = true;
-		
-		
+		arrowSprites = new Array<ArrowSprite>();
 		if(mouseOffset == null)
 			mouseOffset = new FlxPoint(width/2, height/2);
 		
@@ -147,9 +146,19 @@ class Block extends FlxSprite
 				}
 		}*/
 	}
+	override public function reset (x:Float, y:Float)
+	{
+		super.reset(x,y);
+		for (i in 0 ... arrowSprites.length) {
+			arrowSprites[i].setPosition(x,y);
+		}
+	}
 	override public function kill()
 	{
 		super.kill();
+		for (i in 0 ... arrowSprites.length) {
+			arrowSprites[i].kill();
+		}
 	}
 	public function loadCustomBehaviour(block:CustomizableBlock)
 	{
