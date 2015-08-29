@@ -50,14 +50,19 @@ class ToggleColorButton extends FlxSprite
 		if(enabled)
 		{
 			if(enableArrow())
+			{
 				alpha = 1;
+				scale.set(1,1.1);
+			}
+				
 			else
 				enabled = false;
 		}
 		else
 		{
 			disableArrow();//there is no checking here .. because there is no way you are unable to disable an arrow
-			alpha = .3;
+			alpha = .6;
+			scale.set(1,.9);
 		}
 	}
 	private function toggleEnabled()

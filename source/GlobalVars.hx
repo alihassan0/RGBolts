@@ -76,12 +76,12 @@ class GlobalVars
 		//--------------------------------level 4 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output the blue element in the sequence", getTheBlueElement,
-			["b","ggb","gbg","gggb","gggggb"],null,null,3));
+			["b","ggb","gbg","gggb","gggggb"],null,null,2));
 
 		//--------------------------------level 5 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"output rest of the element after the first blue", getElementsAfterBlueElement,
-			["bgb","ggbgrg","gbrrgg","bgggb","rgrgbrgr"],null,null,4));
+			["bgb","ggbgrg","gbrrgg","bgggb","rgrgbrgr"],null,null,2));
 		
 		//--------------------------------level 6 :  ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,

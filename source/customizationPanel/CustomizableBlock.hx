@@ -58,6 +58,7 @@ class CustomizableBlock extends FlxSprite
 	}
 	public function addArrowFromArrowSprite(arrowSprite:ArrowSprite)
 	{
+		trace(arrowSprite.alive + " " + arrowSprite.rgbColor);
 		var arrow:Arrow = new Arrow(this, arrowSprite.rgbColor , arrowSprite.direction , arrowSprite.alive);
 		FlxG.state.add(arrow);
 		arrows.push(arrow);
