@@ -6,4 +6,5 @@ enum Color {
   blue;
   black;
   grey;
+  yellow;
 }

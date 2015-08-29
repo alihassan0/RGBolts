@@ -2,6 +2,8 @@ package blocks ;
 import flixel.FlxSprite;
 import flixel.util.FlxPoint;
 import seq.Seq;
+import customizationPanel.*;
+import util.*;
 
 /**
  * ...
@@ -9,31 +11,29 @@ import seq.Seq;
  */
 class DuplicatorBlock extends Block
 {
+	public var firstDuplicate:ArrowSprite;
+	public var secondDuplicate:ArrowSprite;
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/duplicator.png");
+		loadGraphic("assets/images/blueBlock.png");
+		firstDuplicate = new ArrowSprite(this,Direction.up,Color.yellow);
+		secondDuplicate = new ArrowSprite(this,Direction.down,Color.yellow);
 	}
 	override public function affectSeq(s:Seq) 
 	{
 		super.affectSeq(s);
-		s.kill();
-		var seq :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
-		var seq1 :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
-		var seq2 :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
-		var seq3 :Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
-			
-			/*if ("k" == directionBoxDown){
-				direct(seq3, GlobalVars.DOWN);
-			}
-			if ("k" == directionBoxUp){
-				direct(seq, GlobalVars.UP);
-			}
-			if ("k" == directionBoxLeft){
-				direct(seq1, GlobalVars.LEFT);
-			}
-			if ("k" == directionBoxRight){
-				direct(seq2, GlobalVars.RIGHT);
-			}*/
+		var newSeq:Seq = new Seq(Math.floor(position.x), Math.floor(position.y), s.getString());
+		s.setDirection(Util.directionToFlxPoint[firstDuplicate.direction]);
+		newSeq.setDirection(Util.directionToFlxPoint[secondDuplicate.direction]);
+	}
+	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
+	{
+		return new DuplicatorCustomizableBlock(x,y,block);
+	}
+	override public function loadCustomBehaviour(customizableBlock:CustomizableBlock)
+	{
+		firstDuplicate.setDirection(customizableBlock.arrows[0].getDirection());
+		secondDuplicate.setDirection(customizableBlock.arrows[1].getDirection());
 	}
 }

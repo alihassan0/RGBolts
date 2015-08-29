@@ -3,6 +3,8 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxPoint;
 import seq.Seq;
+import customizationPanel.*;
+import util.*;
 /**
  * ...
  * @author ...
@@ -12,11 +14,13 @@ class WaiterBlock extends Block
 	private var curruntSeqs:Array<Seq>;
 	public var waiting:Bool = false;
 	public var lastTurn:Int = 0;
+	public var direction:Direction;
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
 		loadGraphic("assets/images/waiter.png");
 		curruntSeqs = new Array<Seq>();
+		direction = Direction.up;
 	}
 	override public function affectSeq(s:Seq) 
 	{
@@ -28,6 +32,15 @@ class WaiterBlock extends Block
 		}
 		else
 			s.direction.set(s.lastDirection.x,s.lastDirection.y);
+	}
+	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
+	{
+		return new WaiterCustomizableBlock(x,y,block);
+	}
+	override public function loadCustomBehaviour(customizableBlock:CustomizableBlock)
+	{
+		direction = customizableBlock.arrows[0].getDirection();
+		angle = Util.directionToAngle[direction];
 	}
 	override public function reset_state() 
 	{

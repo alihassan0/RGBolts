@@ -26,6 +26,7 @@ class Util
   		Color.green=>0xFF00FF00,
   		Color.blue=>0xFF0000FF,
       Color.black=>0xFF000000,
-  		Color.grey=>0xFF888888
+      Color.grey=>0xFFAAAAAA,
+  		Color.yellow=>0xFFFFFF00
     ];
 }
