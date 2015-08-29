@@ -9,7 +9,7 @@ import util.*;
 class ArrowSprite extends FlxSprite
 {
 	public var direction:Direction;
-	public function new(x:Int , y:Int, direction:Direction, color:Color)
+	public function new(x:Float , y:Float, direction:Direction, color:Color)
 	{
 		super(x, y, "assets/images/arrowSprite.png");
 		setDirection(direction);

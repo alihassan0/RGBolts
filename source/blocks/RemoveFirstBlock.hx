@@ -50,7 +50,6 @@ class RemoveFirstBlock extends Block
 	{
 		otherElementsArrow.setDirection(customizableBlock.arrows[0].getDirection());
 		firstElementArrow.setDirection(customizableBlock.arrows[1].getDirection());
-		//angle = Util.directionToAngle[direction];
 	}
 	override public function reset (x:Float, y:Float)
 	{

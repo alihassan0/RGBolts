@@ -6,31 +6,35 @@ import flixel.util.FlxPoint;
 import seq.Seq;
 import level.Level;
 import customizationPanel.*;
+import util.*;
 /**
  * ...
  * @author ...
  */
 class FilterBlock extends Block
 {
-	private var filter_string:String;
-	public function new(X:Int,Y:Int,c:String) 
+	private var filter_string:String;//will be removed in a second
+	public var redArrow:ArrowSprite;
+	public var greenArrow:ArrowSprite;
+	public var blueArrow:ArrowSprite;
+	public var blackArrow:ArrowSprite;
+	public var greyArrow:ArrowSprite;
+	public var otherElementsArrow:ArrowSprite;
+	public function new(x:Float,y:Float) 
 	{
-		super(X, Y);
-		filter_string = c;
-		
-		switch(c)
-		{
-			case "r":loadGraphic("assets/images/ifred.png");
-			case "g":loadGraphic("assets/images/ifgreen.png");
-			case "b":loadGraphic("assets/images/ifblue.png");
-			case "k":loadGraphic("assets/images/ifblack.png");
-			default:loadGraphic("assets/images/ifred.png");
-		}
-
+		super(x, y);
+		loadGraphic("assets/images/pinkBlock.png");
+		greyArrow = new ArrowSprite(x,y,Direction.up,Color.grey);
+		redArrow = new ArrowSprite(x,y,Direction.right,Color.red);
 	}
 	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
 	{
 		return new FilterCustomizableBlock(x,y,block);
+	}
+	override public function loadCustomBehaviour(customizableBlock:CustomizableBlock)
+	{
+		greyArrow.setDirection(customizableBlock.arrows[0].getDirection());
+		redArrow.setDirection(customizableBlock.arrows[1].getDirection());
 	}
 	/*override public function affectSeq(s:Seq) 
 	{

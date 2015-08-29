@@ -13,14 +13,17 @@ class FilterCustomizableBlock extends CustomizableBlock
 	public function new(X:Float , Y:Float, block:Block)
 	{
 		super(X,Y);
-		loadGraphic("assets/images/cyanBlock.png");
+		loadGraphic("assets/images/pinkBlock.png");
 		this.block = block;
 	}
 	override public function addArrows()
 	{
 		super.addArrows();
-		addArrow(Color.red,Direction.down);
-		addArrow(Color.green,Direction.right);
+		addArrow(Color.grey,Direction.up);
+		addArrow(Color.red,Direction.right);
 	}
-
+	override public function updateGridBlock()
+	{
+		block.loadCustomBehaviour(this);
+	}
 }

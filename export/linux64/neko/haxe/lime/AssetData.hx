@@ -86,6 +86,8 @@ class AssetData {
 			type.set ("assets/images/Container.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/Entypo_e4ad(0)_42.png", "assets/images/Entypo_e4ad(0)_42.png");
 			type.set ("assets/images/Entypo_e4ad(0)_42.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/pinkBlock.png", "assets/images/pinkBlock.png");
+			type.set ("assets/images/pinkBlock.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/question.png", "assets/images/question.png");
 			type.set ("assets/images/question.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/directionaly.png", "assets/images/directionaly.png");

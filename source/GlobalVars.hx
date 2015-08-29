@@ -36,21 +36,18 @@ class GlobalVars
 	public static var maxVisibleElemesInSeq : Int = 3;
 
 	public static var save:FlxSave;
-
+	//needs to be remade
 	public static var blocksMap:Map<Int, Class<Dynamic>> =
     [
    		   	0=> DirectionalBlock,
    		   	1=> RemoveFirstBlock,
 			2=> GrouperBlock,
-			3=> FilterRedBlock,
-			4=> FilterGreenBlock,
-			5=> FilterBlueBlock,
+			3=> FilterBlock,
 			6=> WaiterBlock,
 			7=> DuplicatorBlock,
 			8=> SignalBlock,
 			9=> InputBlock,
 			10=> OutputBlock,
-			11=> FilterBlackBlock,
 			12=> AddBlack
     ];
 	public static function loadLevels()
