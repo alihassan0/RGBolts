@@ -78,7 +78,7 @@ class Level extends FlxState
 		if(GlobalVars.save == null)
 		{
 			GlobalVars.save = new FlxSave();
-			GlobalVars.save.bind("SaveTest4");
+			GlobalVars.save.bind("SaveTest5");
 		}
 		
 
@@ -279,7 +279,6 @@ class Level extends FlxState
 	}
 	public function getInputString()
 	{
-
 		if(selectedInputTest == null)
 		{
 			selectedInputTest = inputTests[0];
@@ -502,7 +501,6 @@ class Level extends FlxState
 		{
 			isRunning = true;
 			bgColor = 0xFFF2C968;
-		
 			GlobalVars.gameGrid.inputBlock.inputString = getInputString();
 			GlobalVars.gameGrid.outputBlock.inputString = getInputString();
 		}

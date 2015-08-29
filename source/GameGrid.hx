@@ -61,7 +61,7 @@ class GameGrid extends FlxSprite
 		var pos :FlxPoint = GlobalVars.level.levelInfo.inputPos;
 		var p:FlxPoint = getCoordinatesOfPosition(pos!=null?pos:new FlxPoint(0,2));
 		this.inputBlock = new InputBlock(Math.floor(p.x), Math.floor(p.y));
-
+		trace("******************** " + inputBlock.inputString);
 		pos = GlobalVars.level.levelInfo.outputPos;
 		p = getCoordinatesOfPosition(pos!=null?pos:new FlxPoint(gridWidth - 1, 2));
 		this.outputBlock = new OutputBlock(Std.int(p.x), Std.int(p.y));
@@ -104,7 +104,7 @@ class GameGrid extends FlxSprite
             	if(blockId != null)
             	{
             		var p:FlxPoint = getCoordinatesOfPosition(FlxPoint.get(x,y));
-            		var d = Type.createInstance( GlobalVars.blocksMap[blockId[0]], [Math.floor(p.x),Math.floor(p.y)] );
+            		var d = Type.createInstance(GlobalVars.blocksMap[blockId[0]], [Math.floor(p.x),Math.floor(p.y)]);
             		d.followMouse = false;
             		d.checkPosInGrid();
             		d.angle += blockId[1];

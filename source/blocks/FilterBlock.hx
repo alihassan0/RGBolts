@@ -13,7 +13,6 @@ import util.*;
  */
 class FilterBlock extends Block
 {
-	private var filter_string:String;//will be removed in a second
 	public var greyArrow:ArrowSprite;
 	public var redArrow:ArrowSprite;
 	public var greenArrow:ArrowSprite;
@@ -41,40 +40,22 @@ class FilterBlock extends Block
 		greenArrow.loadDataFromArrow(customizableBlock.arrows[2]);
 		blueArrow.loadDataFromArrow(customizableBlock.arrows[3]);
 		blackArrow.loadDataFromArrow(customizableBlock.arrows[4]);
-	}
-	/*override public function affectSeq(s:Seq) 
-	{
-		super.affectSeq(s);
-		if(s.getString().charAt(0)==filter_string)
-		{
-			direct(s, GlobalVars.RIGHT);
-		}
-		else
-		{
-			direct(s, GlobalVars.UP);
-		}
-	}*/
-	
-	
+	}	
 	override public function affectSeq(s:Seq) 
 	{
 		super.affectSeq(s);
-		var sequence:String = s.getString().charAt(0);
-		var found:Bool = false;
+		var firstChar:String = s.getString().charAt(0);
 		
-		/*if (!found) {
-			if ("e" == directionBoxDown){
-			direct(s, GlobalVars.DOWN);
-			}
-			if ("e" == directionBoxUp){
-				direct(s, GlobalVars.UP);
-			}
-			if ("e" == directionBoxLeft){
-				direct(s, GlobalVars.LEFT);
-			}
-			if ("e" == directionBoxRight){
-				direct(s, GlobalVars.RIGHT);
-			}
-		}*/	
+			if (redArrow.alive && firstChar == "r")
+				s.setDirection(Util.directionToFlxPoint[redArrow.direction]);
+			else if (greenArrow.alive && firstChar == "g")
+				s.setDirection(Util.directionToFlxPoint[greenArrow.direction]);
+			else if (blueArrow.alive && firstChar == "b")
+				s.setDirection(Util.directionToFlxPoint[blueArrow.direction]);
+			else if (blackArrow.alive && firstChar == "k")
+				s.setDirection(Util.directionToFlxPoint[blackArrow.direction]);
+			else
+				s.setDirection(Util.directionToFlxPoint[greyArrow.direction]);
+			
 	}
 }
