@@ -36,4 +36,13 @@ class DuplicatorBlock extends Block
 		firstDuplicate.setDirection(customizableBlock.arrows[0].getDirection());
 		secondDuplicate.setDirection(customizableBlock.arrows[1].getDirection());
 	}
+	override public function getSaveString():String
+	{
+		return Type.enumIndex(firstDuplicate.direction)+""+Type.enumIndex(secondDuplicate.direction);
+	}
+	override public function loadSaveString(saveString:String)
+	{
+		firstDuplicate.setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(0))));
+		secondDuplicate.setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(1))));
+	}
 }

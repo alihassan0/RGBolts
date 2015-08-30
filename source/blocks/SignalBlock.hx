@@ -26,6 +26,19 @@ class SignalBlock extends Block
 	{
 		return new SignalCustomizableBlock(x,y,block);
 	}
+	override public function getSaveString():String
+	{
+		return Type.enumIndex(direction)+"";
+	}
+	override public function loadSaveString(saveString:String)
+	{
+		setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(0))));
+	}
+	public function setDirection(direction:Direction)
+	{
+		this.direction = direction;
+		angle = Util.directionToAngle[direction];
+	}
 	override public function loadCustomBehaviour(customizableBlock:CustomizableBlock)
 	{
 		direction = customizableBlock.arrows[0].getDirection();

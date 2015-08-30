@@ -69,7 +69,6 @@ class FilterBlock extends Block
 	}
 	override public function loadSaveString(saveString:String)
 	{//maybe there is a better a way than this .. but this should work for now
-		trace(saveString);
 		greyArrow.setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(0))));
 		greyArrow.setEnabled(saveString.charAt(1)=="*");
 		redArrow.setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(2))));

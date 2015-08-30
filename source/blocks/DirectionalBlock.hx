@@ -28,16 +28,19 @@ class DirectionalBlock extends Block
 	}
 	override public function loadCustomBehaviour(customizableBlock:CustomizableBlock)
 	{
-		direction = customizableBlock.arrows[0].getDirection();
-		angle = Util.directionToAngle[direction];
+		setDirection(customizableBlock.arrows[0].getDirection());	
 	}
 	override public function getSaveString():String
 	{
 		return Type.enumIndex(direction)+"";
 	}
 	override public function loadSaveString(saveString:String)
-	{//i know i shouldn't repeat code .. i will probably refractor this later
-		direction = Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(0)));
+	{
+		setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(0))));
+	}
+	public function setDirection(direction:Direction)
+	{
+		this.direction = direction;
 		angle = Util.directionToAngle[direction];
 	}
 }

@@ -314,6 +314,7 @@ class Level extends FlxState
 	}
 	function nextLevelF()
 	{
+		saveLevel();
 		GlobalVars.levelInfo = GlobalVars.levels[levelInfo.id];
 		FlxG.switchState(new Level());
 	}
@@ -350,7 +351,6 @@ class Level extends FlxState
             {
             	if(GlobalVars.gameGrid.blocksGrid[x][y] != null)
             	{
-            		
             		for (key in GlobalVars.blocksMap.keys()) {
 					    if(GlobalVars.blocksMap[key] == Type.getClass(GlobalVars.gameGrid.blocksGrid[x][y]))
 					    {

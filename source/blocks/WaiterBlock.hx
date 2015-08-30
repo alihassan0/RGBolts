@@ -42,6 +42,19 @@ class WaiterBlock extends Block
 		direction = customizableBlock.arrows[0].getDirection();
 		angle = Util.directionToAngle[direction];
 	}
+	override public function getSaveString():String
+	{
+		return Type.enumIndex(direction)+"";
+	}
+	override public function loadSaveString(saveString:String)
+	{
+		setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(0))));
+	}
+	public function setDirection(direction:Direction)
+	{
+		this.direction = direction;
+		angle = Util.directionToAngle[direction];
+	}
 	override public function reset_state() 
 	{
 		super.reset_state();
