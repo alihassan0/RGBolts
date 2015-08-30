@@ -33,14 +33,33 @@ class CustomizationPanel extends FlxTypedGroup<FlxSprite>
 	{
 		if(customizableBlock != null)
 		{
+			removeToggleButtons();
 			customizableBlock.kill();
 			customizableBlock.destroy();
 		}
 		customizableBlock = block.addCustomizableBlock(500,100,block);
 	}
+	
+	public function removeToggleButtons():Void
+	{
+		if (Std.is(customizableBlock, FilterCustomizableBlock))
+			FlxG.state.forEachOfType(ToggleColorButton, delete);
+	}
+	public function delete(s:ToggleColorButton):Void
+	{
+		s.kill();
+		s.destroy();
+	}
 	override public function update():Void 
 	{
-		super.update();	
+		super.update();
+		if (customizableBlock != null && !customizableBlock.block.exists)
+		{
+			removeToggleButtons();
+			customizableBlock.kill();
+			customizableBlock.destroy();
+			
+		}
 	}
 	
 }	
