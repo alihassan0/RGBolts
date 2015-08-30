@@ -146,6 +146,15 @@ class Block extends FlxSprite
 				}
 		}*/
 	}
+	public function getSaveString():String
+	{
+		return "";
+	}
+	public function loadSaveString(saveString:String)
+	{
+		
+	}
+
 	override public function reset (x:Float, y:Float)
 	{
 		super.reset(x,y);

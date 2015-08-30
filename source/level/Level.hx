@@ -333,12 +333,12 @@ class Level extends FlxState
 		GlobalVars.save.data.levels[levelInfo.id] = true;
 
 		if(GlobalVars.save.data.levelBlocksGrid == null)
-			GlobalVars.save.data.levelBlocksGrid = new Array<Array<Array<Array<Int>>>>();
+			GlobalVars.save.data.levelBlocksGrid = new Array<Array<Array<Array<String>>>>();
 		
-		GlobalVars.save.data.levelBlocksGrid[levelInfo.id] = new Array<Array<Array<Int>>>();
+		GlobalVars.save.data.levelBlocksGrid[levelInfo.id] = new Array<Array<Array<String>>>();
 		for (x in 0...GlobalVars.gameGrid.gridWidth)
         {
-            GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x] = new Array<Array<Int>>();
+            GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x] = new Array<Array<String>>();
             for (y in 0...GlobalVars.gameGrid.gridHeight)
             {
                  GlobalVars.save.data.levelBlocksGrid[levelInfo.id][x][y] = null;
@@ -354,10 +354,10 @@ class Level extends FlxState
             		for (key in GlobalVars.blocksMap.keys()) {
 					    if(GlobalVars.blocksMap[key] == Type.getClass(GlobalVars.gameGrid.blocksGrid[x][y]))
 					    {
-		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] = new Array<Int>();
-		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y][0] = key;
-		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y][1] = GlobalVars.gameGrid.blocksGrid[x][y].angle;
-	    	        		trace("savedBlock @ " + x +" , " +  y + "with angle of " + GlobalVars.gameGrid.blocksGrid[x][y].angle);		    	
+		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] = new Array<String>();
+		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y][0] = key+"";
+		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y][1] = GlobalVars.gameGrid.blocksGrid[x][y].getSaveString();
+	    	        		trace("savedBlock with an id of "+ key +" @ " + x +" , " +  y + "with angle of " + GlobalVars.gameGrid.blocksGrid[x][y].getSaveString());		    	
 					    }
 					}
             	}

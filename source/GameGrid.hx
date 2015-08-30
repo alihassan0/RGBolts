@@ -60,11 +60,11 @@ class GameGrid extends FlxSprite
 	{
 		var pos :FlxPoint = GlobalVars.level.levelInfo.inputPos;
 		var p:FlxPoint = getCoordinatesOfPosition(pos!=null?pos:new FlxPoint(0,2));
-		this.inputBlock = new InputBlock(Math.floor(p.x), Math.floor(p.y));
-		trace("******************** " + inputBlock.inputString);
+		new InputBlock(Math.floor(p.x), Math.floor(p.y));
+		
 		pos = GlobalVars.level.levelInfo.outputPos;
 		p = getCoordinatesOfPosition(pos!=null?pos:new FlxPoint(gridWidth - 1, 2));
-		this.outputBlock = new OutputBlock(Std.int(p.x), Std.int(p.y));
+		new OutputBlock(Std.int(p.x), Std.int(p.y));
 			
 		inputBlock.checkPosInGrid();
 		outputBlock.checkPosInGrid();
@@ -100,16 +100,14 @@ class GameGrid extends FlxSprite
         for (x in 0...gridWidth)
             for (y in 0...gridHeight)
             {
-            	var blockId:Array<Int> = GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y];
+            	var blockId:Array<String> = GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y];
             	if(blockId != null)
             	{
             		var p:FlxPoint = getCoordinatesOfPosition(FlxPoint.get(x,y));
-            		var d = Type.createInstance(GlobalVars.blocksMap[blockId[0]], [Math.floor(p.x),Math.floor(p.y)]);
+            		var d = Type.createInstance(GlobalVars.blocksMap[Std.parseInt(blockId[0])], [Math.floor(p.x),Math.floor(p.y)]);
             		d.followMouse = false;
             		d.checkPosInGrid();
-            		d.angle += blockId[1];
-            		d.angle %= 360;
-            		d.draw();
+            		d.loadSaveString(blockId[1]);
             	}
             }
 	}

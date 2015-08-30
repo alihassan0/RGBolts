@@ -20,6 +20,7 @@ class OutputBlock extends Block
 		loadGraphic("assets/images/output.png");
 		followMouse = false;
 		this.testFunction = GlobalVars.level.levelInfo.testFunction;
+		GlobalVars.gameGrid.outputBlock = this;
 	}
 	override public function affectSeq(s:Seq) 
 	{
