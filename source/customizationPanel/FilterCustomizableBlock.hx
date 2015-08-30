@@ -41,4 +41,5 @@ class FilterCustomizableBlock extends CustomizableBlock
 	{
 		block.loadCustomBehaviour(this);
 	}
+	
 }

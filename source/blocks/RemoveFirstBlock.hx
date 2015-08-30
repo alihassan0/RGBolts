@@ -60,4 +60,13 @@ class RemoveFirstBlock extends Block
 		otherElementsArrow.setPosition(x,y);
 		firstElementArrow.setPosition(x,y);
 	}
+	override public function getSaveString():String
+	{
+		return Type.enumIndex(otherElementsArrow.direction)+""+Type.enumIndex(firstElementArrow.direction);
+	}
+	override public function loadSaveString(saveString:String)
+	{
+		otherElementsArrow.setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(0))));
+		firstElementArrow.setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(1))));
+	}
 }

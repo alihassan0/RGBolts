@@ -36,23 +36,6 @@ class OutputBlock extends Block
 		}
 		
 	}
-	
-	/*function checkOutputString(inputString:String, outputString:String):Bool
-	{
-		var redChars:String= "";
-		var greenChars:String= "";
-		var blackChars:String= "";
-		for (i in 0...inputString.length)
-		{
-			switch (inputString.charAt(i))
-			{
-				case "r": redChars += inputString.charAt(i);
-				case "g": greenChars += inputString.charAt(i);
-				case "b": blackChars += inputString.charAt(i);
-			}
-		}
-		return redChars + greenChars + blackChars == outputString;
-	}*/
 	function checkOutputString(inputString:String, outputString:String):Bool
 	{
 		return testFunction(inputString) == outputString;
