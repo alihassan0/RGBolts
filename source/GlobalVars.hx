@@ -34,6 +34,7 @@ class GlobalVars
 	public static var font:PxBitmapFont; 
 	public static var stepDuration:Float = 0;//same as moveDuration but only at the beginnning of any move .. i couldn't come up with a better name :"|
 	public static var maxVisibleElemesInSeq : Int = 3;
+	public static var levelselector:LevelSelector;
 
 	public static var save:FlxSave;
 	//needs to be remade

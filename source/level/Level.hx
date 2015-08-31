@@ -151,7 +151,7 @@ class Level extends FlxState
         	case 1:allowedBlocks = [0,1];
         	case 2:allowedBlocks = [0,1,3];
 			//----------------------------------
-        	default:allowedBlocks = [0,1,2,3,4,5,6,7];
+        	default:allowedBlocks = [0,1,3,4,5,6,7];
         }
 		var actualCount:Int = 0;
         for (i in 0 ... 12)
