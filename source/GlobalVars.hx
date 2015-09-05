@@ -21,12 +21,15 @@ class GlobalVars
 	public static var Seqs:Array<Seq>;
 	public static var Signals:Array<Signal>;
 	public static var levels:Array<LevelInfo>;
-	public static var turn:Int = 0;
-	public static var UP:Int = 0;
-	public static var DOWN:Int = 1;
-	public static var LEFT:Int = 2;
-	public static var RIGHT:Int = 3;
+	public static var cycles:Int = 0;
 	
+	public static var inputTestsEnabled:Bool = true;
+	public static var blocksDraggingEnabled:Bool = true;
+	public static var blocksCreatingEnabled:Bool = true;
+	public static var mainBlocksDraggingEnabled:Bool = true;
+	public static var resetButttonEnabled:Bool = true;
+	public static var startButttonEnabled:Bool = true;
+
 	public static var xml : Xml;
 	public static var moveDuration : Float = 0;
 	public static var selectedBlock : Block;
@@ -36,7 +39,6 @@ class GlobalVars
 	public static var maxVisibleElemesInSeq : Int = 3;
 
 	public static var save:FlxSave;
-	//needs to be remade
 	public static var blocksMap:Map<Int, Class<Dynamic>> =
     [
    		   	0=> DirectionalBlock,

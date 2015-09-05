@@ -48,7 +48,7 @@ class InputBlock extends Block
 	}
 	override public function onDown(Sprite:FlxSprite) 
 	{
-		if(!GlobalVars.level.isRunning)
+		if(!GlobalVars.level.isRunning && GlobalVars.mainBlocksDraggingEnabled)
 		{
 			followMouse = true;
 		}

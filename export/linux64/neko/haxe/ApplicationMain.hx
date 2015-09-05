@@ -19,6 +19,10 @@ class ApplicationMain {
 	private static var forceHeight:Int;
 	private static var forceWidth:Int;
 	
+	#if hxtelemetry
+	public static var telemetryConfig:hxtelemetry.HxTelemetry.Config;
+	#end
+	
 	
 	public static function main () {
 		
@@ -30,6 +34,13 @@ class ApplicationMain {
 			return (orientation == flash.display.Stage.OrientationLandscapeLeft || orientation == flash.display.Stage.OrientationLandscapeRight);
 			
 		}
+		#end
+		
+		#if hxtelemetry
+		telemetryConfig = new hxtelemetry.HxTelemetry.Config ();
+		telemetryConfig.allocations = true;
+		telemetryConfig.host = "localhost";
+		telemetryConfig.app_name = "sequenceCSGame";
 		#end
 		
 		
@@ -385,6 +396,7 @@ class ApplicationMain {
 #if !macro
 
 
+@:access(lime.app.Application)
 @:access(lime.Assets)
 
 
@@ -402,7 +414,7 @@ class ApplicationMain {
 		openfl.Lib.application = app;
 		
 		#if !flash
-		var stage = new openfl._legacy.display.HybridStage (app.window.width, app.window.height, config.background);
+		var stage = new openfl._legacy.display.HybridStage (app.window.width, app.window.height, app.window.config.background);
 		stage.addChild (openfl.Lib.current);
 		app.addModule (stage);
 		#end
@@ -410,7 +422,8 @@ class ApplicationMain {
 		var display = new flixel.system.FlxPreloader ();
 		
 		preloader = new openfl.display.Preloader (display);
-		preloader.onComplete = init;
+		app.setPreloader (preloader);
+		preloader.onComplete.add (init);
 		preloader.create (config);
 		
 		#if (js && html5)
@@ -486,25 +499,37 @@ class ApplicationMain {
 		
 		config = {
 			
-			antialiasing: Std.int (0),
-			background: Std.int (0),
-			borderless: false,
+			build: "78",
 			company: "HaxeFlixel",
-			depthBuffer: false,
 			file: "sequenceCSGame",
-			fps: Std.int (60),
-			fullscreen: false,
-			height: Std.int (480),
+			fps: 60,
+			name: "sequenceCSGame",
 			orientation: "landscape",
 			packageName: "com.example.myapp",
-			resizable: true,
-			stencilBuffer: false,
-			title: "sequenceCSGame",
 			version: "0.0.1",
-			vsync: true,
-			width: Std.int (640),
+			windows: [
+				
+				{
+					antialiasing: 0,
+					background: 0,
+					borderless: false,
+					depthBuffer: false,
+					display: 0,
+					fullscreen: false,
+					hardware: true,
+					height: 480,
+					parameters: "{}",
+					resizable: true,
+					stencilBuffer: false,
+					title: "sequenceCSGame",
+					vsync: true,
+					width: 640,
+					x: null,
+					y: null
+				},
+			]
 			
-		}
+		};
 		
 		#if (js && html5)
 		#if (munit || utest)

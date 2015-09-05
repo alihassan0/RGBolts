@@ -19,7 +19,6 @@ class BlockSource extends FlxSprite
 	}
 	private function loadSprite()
 	{
-
 		switch(blockType)
 		{
 			case 0: loadGraphic("assets/images/directionalUp.png");
@@ -34,7 +33,7 @@ class BlockSource extends FlxSprite
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
-		if(!GlobalVars.level.isRunning)
+		if(!GlobalVars.level.isRunning && GlobalVars.blocksCreatingEnabled)
 		{
 			switch(blockType)
 			{

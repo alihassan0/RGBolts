@@ -33,17 +33,17 @@ class InputTest extends FlxSprite
 		text = new FlxText(x , y ,width, "")
 							.setFormat(null, 10 , 0x9C9F84,"center");
 		text.text = "i : "+inputString+" \n\n o : "+outputString+" \n\n s : 'untested' \n\n";
-		GlobalVars.level.panelsGroup.add(text);
-		
+		GlobalVars.level.panelsGroup.add(text);	
 		MouseEventManager.add(this, onDown, null, null, null,true);
 	}
 	public function onDown(Sprite:FlxSprite) 
 	{
-		if(!GlobalVars.level.isRunning)
+		if(!GlobalVars.level.isRunning && GlobalVars.inputTestsEnabled)
 		{
 			selected = true;
 			showSelection();
 		}
+		trace(GlobalVars.inputTestsEnabled);
 	}
 	public function setState(state:Int)
 	{

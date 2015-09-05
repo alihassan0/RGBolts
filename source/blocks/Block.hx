@@ -83,7 +83,7 @@ class Block extends FlxSprite
 	}
 	public function onDown(Sprite:FlxSprite)
 	{
-		if(!GlobalVars.level.isRunning)
+		if(!GlobalVars.level.isRunning && GlobalVars.blocksDraggingEnabled)
 		{
 			followMouse = true;
 			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);

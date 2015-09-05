@@ -94,19 +94,31 @@ class Level extends FlxState
 		addUI();//added to ui layer
 		addDiscription();//added to panels layer
 
-		if(levelInfo.id == 0)
+		if(levelInfo.id == 1)
 		{
 			TutVars.exists = true;
 			TutVars.curruntHint = 0;
 			TutVars.initHelpPanel();
 			TutVars.showNextTip();
+			setControlFlags(false);
 		}
 		else
 		{
 			TutVars.exists = false;
+			setControlFlags(true);
 		}            		
-	}	
-	public function changePanel(block:Block):Void{
+	}
+	public function setControlFlags(b:Bool):Void
+	{//this is not a good programming practice
+		GlobalVars.inputTestsEnabled = b;
+		GlobalVars.blocksDraggingEnabled = b;
+		GlobalVars.blocksCreatingEnabled = b;
+		GlobalVars.mainBlocksDraggingEnabled = b;
+		GlobalVars.resetButttonEnabled = b;
+		GlobalVars.startButttonEnabled = b;
+	}
+	public function changePanel(block:Block):Void
+	{
 		customizePanel.customize(block);
 	}
 	private function initGroups()
@@ -451,16 +463,19 @@ class Level extends FlxState
 	}
 	function resetGame() 
 	{
-		exitPlayMode();
-		resetSeqs();
-		resetTestCases();
-		checkForTutorial("resetBtn");
-		
+		if(GlobalVars.resetButttonEnabled)
+		{
+			exitPlayMode();
+			resetSeqs();
+			resetTestCases();
+			checkForTutorial("resetBtn");
+		}
 	}
 	function exitPlayMode() 
 	{
 		isRunning =  false;
 		bgColor = FlxColor.WHEAT;
+		GlobalVars.cycles = 0;
 	}
 	public function resetSeqs():Void
 	{
@@ -491,7 +506,7 @@ class Level extends FlxState
 	}
 	public function runGame():Void 
 	{
-		if (isRunning)
+		if (isRunning || !GlobalVars.resetButttonEnabled)
 			return;
 		if(!isRunning)
 		{
@@ -513,12 +528,20 @@ class Level extends FlxState
 	}
 	public function runGridOnce():Void 
 	{
-		if (GlobalVars.Seqs.length == 0)//temp starter
+		if (GlobalVars.Seqs.length == 0 )//temp starter
 		{
-			GlobalVars.gameGrid.inputBlock.started = true;
-			status_change(3);
+			if(GlobalVars.cycles == 0)//this is the first turn 
+			{
+				GlobalVars.gameGrid.inputBlock.started = true;
+				status_change(3);
+			}
+			else
+			{
+				resetGame();
+				return;
+			}
 		}
-		GlobalVars.turn ++;
+		GlobalVars.cycles ++;
 		GlobalVars.stepDuration = GlobalVars.moveDuration;
 		GlobalVars.Seqs = Lambda.array(Lambda.filter(GlobalVars.Seqs, function(v) { return (v.alive == true); } ));
 		for (i in 0...GlobalVars.Seqs.length)
