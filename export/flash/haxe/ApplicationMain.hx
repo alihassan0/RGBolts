@@ -50,6 +50,22 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("assets/directionalDown.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/directionalLeft.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/directionalRight.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/directionalUp.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/fonts/font.fnt");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -62,20 +78,8 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/arrow.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/arrowSprite.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
 		urls.push ("assets/images/Balanced_scale_of_Justice.svg");
 		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("assets/images/blueBlock.png");
-		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/bolt.png");
@@ -107,10 +111,6 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/customArrow4.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/cyanBlock.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -230,10 +230,6 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/greenBlock.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
 		urls.push ("assets/images/grouper.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -315,10 +311,6 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/outputs.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/pinkBlock.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
