@@ -87,7 +87,6 @@ class TutVars
 
 		spriteHighlighter.scale.set(2,2);
 		FlxTween.tween(spriteHighlighter.scale, {x:1.2,y:1.2}, .66, {ease:FlxEase.circOut});
-		
 	}
 	public static function showHelpPanelAtPos(p:FlxPoint,text:String,showNextBtn:Bool)
 	{

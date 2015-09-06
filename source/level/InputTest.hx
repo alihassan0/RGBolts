@@ -21,13 +21,14 @@ class InputTest extends FlxSprite
 	private var text:FlxText;
 	public var selected:Bool;
 	public var inputString:String;
-
+	public var cycles:Int;
 	public function new(X:Float=0, Y:Float=0 ,id :Int, inputString:String , outputString:String) 
 	{
 		super(X, Y);
 		makeGraphic(100,80,0x00000000,true);
 		this.inputString = inputString;
 		this.id = id;
+		cycles = 0;
 		drawRoundRect(0, 0, 100, 80, 15, 15, FlxColor.WHEAT);
 		GlobalVars.level.gui.panelsGroup.add(this);
 		text = new FlxText(x , y ,width, "")

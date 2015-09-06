@@ -22,8 +22,6 @@ import seq.Seq;
 /**
  * the state that contains all playelemets
  */
-
-
 class Level extends FlxState
 {
 	
@@ -69,7 +67,8 @@ class Level extends FlxState
 		{
 			TutVars.exists = false;
 			setControlFlags(true);
-		}            		
+		}
+		//gui.wonPanel.show();
 	}
 	public function setControlFlags(b:Bool):Void
 	{//this is not a good programming practice .. will probably change it later
@@ -85,7 +84,6 @@ class Level extends FlxState
 	{
 		GUI.customizationPanel.customize(block);
 	}
-	
 	function intermediate(timer:FlxTimer)
 	{
 		if (isRunning && !isPaused)
@@ -102,18 +100,20 @@ class Level extends FlxState
 			
 		return selectedInputTest.inputString;
 	}
-	public function speedUpF() {
-
+	public function speedUpF() 
+	{
 		FlxTween.num(1, 0, 0.1, { ease:FlxEase.circIn, complete:fadeOut }, changeColor);
 		if (speed < 3)
 		speed++;
 	    gui.speedText.text = "Speed: " + speed;
 		changeSpeed();
 	}
-	function changeColor(opacity:Float){
+	private function changeColor(opacity:Float)
+	{
 		gui.speedUp.alpha = opacity;
 	}
-	function changeColor2(opacity:Float){
+	private function changeColor2(opacity:Float)
+	{
 		gui.speedDown.alpha = opacity;
 	}
 	function fadeOut(_){
@@ -181,12 +181,7 @@ class Level extends FlxState
             	}
             }
         }
-		GlobalVars.save.flush();
-		 
-	}
-	function addStatus() 
-	{
-		
+		GlobalVars.save.flush();	 
 	}
 	public function status_change(type:Int)
 	{
@@ -218,15 +213,13 @@ class Level extends FlxState
 		if(successful)
 		{
 			if(selectedInputTest == gui.inputTests[0])
-			{
 				checkForTutorial("test_passed");
-				trace("first test passed");
-			}	
 			selectedInputTest.setState(1);
+			selectedInputTest.cycles = GlobalVars.cycles;
 			resetSeqs();
 			if(getNextInputTest() == null)
 			{
-				gui.nextLevel.visible = true;
+				gui.wonPanel.show();
 				togglePauseGame();
 			}	
 			else
@@ -241,7 +234,8 @@ class Level extends FlxState
 		{
 			resetSeqs();
 			selectedInputTest.setState(2);
-		}	
+		}
+		GlobalVars.cycles = 0;
 	}
 	public function changeSpeed()
 	{
@@ -282,6 +276,7 @@ class Level extends FlxState
 	{
 		for (i in 0 ... gui.inputTests.length) {
 			gui.inputTests[i].selected = false;
+			gui.inputTests[i].cycles = 0;
 			gui.inputTests[i].showSelection();
 			gui.inputTests[i].setState(0);
 		}
@@ -297,8 +292,6 @@ class Level extends FlxState
 	}
 	public function runGame():Void 
 	{
-
-		trace(isRunning +"    "+GlobalVars.runButttonEnabled);
 		if (isRunning)
 			return;
 		if(!GlobalVars.runButttonEnabled)

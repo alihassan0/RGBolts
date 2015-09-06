@@ -37,9 +37,8 @@ class GUI
 	public var speedUp:FlxButton;
 	public var speedDown:FlxButton;
 	public var saveButton:FlxButton;
-	public var resetGridButton:FlxButton;
-	public var nextLevel:FlxButton;
-
+	public var resetGridBtn:FlxButton;
+	
 	public var helpPanel:FlxSprite;
 	public var helpPanelText:FlxText;
 	
@@ -47,7 +46,7 @@ class GUI
 	public var titleTxt:FlxText;
 	public var speedText:FlxText;
 	
-	private var wonPanel:WonPanel;
+	public var wonPanel:WonPanel;
 
 	public function new() 
 	{
@@ -95,9 +94,9 @@ class GUI
 	private function addUI()
 	{
 		backToMenuBtn = new FlxButton(420, 220, "Back", GlobalVars.level.switchBack);
-		resetGridButton = new FlxButton(30, 1, "load", GlobalVars.level.resetGrid);
-		resetGridButton.scalebtn(0.7, 1.2);
-		guiGroup.add(resetGridButton);
+		resetGridBtn = new FlxButton(30, 1, "load", GlobalVars.level.resetGrid);
+		resetGridBtn.scalebtn(0.7, 1.2);
+		guiGroup.add(resetGridBtn);
 		
 		saveButton = new FlxButton(90, 1, "save", GlobalVars.level.saveLevel);
 		saveButton.scalebtn(0.7, 1.2);
@@ -136,11 +135,7 @@ class GUI
 		speedDown.loadGraphic("assets/images/Entypo_2d(0)_24.png");
 		guiGroup.add(speedDown);
 
-		nextLevel = new FlxButton(490-60, 235, "next level", GlobalVars.level.nextLevelF);
-		nextLevel.scalebtn(2,2);
-		nextLevel.visible = false;
-		guiGroup.add(nextLevel);
-
+		
 		statusTxt = new FlxText(500,25,80," ").setFormat(null, 12 , 0x9C9F84,"center");
 		guiGroup.add(statusTxt);
 
@@ -148,7 +143,7 @@ class GUI
 		guiGroup.add(titleTxt);
 
 		wonPanel = new WonPanel();
-		//guiGroup.add(wonPanel);
+		guiGroup.add(wonPanel);
 		
 	}
 	function addInputTests() 
