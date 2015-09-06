@@ -83,7 +83,7 @@ class Level extends FlxState
 		FlxG.watch.addMouse();
 		initGroups();
 
-		bgColor = FlxColor.CRIMSON;
+		bgColor = GlobalVars.normalBGColor;
 		new GameGrid();
 		
 		customizePanel = new CustomizationPanel();
@@ -109,13 +109,14 @@ class Level extends FlxState
 		}            		
 	}
 	public function setControlFlags(b:Bool):Void
-	{//this is not a good programming practice
+	{//this is not a good programming practice .. will probably change it later
 		GlobalVars.inputTestsEnabled = b;
-		GlobalVars.blocksDraggingEnabled = b;
 		GlobalVars.blocksCreatingEnabled = b;
 		GlobalVars.mainBlocksDraggingEnabled = b;
 		GlobalVars.resetButttonEnabled = b;
-		GlobalVars.startButttonEnabled = b;
+		GlobalVars.runButttonEnabled = b;
+		GlobalVars.customizationEnabled = b;
+		GlobalVars.arrowDraggingEnabled = b;
 	}
 	public function changePanel(block:Block):Void
 	{
@@ -182,14 +183,6 @@ class Level extends FlxState
 			}
         	}
 		}
-		
-		
-		
-		//test
-		
-		
-		
-		
 	}
 	private function addUI()
 	{
@@ -412,18 +405,18 @@ class Level extends FlxState
 		if(successful)
 		{
 			selectedInputTest.setState(1);
+			resetSeqs();
 			if(getNextInputTest() == null)
 			{
 				nextLevel.visible = true;
-				resetSeqs();
 				togglePauseGame();
 			}	
 			else
 			{
 				selectedInputTest = getNextInputTest();
 				GlobalVars.gameGrid.inputBlock.inputString = getInputString();
+				GlobalVars.gameGrid.inputBlock.sendInitialSequence();
 				GlobalVars.gameGrid.outputBlock.inputString = getInputString();
-				resetSeqs();
 			}
 		}
 		else
@@ -474,7 +467,7 @@ class Level extends FlxState
 	function exitPlayMode() 
 	{
 		isRunning =  false;
-		bgColor = FlxColor.WHEAT;
+		bgColor = GlobalVars.normalBGColor;
 		GlobalVars.cycles = 0;
 	}
 	public function resetSeqs():Void
@@ -506,12 +499,16 @@ class Level extends FlxState
 	}
 	public function runGame():Void 
 	{
-		if (isRunning || !GlobalVars.resetButttonEnabled)
+
+		trace(isRunning +"    "+GlobalVars.runButttonEnabled);
+		if (isRunning)
+			return;
+		if(!GlobalVars.runButttonEnabled)
 			return;
 		if(!isRunning)
 		{
 			isRunning = true;
-			bgColor = 0xFFF2C968;
+			bgColor = GlobalVars.testingBGColor;
 			GlobalVars.gameGrid.inputBlock.inputString = getInputString();
 			GlobalVars.gameGrid.outputBlock.inputString = getInputString();
 		}
@@ -532,7 +529,7 @@ class Level extends FlxState
 		{
 			if(GlobalVars.cycles == 0)//this is the first turn 
 			{
-				GlobalVars.gameGrid.inputBlock.started = true;
+				GlobalVars.gameGrid.inputBlock.sendInitialSequence();
 				status_change(3);
 			}
 			else
@@ -556,6 +553,8 @@ class Level extends FlxState
 		super.update();
 		if (FlxG.keys.justPressed.ENTER)
             FlxG.fullscreen = !FlxG.fullscreen;
+        if (FlxG.keys.justPressed.C)
+            trace(GlobalVars.gameGrid.getBlocksCount());
 	}
 }
 class ButtonExtender {

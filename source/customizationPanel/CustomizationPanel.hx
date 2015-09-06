@@ -17,13 +17,14 @@ using flixel.util.FlxSpriteUtil;
  */
 class CustomizationPanel extends FlxTypedGroup<FlxSprite>
 {
-	private var background:FlxSprite;
-	private var customizableBlock:CustomizableBlock;
+	public var background:FlxSprite;
+	public var customizableBlock:CustomizableBlock;
 	public function new()
 	{
 		super();
 		add(background = new FlxSprite(430, 50).loadGraphic("assets/images/Container.png", false));
 		FlxG.state.add(this);
+		GlobalVars.customizationPanel = this;
 	}
 	/**
 	 * a function that is called whenever you click on a new grid block

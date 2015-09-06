@@ -42,7 +42,6 @@ class LevelIcon extends FlxSprite
 	}
 	function onOver(Sprite:FlxSprite) 
 	{
-		trace(discriptionText);
 		discriptionText.text = GlobalVars.levels[id-1].description;
 	}
 }

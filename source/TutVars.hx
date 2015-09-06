@@ -40,20 +40,9 @@ class TutVars
       "resetBtn"=>[6,11],
       "directional_click"=>[7],
       "directional_place"=>[8],
-      "directional_rotate"=>[13],
-      "first_test"=>[14]
+      "directional_customize"=>[13],
+      "arrow_down"=>[16]
     ];
-	public static function initSprites()
-	{
-		sprites = new Array<FlxSprite>();
-		var sprite:FlxSprite;
-		for (i in 0 ... 4) {
-			sprite = new FlxSprite(0,0);
-			GlobalVars.level.tutGroup.add(sprite);
-			sprites.push(sprite);
-			MouseEventManager.add(sprite, onDown, null, null, null);
-		}
-	}
 	public static function initHelpPanel()
 	{
 		helpPanel = new FlxSprite();
@@ -73,7 +62,10 @@ class TutVars
 	}
 	public static function showHelpPanelAtSprite(s:FlxSprite,text:String,direction:Direction, ?showNextBtn:Bool = false)
 	{
-		var panelHeight:Float = Math.floor(((1+Math.floor(text.length/25))*24)+ helpNextButton.height + 4);
+		helpText.text = text;
+		helpText.drawFrame(true);
+
+		var panelHeight:Float = helpText.height + helpNextButton.height + 4;
 		var panelwidth:Float = 200;
 		switch (direction) {
 			case Direction.right:
@@ -86,7 +78,7 @@ class TutVars
 				showHelpPanelAtPos(new FlxPoint(s.x + s.width/2 - panelwidth/2,s.y - panelHeight),text,showNextBtn);
 		}
 
-		var lineStyle = { color: FlxColor.GRAY, thickness: 8.0 };
+		var lineStyle = { color: 0xFF333333, thickness: 8.0 };
 		var fillStyle = { color: FlxColor.TRANSPARENT, alpha: 0.0 };
 		spriteHighlighter.makeGraphic(Math.floor(s.width),Math.floor(s.height),FlxColor.TRANSPARENT);
 		spriteHighlighter.drawRoundRect(0, 0, s.width, s.height, 4, 4, 0x00000000,lineStyle,fillStyle);
@@ -99,42 +91,20 @@ class TutVars
 	public static function showHelpPanelAtPos(p:FlxPoint,text:String,showNextBtn:Bool)
 	{
 		helpText.text = text;
-		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(((1+Math.floor(text.length/25))*24) + helpNextButton.height + 4),0xff000000);
+		helpText.drawFrame(true);
+		var panelHeight:Float = helpText.height + helpNextButton.height + 4;
+		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(panelHeight),0xff000000);
 
 		helpText.reset(p.x , p.y);
 		helpPanel.reset(p.x , p.y);
 		spriteHighlighter.reset(FlxG.width,FlxG.height);
 		if(showNextBtn)
+		{
 			helpNextButton.reset(p.x + Math.floor((helpPanel.width-helpNextButton.width)/2),p.y+ helpPanel.height - 2 - helpNextButton.height);
+			helpNextButton.visible = true;
+		}
 		else
 			helpNextButton.visible = false;
-	}
-
-	public static function focusOn(rect:FlxSprite)
-	{
-		//up
-		/*sprites[0].makeGraphic(FlxG.width,FlxG.height,spriteColor);
-		sprites[0].reset(0,0);
-		GlobalVars.level.blocksGroup.remove(rect,true);
-		GlobalVars.level.tutGroup.add(rect);*/
-		//up
-		sprites[0].makeGraphic(FlxG.width,Math.floor(rect.y),spriteColor);
-		sprites[0].reset(0,0);
-		//down
-		sprites[1].makeGraphic(FlxG.width,FlxG.height-Math.floor(rect.height+rect.y),spriteColor);
-		sprites[1].reset(0,rect.height+rect.y);
-		
-		//right
-		sprites[2].makeGraphic(Math.floor(rect.x),Math.floor(rect.height),spriteColor);
-		sprites[2].reset(0,rect.y);
-		
-		//left
-		sprites[3].makeGraphic(FlxG.width - Math.floor(rect.x+rect.width),Math.floor(rect.height),spriteColor);
-		sprites[3].reset(rect.width+rect.x,rect.y);
-	}
-	static function onDown(Sprite:FlxSprite) 
-	{
-		trace("clicked on me ");
 	}
 	public static function showNextTip():Void {
 		switch (curruntHint ) {
@@ -146,31 +116,52 @@ class TutVars
 				TutVars.showHelpPanelAtPos(new FlxPoint(130,130),"your job is to direct bolts from the input block to the output block       ", true);
 			case 3: 
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press the run runBtn  ",Direction.down,false);
+				GlobalVars.runButttonEnabled = true;
 			case 4:
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
-				TutTimer.start(4, showNextTipTimed , 1); 
+				TutTimer.start(2, showNextTipTimed , 1); 
+				GlobalVars.runButttonEnabled = false;
 			case 5:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.resetBtn,"now press the resetBtn", Direction.down,true);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.resetBtn,"now press the resetBtn", Direction.down,false);
+				GlobalVars.resetButttonEnabled = true;
 			case 6:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.blockSourcesGroup.members[0],"now drag this block", Direction.left,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.blockSourcesGroup.members[0],"now drag this block", Direction.right,false);
+				GlobalVars.resetButttonEnabled = false;
+				GlobalVars.blocksCreatingEnabled = true;
 			case 7:
 				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.getGrid()[7][3],"into here ", Direction.up,false);
 			case 8:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press runBtn  ",Direction.down,false);
+				GlobalVars.runButttonEnabled = true;
+				GlobalVars.blocksCreatingEnabled = false;
 			case 9:
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
-				TutTimer.start(10, showNextTipTimed , 1); 
+				TutTimer.start(2, showNextTipTimed , 1);
+				GlobalVars.runButttonEnabled = false;
 			case 10:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.resetBtn, "press reset button again",Direction.down,false);
+				GlobalVars.resetButttonEnabled = true;
 			case 11:
-				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.getGrid()[7][3], "now rotate the block by clicking on it ",Direction.down,false);
-				TutTimer.start(3, showNextTipTimed , 1);
+				TutVars.showHelpPanelAtPos(new FlxPoint(130,130), "the block now directs the seq upwards \n we need to change that ",true);
 			case 12:
-				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.getGrid()[7][3], "make sure it is facing downwards",Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.getGrid()[7][3], "now click on the block again",Direction.up,false);
+				GlobalVars.customizationEnabled = true;
 			case 13:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press the run btn one more time", Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.customizationPanel.background, " this is called the customization panel",Direction.left,true);
 			case 14:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.speedUp,  "press this to speed up", Direction.right,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.customizationPanel.customizableBlock, "you can use this to customize any block you add ",Direction.left,true);
+			case 15:
+				TutVars.showHelpPanelAtSprite(GlobalVars.customizationPanel.customizableBlock.arrows[0], "so now drag this arrow to point down",Direction.left,false);
+				GlobalVars.arrowDraggingEnabled = true;
+			case 16:
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press runBtn for the final time ",Direction.down,false);
+				GlobalVars.arrowDraggingEnabled = false;
+				GlobalVars.runButttonEnabled = true;
+			case 17:
+				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
+				GlobalVars.runButttonEnabled = false;
+
+
 		}
 		curruntHint ++;
 	}

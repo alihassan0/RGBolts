@@ -4,6 +4,7 @@ import level.*;
 import blocks.*;
 import customizationPanel.*;
 import flixel.util.FlxPoint;
+import flixel.util.FlxColor;
 import flixel.text.FlxBitmapTextField;
 import flixel.text.pxText.PxBitmapFont;
 import flixel.text.pxText.PxTextAlign;
@@ -24,11 +25,12 @@ class GlobalVars
 	public static var cycles:Int = 0;
 	
 	public static var inputTestsEnabled:Bool = true;
-	public static var blocksDraggingEnabled:Bool = true;
 	public static var blocksCreatingEnabled:Bool = true;
 	public static var mainBlocksDraggingEnabled:Bool = true;
 	public static var resetButttonEnabled:Bool = true;
-	public static var startButttonEnabled:Bool = true;
+	public static var runButttonEnabled:Bool = true;
+	public static var customizationEnabled:Bool = true;
+	public static var arrowDraggingEnabled:Bool = true;
 
 	public static var xml : Xml;
 	public static var moveDuration : Float = 0;
@@ -38,6 +40,10 @@ class GlobalVars
 	public static var stepDuration:Float = 0;//same as moveDuration but only at the beginnning of any move .. i couldn't come up with a better name :"|
 	public static var maxVisibleElemesInSeq : Int = 3;
 
+
+	public static var normalBGColor:Int = FlxColor.WHEAT;
+	public static var testingBGColor:Int = 0xFFF2C968;
+	
 	public static var save:FlxSave;
 	public static var blocksMap:Map<Int, Class<Dynamic>> =
     [

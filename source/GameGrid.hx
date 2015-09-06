@@ -111,6 +111,15 @@ class GameGrid extends FlxSprite
             	}
             }
 	}
+	public function getBlocksCount():Int
+	{
+		var count:Int = 0;
+		for (x in 0...gridWidth)
+            for (y in 0...gridHeight)
+            	if(blocksGrid[x][y] != null)
+            		count ++;
+        return count;
+	} 
 	public function addInBestFit(block:Block):FlxPoint 
 	{
 		var blockPos:FlxPoint = new FlxPoint(block.x + block.width/2 , block.y + block.height/2);//the block center point

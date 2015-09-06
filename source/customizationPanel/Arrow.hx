@@ -70,7 +70,6 @@ class Arrow extends FlxSprite
 	{
 		var oldDirection:Direction = this.direction;
 		this.direction = direction;
-		trace(direction);
 		this.angle = Util.directionToAngle[direction];
 		for (i in 0 ... block.arrows.length) {
 			if(block.arrows[i] != this && block.arrows[i].direction == direction)
@@ -103,7 +102,8 @@ class Arrow extends FlxSprite
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
-		draggable = true;
+		if(GlobalVars.arrowDraggingEnabled)
+			draggable = true;
 	}
 	private function followMouse()
 	{
@@ -114,5 +114,7 @@ class Arrow extends FlxSprite
 		angle =  Math.round((angle+360)/90)*90;
 		setDirection(getDirection());
 		block.updateGridBlock();//update the sprite of the grid block
+		if(getDirection() == util.Direction.down)
+			GlobalVars.level.checkForTutorial("arrow_down");
 	}
 }

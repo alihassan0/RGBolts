@@ -33,7 +33,7 @@ class BlockSource extends FlxSprite
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
-		if(!GlobalVars.level.isRunning && GlobalVars.blocksCreatingEnabled)
+		if(!GlobalVars.level.isRunning && GlobalVars.blocksCreatingEnabled && !(TutVars.exists && GlobalVars.gameGrid.getBlocksCount()>=3))
 		{
 			switch(blockType)
 			{

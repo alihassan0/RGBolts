@@ -40,7 +40,7 @@ class Block extends FlxSprite
 			if(!FlxG.mouse.pressed)
 			{
 				followMouse = false;
-				if(checkPosInGrid())//later i need to make sure to do a check for the block type
+				if(checkPosInGrid() && position.x == 7 && position.y == 3)//later i need to make sure to do a check for the block type
 						GlobalVars.level.checkForTutorial("directional_place");
 			}
 		}
@@ -83,10 +83,13 @@ class Block extends FlxSprite
 	}
 	public function onDown(Sprite:FlxSprite)
 	{
-		if(!GlobalVars.level.isRunning && GlobalVars.blocksDraggingEnabled)
+		if(!GlobalVars.level.isRunning && GlobalVars.blocksCreatingEnabled)//it should be dragging but removed to avoid duplicating
 		{
 			followMouse = true;
-			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
+			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);	
+		}
+		if(GlobalVars.customizationEnabled)
+		{
 			Level.level.changePanel(this);
 			if (GlobalVars.selectedBlock != null){
 				GlobalVars.selectedBlock.alpha = 1;
@@ -94,8 +97,8 @@ class Block extends FlxSprite
 			alpha = 0.5;
 			GlobalVars.selectedBlock = this;
 		}
-		if(checkPosInGrid())//later i need to make sure to do a check for the block type :"|
-			GlobalVars.level.checkForTutorial("directional_rotate");
+		if(checkPosInGrid())
+			GlobalVars.level.checkForTutorial("directional_customize");
 
 	}
 	public function addCustomizableBlock(X:Float , Y:Float,block:Block):CustomizableBlock
@@ -109,42 +112,7 @@ class Block extends FlxSprite
 	}
 	public function direct(s:Seq,direction:Direction)
 	{
-		/*var dir:Int = Math.floor((angle % 360) / 90);
-		switch(dir)
-		{
-			case 0:
-				switch(direction)
-				{
-					case GlobalVars.UP: s.setDirection();
-					case GlobalVars.DOWN: s.setDirection(new FlxPoint(0,1));
-					case GlobalVars.LEFT: s.setDirection(new FlxPoint(-1,0));
-					case GlobalVars.RIGHT: s.setDirection(new FlxPoint(1,0));
-				}
-			case 1:
-				switch(direction)
-				{
-					case GlobalVars.UP: s.setDirection(new FlxPoint(1,0));
-					case GlobalVars.DOWN: s.setDirection(new FlxPoint(-1,0));
-					case GlobalVars.LEFT: s.setDirection(new FlxPoint(0,-1));
-					case GlobalVars.RIGHT: s.setDirection(new FlxPoint(0,1));
-				}
-			case 2:
-				switch(direction)
-				{
-					case GlobalVars.UP: s.setDirection(new FlxPoint(0,1));
-					case GlobalVars.DOWN: s.setDirection(new FlxPoint(0,-1));
-					case GlobalVars.LEFT: s.setDirection(new FlxPoint(1,0));
-					case GlobalVars.RIGHT: s.setDirection(new FlxPoint(-1,0));
-				}
-			case 3:
-				switch(direction)
-				{
-					case GlobalVars.UP: s.setDirection(new FlxPoint(-1,0));
-					case GlobalVars.DOWN: s.setDirection(new FlxPoint(1,0));
-					case GlobalVars.LEFT: s.setDirection(new FlxPoint(0,1));
-					case GlobalVars.RIGHT: s.setDirection(new FlxPoint(0,-1));
-				}
-		}*/
+		
 	}
 	public function getSaveString():String
 	{
