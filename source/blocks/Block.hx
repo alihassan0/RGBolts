@@ -24,7 +24,7 @@ class Block extends FlxSprite
 	{
 		super(X, Y);
 		MouseEventManager.add(this, onDown, null, null, null);
-		GlobalVars.level.blocksGroup.add(this);
+		GlobalVars.level.gui.blocksGroup.add(this);
 		followMouse = true;
 		arrowSprites = new Array<ArrowSprite>();
 		if(mouseOffset == null)
@@ -90,7 +90,7 @@ class Block extends FlxSprite
 		}
 		if(GlobalVars.customizationEnabled)
 		{
-			Level.level.changePanel(this);
+			GlobalVars.level.changePanel(this);
 			if (GlobalVars.selectedBlock != null){
 				GlobalVars.selectedBlock.alpha = 1;
 			}

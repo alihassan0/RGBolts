@@ -41,7 +41,7 @@ class Seq extends FlxSprite
 		loadGraphic("assets/images/seq.png");
 		visible = false;
 		
-		GlobalVars.level.seqGroup.add(this);
+		GlobalVars.level.gui.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(0, 0);
 		lastDirection = new FlxPoint(0, 0);
@@ -59,7 +59,7 @@ class Seq extends FlxSprite
 			var elem:SeqElem = new SeqElem(x,y,color,this);
 			/*if(i>GlobalVars.maxVisibleElemesInSeq)
 				elem.visible = false;*/
-			GlobalVars.level.seqGroup.add(elem);
+			GlobalVars.level.gui.seqGroup.add(elem);
 			seqElements.unshift(elem);
 		}
 		actionTimer = new FlxTimer();

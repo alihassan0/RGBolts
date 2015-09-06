@@ -15,8 +15,6 @@ class LevelIcon extends FlxSprite
 	{
 		super(X, Y,"assets/images/levelIcon.png");
 		id = i;
-
-		//makeGraphic(30, 30, 0xFFA97D5D);
 		FlxG.state.add(this);
 		
 		levelNumbertxt = new FlxBitmapTextField(GlobalVars.font);

@@ -78,7 +78,7 @@ class GameGrid extends FlxSprite
             for (y in 0...gridHeight)
             {
                 grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
-				GlobalVars.level.gridGroup.add(grid[x][y]);
+				GlobalVars.level.gui.gridGroup.add(grid[x][y]);
 				blocksGrid[x][y] = null;
             }
         }
@@ -93,7 +93,7 @@ class GameGrid extends FlxSprite
             for (y in 0...gridHeight)
             {
                 grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
-				GlobalVars.level.gridGroup.add(grid[x][y]);
+				GlobalVars.level.gui.gridGroup.add(grid[x][y]);
 				blocksGrid[x][y] = null;
             }
         }

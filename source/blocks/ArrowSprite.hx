@@ -19,7 +19,7 @@ class ArrowSprite extends FlxSprite
 		setEnabled(enabled);
 		this.rgbColor = rgbColor;
 		this.color = Util.colorToValue[rgbColor];
-		GlobalVars.level.blocksGroup.add(this);
+		GlobalVars.level.gui.blocksGroup.add(this);
 		block.arrowSprites.push(this);
 	}
 	public function setDirection(direction:Direction)

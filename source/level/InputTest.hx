@@ -29,11 +29,11 @@ class InputTest extends FlxSprite
 		this.inputString = inputString;
 		this.id = id;
 		drawRoundRect(0, 0, 100, 80, 15, 15, FlxColor.WHEAT);
-		GlobalVars.level.panelsGroup.add(this);
+		GlobalVars.level.gui.panelsGroup.add(this);
 		text = new FlxText(x , y ,width, "")
 							.setFormat(null, 10 , 0x9C9F84,"center");
 		text.text = "i : "+inputString+" \n\n o : "+outputString+" \n\n s : 'untested' \n\n";
-		GlobalVars.level.panelsGroup.add(text);	
+		GlobalVars.level.gui.panelsGroup.add(text);	
 		MouseEventManager.add(this, onDown, null, null, null,true);
 	}
 	public function onDown(Sprite:FlxSprite) 

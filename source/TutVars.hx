@@ -116,23 +116,23 @@ class TutVars
 			case 2: 
 				TutVars.showHelpPanelAtPos(new FlxPoint(130,130),"your job is to direct bolts from the input block to the output block       ", true);
 			case 3: 
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press the run runBtn  ",Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.runBtn, "now press the run runBtn  ",Direction.down,false);
 				GlobalVars.runButttonEnabled = true;
 			case 4:
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
 				TutTimer.start(2, showNextTipTimed , 1); 
 				GlobalVars.runButttonEnabled = false;
 			case 5:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.resetBtn,"now press the resetBtn", Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.resetBtn,"now press the resetBtn", Direction.down,false);
 				GlobalVars.resetButttonEnabled = true;
 			case 6:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.blockSourcesGroup.members[0],"now drag this block", Direction.right,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.blockSourcesGroup.members[0],"now drag this block", Direction.right,false);
 				GlobalVars.resetButttonEnabled = false;
 				GlobalVars.blocksCreatingEnabled = true;
 			case 7:
 				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.getGrid()[7][3],"into here ", Direction.up,false);
 			case 8:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press runBtn  ",Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.runBtn, "now press runBtn  ",Direction.down,false);
 				GlobalVars.runButttonEnabled = true;
 				GlobalVars.blocksCreatingEnabled = false;
 			case 9:
@@ -140,7 +140,7 @@ class TutVars
 				TutTimer.start(2, showNextTipTimed , 1);
 				GlobalVars.runButttonEnabled = false;
 			case 10:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.resetBtn, "press reset button again",Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.resetBtn, "press reset button again",Direction.down,false);
 				GlobalVars.resetButttonEnabled = true;
 			case 11:
 				TutVars.showHelpPanelAtPos(new FlxPoint(130,130), "the block now directs the seq upwards \n we need to change that ",true);
@@ -155,7 +155,7 @@ class TutVars
 				TutVars.showHelpPanelAtSprite(GlobalVars.customizationPanel.customizableBlock.arrows[0], "so now drag this arrow to point down",Direction.left,false);
 				GlobalVars.arrowDraggingEnabled = true;
 			case 16:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press runBtn for the final time ",Direction.down,false);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.runBtn, "now press runBtn for the final time ",Direction.down,false);
 				GlobalVars.runButttonEnabled = true;
 				trace(GlobalVars.runButttonEnabled);
 				GlobalVars.arrowDraggingEnabled = false;
@@ -163,7 +163,7 @@ class TutVars
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
 				GlobalVars.runButttonEnabled = false;
 			case 18:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.inputTests[0], "congrats you passed the first test",Direction.up,true);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.inputTests[0], "congrats you passed the first test",Direction.up,true);
 		}
 		curruntHint ++;
 	}
