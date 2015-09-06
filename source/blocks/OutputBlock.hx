@@ -29,6 +29,7 @@ class OutputBlock extends Block
 		if (checkOutputString(inputString,s.getString()))
 		{
 			GlobalVars.level.status_change(0);
+			
 		}
 		else
 		{

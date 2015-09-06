@@ -59,7 +59,7 @@ class Level extends FlxState
 	public  var guiGroup:FlxGroup;
 	public var menuGroup:FlxGroup;
 	public var tutGroup:FlxGroup;
-	private var inputTests:Array<InputTest>;
+	public var inputTests:Array<InputTest>;
 	public var selectedInputTest:InputTest;
 	public static var customizePanel:CustomizationPanel;
 	public static var level:Level;
@@ -96,11 +96,11 @@ class Level extends FlxState
 
 		if(levelInfo.id == 1)
 		{
+			setControlFlags(false);
 			TutVars.exists = true;
-			TutVars.curruntHint = 0;
+			TutVars.curruntHint = 16;
 			TutVars.initHelpPanel();
 			TutVars.showNextTip();
-			setControlFlags(false);
 		}
 		else
 		{
@@ -404,6 +404,11 @@ class Level extends FlxState
 	{
 		if(successful)
 		{
+			if(selectedInputTest == inputTests[0])
+			{
+				checkForTutorial("test_passed");
+				trace("first test passed");
+			}	
 			selectedInputTest.setState(1);
 			resetSeqs();
 			if(getNextInputTest() == null)

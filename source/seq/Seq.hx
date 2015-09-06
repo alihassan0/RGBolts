@@ -38,12 +38,12 @@ class Seq extends FlxSprite
 		initialPosition = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 		super(initialPosition.x, initialPosition.y);
 
-		//loadGraphic("assets/images/seq.png");
+		loadGraphic("assets/images/seq.png");
 		visible = false;
 		
 		GlobalVars.level.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
-		direction = new FlxPoint(1, 0);
+		direction = new FlxPoint(0, 0);
 		lastDirection = new FlxPoint(0, 0);
 		seqRepresenter = new SeqRepresenter();
 		seqRepresenter.seqParent = this;
@@ -134,7 +134,6 @@ class Seq extends FlxSprite
 		if(canMove)
 			move();
 		canMove = true;
-		trace(canMove);
 		if (GlobalVars.gameGrid.getBlockOfPos(position) != null && alive)
 		{
 			affect();
@@ -198,9 +197,6 @@ class Seq extends FlxSprite
 	}
 	public function wait() 
 	{
-		/*canMove = false;
-		if(!this.alive) return;
-		position.subtractPoint(direction);*/
 		direction = new FlxPoint(0,0);
 	}
 	public function unwait() 

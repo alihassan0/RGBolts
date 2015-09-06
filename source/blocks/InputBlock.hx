@@ -4,11 +4,7 @@ import flixel.FlxSprite;
 import flixel.group.FlxTypedGroupIterator;
 import flixel.util.FlxPoint;
 import seq.Seq;
-
-/**
- * ...
- * @author ...
- */
+import util.*;
 class InputBlock extends Block
 {
 	private var direction:FlxPoint ;
@@ -19,6 +15,11 @@ class InputBlock extends Block
 		loadGraphic("assets/images/input.png");
 		followMouse = false;
 		GlobalVars.gameGrid.inputBlock = this;
+	}
+	override public function affectSeq(s:Seq) 
+	{
+		super.affectSeq(s);
+		s.setDirection(Util.directionToFlxPoint[Direction.right]);
 	}
 	override public function checkPosInGrid():Bool
 	{

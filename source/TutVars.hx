@@ -36,12 +36,13 @@ class TutVars
 	public static var RunBtnSignal:Int = 4;
 	public static var triggers:Map<String, Array<Int>> =
     [
-      "runBtn"=>[4,9,14],
+      "runBtn"=>[4,9,14,17],
       "resetBtn"=>[6,11],
       "directional_click"=>[7],
       "directional_place"=>[8],
       "directional_customize"=>[13],
-      "arrow_down"=>[16]
+      "arrow_down"=>[16],
+      "test_passed"=>[18]
     ];
 	public static function initHelpPanel()
 	{
@@ -155,13 +156,14 @@ class TutVars
 				GlobalVars.arrowDraggingEnabled = true;
 			case 16:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.runBtn, "now press runBtn for the final time ",Direction.down,false);
-				GlobalVars.arrowDraggingEnabled = false;
 				GlobalVars.runButttonEnabled = true;
+				trace(GlobalVars.runButttonEnabled);
+				GlobalVars.arrowDraggingEnabled = false;
 			case 17:
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
 				GlobalVars.runButttonEnabled = false;
-
-
+			case 18:
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.inputTests[0], "congrats you passed the first test",Direction.up,true);
 		}
 		curruntHint ++;
 	}
