@@ -148,6 +148,8 @@ class AssetData {
 			type.set ("assets/images/iterator.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/signal.png", "assets/images/signal.png");
 			type.set ("assets/images/signal.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/arrow2X.png", "assets/images/arrow2X.png");
+			type.set ("assets/images/arrow2X.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/customArrow3.png", "assets/images/customArrow3.png");
 			type.set ("assets/images/customArrow3.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/transparent_spacer.gif", "assets/images/transparent_spacer.gif");

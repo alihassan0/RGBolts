@@ -143,6 +143,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -150,6 +151,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -853,6 +855,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		path.set ("assets/images/signal.png", "assets/images/signal.png");
 		type.set ("assets/images/signal.png", AssetType.IMAGE);
+		path.set ("assets/images/arrow2X.png", "assets/images/arrow2X.png");
+		type.set ("assets/images/arrow2X.png", AssetType.IMAGE);
 		path.set ("assets/images/customArrow3.png", "assets/images/customArrow3.png");
 		type.set ("assets/images/customArrow3.png", AssetType.IMAGE);
 		path.set ("assets/images/transparent_spacer.gif", "assets/images/transparent_spacer.gif");
@@ -1102,6 +1106,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/signal.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/arrow2X.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/customArrow3.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -1273,6 +1280,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -1281,6 +1289,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -2156,11 +2165,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
 
 
 

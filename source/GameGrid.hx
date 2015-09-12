@@ -44,7 +44,7 @@ class GameGrid extends FlxSprite
 	}
 	public function makeGrid() 
 	{
-		if (GlobalVars.save.data.levels!= null && GlobalVars.save.data.levels[GlobalVars.levelInfo.id] == true)
+		if (false && GlobalVars.save.data.levels!= null && GlobalVars.save.data.levels[GlobalVars.levelInfo.id] == true)
 		{
 			trace("save found");
 			loadGrid();

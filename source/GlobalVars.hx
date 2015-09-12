@@ -124,12 +124,7 @@ class GlobalVars
 		//--------------------------------level 12 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
 			"Remove al first characters", removeFirstCharacter,
-			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));
-			
-		
-			
-		
-		
+			["bgbgr","bggbgrg","gbrrbgg","bgbggb","rgbrgbrgr"],null,null,6));	
 		//--------------------------------level 7 : ---------------------------------------------------
 		/*levels.push(new LevelInfo(levels.length +1,
 			"getFirstElementTwice", getFirstElementTwice,
@@ -167,6 +162,11 @@ class GlobalVars
 			["bgbgr", "bggbgrg", "gbrrbgg", "bgbggb", "rgbrgbrgr"], null, null, 6));
 			*/
 		
+		//colors are not descritptive 
+		//emapsiseze on the level goal 
+		// make the arrow more visiable
+		// don't allow all arrows to be displayed at once 
+		// tell them what is iterator 
 			
 
 		/*groupAllElementsBeforeBlue

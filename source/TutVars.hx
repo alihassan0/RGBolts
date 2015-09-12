@@ -156,7 +156,6 @@ class TutVars
 			case 16:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.runBtn, "now press runBtn for the final time ",Direction.down,false);
 				GlobalVars.runButttonEnabled = true;
-				trace(GlobalVars.runButttonEnabled);
 				GlobalVars.arrowDraggingEnabled = false;
 			case 17:
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);

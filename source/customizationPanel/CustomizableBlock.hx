@@ -2,6 +2,8 @@ package customizationPanel ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import util.*;
 import blocks.*;
 
@@ -32,6 +34,23 @@ class CustomizableBlock extends FlxSprite
 		FlxG.state.add(this);
 		addArrows();
 		addToggleButtons();
+		alpha = 0;
+		animateIntro();
+		
+	}
+	public function animateIntro()
+	{
+		var duration:Float = .66;
+		FlxTween.tween(this, {alpha:1}, duration, {ease:FlxEase.circOut});
+		FlxTween.tween(this.scale, {x:2,y:2}, duration, {ease:FlxEase.circOut,complete:updateDimentions});
+		for (i in 0 ... arrows.length) {
+			arrows[i].scale.set(.5,.5);
+			FlxTween.tween(arrows[i].scale, {x:1,y:1}, duration, {ease:FlxEase.circOut});
+		}
+	}
+	public function updateDimentions(tween:FlxTween)
+	{
+		//this.updateHitbox();
 	}
 	/**
 	* initialize the arrows array .. should be overriden by each block to add it's own arrows

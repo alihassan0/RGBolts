@@ -37,8 +37,8 @@ class Arrow extends FlxSprite
 	 */
 	public function new(block:CustomizableBlock,rgbColor:Color,direction:Direction,?enabled:Bool = true)
 	{
-		super(block.x + block.width/2 - 8 ,block.y + block.height/2 - 24);
-		loadGraphic("assets/images/arrow.png", false, 0,0,true);
+		super(block.x + block.width/2 - 16 ,block.y + block.height/2 - 48);
+		loadGraphic("assets/images/arrow2X.png", false, 0,0,true);
 		this.block = block;
 		this.origin.set(width/2,height);
 		setColor(rgbColor);

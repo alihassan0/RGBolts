@@ -59,7 +59,7 @@ class Level extends FlxState
 		{
 			setControlFlags(false);
 			TutVars.exists = true;
-			TutVars.curruntHint = 16;
+			TutVars.curruntHint = 0;
 			TutVars.initHelpPanel();
 			TutVars.showNextTip();
 		}
