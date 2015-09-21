@@ -31,12 +31,11 @@ class CustomizableBlock extends FlxSprite
 	public function new(X:Float , Y:Float)
 	{
 		super(X, Y, "assets/images/greenBlock.png");
-		FlxG.state.add(this);
+		GlobalVars.level.gui.panelsGroup.add(this);
 		addArrows();
 		addToggleButtons();
 		alpha = 0;
 		animateIntro();
-		
 	}
 	public function animateIntro()
 	{
@@ -72,14 +71,14 @@ class CustomizableBlock extends FlxSprite
 	public function addArrow(color:Color,direction:Direction)
 	{
 		var arrow:Arrow = new Arrow(this, color , direction);
-		FlxG.state.add(arrow);
+		GlobalVars.level.gui.panelsGroup.add(arrow);
 		arrows.push(arrow);
 	}
 	public function addArrowFromArrowSprite(arrowSprite:ArrowSprite)
 	{
 		trace(arrowSprite.alive + " " + arrowSprite.rgbColor);
 		var arrow:Arrow = new Arrow(this, arrowSprite.rgbColor , arrowSprite.direction , arrowSprite.alive);
-		FlxG.state.add(arrow);
+		GlobalVars.level.gui.panelsGroup.add(arrow);
 		arrows.push(arrow);
 	}
 	/**

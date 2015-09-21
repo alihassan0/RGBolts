@@ -23,7 +23,7 @@ class CustomizationPanel extends FlxTypedGroup<FlxSprite>
 	{
 		super();
 		add(background = new FlxSprite(430, 50).loadGraphic("assets/images/Container.png", false));
-		FlxG.state.add(this);
+		GlobalVars.level.gui.panelsGroup.add(this);
 		GlobalVars.customizationPanel = this;
 	}
 	/**

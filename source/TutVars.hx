@@ -47,18 +47,18 @@ class TutVars
 	public static function initHelpPanel()
 	{
 		helpPanel = new FlxSprite();
-		FlxG.state.add(helpPanel);
+		GlobalVars.level.gui.tutGroup.add(helpPanel);
 		
 		helpText = new FlxText(0,0,200).setFormat(null, 16 , 0xffffff,"center");
-		FlxG.state.add(helpText);
+		GlobalVars.level.gui.tutGroup.add(helpText);
 
 		helpNextButton = new FlxButton(0, 0, "next",showNextTip);
-		FlxG.state.add(helpNextButton);
+		GlobalVars.level.gui.tutGroup.add(helpNextButton);
 
 		TutTimer = new FlxTimer();
 
 		spriteHighlighter = new FlxSprite(0,0);
-		FlxG.state.add(spriteHighlighter);
+		GlobalVars.level.gui.tutGroup.add(spriteHighlighter);
 
 	}
 	public static function showHelpPanelAtSprite(s:FlxSprite,text:String,direction:Direction, ?showNextBtn:Bool = false)
@@ -80,9 +80,9 @@ class TutVars
 		}
 
 		var lineStyle = { color: 0xFF333333, thickness: 8.0 };
-		var fillStyle = { color: FlxColor.TRANSPARENT, alpha: 0.0 };
-		spriteHighlighter.makeGraphic(Math.floor(s.width),Math.floor(s.height),FlxColor.TRANSPARENT);
-		spriteHighlighter.drawRoundRect(0, 0, s.width, s.height, 4, 4, 0x00000000,lineStyle,fillStyle);
+		var fillStyle = { color: 0x00000000};
+		spriteHighlighter.makeGraphic(Math.floor(s.width),Math.floor(s.height),FlxColor.TRANSPARENT,true);
+		spriteHighlighter.drawRoundRect(0, 0, s.width, s.height, 10, 10, 0x00000000,lineStyle,fillStyle);
 		spriteHighlighter.reset(s.x,s.y);
 
 		spriteHighlighter.scale.set(2,2);
@@ -161,7 +161,7 @@ class TutVars
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
 				GlobalVars.runButttonEnabled = false;
 			case 18:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.inputTests[0], "congrats you passed the first test",Direction.up,true);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.inputTests[1], "congrats you passed the first test",Direction.right,true);
 		}
 		curruntHint ++;
 	}

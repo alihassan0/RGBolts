@@ -31,11 +31,11 @@ class FilterCustomizableBlock extends CustomizableBlock
 	override public function addToggleButtons()
 	{
 		super.addToggleButtons();
-		FlxG.state.add(new ToggleColorButton(440,160,Color.red,this,filterBlock.redArrow.alive));
-		FlxG.state.add(new ToggleColorButton(465,160,Color.grey,this,filterBlock.greyArrow.alive));
-		FlxG.state.add(new ToggleColorButton(490,160,Color.green,this,filterBlock.greenArrow.alive));
-		FlxG.state.add(new ToggleColorButton(515,160,Color.blue,this,filterBlock.blueArrow.alive));
-		FlxG.state.add(new ToggleColorButton(540,160,Color.black,this,filterBlock.blackArrow.alive));
+		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(440,160,Color.red,this,filterBlock.redArrow.alive));
+		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(465,160,Color.grey,this,filterBlock.greyArrow.alive));
+		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(490,160,Color.green,this,filterBlock.greenArrow.alive));
+		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(515,160,Color.blue,this,filterBlock.blueArrow.alive));
+		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(540,160,Color.black,this,filterBlock.blackArrow.alive));
 	}
 	override public function updateGridBlock()
 	{

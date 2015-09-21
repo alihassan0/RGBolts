@@ -30,7 +30,7 @@ class GUI
 	public var inputTests:Array<InputTest>;
 	public static var customizationPanel:CustomizationPanel;
 	
-	private var backToMenuBtn:FlxButton;
+	public var backToMenuBtn:FlxButton;
 	public var runBtn:FlxButton;
 	public var resetBtn:FlxButton;
 	public var helpBtn:FlxButton;
@@ -195,7 +195,7 @@ class GUI
         	{	if (i < allowedBlocks.length-1){
 				var placeHolder:FlxSprite = new FlxSprite(425 + 45 * (i%3), 65 + 45 * Math.floor(i/3));
         		placeHolder.makeGraphic(40,40,0xFF9C9F84);
-        		panelsGroup.add(placeHolder);
+        		blockSourcesGroup.add(placeHolder);
 			}
         	}
 		}
