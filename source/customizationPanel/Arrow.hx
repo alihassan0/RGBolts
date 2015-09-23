@@ -115,6 +115,6 @@ class Arrow extends FlxSprite
 		setDirection(getDirection());
 		block.updateGridBlock();//update the sprite of the grid block
 		if(getDirection() == util.Direction.down)
-			GlobalVars.level.checkForTutorial("arrow_down");
+			TutVars.checkForTutorial("arrow_down");
 	}
 }

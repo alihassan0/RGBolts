@@ -42,7 +42,8 @@ class TutVars
       "directional_place"=>[8],
       "directional_customize"=>[13],
       "arrow_down"=>[16],
-      "test_passed"=>[18]
+      "test_passed"=>[18],
+      "speeedBtn"=>[20]
     ];
 	public static function initHelpPanel()
 	{
@@ -106,6 +107,12 @@ class TutVars
 		else
 			helpNextButton.visible = false;
 	}
+	public static function checkForTutorial(key:String)
+	{
+		trace(key + "    " + curruntHint);
+		if(TutVars.exists && TutVars.triggers[key].indexOf(TutVars.curruntHint)!= -1)
+			TutVars.showNextTip();
+	}
 	public static function showNextTip():Void {
 		switch (curruntHint ) {
 			case 0:
@@ -161,7 +168,12 @@ class TutVars
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
 				GlobalVars.runButttonEnabled = false;
 			case 18:
-				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.inputTests[1], "congrats you passed the first test",Direction.right,true);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.inputTests[0], "congrats you passed the first test",Direction.right,true);
+			case 19:
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.speedUp, "you can use the speedBtn to speed the seqs up",Direction.left,false);
+			case 20:
+				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
+				
 		}
 		curruntHint ++;
 	}

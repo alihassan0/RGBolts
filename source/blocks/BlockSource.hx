@@ -48,7 +48,7 @@ class BlockSource extends FlxSprite
 			}
 		}
 		if(blockType == 0)
-			GlobalVars.level.checkForTutorial("directional_click");
+			TutVars.checkForTutorial("directional_click");
 	}
 	
 	public function disable()

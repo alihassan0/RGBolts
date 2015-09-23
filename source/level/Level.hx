@@ -102,6 +102,7 @@ class Level extends FlxState
 	}
 	public function speedUpF() 
 	{
+		TutVars.checkForTutorial("speeedBtn");
 		FlxTween.num(1, 0, 0.1, { ease:FlxEase.circIn, complete:fadeOut }, changeColor);
 		if (speed < 3)
 		speed++;
@@ -213,7 +214,7 @@ class Level extends FlxState
 		if(successful)
 		{
 			if(selectedInputTest == gui.inputTests[0])
-				checkForTutorial("test_passed");
+				TutVars.checkForTutorial("test_passed");
 			selectedInputTest.setState(1);
 			selectedInputTest.cycles = GlobalVars.cycles;
 			resetSeqs();
@@ -254,7 +255,7 @@ class Level extends FlxState
 			exitPlayMode();
 			resetSeqs();
 			resetTestCases();
-			checkForTutorial("resetBtn");
+			TutVars.checkForTutorial("resetBtn");
 		}
 	}
 	function exitPlayMode() 
@@ -307,13 +308,9 @@ class Level extends FlxState
 			runGridOnce();
 		else
 			timer.start(GlobalVars.moveDuration, intermediate , 1);
-		checkForTutorial("runBtn");
+		TutVars.checkForTutorial("runBtn");
 	}
-	public function checkForTutorial(key:String)
-	{
-		if(TutVars.exists && TutVars.triggers[key].indexOf(TutVars.curruntHint)!= -1)
-			TutVars.showNextTip();
-	}
+	
 	public function runGridOnce():Void 
 	{
 		if (GlobalVars.Seqs.length == 0 )//temp starter

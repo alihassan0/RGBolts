@@ -41,7 +41,7 @@ class Block extends FlxSprite
 			{
 				followMouse = false;
 				if(checkPosInGrid() && position.x == 7 && position.y == 3)//later i need to make sure to do a check for the block type
-						GlobalVars.level.checkForTutorial("directional_place");
+						TutVars.checkForTutorial("directional_place");
 			}
 		}
 		this.angle = angle;
@@ -98,7 +98,7 @@ class Block extends FlxSprite
 			GlobalVars.selectedBlock = this;
 		}
 		if(checkPosInGrid())
-			GlobalVars.level.checkForTutorial("directional_customize");
+			TutVars.checkForTutorial("directional_customize");
 
 	}
 	public function addCustomizableBlock(X:Float , Y:Float,block:Block):CustomizableBlock
