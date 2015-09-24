@@ -34,6 +34,20 @@
 	<!--------------------------------LIBRARIES------------------------------------->
 
 	<haxelib name="flixel"/>
+		
+		
+	
+		
+		
+		
+	
+		<haxelib name="swf" />
+	<library id="test" path="assets/splash.swf" type="swf"/>
+		
+		
+		
+		
+		
 	
 	<!--In case you want to use the addons package-->
 	<!--haxelib name="flixel-addons" /-->

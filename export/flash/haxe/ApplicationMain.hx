@@ -1,7 +1,9 @@
 #if !macro
 
 
+@:access(lime.app.Application)
 @:access(lime.Assets)
+@:access(openfl.display.Stage)
 
 
 class ApplicationMain {
@@ -13,20 +15,14 @@ class ApplicationMain {
 	
 	public static function create ():Void {
 		
-		var app = new lime.app.Application ();
+		var app = new openfl.display.Application ();
 		app.create (config);
-		openfl.Lib.application = app;
-		
-		#if !flash
-		var stage = new openfl.display.Stage (app.window.width, app.window.height, config.background);
-		stage.addChild (openfl.Lib.current);
-		app.addModule (stage);
-		#end
 		
 		var display = new flixel.system.FlxPreloader ();
 		
 		preloader = new openfl.display.Preloader (display);
-		preloader.onComplete = init;
+		app.setPreloader (preloader);
+		preloader.onComplete.add (init);
 		preloader.create (config);
 		
 		#if (js && html5)
@@ -55,6 +51,14 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/fonts/font.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/11952675_432665506919045_5219540445880059877_o.jpg");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/11953379_432665490252380_188288520794321636_o.jpg");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -294,6 +298,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/Laser.jpg");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/levelIcon.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -374,6 +382,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("assets/splash.swf");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
 		urls.push ("assets/sounds/beep.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
@@ -388,6 +400,14 @@ class ApplicationMain {
 		
 		urls.push ("Arial");
 		types.push (lime.Assets.AssetType.FONT);
+		
+		
+		urls.push ("libraries/test/test.swf");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
+		urls.push ("libraries/test.json");
+		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		
@@ -450,26 +470,45 @@ class ApplicationMain {
 		
 		config = {
 			
-			antialiasing: Std.int (0),
-			background: Std.int (0),
-			borderless: false,
+			build: "479",
 			company: "HaxeFlixel",
-			depthBuffer: false,
 			file: "sequenceCSGame",
-			fps: Std.int (60),
-			fullscreen: false,
-			hardware: true,
-			height: Std.int (480),
+			fps: 60,
+			name: "sequenceCSGame",
 			orientation: "portrait",
 			packageName: "com.example.myapp",
-			resizable: true,
-			stencilBuffer: true,
-			title: "sequenceCSGame",
 			version: "0.0.1",
-			vsync: true,
-			width: Std.int (640),
+			windows: [
+				
+				{
+					antialiasing: 0,
+					background: 0,
+					borderless: false,
+					depthBuffer: false,
+					display: 0,
+					fullscreen: false,
+					hardware: true,
+					height: 480,
+					parameters: "{}",
+					resizable: true,
+					stencilBuffer: true,
+					title: "sequenceCSGame",
+					vsync: true,
+					width: 640,
+					x: null,
+					y: null
+				},
+			]
 			
-		}
+		};
+		
+		#if hxtelemetry
+		var telemetry = new hxtelemetry.HxTelemetry.Config ();
+		telemetry.allocations = true;
+		telemetry.host = "localhost";
+		telemetry.app_name = config.name;
+		Reflect.setField (config, "telemetry", telemetry);
+		#end
 		
 		#if (js && html5)
 		#if (munit || utest)
@@ -522,7 +561,7 @@ class ApplicationMain {
 	
 	
 	#if neko
-	@:noCompletion public static function __init__ () {
+	@:noCompletion @:dox(hide) public static function __init__ () {
 		
 		var loader = new neko.vm.Loader (untyped $loader);
 		loader.addPath (haxe.io.Path.directory (Sys.executablePath ()));

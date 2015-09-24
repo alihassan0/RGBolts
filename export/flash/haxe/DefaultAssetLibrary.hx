@@ -3,12 +3,13 @@ package;
 
 import haxe.Timer;
 import haxe.Unserializer;
+import lime.app.Future;
 import lime.app.Preloader;
+import lime.app.Promise;
 import lime.audio.AudioSource;
 import lime.audio.openal.AL;
 import lime.audio.AudioBuffer;
 import lime.graphics.Image;
-import lime.system.ThreadPool;
 import lime.text.Font;
 import lime.utils.ByteArray;
 import lime.utils.UInt8Array;
@@ -26,6 +27,8 @@ import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.Loader;
 import flash.events.Event;
+import flash.events.IOErrorEvent;
+import flash.events.ProgressEvent;
 import flash.media.Sound;
 import flash.net.URLLoader;
 import flash.net.URLRequest;
@@ -40,13 +43,112 @@ class DefaultAssetLibrary extends AssetLibrary {
 	public var type (default, null) = new Map <String, AssetType> ();
 	
 	private var lastModified:Float;
-	private var threadPool:ThreadPool;
 	private var timer:Timer;
 	
 	
 	public function new () {
 		
 		super ();
+		
+		#if (openfl && !flash)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
+		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
+		
+		
+		
+		#end
 		
 		#if flash
 		
@@ -62,6 +164,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/fonts/font.fnt", AssetType.TEXT);
 		className.set ("assets/fonts/font.png", __ASSET__assets_fonts_font_png);
 		type.set ("assets/fonts/font.png", AssetType.IMAGE);
+		className.set ("assets/images/11952675_432665506919045_5219540445880059877_o.jpg", __ASSET__assets_images_11952675_432665506919045_5219540445880059877_o_jpg);
+		type.set ("assets/images/11952675_432665506919045_5219540445880059877_o.jpg", AssetType.IMAGE);
+		className.set ("assets/images/11953379_432665490252380_188288520794321636_o.jpg", __ASSET__assets_images_11953379_432665490252380_188288520794321636_o_jpg);
+		type.set ("assets/images/11953379_432665490252380_188288520794321636_o.jpg", AssetType.IMAGE);
 		className.set ("assets/images/addblack.png", __ASSET__assets_images_addblack_png);
 		type.set ("assets/images/addblack.png", AssetType.IMAGE);
 		className.set ("assets/images/arrow.png", __ASSET__assets_images_arrow_png);
@@ -180,6 +286,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/iterator.png", AssetType.IMAGE);
 		className.set ("assets/images/iterator2.png", __ASSET__assets_images_iterator2_png);
 		type.set ("assets/images/iterator2.png", AssetType.IMAGE);
+		className.set ("assets/images/Laser.jpg", __ASSET__assets_images_laser_jpg);
+		type.set ("assets/images/Laser.jpg", AssetType.IMAGE);
 		className.set ("assets/images/levelIcon.png", __ASSET__assets_images_levelicon_png);
 		type.set ("assets/images/levelIcon.png", AssetType.IMAGE);
 		className.set ("assets/images/Levels.png", __ASSET__assets_images_levels_png);
@@ -220,6 +328,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/sounds/powerup.wav", AssetType.SOUND);
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
+		className.set ("assets/splash.swf", __ASSET__assets_splash_swf);
+		type.set ("assets/splash.swf", AssetType.BINARY);
 		className.set ("assets/sounds/beep.mp3", __ASSET__assets_sounds_beep_mp3);
 		type.set ("assets/sounds/beep.mp3", AssetType.MUSIC);
 		className.set ("assets/sounds/flixel.mp3", __ASSET__assets_sounds_flixel_mp3);
@@ -228,6 +338,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
 		className.set ("assets/fonts/arial.ttf", __ASSET__assets_fonts_arial_ttf);
 		type.set ("assets/fonts/arial.ttf", AssetType.FONT);
+		className.set ("libraries/test/test.swf", __ASSET__libraries_test_test_swf);
+		type.set ("libraries/test/test.swf", AssetType.BINARY);
+		className.set ("libraries/test.json", __ASSET__libraries_test_json);
+		type.set ("libraries/test.json", AssetType.TEXT);
 		
 		
 		#elseif html5
@@ -254,6 +368,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.TEXT);
 		id = "assets/fonts/font.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/11952675_432665506919045_5219540445880059877_o.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/11953379_432665490252380_188288520794321636_o.jpg";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -493,6 +615,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Laser.jpg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/levelIcon.png";
 		path.set (id, id);
 		
@@ -573,6 +699,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/splash.swf";
+		path.set (id, id);
+		
+		type.set (id, AssetType.BINARY);
 		id = "assets/sounds/beep.mp3";
 		path.set (id, id);
 		
@@ -589,9 +719,20 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set (id, __ASSET__assets_fonts_arial_ttf);
 		
 		type.set (id, AssetType.FONT);
+		id = "libraries/test/test.swf";
+		path.set (id, id);
+		
+		type.set (id, AssetType.BINARY);
+		id = "libraries/test.json";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
 		
 		
-		var assetsPrefix = ApplicationMain.config.assetsPrefix;
+		var assetsPrefix = null;
+		if (ApplicationMain.config != null && Reflect.hasField (ApplicationMain.config, "assetsPrefix")) {
+			assetsPrefix = ApplicationMain.config.assetsPrefix;
+		}
 		if (assetsPrefix != null) {
 			for (k in path.keys()) {
 				path.set(k, assetsPrefix + path[k]);
@@ -599,100 +740,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		}
 		
 		#else
-		
-		#if openfl
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
-		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
-		
-		#end
 		
 		#if (windows || mac || linux)
 		
@@ -715,6 +762,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/fonts/font.png", __ASSET__assets_fonts_font_png);
 		type.set ("assets/fonts/font.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/11952675_432665506919045_5219540445880059877_o.jpg", __ASSET__assets_images_11952675_432665506919045_5219540445880059877_o_jpg);
+		type.set ("assets/images/11952675_432665506919045_5219540445880059877_o.jpg", AssetType.IMAGE);
+		
+		className.set ("assets/images/11953379_432665490252380_188288520794321636_o.jpg", __ASSET__assets_images_11953379_432665490252380_188288520794321636_o_jpg);
+		type.set ("assets/images/11953379_432665490252380_188288520794321636_o.jpg", AssetType.IMAGE);
 		
 		className.set ("assets/images/addblack.png", __ASSET__assets_images_addblack_png);
 		type.set ("assets/images/addblack.png", AssetType.IMAGE);
@@ -893,6 +946,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/images/iterator2.png", __ASSET__assets_images_iterator2_png);
 		type.set ("assets/images/iterator2.png", AssetType.IMAGE);
 		
+		className.set ("assets/images/Laser.jpg", __ASSET__assets_images_laser_jpg);
+		type.set ("assets/images/Laser.jpg", AssetType.IMAGE);
+		
 		className.set ("assets/images/levelIcon.png", __ASSET__assets_images_levelicon_png);
 		type.set ("assets/images/levelIcon.png", AssetType.IMAGE);
 		
@@ -953,6 +1009,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		
+		className.set ("assets/splash.swf", __ASSET__assets_splash_swf);
+		type.set ("assets/splash.swf", AssetType.BINARY);
+		
 		className.set ("assets/sounds/beep.mp3", __ASSET__assets_sounds_beep_mp3);
 		type.set ("assets/sounds/beep.mp3", AssetType.MUSIC);
 		
@@ -964,6 +1023,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/fonts/arial.ttf", __ASSET__assets_fonts_arial_ttf);
 		type.set ("assets/fonts/arial.ttf", AssetType.FONT);
+		
+		className.set ("libraries/test/test.swf", __ASSET__libraries_test_test_swf);
+		type.set ("libraries/test/test.swf", AssetType.BINARY);
+		
+		className.set ("libraries/test.json", __ASSET__libraries_test_json);
+		type.set ("libraries/test.json", AssetType.TEXT);
 		
 		
 		if (useManifest) {
@@ -985,11 +1050,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 						lastModified = modified;
 						loadManifest ();
 						
-						if (eventCallback != null) {
-							
-							eventCallback (this, "change");
-							
-						}
+						onChange.dispatch ();
 						
 					}
 					
@@ -1005,24 +1066,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#end
 		#end
-		
-	}
-	
-	
-	private function createThreadPool ():Void {
-		
-		threadPool = new ThreadPool (0, 2);
-		threadPool.doWork.add (function (id, data) {
-			
-			data.result = data.getMethod (id);
-			threadPool.sendComplete (data.handler, data);
-			
-		});
-		threadPool.onComplete.add (function (id, data) {
-			
-			data.handler (data.result);
-			
-		});
 		
 	}
 	
@@ -1365,7 +1408,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 	}
 	
 	
-	public override function loadAudioBuffer (id:String, handler:AudioBuffer -> Void):Void {
+	public override function loadAudioBuffer (id:String):Future<AudioBuffer> {
+		
+		var promise = new Promise<AudioBuffer> ();
 		
 		#if (flash)
 		
@@ -1376,28 +1421,45 @@ class DefaultAssetLibrary extends AssetLibrary {
 				
 				var audioBuffer:AudioBuffer = new AudioBuffer();
 				audioBuffer.src = event.currentTarget;
-				handler (audioBuffer);
+				promise.complete (audioBuffer);
 				
 			});
-			
+			soundLoader.addEventListener (ProgressEvent.PROGRESS, function (event) {
+				
+				if (event.bytesTotal == 0) {
+					
+					promise.progress (0);
+					
+				} else {
+					
+					promise.progress (event.bytesLoaded / event.bytesTotal);
+					
+				}
+				
+			});
+			soundLoader.addEventListener (IOErrorEvent.IO_ERROR, promise.error);
 			soundLoader.load (new URLRequest (path.get (id)));
 			
 		} else {
 			
-			handler (getAudioBuffer (id));
+			promise.complete (getAudioBuffer (id));
 			
 		}
 		
 		#else
 		
-		handler (getAudioBuffer (id));
+		promise.completeWith (new Future<AudioBuffer> (function () return getAudioBuffer (id)));
 		
 		#end
+		
+		return promise.future;
 		
 	}
 	
 	
-	public override function loadBytes (id:String, handler:ByteArray -> Void):Void {
+	public override function loadBytes (id:String):Future<ByteArray> {
+		
+		var promise = new Promise<ByteArray> ();
 		
 		#if flash
 		
@@ -1410,14 +1472,28 @@ class DefaultAssetLibrary extends AssetLibrary {
 				bytes.writeUTFBytes (event.currentTarget.data);
 				bytes.position = 0;
 				
-				handler (bytes);
+				promise.complete (bytes);
 				
 			});
+			loader.addEventListener (ProgressEvent.PROGRESS, function (event) {
+				
+				if (event.bytesTotal == 0) {
+					
+					promise.progress (0);
+					
+				} else {
+					
+					promise.progress (event.bytesLoaded / event.bytesTotal);
+					
+				}
+				
+			});
+			loader.addEventListener (IOErrorEvent.IO_ERROR, promise.error);
 			loader.load (new URLRequest (path.get (id)));
 			
 		} else {
 			
-			handler (getBytes (id));
+			promise.complete (getBytes (id));
 			
 		}
 		
@@ -1429,34 +1505,49 @@ class DefaultAssetLibrary extends AssetLibrary {
 			loader.dataFormat = BINARY;
 			loader.onComplete.add (function (_):Void {
 				
-				handler (loader.data);
+				promise.complete (loader.data);
 				
 			});
-			
+			loader.onProgress.add (function (_, loaded, total) {
+				
+				if (total == 0) {
+					
+					promise.progress (0);
+					
+				} else {
+					
+					promise.progress (loaded / total);
+					
+				}
+				
+			});
+			loader.onIOError.add (function (_, e) {
+				
+				promise.error (e);
+				
+			});
 			loader.load (new URLRequest (path.get (id)));
 			
 		} else {
 			
-			handler (getBytes (id));
+			promise.complete (getBytes (id));
 			
 		}
 		
 		#else
 		
-		if (threadPool == null) {
-			
-			createThreadPool ();
-			
-		}
-		
-		threadPool.queue (id, { handler: handler, getMethod: getBytes });
+		promise.completeWith (new Future<ByteArray> (function () return getBytes (id)));
 		
 		#end
+		
+		return promise.future;
 		
 	}
 	
 	
-	public override function loadImage (id:String, handler:Image -> Void):Void {
+	public override function loadImage (id:String):Future<Image> {
+		
+		var promise = new Promise<Image> ();
 		
 		#if flash
 		
@@ -1466,14 +1557,28 @@ class DefaultAssetLibrary extends AssetLibrary {
 			loader.contentLoaderInfo.addEventListener (Event.COMPLETE, function (event:Event) {
 				
 				var bitmapData = cast (event.currentTarget.content, Bitmap).bitmapData;
-				handler (Image.fromBitmapData (bitmapData));
+				promise.complete (Image.fromBitmapData (bitmapData));
 				
 			});
+			loader.contentLoaderInfo.addEventListener (ProgressEvent.PROGRESS, function (event) {
+				
+				if (event.bytesTotal == 0) {
+					
+					promise.progress (0);
+					
+				} else {
+					
+					promise.progress (event.bytesLoaded / event.bytesTotal);
+					
+				}
+				
+			});
+			loader.contentLoaderInfo.addEventListener (IOErrorEvent.IO_ERROR, promise.error);
 			loader.load (new URLRequest (path.get (id)));
 			
 		} else {
 			
-			handler (getImage (id));
+			promise.complete (getImage (id));
 			
 		}
 		
@@ -1484,28 +1589,25 @@ class DefaultAssetLibrary extends AssetLibrary {
 			var image = new js.html.Image ();
 			image.onload = function (_):Void {
 				
-				handler (Image.fromImageElement (image));
+				promise.complete (Image.fromImageElement (image));
 				
 			}
+			image.onerror = promise.error;
 			image.src = path.get (id);
 			
 		} else {
 			
-			handler (getImage (id));
+			promise.complete (getImage (id));
 			
 		}
 		
 		#else
 		
-		if (threadPool == null) {
-			
-			createThreadPool ();
-			
-		}
-		
-		threadPool.queue (id, { handler: handler, getMethod: getImage });
+		promise.completeWith (new Future<Image> (function () return getImage (id)));
 		
 		#end
+		
+		return promise.future;
 		
 	}
 	
@@ -1576,36 +1678,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 	#end
 	
 	
-	/*public override function loadMusic (id:String, handler:Dynamic -> Void):Void {
+	public override function loadText (id:String):Future<String> {
 		
-		#if (flash || html5)
-		
-		//if (path.exists (id)) {
-			
-		//	var loader = new Loader ();
-		//	loader.contentLoaderInfo.addEventListener (Event.COMPLETE, function (event) {
-				
-		//		handler (cast (event.currentTarget.content, Bitmap).bitmapData);
-				
-		//	});
-		//	loader.load (new URLRequest (path.get (id)));
-			
-		//} else {
-			
-			handler (getMusic (id));
-			
-		//}
-		
-		#else
-		
-		handler (getMusic (id));
-		
-		#end
-		
-	}*/
-	
-	
-	public override function loadText (id:String, handler:String -> Void):Void {
+		var promise = new Promise<String> ();
 		
 		#if html5
 		
@@ -1614,37 +1689,54 @@ class DefaultAssetLibrary extends AssetLibrary {
 			var loader = new URLLoader ();
 			loader.onComplete.add (function (_):Void {
 				
-				handler (loader.data);
+				promise.complete (loader.data);
 				
 			});
-			
+			loader.onProgress.add (function (_, loaded, total) {
+				
+				if (total == 0) {
+					
+					promise.progress (0);
+					
+				} else {
+					
+					promise.progress (loaded / total);
+					
+				}
+				
+			});
+			loader.onIOError.add (function (_, msg) promise.error (msg));
 			loader.load (new URLRequest (path.get (id)));
 			
 		} else {
 			
-			handler (getText (id));
+			promise.complete (getText (id));
 			
 		}
 		
 		#else
 		
-		var callback = function (bytes:ByteArray):Void {
+		promise.completeWith (loadBytes (id).then (function (bytes) {
 			
-			if (bytes == null) {
+			return new Future<String> (function () {
 				
-				handler (null);
+				if (bytes == null) {
+					
+					return null;
+					
+				} else {
+					
+					return bytes.readUTFBytes (bytes.length);
+					
+				}
 				
-			} else {
-				
-				handler (bytes.readUTFBytes (bytes.length));
-				
-			}
+			});
 			
-		}
-		
-		loadBytes (id, callback);
+		}));
 		
 		#end
+		
+		return promise.future;
 		
 	}
 	
@@ -1661,6 +1753,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_data_queries2_xml extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_font_fnt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_font_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_11952675_432665506919045_5219540445880059877_o_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_11953379_432665490252380_188288520794321636_o_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_addblack_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_arrow_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_arrowsprite_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1720,6 +1814,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_images_inputold_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_iterator_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_iterator2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_laser_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_levelicon_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_levels_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_minus_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1740,13 +1835,20 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_goes_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_powerup_wav extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_splash_swf extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_beep_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_flixel_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends flash.text.Font { }
+@:keep @:bind #if display private #end class __ASSET__libraries_test_test_swf extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__libraries_test_json extends flash.utils.ByteArray { }
 
 
 #elseif html5
+
+
+
+
 
 
 
@@ -1839,11 +1941,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
 
+
+
 #else
 
 
 
-#if (windows || mac || linux)
+#if (windows || mac || linux || cpp)
 
 
 @:image("assets/data/bolt.png") #if display private #end class __ASSET__assets_data_bolt_png extends lime.graphics.Image {}
@@ -1852,6 +1956,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:file("assets/data/queries2.xml") #if display private #end class __ASSET__assets_data_queries2_xml extends lime.utils.ByteArray {}
 @:file("assets/fonts/font.fnt") #if display private #end class __ASSET__assets_fonts_font_fnt extends lime.utils.ByteArray {}
 @:image("assets/fonts/font.png") #if display private #end class __ASSET__assets_fonts_font_png extends lime.graphics.Image {}
+@:image("assets/images/11952675_432665506919045_5219540445880059877_o.jpg") #if display private #end class __ASSET__assets_images_11952675_432665506919045_5219540445880059877_o_jpg extends lime.graphics.Image {}
+@:image("assets/images/11953379_432665490252380_188288520794321636_o.jpg") #if display private #end class __ASSET__assets_images_11953379_432665490252380_188288520794321636_o_jpg extends lime.graphics.Image {}
 @:image("assets/images/addblack.png") #if display private #end class __ASSET__assets_images_addblack_png extends lime.graphics.Image {}
 @:image("assets/images/arrow.png") #if display private #end class __ASSET__assets_images_arrow_png extends lime.graphics.Image {}
 @:image("assets/images/arrowSprite.png") #if display private #end class __ASSET__assets_images_arrowsprite_png extends lime.graphics.Image {}
@@ -1911,6 +2017,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/images/inputold.png") #if display private #end class __ASSET__assets_images_inputold_png extends lime.graphics.Image {}
 @:image("assets/images/iterator.png") #if display private #end class __ASSET__assets_images_iterator_png extends lime.graphics.Image {}
 @:image("assets/images/iterator2.png") #if display private #end class __ASSET__assets_images_iterator2_png extends lime.graphics.Image {}
+@:image("assets/images/Laser.jpg") #if display private #end class __ASSET__assets_images_laser_jpg extends lime.graphics.Image {}
 @:image("assets/images/levelIcon.png") #if display private #end class __ASSET__assets_images_levelicon_png extends lime.graphics.Image {}
 @:image("assets/images/Levels.png") #if display private #end class __ASSET__assets_images_levels_png extends lime.graphics.Image {}
 @:image("assets/images/MINUS.png") #if display private #end class __ASSET__assets_images_minus_png extends lime.graphics.Image {}
@@ -1931,21 +2038,23 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.ByteArray {}
 @:file("assets/sounds/powerup.wav") #if display private #end class __ASSET__assets_sounds_powerup_wav extends lime.utils.ByteArray {}
 @:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.ByteArray {}
+@:file("assets/splash.swf") #if display private #end class __ASSET__assets_splash_swf extends lime.utils.ByteArray {}
 @:file("C:/HaxeToolkit/haxe/lib/flixel/3,3,11/assets/sounds/beep.mp3") #if display private #end class __ASSET__assets_sounds_beep_mp3 extends lime.utils.ByteArray {}
 @:file("C:/HaxeToolkit/haxe/lib/flixel/3,3,11/assets/sounds/flixel.mp3") #if display private #end class __ASSET__assets_sounds_flixel_mp3 extends lime.utils.ByteArray {}
 @:font("C:/HaxeToolkit/haxe/lib/flixel/3,3,11/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font {}
 @:font("C:/HaxeToolkit/haxe/lib/flixel/3,3,11/assets/fonts/arial.ttf") #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font {}
+@:file("assets/splash.swf") #if display private #end class __ASSET__libraries_test_test_swf extends lime.utils.ByteArray {}
+@:file("") #if display private #end class __ASSET__libraries_test_json extends lime.utils.ByteArray {}
 
 
 
 #end
+#end
 
-#if openfl
+#if (openfl && !flash)
 @:keep #if display private #end class __ASSET__OPENFL__assets_fonts_nokiafc22_ttf extends openfl.text.Font { public function new () { var font = new __ASSET__assets_fonts_nokiafc22_ttf (); src = font.src; name = font.name; super (); }}
 @:keep #if display private #end class __ASSET__OPENFL__assets_fonts_arial_ttf extends openfl.text.Font { public function new () { var font = new __ASSET__assets_fonts_arial_ttf (); src = font.src; name = font.name; super (); }}
 
 #end
 
 #end
-#end
-
