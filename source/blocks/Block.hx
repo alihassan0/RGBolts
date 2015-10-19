@@ -90,12 +90,16 @@ class Block extends FlxSprite
 		}
 		if(GlobalVars.customizationEnabled)
 		{
-			GlobalVars.level.changePanel(this);
-			if (GlobalVars.selectedBlock != null){
-				GlobalVars.selectedBlock.alpha = 1;
+			if(level.GUI.customizationPanel.customizableBlock  == null ||
+			   this != level.GUI.customizationPanel.customizableBlock.block)//don't load it again if it's already loaded
+			{
+				GlobalVars.level.changePanel(this);
+				if (GlobalVars.selectedBlock != null){
+					GlobalVars.selectedBlock.alpha = 1;//unselect the last block
+				}
+				alpha = 0.5;
+				GlobalVars.selectedBlock = this;
 			}
-			alpha = 0.5;
-			GlobalVars.selectedBlock = this;
 		}
 		if(checkPosInGrid())
 			TutVars.checkForTutorial("directional_customize");

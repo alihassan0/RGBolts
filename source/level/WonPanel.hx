@@ -26,7 +26,8 @@ class WonPanel extends FlxTypedSpriteGroup<FlxSprite>
 		add(cyclesCountTxt = new flixel.text.FlxText(30,60,bg.width - 60, "").setFormat(null, 12 , 0xffffff,"left"));
 		add(nextLevelBtn = new FlxButton(120, 110, "next level", GlobalVars.level.nextLevelF));
 		add(closeBtn = new FlxButton(370, 10, "x", close));
-		add(expandBtn = new FlxButton(150, 130, "vvvv", expand));
+		expandBtn = new FlxButton(150, 130, "vvvv", expand);
+		//add(scalebtn);
 		closeBtn.scalebtn(0.2, 1);
 		expandBtn.scalebtn(0.4, 1);
 		y = 500;

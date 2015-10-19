@@ -98,7 +98,7 @@ class GlobalVars
 
 		//--------------------------------level 7 : ---------------------------------------------------
 		levels.push(new LevelInfo(levels.length +1,
-			"output rest of the element after the first  green and red elements", getElementsAfterFirstRedAndGreen,
+			"output rest of the elements after the \n first green and red elements", getElementsAfterFirstRedAndGreen,
 			["rgbbb","rbgbgr","gbrrbgg","brgrgrg","gggrrrbbb"],null,null,6));
 
 		//********************************sayegh levels***************************************************

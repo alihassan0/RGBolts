@@ -32,6 +32,7 @@ class CustomizationPanel extends FlxTypedGroup<FlxSprite>
 	 */ 
 	public function customize(block:Block)
 	{
+		
 		if(customizableBlock != null)
 		{
 			customizableBlock.kill();

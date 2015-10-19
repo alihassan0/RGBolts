@@ -174,8 +174,6 @@ class AssetData {
 			type.set ("assets/fonts/font.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/fonts/font.fnt", "assets/fonts/font.fnt");
 			type.set ("assets/fonts/font.fnt", Reflect.field (AssetType, "text".toUpperCase ()));
-			path.set ("assets/data/queries2.xml", "assets/data/queries2.xml");
-			type.set ("assets/data/queries2.xml", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
 			type.set ("assets/data/data-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/data/bolt.png", "assets/data/bolt.png");

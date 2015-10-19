@@ -41,7 +41,7 @@ class GUI
 	
 	public var helpPanel:FlxSprite;
 	public var helpPanelText:FlxText;
-	
+	public var levelDescription:FlxSprite;
 	public var statusTxt:FlxText;
 	public var titleTxt:FlxText;
 	public var speedText:FlxText;
@@ -96,11 +96,11 @@ class GUI
 		backToMenuBtn = new FlxButton(420, 220, "Back", GlobalVars.level.switchBack);
 		resetGridBtn = new FlxButton(30, 1, "load", GlobalVars.level.resetGrid);
 		resetGridBtn.scalebtn(0.7, 1.2);
-		guiGroup.add(resetGridBtn);
+		//guiGroup.add(resetGridBtn);
 		
 		saveButton = new FlxButton(90, 1, "save", GlobalVars.level.saveLevel);
 		saveButton.scalebtn(0.7, 1.2);
-		guiGroup.add(saveButton);
+		//guiGroup.add(saveButton);
 
 		backToMenuBtn.scalebtn(0.7, 1.2);
 		guiGroup.add(backToMenuBtn);
@@ -203,13 +203,13 @@ class GUI
 	
 	function addDiscription() 
 	{
-		var discription:FlxSprite = new FlxSprite(370,265).makeGraphic(280,90,0x00000000);
-		discription.drawRoundRect(30, 0, discription.width-60, discription.height, 15, 15, 0xFFA97D5D);
+		levelDescription = new FlxSprite(400,265).makeGraphic(220,90,0x00000000);
+		levelDescription.drawRoundRect(0, 0, levelDescription.width, levelDescription.height, 15, 15, 0xFFA97D5D);
 		var offset:Int = 4;
-		discription.drawRoundRect(30+offset, offset, discription.width-60 -2*offset, discription.height - 2*offset, 15, 15, FlxColor.RED);
-		panelsGroup.add(discription);
+		levelDescription.drawRoundRect(0+offset, offset, levelDescription.width -2*offset, levelDescription.height - 2*offset, 15, 15, FlxColor.RED);
+		panelsGroup.add(levelDescription);
 		
-		var text:FlxText = new FlxText(discription.x + offset + 30 , discription.y + offset, discription.width - 5*(offset+10), GlobalVars.levelInfo.description, 12);
+		var text:FlxText = new FlxText(levelDescription.x + offset + 30 , levelDescription.y + offset, levelDescription.width - 5*(offset+10), GlobalVars.levelInfo.description, 12);
 		text.color = 0xAA5C755E;
 		panelsGroup.add(text);
 	}
@@ -226,7 +226,7 @@ class GUI
 		var offset:FlxPoint = new FlxPoint(10,10);
  		
 		helpPanelText = new FlxText(helpPanel.x + offset.x , helpPanel.y + offset.y ,width-offset.x*2," ")
-						.setFormat(null, 12 , 0x9C9F84,"center");
+						.setFormat(null, 12 , 0x9C9F84,"left");
 		helpPanelText.text = GlobalVars.levelInfo.levelIntro;
 		helpPanelText.visible  =false;
 		menuGroup.add(helpPanelText);

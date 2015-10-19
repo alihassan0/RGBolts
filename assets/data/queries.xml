@@ -1,28 +1,39 @@
 <level>
-	hello and welcomr to nawwar's Color Box 
-	let's get you started with the basics 
-	in this level you have to direct the 
-	input seq(Sequence) from the input block
-	to the output block using the directionl block
-	only the directional block doesn't affect the seq
-	internally .. it changes it's direction only .
+	you already have a tutorial
 </level>	
 <level>
-	good job  now le'ts add another useful block
-	the removefirst block .. to understand it first 
-	you understand what seq is . seq is a container
-	that list of one or more colors .. you can preview
-	any seq by hovering on it .. .. the removeFirst block 
-	devids the currunt seq into two seq .. one containing
-	the first color only .. and the second contains
-	the rest of the colors
+	okay :D 
+	let's make it more interesting
+	INTRODUCING the "remover " block .
+	
+	to understand it first you need to understand 
+	the sequence . for simplicity we will call it seq
+	
+	seq is a queue of (one or more)bolts that move
+	in order in a certain direction. 
+
+	the removeFirst block devides the seq into two seqs
+	
+	the first one: containts the first bolt only .which 
+	moves in the direction of the black arrow .
+
+	the second one: containts the rest of the bolts
+ 	.which moves in the direction of the grey arrow .
 </level>	
 
 <level>
-	nice .. now let's make sure you understand those 
-	two previous blocks good enough .. as well as 
-	introduce a new more block .. this new block is 
-	the red-filter block .. it will look on the first
+	nice .. 
+	now let's make sure you understand those 
+	two previous blocks good enough .. and why nots 
+	introduce a new block as well . 
+
+	but first you must understand the "iterator"
+	iterator is just a directional block and remover
+	block facing each other(with the remover gray block
+	directed towards the directional block) . which allow 
+	you to get all bolts of a seq one at a time .
+
+	and for the new block is the red-filter block .. it will look on the first
 	color of the block and will leave it if it's not 
 	rid .. and will redirect it if it was red ... 
 	can you solve it in three blocks only ?
@@ -43,23 +54,23 @@
 </level>
 
 <level>
-	Level 6 
+	no hints are available for this files
 </level>	
 <level>
-	Level 7
+	no hints are available for this files
 </level>	
 <level>
-	Level 8
+	no hints are available for this files
 </level>	
 <level>
-	Level 9
+	no hints are available for this files
 </level>	
 <level>
-	Level 10
+	no hints are available for this files
 </level>	
 <level>
-	Level 10
+	no hints are available for this files
 </level>	
 <level>
-	Level 10
+	no hints are available for this files
 </level>	

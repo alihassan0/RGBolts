@@ -120,13 +120,13 @@ class TutVars
 			case 1:
 				TutVars.showHelpPanelAtSprite(GlobalVars.gameGrid.outputBlock,"this is the output block  ",Direction.left,true);
 			case 2: 
-				TutVars.showHelpPanelAtPos(new FlxPoint(130,130),"your job is to direct bolts from the input block to the output block       ", true);
+				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.levelDescription,"you will find the level objective in here",Direction.up,true);
 			case 3: 
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.runBtn, "now press the run runBtn  ",Direction.down,false);
 				GlobalVars.runButttonEnabled = true;
 			case 4:
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
-				TutTimer.start(2, showNextTipTimed , 1); 
+				TutTimer.start(9, showNextTipTimed , 1); 
 				GlobalVars.runButttonEnabled = false;
 			case 5:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.resetBtn,"now press the resetBtn", Direction.down,false);
@@ -143,7 +143,7 @@ class TutVars
 				GlobalVars.blocksCreatingEnabled = false;
 			case 9:
 				TutVars.showHelpPanelAtPos(new FlxPoint(FlxG.width,FlxG.height),"", true);
-				TutTimer.start(2, showNextTipTimed , 1);
+				TutTimer.start(12, showNextTipTimed , 1);
 				GlobalVars.runButttonEnabled = false;
 			case 10:
 				TutVars.showHelpPanelAtSprite(GlobalVars.level.gui.resetBtn, "press reset button again",Direction.down,false);

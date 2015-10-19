@@ -27,7 +27,6 @@ class Level extends FlxState
 	
 	public var gui:GUI;
 	
-	
 	public var levelInfo:LevelInfo;
 
 	public var speed:Int = 1;
@@ -46,20 +45,24 @@ class Level extends FlxState
 		if(GlobalVars.save == null)
 		{
 			GlobalVars.save = new FlxSave();
-			GlobalVars.save.bind("SaveTest5");
+			GlobalVars.save.bind("SaveTest6");
 		}
 		new GUI();
 		new GameGrid();
+		InitTutorial();
 		timer = new FlxTimer();
 		isRunning = false;
 		bgColor = GlobalVars.normalBGColor;
 		FlxG.watch.addMouse();
-
+		GlobalVars.cycles = 0;
+	}
+	public function InitTutorial():Void
+	{
 		if(levelInfo.id == 1)
 		{
 			setControlFlags(false);
 			TutVars.exists = true;
-			TutVars.curruntHint = 16;
+			TutVars.curruntHint = 0;
 			TutVars.initHelpPanel();
 			TutVars.showNextTip();
 		}
@@ -68,7 +71,6 @@ class Level extends FlxState
 			TutVars.exists = false;
 			setControlFlags(true);
 		}
-		//gui.wonPanel.show();
 	}
 	public function setControlFlags(b:Bool):Void
 	{//this is not a good programming practice .. will probably change it later
@@ -322,7 +324,8 @@ class Level extends FlxState
 			}
 			else
 			{
-				resetGame();
+				trace("can't");
+				//resetGame();
 				return;
 			}
 		}

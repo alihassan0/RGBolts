@@ -38,20 +38,22 @@ class LevelSelector extends FlxState
 	}
 	function addDiscription() 
 	{
-		var discription:FlxSprite = new FlxSprite(240, 450, "assets/images/discreptionPanel.png");
-		discription.scale.set(1.5,1.5);
+		var discription:FlxSprite = new FlxSprite(50, 350, "assets/images/discreptionPanel.png");
+		//discription.scale.set(1.5,1.5);
 		/*new FlxSprite(0,420).makeGraphic(640,50,0x00000000);
 		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
 		discription.drawRoundRect(offset, offset, discription.width -2*offset, discription.height - 2*offset, 15, 15, FlxColor.WHEAT);*/
-		var offset:Int = -100;
+		var offset:Int = 20;
 		add(discription);
 		
 		textDiscription = new FlxBitmapTextField(GlobalVars.font);
-		textDiscription.reset(discription.x + offset , discription.y );
+		textDiscription.reset(discription.x + offset , discription.y + offset );
 		textDiscription.useTextColor = false;
 		textDiscription.color = 0xFFFFFF;
-		textDiscription.fontScale = .5;
-		textDiscription.text = "blah..blah";
+		textDiscription.width = 300;
+		textDiscription.multiLine = true;
+		textDiscription.fontScale = .3;
+		textDiscription.text = "level descreption";
 		add(textDiscription);
 	}
 	

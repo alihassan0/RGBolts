@@ -1,14 +1,14 @@
 -main ApplicationMain 
--cp /home/alihassan/Desktop/my folders/haxe flixel projects/LudumDare33/flixel/flixel/3,3,11
+-cp /usr/lib/haxe/lib/flixel/3,3,11
 -D flixel=3.3.11
--cp /home/alihassan/Desktop/my folders/haxe flixel projects/LudumDare33/flixel/lime/2,6,1
--D lime=2.6.1
--cp /home/alihassan/Desktop/my folders/haxe flixel projects/LudumDare33/flixel/openfl/3,3,2
--D openfl=3.3.2
+-cp /usr/lib/haxe/lib/lime/2,3,0
+-D lime=2.3.0
+-cp /usr/lib/haxe/lib/openfl/3,0,0-beta,3
+-D openfl=3.0.0-beta.3
 -cp source
--cp /home/alihassan/Desktop/my folders/haxe flixel projects/LudumDare33/flixel/lime/2,6,1/legacy
+-cp /usr/lib/haxe/lib/lime/2,3,0/legacy
 -D openfl-legacy
--D tools=2.6.1
+-D tools=2.3.0
 -D lime-legacy
 -D no-compilation
 -D NAPE_RELEASE_BUILD
