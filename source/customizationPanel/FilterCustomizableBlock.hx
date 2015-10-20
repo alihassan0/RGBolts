@@ -28,14 +28,19 @@ class FilterCustomizableBlock extends CustomizableBlock
 		addArrowFromArrowSprite(filterBlock.blueArrow);
 		addArrowFromArrowSprite(filterBlock.blackArrow);
 	}
+	public function addToggleButton(t:ToggleColorButton)
+	{
+		GlobalVars.level.gui.panelsGroup.add(t);
+		toggleColorButtons.push(t);
+	}
 	override public function addToggleButtons()
 	{
 		super.addToggleButtons();
-		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(440,160,Color.red,this,filterBlock.redArrow.alive));
-		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(465,160,Color.grey,this,filterBlock.greyArrow.alive));
-		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(490,160,Color.green,this,filterBlock.greenArrow.alive));
-		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(515,160,Color.blue,this,filterBlock.blueArrow.alive));
-		GlobalVars.level.gui.panelsGroup.add(new ToggleColorButton(540,160,Color.black,this,filterBlock.blackArrow.alive));
+		addToggleButton(new ToggleColorButton(440,160,Color.red,this,filterBlock.redArrow.alive));
+		addToggleButton(new ToggleColorButton(465,160,Color.grey,this,filterBlock.greyArrow.alive));
+		addToggleButton(new ToggleColorButton(490,160,Color.green,this,filterBlock.greenArrow.alive));
+		addToggleButton(new ToggleColorButton(515,160,Color.blue,this,filterBlock.blueArrow.alive));
+		addToggleButton(new ToggleColorButton(540,160,Color.black,this,filterBlock.blackArrow.alive));
 	}
 	override public function updateGridBlock()
 	{

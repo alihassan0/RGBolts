@@ -72,7 +72,8 @@ class ToggleColorButton extends FlxSprite
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
-		toggleEnabled();
+		if(!GlobalVars.level.isRunning)
+			toggleEnabled();
 	}
 	private function disableArrow()
 	{

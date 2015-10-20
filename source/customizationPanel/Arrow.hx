@@ -102,7 +102,7 @@ class Arrow extends FlxSprite
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
-		if(GlobalVars.arrowDraggingEnabled)
+		if(!GlobalVars.level.isRunning && GlobalVars.arrowDraggingEnabled)
 			draggable = true;
 	}
 	private function followMouse()

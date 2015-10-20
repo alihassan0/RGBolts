@@ -140,6 +140,11 @@ class Block extends FlxSprite
 		for (i in 0 ... arrowSprites.length) {
 			arrowSprites[i].kill();
 		}
+		if(this == level.GUI.customizationPanel.customizableBlock.block)
+		{
+			level.GUI.customizationPanel.customizableBlock.kill();
+			level.GUI.customizationPanel.customizableBlock.destroy();
+		}	
 	}
 	public function loadCustomBehaviour(block:CustomizableBlock)
 	{

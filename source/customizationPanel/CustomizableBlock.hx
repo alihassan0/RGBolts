@@ -76,7 +76,7 @@ class CustomizableBlock extends FlxSprite
 	}
 	public function addArrowFromArrowSprite(arrowSprite:ArrowSprite)
 	{
-		trace(arrowSprite.alive + " " + arrowSprite.rgbColor);
+		//trace(arrowSprite.alive + " " + arrowSprite.rgbColor);
 		var arrow:Arrow = new Arrow(this, arrowSprite.rgbColor , arrowSprite.direction , arrowSprite.alive);
 		GlobalVars.level.gui.panelsGroup.add(arrow);
 		arrows.push(arrow);
@@ -94,11 +94,17 @@ class CustomizableBlock extends FlxSprite
 		for (i in 0 ... arrows.length) {
 			arrows[i].kill();
 		}
+		for (i in 0 ... toggleColorButtons.length) {
+			toggleColorButtons[i].kill();
+		}
 	}
 	override public function destroy()
 	{
 		for (i in 0 ... arrows.length) {
 			arrows[i].destroy();
+		}
+		for (i in 0 ... toggleColorButtons.length) {
+			toggleColorButtons[i].destroy();
 		}
 		super.destroy();
 	}
