@@ -16,7 +16,7 @@ class SeqElem extends FlxSprite
 	public var seq:Seq;
 	public function new(X:Float , Y:Float, C:Int,s:Seq)
 	{
-		super(X, Y, "assets/images/bolt.png");
+		super(X, Y, "assets/images/seq/bolt.png");
 		color = C;
 		this.seq = s;
 		direction = new FlxPoint(0,0);

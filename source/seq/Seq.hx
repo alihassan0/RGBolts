@@ -19,7 +19,7 @@ class Seq extends FlxSprite
 	public var direction:FlxPoint ;
 	public var lastDirection:FlxPoint ;
 	public var seqString:String = "";
-	public var seqRepresenter:SeqRepresenter;
+	
 	public var canMove:Bool = true;
 	private var tween:FlxTween;
 	public  var seqElements:Array<SeqElem>;
@@ -38,15 +38,15 @@ class Seq extends FlxSprite
 		initialPosition = GlobalVars.gameGrid.getCoordinatesOfPosition(position);
 		super(initialPosition.x, initialPosition.y);
 
-		loadGraphic("assets/images/seq.png");
+		loadGraphic("assets/images/seq/seq.png");
 		visible = false;
 		
 		GlobalVars.level.gui.seqGroup.add(this);
 		GlobalVars.Seqs.push(this);
 		direction = new FlxPoint(0, 0);
 		lastDirection = new FlxPoint(0, 0);
-		seqRepresenter = new SeqRepresenter();
-		seqRepresenter.seqParent = this;
+		
+		
 		setString(initialString);
 		MouseEventManager.add(this, null, null, onOver, onOut);
 		seqElements = new Array<SeqElem>();
@@ -104,7 +104,7 @@ class Seq extends FlxSprite
 	{
 		this.seqString = newString;
 		color = getColor(seqString.charAt(0));
-		seqRepresenter.set_seqString(newString);
+		
 	}
 	public function getColor(c:String):Int
 	{
@@ -121,12 +121,12 @@ class Seq extends FlxSprite
 	}
 	public function onOver(Sprite:FlxSprite) 
 	{
-		seqRepresenter.show(true);
+		
 		//FlxG.log.add("over");
 	}
 	public function onOut(Sprite:FlxSprite) 
 	{
-		seqRepresenter.show(false);
+		
 		//FlxG.log.add("out");
 	}
 	public function action()
@@ -164,8 +164,8 @@ class Seq extends FlxSprite
 			currBLock.affectSeq(this);
 		}
 		affectBlock(currBLock);
-		if (seqRepresenter != null)
-			seqRepresenter.represent();
+		
+			
 	}
 	public function removeFirst()
 	{
@@ -229,7 +229,7 @@ class Seq extends FlxSprite
 			seqElements.shift().kill();	
 		}
 		FlxG.watch.remove(this);
-		seqRepresenter.kill();
+		
 		super.kill();
 	}
 }

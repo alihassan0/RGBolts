@@ -22,7 +22,7 @@ class FilterBlock extends Block
 	public function new(x:Float,y:Float) 
 	{
 		super(x, y);
-		loadGraphic("assets/images/pinkBlock.png");
+		loadGraphic("assets/images/blocks/grid/pinkBlock.png");
 		greyArrow = new ArrowSprite(this,Direction.up,Color.grey,true);
 		redArrow = new ArrowSprite(this,Direction.right,Color.red,true);
 		greenArrow = new ArrowSprite(this,Direction.down,Color.green,false);

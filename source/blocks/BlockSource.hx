@@ -21,14 +21,14 @@ class BlockSource extends FlxSprite
 	{
 		switch(blockType)
 		{
-			case 0: loadGraphic("assets/images/directionalUp.png");
-			case 1: loadGraphic("assets/images/iterator.png");
-			case 2: loadGraphic("assets/images/grouper.png");
-			case 3: loadGraphic("assets/images/ifred.png");
-			case 4: loadGraphic("assets/images/waiter.png");
-			case 5: loadGraphic("assets/images/duplicator.png");
-			case 6: loadGraphic("assets/images/signal.png");
-			case 7: loadGraphic("assets/images/addblack.png");
+			case 0: loadGraphic("assets/images/blocks/icons/directionalUp.png");
+			case 1: loadGraphic("assets/images/blocks/icons/iterator.png");
+			case 2: loadGraphic("assets/images/blocks/icons/grouper.png");
+			case 3: loadGraphic("assets/images/blocks/icons/ifred.png");
+			case 4: loadGraphic("assets/images/blocks/icons/waiter.png");
+			case 5: loadGraphic("assets/images/blocks/icons/duplicator.png");
+			case 6: loadGraphic("assets/images/blocks/icons/signal.png");
+			case 7: loadGraphic("assets/images/blocks/icons/addblack.png");
 		}
 	}
 	private function onDown(Sprite:FlxSprite)

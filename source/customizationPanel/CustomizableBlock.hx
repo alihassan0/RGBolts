@@ -30,7 +30,7 @@ class CustomizableBlock extends FlxSprite
 	 */
 	public function new(X:Float , Y:Float)
 	{
-		super(X, Y, "assets/images/greenBlock.png");
+		super(X, Y, "assets/images/blocks/customizable/greenBlock.png");
 		GlobalVars.level.gui.panelsGroup.add(this);
 		addArrows();
 		addToggleButtons();

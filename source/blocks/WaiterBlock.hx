@@ -18,7 +18,7 @@ class WaiterBlock extends Block
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/waiter.png");
+		loadGraphic("assets/images/blocks/grid/waiter.png");
 		curruntSeqs = new Array<Seq>();
 		direction = Direction.up;
 	}

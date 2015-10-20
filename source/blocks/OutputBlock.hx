@@ -17,7 +17,7 @@ class OutputBlock extends Block
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/output.png");
+		loadGraphic("assets/images/blocks/grid/output.png");
 		followMouse = false;
 		this.testFunction = GlobalVars.level.levelInfo.testFunction;
 		GlobalVars.gameGrid.outputBlock = this;

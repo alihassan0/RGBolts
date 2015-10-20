@@ -13,7 +13,7 @@ class RemoveFirstCustomizableBlock extends CustomizableBlock
 	public function new(x:Float , y:Float, block:Block)
 	{
 		super(x,y);
-		loadGraphic("assets/images/cyanBlock.png");
+		loadGraphic("assets/images/blocks/customizable/cyanBlock.png");
 		this.block = block;
 		arrows[0].setDirection(cast(block,RemoveFirstBlock).otherElementsArrow.direction);
 		arrows[1].setDirection(cast(block,RemoveFirstBlock).firstElementArrow.direction);

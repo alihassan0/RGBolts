@@ -11,8 +11,7 @@ class Signal extends Seq{
 	public function new (posX:Int, posY:Int)
 	{
 		super(posX, posY,"#");
-		loadGraphic("assets/images/sig.png");
-		seqRepresenter.kill();
+		loadGraphic("assets/images/seq/sig.png");
 	}
 	override public function affectBlock(b:Block)
 	{
@@ -25,7 +24,5 @@ class Signal extends Seq{
 
 		var currBLock:Block = GlobalVars.gameGrid.getBlockOfPos(position);		
 		affectBlock(currBLock);
-		if (seqRepresenter != null)
-		seqRepresenter.represent();
 	}
 }

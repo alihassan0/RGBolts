@@ -13,7 +13,7 @@ class DuplicatorCustomizableBlock extends CustomizableBlock
 	public function new(x:Float , y:Float, block:Block)
 	{
 		super(x,y);
-		loadGraphic("assets/images/blueBlock.png");
+		loadGraphic("assets/images/blocks/customizable/blueBlock.png");
 		this.block = block;
 		arrows[0].setDirection(cast(block,DuplicatorBlock).firstDuplicate.direction);
 		arrows[1].setDirection(cast(block,DuplicatorBlock).secondDuplicate.direction);

@@ -14,7 +14,7 @@ class GrouperBlock extends Block
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/grouper.png");
+		loadGraphic("assets/images/blocks/grid/grouper.png");
 	}
 	override public function affectSeq(s:Seq) 
 	{

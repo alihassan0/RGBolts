@@ -13,7 +13,7 @@ class DirectionalCustomizableBlock extends CustomizableBlock
 	public function new(x:Float , y:Float, block:Block)
 	{
 		super(x,y);
-		loadGraphic("assets/images/greenBlock.png");
+		loadGraphic("assets/images/blocks/customizable/greenBlock.png");
 		this.block = block;
 		arrows[0].setDirection(cast(block,DirectionalBlock).direction);
 	}

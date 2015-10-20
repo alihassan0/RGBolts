@@ -14,7 +14,7 @@ class ArrowSprite extends FlxSprite
 	public var rgbColor:Color;
 	public function new(block:Block, direction:Direction, rgbColor:Color, ?enabled:Bool = true)
 	{
-		super(block.x , block.y, "assets/images/arrowSprite.png");
+		super(block.x , block.y, "assets/images/blocks/grid/arrowSprite.png");
 		setDirection(direction);
 		setEnabled(enabled);
 		this.rgbColor = rgbColor;

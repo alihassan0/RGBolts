@@ -14,7 +14,7 @@ class DirectionalBlock extends Block
 	public function new(X:Int,Y:Int)
 	{	
 		super(X, Y);
-		loadGraphic("assets/images/directionalUp.png");
+		loadGraphic("assets/images/blocks/grid/directionalUp.png");
 		direction = Direction.up;
 	}
 	override public function affectSeq(s:Seq) 

@@ -13,7 +13,7 @@ class GrouperCustomizableBlock extends CustomizableBlock
 	public function new(x:Float , y:Float, block:Block)
 	{
 		super(x,y);//will probably add customization later
-		loadGraphic("assets/images/greenBlock.png");
+		loadGraphic("assets/images/blocks/customizable/greenBlock.png");
 		this.block = block;
 	}
 	override public function addArrows()

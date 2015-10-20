@@ -13,7 +13,7 @@ class LevelIcon extends FlxSprite
 	private var id:Int;
 	public function new(X:Float=0, Y:Float=0, i:Int,discriptionText:FlxBitmapTextField) 
 	{
-		super(X, Y,"assets/images/levelIcon.png");
+		super(X, Y,"assets/images/levelSelector/levelIcon.png");
 		id = i;
 		FlxG.state.add(this);
 		

@@ -16,7 +16,7 @@ class RemoveFirstBlock extends Block
 	public function new(x:Int,y:Int) 
 	{
 		super(x, y);
-		loadGraphic("assets/images/cyanBlock.png");
+		loadGraphic("assets/images/blocks/grid/cyanBlock.png");
 		otherElementsArrow = new ArrowSprite(this,Direction.up,Color.black);
 		firstElementArrow = new ArrowSprite(this,Direction.right,Color.grey);
 	}

@@ -114,7 +114,7 @@ class GUI
 		guiGroup.add(resetBtn);
 
 		helpBtn = new FlxButton(580, 10, "", GlobalVars.level.toggleHelpPanel);
-		helpBtn.loadGraphic("assets/images/question.png");
+		helpBtn.loadGraphic("assets/images/GUI/buttons/question.png");
 		guiGroup.add(helpBtn);
 		
 		
@@ -127,12 +127,12 @@ class GUI
 		
 		speedUp = new FlxButton(posX +10, 60, "", GlobalVars.level.speedUpF);
 		//speedUp.scalebtn(0.4,0.6);
-		speedUp.loadGraphic("assets/images/Entypo_2b(1)_24.png");
+		speedUp.loadGraphic("assets/images/GUI/buttons/plus.png");
 		guiGroup.add(speedUp);
 		
 		speedDown = new FlxButton(posX+10, 87, "", GlobalVars.level.speedDownF);
 		//speedDown.scalebtn(0.4,0.6);
-		speedDown.loadGraphic("assets/images/Entypo_2d(0)_24.png");
+		speedDown.loadGraphic("assets/images/GUI/buttons/minus.png");
 		guiGroup.add(speedDown);
 
 		
@@ -170,11 +170,7 @@ class GUI
 		var dBlockSource:BlockSource;
         var allowedBlocks:Array<Int>;
         var temp:Int = GlobalVars.levelInfo.allowedBlocksType;
-       // var discription:FlxSprite = new FlxSprite(410, 50);// .makeGraphic(155, 155, 0x00000000);
-		
-	//	discription.loadGraphic("assets/images/Container.png");
-		//discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, FlxColor.AZURE);
-	//	panelsGroup.add(discription);
+       	
         switch (temp) {
         	case 0:allowedBlocks = [0];
         	case 1:allowedBlocks = [0,1];

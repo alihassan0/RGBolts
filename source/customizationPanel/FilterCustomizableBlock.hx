@@ -16,7 +16,7 @@ class FilterCustomizableBlock extends CustomizableBlock
 		this.filterBlock = cast(block,FilterBlock);//i know it's better to cast in the add arrows function 
 														//.. but for some reason i couldn't cast outside constructor
 		super(X,Y);
-		loadGraphic("assets/images/pinkBlock.png");
+		loadGraphic("assets/images/blocks/customizable/pinkBlock.png");
 		this.block = block;
 	}
 	override public function addArrows()

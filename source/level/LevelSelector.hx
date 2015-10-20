@@ -21,7 +21,7 @@ class LevelSelector extends FlxState
 	{
 		FlxG.camera.antialiasing = true;
 		
-		var sprite:FlxSprite = new FlxSprite(150,0,"assets/images/Levels.png");
+		var sprite:FlxSprite = new FlxSprite(150,0,"assets/images/levelSelector/Levels.png");
 		sprite.scale.set(.5,.5);
 		//add(sprite);
 		bgColor = 0xffafe4e5;
@@ -38,7 +38,7 @@ class LevelSelector extends FlxState
 	}
 	function addDiscription() 
 	{
-		var discription:FlxSprite = new FlxSprite(50, 350, "assets/images/discreptionPanel.png");
+		var discription:FlxSprite = new FlxSprite(50, 350, "assets/images/levelSelector/discreptionPanel.png");
 		//discription.scale.set(1.5,1.5);
 		/*new FlxSprite(0,420).makeGraphic(640,50,0x00000000);
 		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);

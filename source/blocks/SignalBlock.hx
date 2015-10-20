@@ -13,7 +13,7 @@ class SignalBlock extends Block
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/signal.png");
+		loadGraphic("assets/images/blocks/grid/signal.png");
 		direction = Direction.up;
 	}
 	override public function affectSeq(s:Seq) 

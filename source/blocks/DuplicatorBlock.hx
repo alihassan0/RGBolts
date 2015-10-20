@@ -16,7 +16,7 @@ class DuplicatorBlock extends Block
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/blueBlock.png");
+		loadGraphic("assets/images/blocks/grid/blueBlock.png");
 		firstDuplicate = new ArrowSprite(this,Direction.up,Color.yellow);
 		secondDuplicate = new ArrowSprite(this,Direction.down,Color.yellow);
 	}
