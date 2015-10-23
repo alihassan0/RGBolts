@@ -89,7 +89,7 @@ class Seq extends FlxSprite
 	}
 	public function moveNextElem(t:FlxTimer)
 	{
-		trace(elemIndex);
+		flixel.FlxG.log.add(elemIndex);
 		if(elemIndex >= seqElements.length)
 			return;
 		elemIndex ++;
@@ -173,12 +173,12 @@ class Seq extends FlxSprite
 		{
 			seqElements[1].reset(seqElements[0].x,seqElements[0].y);
 			seqElements.shift().kill();
-			trace("a");
+			flixel.FlxG.log.add("a");
 		}
 		else
 		{
 			kill();
-			trace("b");
+			flixel.FlxG.log.add("b");
 		}
 	}
 	public function insertLast(s:Seq)

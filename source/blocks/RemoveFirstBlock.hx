@@ -17,8 +17,8 @@ class RemoveFirstBlock extends Block
 	{
 		super(x, y);
 		loadGraphic("assets/images/blocks/grid/cyanBlock.png");
-		otherElementsArrow = new ArrowSprite(this,Direction.up,Color.black);
-		firstElementArrow = new ArrowSprite(this,Direction.right,Color.grey);
+		otherElementsArrow = new ArrowSprite(this,Direction.right,Color.grey);
+		firstElementArrow = new ArrowSprite(this,Direction.up,Color.black);
 	}
 	override public function affectSeq(s:Seq) 
 	{

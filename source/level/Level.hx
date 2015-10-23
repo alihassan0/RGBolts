@@ -178,7 +178,7 @@ class Level extends FlxState
 		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y] = new Array<String>();
 		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y][0] = key+"";
 		               		GlobalVars.save.data.levelBlocksGrid[GlobalVars.levelInfo.id][x][y][1] = GlobalVars.gameGrid.blocksGrid[x][y].getSaveString();
-	    	        		trace("savedBlock with an id of "+ key +" @ " + x +" , " +  y + "with angle of " + GlobalVars.gameGrid.blocksGrid[x][y].getSaveString());		    	
+	    	        		flixel.FlxG.log.add("savedBlock with an id of "+ key +" @ " + x +" , " +  y + "with angle of " + GlobalVars.gameGrid.blocksGrid[x][y].getSaveString());		    	
 					    }
 					}
             	}
@@ -324,7 +324,7 @@ class Level extends FlxState
 			}
 			else
 			{
-				trace("can't");
+				flixel.FlxG.log.add("can't");
 				//resetGame();
 				return;
 			}
@@ -345,6 +345,6 @@ class Level extends FlxState
 		if (FlxG.keys.justPressed.ENTER)
             FlxG.fullscreen = !FlxG.fullscreen;
         if (FlxG.keys.justPressed.C)
-            trace(GlobalVars.gameGrid.getBlocksCount());
+            flixel.FlxG.log.add(GlobalVars.gameGrid.getBlocksCount());
 	}
 }

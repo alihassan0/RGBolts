@@ -36,7 +36,7 @@ class WonPanel extends FlxTypedSpriteGroup<FlxSprite>
 	public function show()
 	{ 
 		blocksCountTxt.text = "num of Blocks : " + GlobalVars.gameGrid.getBlocksCount();
-		cyclesCountTxt.text = "num of cycles : " + getCycles() + "    avg : " + getCyclesAverage();
+		cyclesCountTxt.text = "num of cycles : " + getCycles() + "\n    avg : " + getCyclesAverage()+" cycles/second";
 		FlxTween.tween(this, {y:200}, .66, {ease:FlxEase.quadInOut});
 	}
 	public function expand()

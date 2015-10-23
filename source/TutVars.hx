@@ -109,7 +109,7 @@ class TutVars
 	}
 	public static function checkForTutorial(key:String)
 	{
-		trace(key + "    " + curruntHint);
+		FlxG.log.add(key + "    " + curruntHint);
 		if(TutVars.exists && TutVars.triggers[key].indexOf(TutVars.curruntHint)!= -1)
 			TutVars.showNextTip();
 	}

@@ -107,7 +107,7 @@ class ToggleColorButton extends FlxSprite
 					return true;
 				}
 			}
-			trace("the new direction is" + newDirection);
+			//trace("the new direction is" + newDirection);
 			block.addArrow(rgbColor,newDirection);
 			return true;
 		}

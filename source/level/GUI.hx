@@ -79,13 +79,13 @@ class GUI
 		blocksBasesGroup = new FlxGroup();
 		GlobalVars.level.add(blocksBasesGroup);
 
-		guiGroup = new FlxGroup();
-		GlobalVars.level.add(guiGroup);
 		seqGroup = new FlxGroup();
 		GlobalVars.level.add(seqGroup);
 		
 		blocksGroup = new FlxGroup();
 		GlobalVars.level.add(blocksGroup);
+		guiGroup = new FlxGroup();
+		GlobalVars.level.add(guiGroup);
 		menuGroup = new FlxGroup();
 		GlobalVars.level.add(menuGroup);
 		tutGroup = new FlxGroup();

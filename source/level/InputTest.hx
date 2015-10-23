@@ -44,7 +44,7 @@ class InputTest extends FlxSprite
 			selected = true;
 			showSelection();
 		}
-		trace(GlobalVars.inputTestsEnabled);
+		//trace(GlobalVars.inputTestsEnabled);
 	}
 	public function setState(state:Int)
 	{

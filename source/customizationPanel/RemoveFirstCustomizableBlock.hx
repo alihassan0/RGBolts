@@ -21,8 +21,8 @@ class RemoveFirstCustomizableBlock extends CustomizableBlock
 	override public function addArrows()
 	{
 		super.addArrows();
-		addArrow(Color.black,Direction.up);
 		addArrow(Color.grey,Direction.right);
+		addArrow(Color.black,Direction.up);
 	}
 	override public function updateGridBlock()
 	{

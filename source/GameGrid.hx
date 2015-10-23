@@ -46,12 +46,12 @@ class GameGrid extends FlxSprite
 	{
 		if (GlobalVars.level.levelInfo.id != 1 && GlobalVars.save.data.levels!= null && GlobalVars.save.data.levels[GlobalVars.levelInfo.id] == true)
 		{
-			trace("save found");
+			//trace("save found");
 			loadGrid();
 		}
 		else
 		{
-			trace("no save found");
+			//trace("no save found");
 			resetGrid();
 		}
 		this.testFunction = GlobalVars.level.levelInfo.testFunction;
