@@ -12,7 +12,7 @@ class InputBlock extends Block
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/blocks/grid/input.png");
+		loadGraphic("assets/images/blocks/grid/inputBlock.png");
 		followMouse = false;
 		GlobalVars.gameGrid.inputBlock = this;
 	}
