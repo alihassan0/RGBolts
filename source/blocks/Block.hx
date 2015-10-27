@@ -45,8 +45,15 @@ class Block extends FlxSprite
 			}
 		}
 		this.angle = angle;
-	
-	
+	}
+	private function getArrowByColor(color:Color):ArrowSprite
+	{
+		for (i in 0 ... arrowSprites.length)
+		{
+			if(arrowSprites[i].rgbColor == color)
+				return arrowSprites[i];
+		}
+		return null;
 	}
 	public function checkPosInGrid() //adds the block to the grid if possible
 	{

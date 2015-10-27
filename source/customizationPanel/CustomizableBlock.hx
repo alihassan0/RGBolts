@@ -74,6 +74,15 @@ class CustomizableBlock extends FlxSprite
 		GlobalVars.level.gui.panelsGroup.add(arrow);
 		arrows.push(arrow);
 	}
+	public function getArrowByColor(color:Color):Arrow
+	{
+		for (i in 0 ... arrows.length)
+		{
+			if(arrows[i].rgbColor == color)
+				return arrows[i];
+		}
+		return null;
+	}
 	public function addArrowFromArrowSprite(arrowSprite:ArrowSprite)
 	{
 		//trace(arrowSprite.alive + " " + arrowSprite.rgbColor);

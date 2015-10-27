@@ -22,11 +22,20 @@ class Util
     ];
     public static var colorToValue:Map<Color, Int> =
     [
-  		Color.red=>0xFFFF0000,
-  		Color.green=>0xFF00FF00,
-  		Color.blue=>0xFF0000FF,
+      Color.red=>0xFFFF0000,
+      Color.green=>0xFF00FF00,
+      Color.blue=>0xFF0000FF,
       Color.black=>0xFF000000,
       Color.grey=>0xFFAAAAAA,
-  		Color.yellow=>0xFFFFFF00
+      Color.yellow=>0xFFFFFF00
+    ];
+    public static var colorToString:Map<Color,String> =
+    [
+  		Color.red=>"r",
+  		Color.green=>"g",
+  		Color.blue=>"b",
+      Color.black=>"k",
+      Color.grey=>"z",
+  		Color.yellow=>"z"
     ];
 }

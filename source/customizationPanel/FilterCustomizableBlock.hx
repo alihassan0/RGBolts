@@ -33,6 +33,7 @@ class FilterCustomizableBlock extends CustomizableBlock
 		GlobalVars.level.gui.panelsGroup.add(t);
 		toggleColorButtons.push(t);
 	}
+	
 	override public function addToggleButtons()
 	{
 		super.addToggleButtons();
