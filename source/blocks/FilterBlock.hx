@@ -13,37 +13,36 @@ import util.*;
  */
 class FilterBlock extends Block
 {
-	public var greyArrow:ArrowSprite;
-	public var redArrow:ArrowSprite;
-	public var greenArrow:ArrowSprite;
-	public var blueArrow:ArrowSprite;
-	public var blackArrow:ArrowSprite;
 	public var otherElementsArrow:ArrowSprite;
 	public var availableColors:Array<Color>;
 	public function new(x:Float,y:Float) 
 	{
 		super(x, y);
 		loadGraphic("assets/images/blocks/grid/pinkBlock.png");
-		availableColors = [Color.grey, Color.red, Color.green, Color.blue,Color.black];
-		initializeArrows();
-		greyArrow = getArrowByColor(Color.grey);
-		redArrow = getArrowByColor(Color.red);
-		greenArrow = getArrowByColor(Color.green);
-		blueArrow = getArrowByColor(Color.blue);
-		blackArrow = getArrowByColor(Color.black);
-		/**/
+		/*  you can change the number of available arrows now .. 
+			as long as you remove from the end to avoid bugs with saving 
+			the right order is grey, red, green, blue ,black
+		*/
+		
 	}
 	private function initializeArrows()
 	{
-		/*for (i in 0 ... availableColors.length)
-		{
-			
-		}*/
+		if(availableColors.indexOf(Color.grey)!= -1)
 		new ArrowSprite(this,Direction.up,Color.grey,true);
+		if(availableColors.indexOf(Color.red)!= -1)
 		new ArrowSprite(this,Direction.right,Color.red,true);
+		if(availableColors.indexOf(Color.green)!= -1)
 		new ArrowSprite(this,Direction.down,Color.green,false);
+		if(availableColors.indexOf(Color.blue)!= -1)
 		new ArrowSprite(this,Direction.left,Color.blue,false);
+		if(availableColors.indexOf(Color.black)!= -1)
 		new ArrowSprite(this,Direction.right,Color.black,false);
+	}
+
+	public function setAvailableColors(availableColors:Array<Color>)
+	{
+		this.availableColors = availableColors;
+		initializeArrows();
 	}
 	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
 	{

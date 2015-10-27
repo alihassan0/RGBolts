@@ -22,11 +22,10 @@ class FilterCustomizableBlock extends CustomizableBlock
 	override public function addArrows()
 	{
 		super.addArrows();
-		addArrowFromArrowSprite(filterBlock.greyArrow);
-		addArrowFromArrowSprite(filterBlock.redArrow);
-		addArrowFromArrowSprite(filterBlock.greenArrow);
-		addArrowFromArrowSprite(filterBlock.blueArrow);
-		addArrowFromArrowSprite(filterBlock.blackArrow);
+		for (i in 0 ... filterBlock.arrowSprites.length) 
+		{
+			addArrowFromArrowSprite(filterBlock.arrowSprites[i]);
+		}
 	}
 	public function addToggleButton(t:ToggleColorButton)
 	{
@@ -37,11 +36,11 @@ class FilterCustomizableBlock extends CustomizableBlock
 	override public function addToggleButtons()
 	{
 		super.addToggleButtons();
-		addToggleButton(new ToggleColorButton(440,160,Color.red,this,filterBlock.redArrow.alive));
-		addToggleButton(new ToggleColorButton(465,160,Color.grey,this,filterBlock.greyArrow.alive));
-		addToggleButton(new ToggleColorButton(490,160,Color.green,this,filterBlock.greenArrow.alive));
-		addToggleButton(new ToggleColorButton(515,160,Color.blue,this,filterBlock.blueArrow.alive));
-		addToggleButton(new ToggleColorButton(540,160,Color.black,this,filterBlock.blackArrow.alive));
+		for (i in 0 ... filterBlock.arrowSprites.length) 
+		{
+			var arrow:ArrowSprite = filterBlock.arrowSprites[i];
+			addToggleButton(new ToggleColorButton(440+i*25,160,arrow.rgbColor,this,arrow.alive));		
+		}
 	}
 	override public function updateGridBlock()
 	{

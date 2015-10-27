@@ -2,7 +2,7 @@ package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.plugin.MouseEventManager;
-
+import util.*;
 /**
  * ...
  * @author ...
@@ -19,12 +19,13 @@ class BlockSource extends FlxSprite
 	}
 	private function loadSprite()
 	{
+		//this need some refactoring
 		switch(blockType)
 		{
 			case 0: loadGraphic("assets/images/blocks/icons/directionalUp.png");
 			case 1: loadGraphic("assets/images/blocks/icons/iterator.png");
-			case 2: loadGraphic("assets/images/blocks/icons/grouper.png");
-			case 3: loadGraphic("assets/images/blocks/icons/ifred.png");
+			case 3: loadGraphic("assets/images/blocks/icons/grouper.png");
+			case 21,22,23: loadGraphic("assets/images/blocks/icons/ifred.png");
 			case 4: loadGraphic("assets/images/blocks/icons/waiter.png");
 			case 5: loadGraphic("assets/images/blocks/icons/duplicator.png");
 			case 6: loadGraphic("assets/images/blocks/icons/signal.png");
@@ -37,10 +38,16 @@ class BlockSource extends FlxSprite
 		{
 			switch(blockType)
 			{
+				//i really REALLY should come up with a better solution later
 				case 0: new DirectionalBlock(0,0);
 				case 1: new RemoveFirstBlock(0,0);
-				case 2: new GrouperBlock(0,0);
-				case 3: new FilterBlock(0, 0);
+				case 21: new FilterBlock(0, 0)
+				.setAvailableColors([Color.grey, Color.red]);
+				case 22: new FilterBlock(0, 0)
+				.setAvailableColors([Color.grey, Color.red, Color.green, Color.blue]);
+				case 23: new FilterBlock(0, 0)
+				.setAvailableColors([Color.grey, Color.red, Color.green, Color.blue, Color.black]);
+				case 3: new GrouperBlock(0,0);
 				case 4: new WaiterBlock(0,0);
 				case 5: new DuplicatorBlock(0, 0);
 				case 6: new SignalBlock(0,0);

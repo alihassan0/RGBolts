@@ -174,12 +174,14 @@ class GUI
         switch (temp) {
         	case 0:allowedBlocks = [0];
         	case 1:allowedBlocks = [0,1];
-        	case 2:allowedBlocks = [0,1,3];
+        	case 2:allowedBlocks = [0,1,21];
+        	case 3:allowedBlocks = [0,1,22];
+        	case 4:allowedBlocks = [0,1,33];
 			//----------------------------------
         	default:allowedBlocks = [0,1,2,3,4,5,6,7];
         }
 		var actualCount:Int = 0;
-        for (i in 0 ... 12)
+        for (i in 0 ... 25)
         {
         	if(allowedBlocks.indexOf(i)!=-1)
         	{

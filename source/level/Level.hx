@@ -45,7 +45,7 @@ class Level extends FlxState
 		if(GlobalVars.save == null)
 		{
 			GlobalVars.save = new FlxSave();
-			GlobalVars.save.bind("SaveTest6");
+			GlobalVars.save.bind("SaveTest7");
 		}
 		new GUI();
 		new GameGrid();
