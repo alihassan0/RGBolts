@@ -1,5 +1,5 @@
 package blocks ;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import seq.*;
 import customizationPanel.*;
 import util.*;

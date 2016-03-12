@@ -1,12 +1,11 @@
 package level;
 
-import flixel.group.FlxTypedGroup;
-import flixel.group.FlxTypedSpriteGroup;
 import flixel.ui.FlxButton;
 import flixel.text.FlxText;
 import flixel.FlxSprite;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.group.FlxSpriteGroup;
 
 using GUI.ButtonExtender;
 class WonPanel extends FlxTypedSpriteGroup<FlxSprite>

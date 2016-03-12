@@ -10,11 +10,10 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
-import flixel.util.FlxMath;
+import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import flixel.group.FlxGroup;
-import flixel.group.FlxTypedGroup;
 import flixel.util.FlxSave;
 import haxe.Constraints.Function;
 import seq.Seq;
@@ -105,7 +104,7 @@ class Level extends FlxState
 	public function speedUpF() 
 	{
 		TutVars.checkForTutorial("speeedBtn");
-		FlxTween.num(1, 0, 0.1, { ease:FlxEase.circIn, complete:fadeOut }, changeColor);
+		FlxTween.num(1, 0, 0.1, { ease:FlxEase.circIn, onComplete:fadeOut }, changeColor);
 		if (speed < 3)
 		speed++;
 	    gui.speedText.text = "Speed: " + speed;
@@ -127,7 +126,7 @@ class Level extends FlxState
 	}
 	public function speedDownF()
 	{
-		FlxTween.num(1, 0, 0.1, { ease:FlxEase.circIn, complete:fadeOut2 }, changeColor2);
+		FlxTween.num(1, 0, 0.1, { ease:FlxEase.circIn, onComplete:fadeOut2 }, changeColor2);
 		if (speed > 1)
 		speed--;
         gui.speedText.text = "Speed: " + speed;
@@ -339,9 +338,9 @@ class Level extends FlxState
         }
         timer.start(GlobalVars.moveDuration, intermediate , 1);
 	}
-	override public function update():Void
+	override public function update(elapsed:Float):Void
 	{
-		super.update();
+		super.update(elapsed);
 		if (FlxG.keys.justPressed.ENTER)
             FlxG.fullscreen = !FlxG.fullscreen;
         if (FlxG.keys.justPressed.C)

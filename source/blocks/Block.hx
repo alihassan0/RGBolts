@@ -1,9 +1,9 @@
 package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 import flixel.util.FlxColor;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import flixel.effects.FlxFlicker;
 import level.Level;
 import seq.Seq;
@@ -23,7 +23,7 @@ class Block extends FlxSprite
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
-		MouseEventManager.add(this, onDown, null, null, null);
+		FlxMouseEventManager.add(this, onDown, null, null, null);
 		GlobalVars.level.gui.blocksGroup.add(this);
 		followMouse = true;
 		arrowSprites = new Array<ArrowSprite>();
@@ -31,9 +31,9 @@ class Block extends FlxSprite
 			mouseOffset = new FlxPoint(width/2, height/2);
 		
 	}
-	override public function update():Void 
+	override public function update(elapsed:Float):Void 
 	{
-		super.update();
+		super.update(elapsed);
 		if (followMouse)
 		{
 			reset(FlxG.mouse.x - mouseOffset.x,FlxG.mouse.y - mouseOffset.y);

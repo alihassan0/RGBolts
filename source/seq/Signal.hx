@@ -2,7 +2,7 @@ package seq;
 
 import flixel.FlxSprite;
 import flixel.FlxG;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import blocks.Block;
 import blocks.DirectionalBlock;
 

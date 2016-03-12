@@ -2,8 +2,8 @@ package seq ;
 import blocks.*;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.plugin.MouseEventManager;
-import flixel.util.FlxPoint;
+import flixel.input.mouse.FlxMouseEventManager;
+import flixel.math.FlxPoint;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxTween.TweenOptions;
@@ -48,7 +48,7 @@ class Seq extends FlxSprite
 		
 		
 		setString(initialString);
-		MouseEventManager.add(this, null, null, onOver, onOut);
+		FlxMouseEventManager.add(this, null, null, onOver, onOut);
 		seqElements = new Array<SeqElem>();
 
 		var index:Int;
@@ -67,9 +67,9 @@ class Seq extends FlxSprite
 		ofst = normalOfst;
 		FlxG.watch.add(this,"x");
 	}
-	override public function update() 
+	override public function update(elapsed:Float) 
 	{
-		super.update();
+		super.update(elapsed);
 		moveElementsOneByOne();
 	}
 	public function moveElementsOneByOne()

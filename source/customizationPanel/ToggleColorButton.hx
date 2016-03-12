@@ -2,7 +2,7 @@
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 import util.*;
 
 /**
@@ -36,7 +36,7 @@ class ToggleColorButton extends FlxSprite
 		this.block = block;
 		setColor(rgbColor);
 		this.setEnabled(enabled);
-		MouseEventManager.add(this, onDown, null, null, null);
+		FlxMouseEventManager.add(this, onDown, null, null, null);
 	}
 	public function setColor(rgbColor:Color)
 	{

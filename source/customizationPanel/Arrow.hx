@@ -1,10 +1,10 @@
 package customizationPanel ;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxAngle;
-import flixel.util.FlxPoint;
+import flixel.math.FlxAngle;
+import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 import util.*;
 import blocks.*;
 
@@ -43,15 +43,15 @@ class Arrow extends FlxSprite
 		this.origin.set(width/2,height);
 		setColor(rgbColor);
 		this.draggable = false;
-		MouseEventManager.add(this, onDown, null, null, null);
+		FlxMouseEventManager.add(this, onDown, null, null, null);
 		if(enabled)
 			setDirection(direction);
 		else
 			kill();
 	}
-	override public function update():Void
+	override public function update(elapsed:Float):Void
 	{
-		super.update();
+		super.update(elapsed);
 
 		if(draggable)
 		{
@@ -107,7 +107,7 @@ class Arrow extends FlxSprite
 	}
 	private function followMouse()
 	{
-		angle = FlxAngle.getAngle(new FlxPoint(block.x + block.width/2 ,block.y + block.height/2),new FlxPoint(FlxG.mouse.x,FlxG.mouse.y));
+		angle = FlxAngle.angleBetweenPoint(block,new FlxPoint(FlxG.mouse.x,FlxG.mouse.y),true)+90;
 	}
 	private function roundToNearestDirection()
 	{

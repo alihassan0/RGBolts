@@ -1,6 +1,6 @@
 package level;
 import haxe.Constraints.Function;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 
 /**
 * ...

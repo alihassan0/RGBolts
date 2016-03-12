@@ -1,9 +1,8 @@
 package level;
 import flixel.FlxG;
 import flixel.FlxState;
-import flixel.text.FlxBitmapTextField;
-import flixel.text.pxText.PxBitmapFont;
-import flixel.text.pxText.PxTextAlign;
+import flixel.text.FlxBitmapText;
+import flixel.graphics.frames.FlxBitmapFont;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -16,7 +15,7 @@ using flixel.util.FlxSpriteUtil;
  */
 class LevelSelector extends FlxState
 {
-	public var textDiscription:FlxBitmapTextField;
+	public var textDiscription:FlxBitmapText;
 	override public function create():Void 
 	{
 		FlxG.camera.antialiasing = true;
@@ -31,7 +30,7 @@ class LevelSelector extends FlxState
 		{
 			new LevelIcon(30+ (i%5)*110, 30+Math.floor(i/5)*100, i+1,textDiscription);
 		}
-		var t:FlxBitmapTextField = new FlxBitmapTextField(GlobalVars.font);
+		var t:FlxBitmapText = new FlxBitmapText(GlobalVars.font);
 		t.text = "hello text";
 		//add(t);
 		
@@ -42,17 +41,17 @@ class LevelSelector extends FlxState
 		//discription.scale.set(1.5,1.5);
 		/*new FlxSprite(0,420).makeGraphic(640,50,0x00000000);
 		discription.drawRoundRect(0, 0, discription.width, discription.height, 15, 15, 0xFFA97D5D);
-		discription.drawRoundRect(offset, offset, discription.width -2*offset, discription.height - 2*offset, 15, 15, FlxColor.WHEAT);*/
+		discription.drawRoundRect(offset, offset, discription.width -2*offset, discription.height - 2*offset, 15, 15, Reg.WHEAT);*/
 		var offset:Int = 20;
 		add(discription);
 		
-		textDiscription = new FlxBitmapTextField(GlobalVars.font);
+		textDiscription = new FlxBitmapText(GlobalVars.font);
 		textDiscription.reset(discription.x + offset , discription.y + offset );
 		textDiscription.useTextColor = false;
 		textDiscription.color = 0xFFFFFF;
 		textDiscription.width = 300;
 		textDiscription.multiLine = true;
-		textDiscription.fontScale = .3;
+		textDiscription.scale.set(.3,.3);
 		textDiscription.text = "level descreption";
 		add(textDiscription);
 	}

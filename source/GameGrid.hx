@@ -3,7 +3,7 @@ import blocks.*;
 import seq.Seq;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 
 /**
  * The class that handles all Grid 

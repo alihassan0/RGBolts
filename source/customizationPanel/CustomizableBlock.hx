@@ -41,7 +41,7 @@ class CustomizableBlock extends FlxSprite
 	{
 		var duration:Float = .66;
 		FlxTween.tween(this, {alpha:1}, duration, {ease:FlxEase.circOut});
-		FlxTween.tween(this.scale, {x:2,y:2}, duration, {ease:FlxEase.circOut,complete:updateDimentions});
+		FlxTween.tween(this.scale, {x:2,y:2}, duration, {ease:FlxEase.circOut,onComplete:updateDimentions});
 		for (i in 0 ... arrows.length) {
 			arrows[i].scale.set(.5,.5);
 			FlxTween.tween(arrows[i].scale, {x:1,y:1}, duration, {ease:FlxEase.circOut});

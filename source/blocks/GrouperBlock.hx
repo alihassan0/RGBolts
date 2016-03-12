@@ -1,7 +1,7 @@
 package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import seq.Seq;
 import customizationPanel.*;
 /**
