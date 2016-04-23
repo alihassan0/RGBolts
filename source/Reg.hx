@@ -9,6 +9,7 @@ import flixel.util.FlxSave;
  */
 class Reg
 {
+	public static var WHEAT:Int = 0xfff5deb3;
 	/**
 	 * Generic levels Array that can be used for cross-state stuff.
 	 * Example usage: Storing the levels of a platformer.

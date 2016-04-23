@@ -2,7 +2,7 @@ package level;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
@@ -29,13 +29,13 @@ class InputTest extends FlxSprite
 		this.inputString = inputString;
 		this.id = id;
 		cycles = 0;
-		drawRoundRect(0, 0, 100, 80, 15, 15, FlxColor.WHEAT);
+		drawRoundRect(0, 0, 100, 80, 15, 15, Reg.WHEAT);
 		GlobalVars.level.gui.panelsGroup.add(this);
 		text = new FlxText(x , y ,width, "")
 							.setFormat(null, 10 , 0x9C9F84,"center");
 		text.text = "i : "+inputString+" \n\n o : "+outputString+" \n\n s : 'untested' \n\n";
 		GlobalVars.level.gui.panelsGroup.add(text);	
-		MouseEventManager.add(this, onDown, null, null, null,true);
+		FlxMouseEventManager.add(this, onDown, null, null, null,true);
 	}
 	public function onDown(Sprite:FlxSprite) 
 	{
@@ -51,7 +51,7 @@ class InputTest extends FlxSprite
 		//TODO chage the state text to the new State
 		this.state = state;
 		switch (state) {
-			case 0: color = FlxColor.WHEAT;//untested
+			case 0: color = Reg.WHEAT;//untested
 			case 1: color = FlxColor.GREEN;//test passed
 			case 2: color = FlxColor.RED;//test failed
 		}
@@ -68,7 +68,7 @@ class InputTest extends FlxSprite
 		}
 		else
 		{
-			lineStyle = { color: FlxColor.WHEAT, thickness:  4.0 };
+			lineStyle = { color: Reg.WHEAT, thickness:  4.0 };
 			alpha = 1;
 		}
 		drawRoundRect(0, 0, 100, 80, 15, 15, FlxColor.TRANSPARENT,lineStyle);

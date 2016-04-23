@@ -1,8 +1,8 @@
 package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.plugin.MouseEventManager;
-import flixel.util.FlxPoint;
+import flixel.input.mouse.FlxMouseEventManager;
+import flixel.math.FlxPoint;
 import seq.Seq;
 import level.Level;
 import customizationPanel.*;

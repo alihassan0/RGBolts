@@ -3,7 +3,7 @@ package util;
  * ...
  * @author ...
  */
- import flixel.util.FlxPoint;
+ import flixel.math.FlxPoint;
 class Util
 {
 	public static var directionToAngle:Map<Direction, Int> =

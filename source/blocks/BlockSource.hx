@@ -1,7 +1,7 @@
 package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 import util.*;
 /**
  * ...
@@ -15,7 +15,7 @@ class BlockSource extends FlxSprite
 		super(X, Y);
 		this.blockType = blockType;
 		loadSprite();
-		MouseEventManager.add(this, onDown, null, null, null,true);
+		FlxMouseEventManager.add(this, onDown, null, null, null,true);
 	}
 	private function loadSprite()
 	{

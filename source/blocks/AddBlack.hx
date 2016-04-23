@@ -1,6 +1,6 @@
 package blocks;
 import flixel.util.FlxColor;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import seq.Seq;
 import seq.SeqColor;
 import seq.SeqElem;

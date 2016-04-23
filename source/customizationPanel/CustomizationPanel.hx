@@ -3,11 +3,10 @@ package customizationPanel;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
-import flixel.group.FlxTypedGroup;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import flixel.util.FlxSpriteUtil;
 import blocks.*;
 using flixel.util.FlxSpriteUtil;
@@ -40,9 +39,9 @@ class CustomizationPanel extends FlxTypedGroup<FlxSprite>
 		}
 		customizableBlock = block.addCustomizableBlock(500,100,block);
 	}
-	override public function update():Void 
+	override public function update(elapsed:Float):Void 
 	{
-		super.update();	
+		super.update(elapsed);	
 	}
 	
 }	

@@ -1,8 +1,7 @@
 package blocks ;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.group.FlxTypedGroupIterator;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import seq.Seq;
 
 /**

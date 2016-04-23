@@ -1,7 +1,7 @@
 package seq ;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxTween.TweenOptions;
 import flixel.tweens.FlxEase;
@@ -35,9 +35,9 @@ class SeqElem extends FlxSprite
 		reset(x + (40/GlobalVars.stepDuration)*FlxG.elapsed*(direction.x),
 			  y + (40/GlobalVars.stepDuration)*FlxG.elapsed*(direction.y));
 	}
-	override public function update()
+	override public function update(elapsed:Float)
 	{
-		super.update();
+		super.update(elapsed);
 		moveBySpeed();
 	}
 }

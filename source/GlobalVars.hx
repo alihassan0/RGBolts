@@ -3,11 +3,10 @@ import seq.*;
 import level.*;
 import blocks.*;
 import customizationPanel.*;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
-import flixel.text.FlxBitmapTextField;
-import flixel.text.pxText.PxBitmapFont;
-import flixel.text.pxText.PxTextAlign;
+import flixel.text.FlxBitmapText;
+import flixel.graphics.frames.FlxBitmapFont;
 import openfl.Assets;
 import flixel.util.FlxSave;
 /**
@@ -36,12 +35,12 @@ class GlobalVars
 	public static var moveDuration : Float = 0;
 	public static var selectedBlock : Block;
 	public static var customizationPanel:CustomizationPanel;
-	public static var font:PxBitmapFont; 
+	public static var font:FlxBitmapFont; 
 	public static var stepDuration:Float = 0;//same as moveDuration but only at the beginnning of any move .. i couldn't come up with a better name :"|
 	public static var maxVisibleElemesInSeq : Int = 3;
 
 
-	public static var normalBGColor:Int = FlxColor.WHEAT;
+	public static var normalBGColor:Int = Reg.WHEAT;
 	public static var testingBGColor:Int = 0xFFF2C968;
 	
 	public static var save:FlxSave;
@@ -245,7 +244,7 @@ class GlobalVars
 	{
 		var textBytes = Assets.getText("assets/fonts/font.fnt");
 		var XMLData = Xml.parse(textBytes);
-		font = new PxBitmapFont().loadAngelCode(Assets.getBitmapData("assets/fonts/font.png"), XMLData);
+		font = FlxBitmapFont.fromAngelCode(Assets.getBitmapData("assets/fonts/font.png"), XMLData);
 	}
 	public static function getLevelIntro(index:Int):String
 	{

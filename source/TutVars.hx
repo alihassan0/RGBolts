@@ -1,16 +1,15 @@
 package ;
 import seq.*;
 import level.*;
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import flixel.FlxSprite;
 import flixel.FlxG;
-import flixel.util.FlxRect;
+import flixel.math.FlxRect;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
-import flixel.plugin.MouseEventManager;
-
+import flixel.input.mouse.FlxMouseEventManager;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import util.*;
@@ -81,9 +80,8 @@ class TutVars
 		}
 
 		var lineStyle = { color: 0xFF333333, thickness: 8.0 };
-		var fillStyle = { color: 0x00000000};
 		spriteHighlighter.makeGraphic(Math.floor(s.width),Math.floor(s.height),FlxColor.TRANSPARENT,true);
-		spriteHighlighter.drawRoundRect(0, 0, s.width, s.height, 10, 10, 0x00000000,lineStyle,fillStyle);
+		spriteHighlighter.drawRoundRect(0, 0, s.width, s.height, 10, 10, 0x00000000,lineStyle);
 		spriteHighlighter.reset(s.x,s.y);
 
 		spriteHighlighter.scale.set(2,2);

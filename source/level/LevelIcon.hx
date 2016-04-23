@@ -2,27 +2,27 @@ package level;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 import flixel.text.FlxText;
-import flixel.text.FlxBitmapTextField;
+import flixel.text.FlxBitmapText;
 
 class LevelIcon extends FlxSprite
 {
-	private var levelNumbertxt:FlxBitmapTextField;
-	private var discriptionText:FlxBitmapTextField;
+	private var levelNumbertxt:FlxBitmapText;
+	private var discriptionText:FlxBitmapText;
 	private var id:Int;
-	public function new(X:Float=0, Y:Float=0, i:Int,discriptionText:FlxBitmapTextField) 
+	public function new(X:Float=0, Y:Float=0, i:Int,discriptionText:FlxBitmapText) 
 	{
 		super(X, Y,"assets/images/levelSelector/levelIcon.png");
 		id = i;
 		FlxG.state.add(this);
 		
-		levelNumbertxt = new FlxBitmapTextField(GlobalVars.font);
+		levelNumbertxt = new FlxBitmapText(GlobalVars.font);
 		levelNumbertxt.x = X+25;
 		levelNumbertxt.y = Y+15;
 		levelNumbertxt.useTextColor = false;
 		levelNumbertxt.text = i+"";
-		levelNumbertxt.fontScale = .7;
+		levelNumbertxt.scale.set(.7,.7);
 		levelNumbertxt.color = 0xffffffff;
 		FlxG.state.add(levelNumbertxt);
 		//FlxText(X, Y, 30, i + "");
@@ -31,7 +31,7 @@ class LevelIcon extends FlxSprite
 		else
 		levelNumbertxt.setFormat(null, 18, 0x9C9F84, "center");*/
 		this.discriptionText = discriptionText;
-		MouseEventManager.add(this, onDown, null, onOver,true);
+		FlxMouseEventManager.add(this, onDown, null, onOver,true);
 	}
 	function onDown(Sprite:FlxSprite) 
 	{
