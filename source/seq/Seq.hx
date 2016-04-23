@@ -65,7 +65,7 @@ class Seq extends FlxSprite
 		actionTimer = new FlxTimer();
 		firstElemPositions = new Array<FlxPoint>();
 		ofst = normalOfst;
-		FlxG.watch.add(this,"x");
+		//FlxG.watch.add(this,"x");
 	}
 	override public function update(elapsed:Float) 
 	{
@@ -228,7 +228,7 @@ class Seq extends FlxSprite
 			seqElements[0].alpha = 0;
 			seqElements.shift().kill();	
 		}
-		FlxG.watch.remove(this);
+		//FlxG.watch.remove(this);
 		
 		super.kill();
 	}

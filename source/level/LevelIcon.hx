@@ -22,7 +22,7 @@ class LevelIcon extends FlxSprite
 		levelNumbertxt.y = Y+15;
 		levelNumbertxt.useTextColor = false;
 		levelNumbertxt.text = i+"";
-		levelNumbertxt.scale.set(.7,.7);
+		levelNumbertxt.scale.set(.3,.3);
 		levelNumbertxt.color = 0xffffffff;
 		FlxG.state.add(levelNumbertxt);
 		//FlxText(X, Y, 30, i + "");
@@ -40,6 +40,20 @@ class LevelIcon extends FlxSprite
 	}
 	function onOver(Sprite:FlxSprite) 
 	{
-		discriptionText.text = GlobalVars.levels[id-1].description;
+		//trace("before", discriptionText.offset.x,discriptionText.offset.y,discriptionText.width,discriptionText.height,discriptionText.scale.x,discriptionText.scale.y);
+		if(discriptionText.text != GlobalVars.levels[id-1].description)
+		{
+			discriptionText.text = GlobalVars.levels[id-1].description;
+			discriptionText.offset.y = discriptionText.height * (1-discriptionText.scale.y) *.5;
+			discriptionText.offset.x = discriptionText.width * (1-discriptionText.scale.x) *.5;
+			discriptionText.width = FlxG.width*discriptionText.scale.x;
+			trace("not the same");
+		}
+		else
+			discriptionText.text = GlobalVars.levels[id-1].description;
+			
+
+		//trace("After", discriptionText.offset.x,discriptionText.offset.y,discriptionText.width,discriptionText.height,discriptionText.scale.x,discriptionText.scale.y);
+
 	}
 }
