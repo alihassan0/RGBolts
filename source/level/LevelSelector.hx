@@ -8,6 +8,8 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import openfl.Assets;
 
+import util.BitmapText;
+
 using flixel.util.FlxSpriteUtil;
 /**
  * ...
@@ -15,7 +17,7 @@ using flixel.util.FlxSpriteUtil;
  */
 class LevelSelector extends FlxState
 {
-	public var textDiscription:FlxBitmapText;
+	public var textDiscription:BitmapText;
 	override public function create():Void 
 	{
 		FlxG.camera.antialiasing = true;
@@ -30,9 +32,6 @@ class LevelSelector extends FlxState
 		{
 			new LevelIcon(30+ (i%5)*110, 30+Math.floor(i/5)*100, i+1,textDiscription);
 		}
-		var t:FlxBitmapText = new FlxBitmapText(GlobalVars.font);
-		t.text = "hello text";
-		//add(t);
 		
 	}
 	function addDiscription() 
@@ -41,19 +40,10 @@ class LevelSelector extends FlxState
 		add(discription);
 		
 		var offset:Int = 20;
-		textDiscription = new FlxBitmapText(GlobalVars.font);
+		textDiscription = new BitmapText(GlobalVars.font);
 		textDiscription.setPosition(discription.x +offset, discription.y +offset );
-		textDiscription.useTextColor = false;
-		textDiscription.color = 0xFFFFFF;
-		textDiscription.multiLine = true;
-
-		textDiscription.scale.set(.3,.3);
-
-		textDiscription.autoSize = false;
-		textDiscription.fieldWidth = Math.floor(FlxG.width*1.6);
 		
-		
-		textDiscription.text = "level descreption";
+		textDiscription.changeText("level descreption");
 		add(textDiscription);
 	}
 
