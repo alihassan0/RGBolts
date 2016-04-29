@@ -49,7 +49,7 @@ class TutVars
 		helpPanel = new FlxSprite();
 		GlobalVars.level.gui.tutGroup.add(helpPanel);
 		
-		helpText = new FlxText(0,0,200).setFormat(null, 16 , 0xffffff,"center");
+		helpText = new FlxText(0,0,200).setFormat(Reg.font, 16 , 0xFFFFFFFF,"center");
 		GlobalVars.level.gui.tutGroup.add(helpText);
 
 		helpNextButton = new FlxButton(0, 0, "next",showNextTip);
@@ -92,7 +92,7 @@ class TutVars
 		helpText.text = text;
 		helpText.drawFrame(true);
 		var panelHeight:Float = helpText.height + helpNextButton.height + 4;
-		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(panelHeight),0xff000000);
+		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(panelHeight),0xFF000000);
 
 		helpText.reset(p.x , p.y);
 		helpPanel.reset(p.x , p.y);

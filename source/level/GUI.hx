@@ -135,10 +135,10 @@ class GUI
 		guiGroup.add(speedDown);
 
 		
-		statusTxt = new FlxText(500,25,80," ").setFormat(null, 12 , 0x9C9F84,"center");
+		statusTxt = new FlxText(500,25,80," ").setFormat(Reg.font, 16 , 0x9C9F84,"center");
 		guiGroup.add(statusTxt);
 
-		titleTxt = new FlxText(0,5,FlxG.width, "Level : " +GlobalVars.levelInfo.id).setFormat(null, 16 , 0x9C9F84,"center");
+		titleTxt = new FlxText(0,5,FlxG.width, "Level : " +GlobalVars.levelInfo.id).setFormat(Reg.font, 16 , 0x9C9F84,"center");
 		guiGroup.add(titleTxt);
 
 		wonPanel = new WonPanel();
@@ -223,7 +223,7 @@ class GUI
 		var offset:FlxPoint = new FlxPoint(10,10);
  		
 		helpPanelText = new FlxText(helpPanel.x + offset.x , helpPanel.y + offset.y ,width-offset.x*2," ")
-						.setFormat(null, 12 , 0x9C9F84,"left");
+						.setFormat(Reg.font, 12 , 0x9C9F84,"left");
 		helpPanelText.text = GlobalVars.levelInfo.levelIntro;
 		helpPanelText.visible  =false;
 		menuGroup.add(helpPanelText);
