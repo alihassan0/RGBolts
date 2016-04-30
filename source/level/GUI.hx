@@ -10,6 +10,8 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import customizationPanel.*;
 import blocks.*;
+import util.*;
+
 
 using GUI.ButtonExtender;
 using flixel.util.FlxSpriteUtil;
@@ -62,7 +64,9 @@ class GUI
 		addBlockSources();//added to panels layer
 		addUI();//added to ui layer
 		addDiscription();//added to panels layer
-
+		FlxG.state.add(new AnimatedButton(540,0,"reset.png"));
+		FlxG.state.add(new AnimatedButton(480,0,"run.png"));
+		FlxG.state.add(new AnimatedButton(420,0,"home.png"));
 	}
 	private function initGroups()
 	{
