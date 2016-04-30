@@ -31,9 +31,10 @@ class GUI
 	public var inputTests:Array<InputTest>;
 	public static var customizationPanel:CustomizationPanel;
 	
-	public var backToMenuBtn:FlxButton;
-	public var runBtn:FlxButton;
-	public var resetBtn:FlxButton;
+	public var backToMenuBtn:AnimatedButton;
+	public var runBtn:AnimatedButton;
+	public var resetBtn:AnimatedButton;
+
 	public var helpBtn:FlxButton;
 	public var speedUp:FlxButton;
 	public var speedDown:FlxButton;
@@ -64,9 +65,7 @@ class GUI
 		addBlockSources();//added to panels layer
 		addUI();//added to ui layer
 		addDiscription();//added to panels layer
-		FlxG.state.add(new AnimatedButton(540,0,"reset.png"));
-		FlxG.state.add(new AnimatedButton(480,0,"run.png"));
-		FlxG.state.add(new AnimatedButton(420,0,"home.png"));
+		
 	}
 	private function initGroups()
 	{
@@ -96,7 +95,6 @@ class GUI
 	}
 	private function addUI()
 	{
-		backToMenuBtn = new FlxButton(420, 220, "Back", GlobalVars.level.switchBack);
 		resetGridBtn = new FlxButton(30, 1, "load", GlobalVars.level.resetGrid);
 		resetGridBtn.scalebtn(0.7, 1.2);
 		//guiGroup.add(resetGridBtn);
@@ -105,15 +103,17 @@ class GUI
 		saveButton.scalebtn(0.7, 1.2);
 		//guiGroup.add(saveButton);
 
-		backToMenuBtn.scalebtn(0.7, 1.2);
+		//FlxG.state.add(new AnimatedButton(540,0,"reset.png"));
+		//FlxG.state.add(new AnimatedButton(480,0,"run.png"));
+		//FlxG.state.add(new AnimatedButton(420,0,"home.png"));
+
+		backToMenuBtn = new AnimatedButton(420, 220, "home.png", GlobalVars.level.switchBack);
 		guiGroup.add(backToMenuBtn);
 		
-		runBtn = new FlxButton(480, 220, "run", GlobalVars.level.runGame);
-		runBtn.scalebtn(0.7, 1.2);
+		runBtn = new AnimatedButton(480, 220, "run.png", GlobalVars.level.runGame);
 		guiGroup.add(runBtn);
 		
-		resetBtn = new FlxButton(540, 220, "reset", GlobalVars.level.resetGame);
-		resetBtn.scalebtn(0.7, 1.2);
+		resetBtn = new AnimatedButton(540, 220, "reset.png", GlobalVars.level.resetGame);
 		guiGroup.add(resetBtn);
 
 		helpBtn = new FlxButton(580, 10, "", GlobalVars.level.toggleHelpPanel);
