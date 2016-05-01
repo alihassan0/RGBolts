@@ -61,6 +61,7 @@ class OutputBlock extends Block
 		if(!GlobalVars.level.isRunning && GlobalVars.mainBlocksDraggingEnabled)
 		{
 			followMouse = true;
+			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);
 		}
 	}
 }

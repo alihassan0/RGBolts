@@ -28,7 +28,7 @@ class Block extends FlxSprite
 		followMouse = true;
 		arrowSprites = new Array<ArrowSprite>();
 		if(mouseOffset == null)
-			mouseOffset = new FlxPoint(width/2, height/2);
+			mouseOffset = new FlxPoint(0, 0);
 		
 	}
 	override public function update(elapsed:Float):Void 

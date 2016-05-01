@@ -39,10 +39,11 @@ class FilterBlock extends Block
 		new ArrowSprite(this,Direction.right,Color.black,false);
 	}
 
-	public function setAvailableColors(availableColors:Array<Color>)
+	public function setAvailableColors(availableColors:Array<Color>):FilterBlock
 	{
 		this.availableColors = availableColors;
 		initializeArrows();
+		return this;
 	}
 	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
 	{

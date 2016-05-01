@@ -36,23 +36,26 @@ class BlockSource extends FlxSprite
 	{
 		if(!GlobalVars.level.isRunning && GlobalVars.blocksCreatingEnabled && !(TutVars.exists && GlobalVars.gameGrid.getBlocksCount()>=3))
 		{
+			var block:Block;
 			switch(blockType)
 			{
 				//i really REALLY should come up with a better solution later
-				case 0: new DirectionalBlock(0,0);
-				case 1: new RemoveFirstBlock(0,0);
-				case 21: new FilterBlock(0, 0)
+				case 0: block = new DirectionalBlock(0,0);
+				case 1: block = new RemoveFirstBlock(0,0);
+				case 21: block = new FilterBlock(0, 0)
 				.setAvailableColors([Color.grey, Color.red]);
-				case 22: new FilterBlock(0, 0)
+				case 22: block = new FilterBlock(0, 0)
 				.setAvailableColors([Color.grey, Color.red, Color.green, Color.blue]);
-				case 23: new FilterBlock(0, 0)
+				case 23: block = new FilterBlock(0, 0)
 				.setAvailableColors([Color.grey, Color.red, Color.green, Color.blue, Color.black]);
-				case 3: new GrouperBlock(0,0);
-				case 4: new WaiterBlock(0,0);
-				case 5: new DuplicatorBlock(0, 0);
-				case 6: new SignalBlock(0,0);
-				case 7: new AddBlack(0, 0);
+				case 3: block = new GrouperBlock(0,0);
+				case 4: block = new WaiterBlock(0,0);
+				case 5: block = new DuplicatorBlock(0, 0);
+				case 6: block = new SignalBlock(0,0);
+				case 7: block = new AddBlack(0, 0);
+				default: block = new Block(0,0);
 			}
+			block.mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y - y);
 		}
 		if(blockType == 0)
 			TutVars.checkForTutorial("directional_click");
