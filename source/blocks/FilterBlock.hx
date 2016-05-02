@@ -43,6 +43,7 @@ class FilterBlock extends Block
 	{
 		this.availableColors = availableColors;
 		initializeArrows();
+
 		return this;
 	}
 	override public function addCustomizableBlock(x:Float , y:Float,block:Block):CustomizableBlock
@@ -75,22 +76,38 @@ class FilterBlock extends Block
 		s.setDirection(Util.directionToFlxPoint[getArrowByColor(Color.grey).direction]);
 	}
 	override public function getSaveString():String
-	{
+	{		
 		var s:String ="";
+		for (i in 0 ... availableColors.length) {
+			s+= Util.colorToString[availableColors[i]];
+		}
+		s+= "#";
 		for (i in 0 ... availableColors.length) {
 			var arrow:ArrowSprite = getArrowByColor(availableColors[i]); 
 			s += Type.enumIndex(arrow.direction)	+ (arrow.alive?"*":" ");
 		}
+
 		return s;
 	}
-	override public function loadSaveString(saveString:String)
+	override public function loadSaveString(savedString:String)
 	{
 		//maybe there is a better a way than this .. but this should work for now
 		//i think i found a beter way because this shit 
+		var splittedString:Array<String> = savedString.split('#');
+		
+		var colorsString:String = splittedString[0];
+		var colorsArray:Array<Color> = new Array<Color>();
+		for (i in 0 ... colorsString.length) {
+			colorsArray.push(Util.stringToColor[colorsString.charAt(i)]);
+		}
+		setAvailableColors(colorsArray);
+
+		var statusString:String = splittedString[1];
+
 		for (i in 0 ... availableColors.length) {
 			var arrow:ArrowSprite = getArrowByColor(availableColors[i]);
-			arrow.setDirection(Type.createEnumIndex(Direction,Std.parseInt(saveString.charAt(i*2+0))));
-			arrow.setEnabled(saveString.charAt(i*2+1)=="*");	
+			arrow.setDirection(Type.createEnumIndex(Direction,Std.parseInt(statusString.charAt(i*2+0))));
+			arrow.setEnabled(statusString.charAt(i*2+1)=="*");	
 		}
 	}
 }

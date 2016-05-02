@@ -31,11 +31,20 @@ class Util
     ];
     public static var colorToString:Map<Color,String> =
     [
-  		Color.red=>"r",
-  		Color.green=>"g",
-  		Color.blue=>"b",
+      Color.red=>"r",
+      Color.green=>"g",
+      Color.blue=>"b",
       Color.black=>"k",
-      Color.grey=>"z",
-  		Color.yellow=>"z"
+      Color.grey=>"y",
+      Color.yellow=>"z"
+    ];
+    public static var stringToColor:Map<String,Color> =
+    [
+  		"r"=>Color.red,
+  		"g"=>Color.green,
+  		"b"=>Color.blue,
+      "k"=>Color.black,
+      "y"=>Color.grey,
+  		"z"=>Color.yellow
     ];
 }
