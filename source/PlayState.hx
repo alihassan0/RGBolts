@@ -12,6 +12,19 @@ import flixel.math.FlxPoint;
 import customizationPanel.*;
 import util.*;
 
+import flash.display.DisplayObject;
+import openfl.display.MovieClip;
+import flash.display.Sprite;
+import flash.events.Event;
+import format.SWF;
+import openfl.Assets;
+import flash.display.StageAlign;
+import flash.display.StageScaleMode;
+import flash.display.Loader;
+import flash.Lib;
+
+
+
 /**
  * A FlxState which can be used for the actual gameplay.
  */
@@ -20,19 +33,23 @@ class PlayState extends FlxState
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
-	var block:CustomizableBlock;
-	var arrow:Arrow;
+
 	override public function create():Void
 	{
 		super.create();
-		bgColor = FlxColor.GRAY;
-		block = new DirectionalCustomizableBlock(40,240);
-		block = new FilterCustomizableBlock(120,240);
-		add(new ToggleColorButton(120,280,Color.green,block));
-		add(new ToggleColorButton(150,280,Color.red,block));
-		add(new ToggleColorButton(180,280,Color.blue,block));
-		add(new ToggleColorButton(180,280,Color.black,block));
-		add(new ToggleColorButton(180,280,Color.blue,block));
+
+       
+        var bytes = Assets.getBytes("assets/swf/splash.swf");
+		trace("Bytes " + bytes.length);
+
+		var loader:Loader = new Loader();
+		loader.loadBytes(bytes);
+
+		loader.contentLoaderInfo.addEventListener(Event.COMPLETE,function (_) {
+	    var mc:MovieClip = cast(loader.content, MovieClip);
+	    FlxG.stage.addChild(mc);
+	    });
+
 	}
 	
 	/**
