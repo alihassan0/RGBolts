@@ -32,8 +32,24 @@ class InputTest extends FlxSprite
 		drawRoundRect(0, 0, 100, 80, 15, 15, Reg.WHEAT);
 		GlobalVars.level.gui.panelsGroup.add(this);
 		text = new FlxText(x , y ,width, "")
-							.setFormat(Reg.font, 10 , 0x9C9F84,"center");
-		text.text = "i : "+inputString+" \n\n o : "+outputString+" \n\n s : 'untested' \n\n";
+							.setFormat(Reg.font, 12 , 0x9C9F84);
+
+		var red = new FlxTextFormat(0xFF0000, false, false, 0x000000);
+		var green = new FlxTextFormat(0x009933, false, false, 0x000000);
+		var blue = new FlxTextFormat(0x0000FF, false, false, 0x000000);
+		inputString = StringTools.replace(inputString,"r","*r*");
+		inputString = StringTools.replace(inputString,"g","_g_");
+		inputString = StringTools.replace(inputString,"b","$b$");
+
+		outputString = StringTools.replace(outputString,"r","*r*");
+		outputString = StringTools.replace(outputString,"g","_g_");
+		outputString = StringTools.replace(outputString,"b","$b$");
+
+		text.applyMarkup(" i : "+inputString+"\no : "+outputString+"\n s : 'untested' \n", [
+			new FlxTextFormatMarkerPair(red, "*"),
+			new FlxTextFormatMarkerPair(green, "_"),
+			new FlxTextFormatMarkerPair(blue, "$")]);
+
 		GlobalVars.level.gui.panelsGroup.add(text);	
 		FlxMouseEventManager.add(this, onDown, null, null, null,true);
 	}
