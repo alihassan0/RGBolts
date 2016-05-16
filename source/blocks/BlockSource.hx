@@ -34,6 +34,7 @@ class BlockSource extends FlxSprite
 	}
 	private function onDown(Sprite:FlxSprite)
 	{
+		trace(blockType);
 		if(!GlobalVars.level.isRunning && GlobalVars.blocksCreatingEnabled && !(TutVars.exists && GlobalVars.gameGrid.getBlocksCount()>=3))
 		{
 			var block:Block;

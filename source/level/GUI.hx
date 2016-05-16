@@ -152,7 +152,7 @@ class GUI
 	function addInputTests() 
 	{
 		var discription:FlxSprite = new FlxSprite(0,370).makeGraphic(640,100,0x00000000);
-		discription.drawRoundRect(20, 0, 600, 100, 15, 15, 0xFFA97D5D);
+		discription.drawRoundRect(20, 0, 600, 100, 15, 15, 0xFFA97D5D);	
 		panelsGroup.add(discription);
 
 		inputTests = new Array<InputTest>();
@@ -179,7 +179,7 @@ class GUI
         	case 1:allowedBlocks = [0,1];
         	case 2:allowedBlocks = [0,1,21];
         	case 3:allowedBlocks = [0,1,22];
-        	case 4:allowedBlocks = [0,1,33];
+        	case 4:allowedBlocks = [0,1,23];
 			//----------------------------------
         	default:allowedBlocks = [0,1,2,3,4,5,6,7];
         }
@@ -193,11 +193,12 @@ class GUI
 				actualCount++;
         	}
         	else
-        	{	if (i < allowedBlocks.length-1){
-				var placeHolder:FlxSprite = new FlxSprite(425 + 45 * (i%3), 65 + 45 * Math.floor(i/3));
-        		placeHolder.makeGraphic(40,40,0xFF9C9F84);
-        		blockSourcesGroup.add(placeHolder);
-			}
+        	{	if (i < allowedBlocks.length-1)
+        		{
+					var placeHolder:FlxSprite = new FlxSprite(425 + 45 * (i%3), 65 + 45 * Math.floor(i/3));
+	        		placeHolder.makeGraphic(40,40,0xFF9C9F84);
+	        		blockSourcesGroup.add(placeHolder);
+				}
         	}
 		}
 	}

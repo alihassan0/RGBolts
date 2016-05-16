@@ -32,7 +32,7 @@ class InputTest extends FlxSprite
 		drawRoundRect(0, 0, 100, 80, 15, 15, Reg.WHEAT);
 		GlobalVars.level.gui.panelsGroup.add(this);
 		text = new FlxText(x , y ,width, "")
-							.setFormat(null, 10 , 0x9C9F84,"center");
+							.setFormat(Reg.font, 10 , 0x9C9F84,"center");
 		text.text = "i : "+inputString+" \n\n o : "+outputString+" \n\n s : 'untested' \n\n";
 		GlobalVars.level.gui.panelsGroup.add(text);	
 		FlxMouseEventManager.add(this, onDown, null, null, null,true);
