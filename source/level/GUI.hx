@@ -181,26 +181,15 @@ class GUI
         	case 3:allowedBlocks = [0,1,22];
         	case 4:allowedBlocks = [0,1,23];
 			//----------------------------------
-        	default:allowedBlocks = [0,1,2,3,4,5,6,7];
+        	default:allowedBlocks = [0,1,23,3,4,5,6,7];
         }
 		var actualCount:Int = 0;
-        for (i in 0 ... 25)
+        for (i in 0 ... allowedBlocks.length)
         {
-        	if(allowedBlocks.indexOf(i)!=-1)
-        	{
-    			dBlockSource = new BlockSource(10, 35 + 36 * Math.floor(actualCount), i);
-    			blockSourcesGroup.add(dBlockSource);
-				actualCount++;
-        	}
-        	else
-        	{	if (i < allowedBlocks.length-1)
-        		{
-					var placeHolder:FlxSprite = new FlxSprite(425 + 45 * (i%3), 65 + 45 * Math.floor(i/3));
-	        		placeHolder.makeGraphic(40,40,0xFF9C9F84);
-	        		blockSourcesGroup.add(placeHolder);
-				}
-        	}
-		}
+			dBlockSource = new BlockSource(10, 35 + 36 * Math.floor(actualCount), allowedBlocks[i]);
+			blockSourcesGroup.add(dBlockSource);
+			actualCount++;
+        }
 	}
 	
 	function addDiscription() 

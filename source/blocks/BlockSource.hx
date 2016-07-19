@@ -24,8 +24,8 @@ class BlockSource extends FlxSprite
 		{
 			case 0: loadGraphic("assets/images/blocks/icons/directionalUp.png");
 			case 1: loadGraphic("assets/images/blocks/icons/iterator.png");
-			case 3: loadGraphic("assets/images/blocks/icons/grouper.png");
 			case 21,22,23: loadGraphic("assets/images/blocks/icons/ifred.png");
+			case 3: loadGraphic("assets/images/blocks/icons/grouper.png");
 			case 4: loadGraphic("assets/images/blocks/icons/waiter.png");
 			case 5: loadGraphic("assets/images/blocks/icons/duplicator.png");
 			case 6: loadGraphic("assets/images/blocks/icons/signal.png");

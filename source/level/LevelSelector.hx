@@ -28,7 +28,7 @@ class LevelSelector extends FlxState
 		bgColor = 0xffafe4e5;
 		GlobalVars.loadLevels();
 		addDiscription();
-		for (i in 0...7)
+		for (i in 0...10)
 		{
 			new LevelIcon(30+ (i%5)*110, 30+Math.floor(i/5)*100, i+1,textDiscription);
 		}

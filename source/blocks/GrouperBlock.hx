@@ -14,7 +14,7 @@ class GrouperBlock extends Block
 	public function new(X:Int,Y:Int) 
 	{
 		super(X, Y);
-		loadGraphic("assets/images/blocks/grid/grouper.png");
+		loadGraphic("assets/images/blocks/grid/grouperBlock.png");
 	}
 	override public function affectSeq(s:Seq) 
 	{
@@ -27,6 +27,8 @@ class GrouperBlock extends Block
 		}
 		else if(s.alive)
 		{
+			if(s.getString().charAt(0)== "k")
+				trace("-------------------------------------------");
 			if(curruntSeq != s)
 			{
 				var newString:String = curruntSeq.getString()+s.getString();
@@ -41,10 +43,14 @@ class GrouperBlock extends Block
 				curruntSeq.wait();
 				trace("bbb");
 			}
+			else if(s.getString().charAt(0)== "k")
+			{
+				trace("kai");
+			}
 			else
 			{
 				curruntSeq.wait();
-				trace("ccc");
+				trace("ccc",s.getString());
 			}
 		}
 	}
