@@ -3,6 +3,7 @@ import blocks.*;
 import seq.Seq;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.util.FlxColor;
 import flixel.math.FlxPoint;
 
 /**
@@ -37,7 +38,7 @@ class GameGrid extends FlxSprite
 		grid = new Array<Array<FlxSprite>>();
 		blocksGrid = new Array<Array<Block>>();
 		super(gridX, gridY);
-		makeGraphic(gridWidth * tileSize, gridHeight * tileSize,0x00ff00ff);
+		makeGraphic(gridWidth * tileSize, gridHeight * tileSize, FlxColor.TRANSPARENT);
 		GlobalVars.gameGrid = this;
 		GlobalVars.Seqs = new Array<Seq>();
 		makeGrid();
@@ -77,7 +78,7 @@ class GameGrid extends FlxSprite
             blocksGrid[x] = new Array<Block>();
             for (y in 0...gridHeight)
             {
-                grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
+                grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, Reg.gridColor);
 				GlobalVars.level.gui.gridGroup.add(grid[x][y]);
 				blocksGrid[x][y] = null;
             }
@@ -92,7 +93,7 @@ class GameGrid extends FlxSprite
             blocksGrid[x] = new Array<Block>();
             for (y in 0...gridHeight)
             {
-                grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, 0xAA5C755E);
+                grid[x][y] = new FlxSprite( gridX + tileSize * x, gridY + tileSize * y).makeGraphic(tileActuallSize, tileActuallSize, Reg.gridColor);
 				GlobalVars.level.gui.gridGroup.add(grid[x][y]);
 				blocksGrid[x][y] = null;
             }

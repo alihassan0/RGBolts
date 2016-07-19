@@ -40,8 +40,8 @@ class GlobalVars
 	public static var maxVisibleElemesInSeq : Int = 3;
 
 
-	public static var normalBGColor:Int = Reg.WHEAT;
-	public static var testingBGColor:Int = 0xFFF2C968;
+	public static var normalBGColor:Int = Reg.backgroundColor;
+	public static var testingBGColor:Int = Reg.testingBackgroundColor;
 	
 	public static var save:FlxSave;
 	public static var blocksMap:Map<Int, Class<Dynamic>> =

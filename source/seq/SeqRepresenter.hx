@@ -1,6 +1,7 @@
 package seq ;
 import flixel.FlxG;
 import flixel.*;
+import flixel.util.FlxColor;
 
 /**
  * ...
@@ -40,10 +41,10 @@ class SeqRepresenter extends FlxSprite
         {
 			switch(seqString.charAt(i))
 			{
-				case 'r': temp = new SeqColor(0, 0, 0xFFFF0000); FlxG.state.add(temp); seqColorArray.push(temp);// FlxG.log.add("r");
-				case 'g': temp = new SeqColor(0, 0, 0xFF00FF00); FlxG.state.add(temp); seqColorArray.push(temp);// FlxG.log.add("g");
-				case 'b': temp = new SeqColor(0, 0, 0xFF0000FF); FlxG.state.add(temp); seqColorArray.push(temp);// FlxG.log.add("g");
-				default : temp = new SeqColor(0, 0, 0xFF000000); FlxG.state.add(temp); seqColorArray.push(temp);// FlxG.log.add("b");
+				case 'r': temp = new SeqColor(0, 0, FlxColor.RED); FlxG.state.add(temp); seqColorArray.push(temp);// FlxG.log.add("r");
+				case 'g': temp = new SeqColor(0, 0, FlxColor.GREEN); FlxG.state.add(temp); seqColorArray.push(temp);// FlxG.log.add("g");
+				case 'b': temp = new SeqColor(0, 0, FlxColor.BLUE); FlxG.state.add(temp); seqColorArray.push(temp);// FlxG.log.add("g");
+				default : temp = new SeqColor(0, 0, FlxColor.BLACK); FlxG.state.add(temp); seqColorArray.push(temp);// FlxG.log.add("b");
 			}
 		}
 		represent();

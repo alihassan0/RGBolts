@@ -21,7 +21,6 @@ using flixel.util.FlxSpriteUtil;
 class TutVars
 {
 	private static var sprites:Array<FlxSprite>;
-	private static var spriteColor:Int = 0xCC888888;
 
 	private static var helpPanel:FlxSprite;
 	private static var helpText:FlxText;
@@ -49,7 +48,7 @@ class TutVars
 		helpPanel = new FlxSprite();
 		GlobalVars.level.gui.tutGroup.add(helpPanel);
 		
-		helpText = new FlxText(0,0,200).setFormat(Reg.font, 16 , 0xFFFFFFFF,"center");
+		helpText = new FlxText(0,0,200).setFormat(Reg.font, 16 , Reg.helpTextColor,"center");
 		GlobalVars.level.gui.tutGroup.add(helpText);
 
 		helpNextButton = new FlxButton(0, 0, "next",showNextTip);
@@ -79,9 +78,9 @@ class TutVars
 				showHelpPanelAtPos(new FlxPoint(s.x + s.width/2 - panelwidth/2,s.y - panelHeight),text,showNextBtn);
 		}
 
-		var lineStyle = { color: 0xFF333333, thickness: 8.0 };
+		var lineStyle = { color: Reg.highlighterLineColor, thickness: 8.0 };
 		spriteHighlighter.makeGraphic(Math.floor(s.width),Math.floor(s.height),FlxColor.TRANSPARENT,true);
-		spriteHighlighter.drawRoundRect(0, 0, s.width, s.height, 10, 10, 0x00000000,lineStyle);
+		spriteHighlighter.drawRoundRect(0, 0, s.width, s.height, 10, 10, FlxColor.TRANSPARENT,lineStyle);
 		spriteHighlighter.reset(s.x,s.y);
 
 		spriteHighlighter.scale.set(2,2);
@@ -92,7 +91,7 @@ class TutVars
 		helpText.text = text;
 		helpText.drawFrame(true);
 		var panelHeight:Float = helpText.height + helpNextButton.height + 4;
-		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(panelHeight),0xFF000000);
+		helpPanel.makeGraphic(Math.floor(helpText.width),Math.floor(panelHeight),Reg.helpPanelColor);
 
 		helpText.reset(p.x , p.y);
 		helpPanel.reset(p.x , p.y);

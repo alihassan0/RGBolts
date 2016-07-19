@@ -9,7 +9,16 @@ import flixel.util.FlxSave;
  */
 class Reg
 {
-	public static var WHEAT:Int = 0xfff5deb3;
+	public static var backgroundColor:Int = 0xfff5deb3;
+	public static var testingBackgroundColor:Int = 0xFFF2C968;
+	public static var gridColor:Int = 0xAA5C755E;
+
+	public static var helpTextColor:Int = 0xFFFFFFFF;
+	public static var highlighterLineColor:Int = 0xFF333333;
+	public static var helpPanelColor:Int = 0xFF000000;
+
+	public static var panelBackgroundColor:Int = 0xFFA97D5D;
+
 	public static var font:String = "assets/fonts/Fridays.ttf";
 	/**
 	 * Generic levels Array that can be used for cross-state stuff.

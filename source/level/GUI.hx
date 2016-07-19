@@ -151,8 +151,8 @@ class GUI
 	}
 	function addInputTests() 
 	{
-		var discription:FlxSprite = new FlxSprite(0,370).makeGraphic(640,100,0x00000000);
-		discription.drawRoundRect(20, 0, 600, 100, 15, 15, 0xFFA97D5D);	
+		var discription:FlxSprite = new FlxSprite(0,370).makeGraphic(640,100,FlxColor.TRANSPARENT);
+		discription.drawRoundRect(20, 0, 600, 100, 15, 15, Reg.panelBackgroundColor);	
 		panelsGroup.add(discription);
 
 		inputTests = new Array<InputTest>();
@@ -194,8 +194,8 @@ class GUI
 	
 	function addDiscription() 
 	{
-		levelDescription = new FlxSprite(400,265).makeGraphic(220,90,0x00000000);
-		levelDescription.drawRoundRect(0, 0, levelDescription.width, levelDescription.height, 15, 15, 0xFFA97D5D);
+		levelDescription = new FlxSprite(400,265).makeGraphic(220,90,FlxColor.TRANSPARENT);
+		levelDescription.drawRoundRect(0, 0, levelDescription.width, levelDescription.height, 15, 15, Reg.panelBackgroundColor);
 		var offset:Int = 4;
 		levelDescription.drawRoundRect(0+offset, offset, levelDescription.width -2*offset, levelDescription.height - 2*offset, 15, 15, FlxColor.RED);
 		panelsGroup.add(levelDescription);
@@ -210,8 +210,8 @@ class GUI
 		var height:Int = 300;
 		
 		var center:FlxPoint = new FlxPoint(320,240);
-		helpPanel = new FlxSprite(center.x-width/2,center.y - height/2).makeGraphic(width,height,0x00000000);
-		helpPanel.drawRoundRect(0, 0, helpPanel.width, helpPanel.height, 15, 15, 0xFF000000);
+		helpPanel = new FlxSprite(center.x-width/2,center.y - height/2).makeGraphic(width,height,FlxColor.TRANSPARENT);
+		helpPanel.drawRoundRect(0, 0, helpPanel.width, helpPanel.height, 15, 15, Reg.helpPanelColor);
 		helpPanel.visible = false;
 		menuGroup.add(helpPanel);
 		var offset:FlxPoint = new FlxPoint(10,10);

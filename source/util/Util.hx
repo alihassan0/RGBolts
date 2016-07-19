@@ -4,6 +4,8 @@ package util;
  * @author ...
  */
  import flixel.math.FlxPoint;
+ import flixel.util.FlxColor;
+ 
 class Util
 {
 	public static var directionToAngle:Map<Direction, Int> =
@@ -22,12 +24,12 @@ class Util
     ];
     public static var colorToValue:Map<Color, Int> =
     [
-      Color.red=>0xFFFF0000,
-      Color.green=>0xFF00FF00,
-      Color.blue=>0xFF0000FF,
-      Color.black=>0xFF000000,
-      Color.grey=>0xFFAAAAAA,
-      Color.yellow=>0xFFFFFF00
+      Color.red=> FlxColor.RED,
+      Color.green=> FlxColor.GREEN,
+      Color.blue=> FlxColor.BLUE,
+      Color.black=> FlxColor.BLACK,
+      Color.grey=> FlxColor.GRAY,
+      Color.yellow=> FlxColor.YELLOW
     ];
     public static var colorToString:Map<Color,String> =
     [
