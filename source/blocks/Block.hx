@@ -9,6 +9,8 @@ import level.Level;
 import seq.Seq;
 import customizationPanel.*;
 import util.*;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 /**
  * ...
  * @author ...
@@ -20,6 +22,8 @@ class Block extends FlxSprite
 	public var mouseOffset:FlxPoint;
 	public var enabled:Bool = true;
 	public var arrowSprites:Array<ArrowSprite>;
+
+	private var tween:FlxTween;
 	public function new(X:Float,Y:Float)
 	{
 		super(X, Y);
@@ -92,6 +96,8 @@ class Block extends FlxSprite
 	{
 		if(!GlobalVars.level.isRunning && GlobalVars.blocksCreatingEnabled)//it should be dragging but removed to avoid duplicating
 		{
+			if(!followMouse)
+				startTween();
 			followMouse = true;
 			mouseOffset.set(FlxG.mouse.x - x,FlxG.mouse.y- y);	
 		}
@@ -156,5 +162,24 @@ class Block extends FlxSprite
 	public function loadCustomBehaviour(block:CustomizableBlock)
 	{
 		
+	}
+	public function onComplete(tween:FlxTween)
+	{
+		var options:TweenOptions = { type: FlxTween.ONESHOT, ease: FlxEase.quadIn};
+		tween = FlxTween.tween(this.scale, { x: 1, y: 1 }, .2, options);
+	}
+	public function startTween()
+	{
+		var options:TweenOptions = { type: FlxTween.ONESHOT, ease: FlxEase.quadIn, onComplete: onComplete };
+
+		// Cancel the old tween
+		if (tween != null)
+		{
+			tween.cancel();
+		}
+		
+		tween = FlxTween.tween(this.scale, { x: 1.2, y: 1.2 }, .2, options);
+		// tween = FlxTween.tween(this, { x: 400, angle: 180 }, 1, options);
+
 	}
 }
